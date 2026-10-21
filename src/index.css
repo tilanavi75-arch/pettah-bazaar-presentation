@@ -1,0 +1,102 @@
+:root {
+  /* Pettah Bazaar App Color Palette */
+  --bg-pitch-dark: #09090C;
+  --bg-pitch-surface: #111116;
+  --bg-pitch-card: #17171F;
+  --bg-pitch-elevated: #20202B;
+  
+  /* Primary Flame Red-Orange (from Pettah Bazaar App Logo & CTA) */
+  --color-primary: #FF5500;
+  --color-primary-dark: #E03E00;
+  --color-primary-light: #FF7726;
+  --color-primary-glow: rgba(255, 85, 0, 0.35);
+  --color-primary-gradient: linear-gradient(135deg, #FF381E 0%, #FF7700 100%);
+  --color-badge-gradient: linear-gradient(135deg, #FF451A 0%, #FF8C00 100%);
+  
+  /* Secondary Warm Honey Gold & Amber (from "Deals" and "Pure Spices") */
+  --color-gold-500: #F59E0B;
+  --color-gold-400: #FBBF24;
+  --color-gold-glow: rgba(245, 158, 11, 0.3);
+  
+  /* Category Accents from Pettah Bazaar App */
+  --color-accent-textiles: #E11D48; /* Berry Rose for Sarees & Clothes */
+  --color-accent-tech: #06B6D4;     /* Electric Cyan for Tech & Gadgets */
+  --color-accent-spices: #F59E0B;   /* Amber for Pure Spices */
+  --color-accent-gold: #EAB308;     /* Yellow-Gold for Sea St Gold */
+  --color-accent-travel: #8B5CF6;   /* Purple for Bags & Travel */
+  --color-accent-verified: #10B981; /* Emerald Green for Verified Stalls */
+  
+  /* Neutral Typography */
+  --color-text-primary: #FFFFFF;
+  --color-text-secondary: #D4D4D8;
+  --color-text-muted: #A1A1AA;
+  --color-text-dim: #71717A;
+  
+  /* Borders */
+  --border-subtle: rgba(255, 255, 255, 0.08);
+  --border-card: rgba(255, 255, 255, 0.12);
+  --border-focus: rgba(255, 85, 0, 0.45);
+  --border-gold: rgba(245, 158, 11, 0.4);
+  
+  /* Fonts */
+  --font-heading: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-body: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+  
+  /* Shadows */
+  --shadow-card: 0 12px 36px -10px rgba(0, 0, 0, 0.7);
+  --shadow-glow: 0 0 30px rgba(255, 85, 0, 0.2);
+  --shadow-gold-glow: 0 0 25px rgba(245, 158, 11, 0.25);
+  
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 18px;
+  --radius-xl: 26px;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--bg-pitch-dark);
+  color: var(--color-text-primary);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow: hidden;
+  height: 100vh;
+  width: 100vw;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  background: none;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+input, textarea, select {
+  font-family: inherit;
+}
+
+/* Custom Scrollbars matching app dark mode */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.4);
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.18);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-primary);
+}
