@@ -122,6 +122,7 @@ export const slidesData = [
     allocatedTime: "1.0 min",
     rubricRef: "Market Problem & Fieldwork (10 Marks)",
     isVideoSlide: true,
+    videoSrc: "/assets/P 1 F - Trim problem .mp4",
     videoLabel: "INSERT VIDEO 1 – MARKET PROBLEM",
     videoHeading: "THE PROBLEM WE OBSERVED",
     videoCaption: "Preliminary Field Observation: Searching for the Right Shop in Pettah",

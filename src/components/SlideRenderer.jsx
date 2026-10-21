@@ -49,6 +49,8 @@ export default function SlideRenderer({ slide, onJumpToSlide }) {
         caption={slide.videoCaption}
         presenter={slide.presenter}
         context={slide.videoContext}
+        disclaimer={slide.disclaimer}
+        videoSrc={slide.videoSrc}
       />
     );
   }

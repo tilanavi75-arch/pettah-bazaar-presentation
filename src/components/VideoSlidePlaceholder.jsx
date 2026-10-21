@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Video, Play, Upload, Film, Link, RefreshCw, AlertCircle } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { Video, Play, Upload, Film, RefreshCw, AlertCircle, CheckCircle } from 'lucide-react';
 
 export default function VideoSlidePlaceholder({ 
   slideNumber, 
@@ -7,19 +7,23 @@ export default function VideoSlidePlaceholder({
   label, 
   caption, 
   presenter, 
-  context 
+  context,
+  disclaimer,
+  videoSrc
 }) {
   const [customVideoUrl, setCustomVideoUrl] = useState('');
-  const [isPlaying, setIsPlaying] = useState(false);
   const [showInput, setShowInput] = useState(false);
-  const [uploadedVideoSrc, setUploadedVideoSrc] = useState(null);
+  const [uploadedVideoSrc, setUploadedVideoSrc] = useState(videoSrc || null);
+
+  useEffect(() => {
+    setUploadedVideoSrc(videoSrc || null);
+  }, [videoSrc]);
 
   const handleFileUpload = (e) => {
     const file = e.target.files[0];
     if (file) {
       const url = URL.createObjectURL(file);
       setUploadedVideoSrc(url);
-      setIsPlaying(true);
     }
   };
 
@@ -27,7 +31,6 @@ export default function VideoSlidePlaceholder({
     e.preventDefault();
     if (customVideoUrl.trim()) {
       setUploadedVideoSrc(customVideoUrl.trim());
-      setIsPlaying(true);
       setShowInput(false);
     }
   };
@@ -35,7 +38,12 @@ export default function VideoSlidePlaceholder({
   const resetVideo = () => {
     setUploadedVideoSrc(null);
     setCustomVideoUrl('');
-    setIsPlaying(false);
+  };
+
+  const restoreDefaultVideo = () => {
+    if (videoSrc) {
+      setUploadedVideoSrc(videoSrc);
+    }
   };
 
   return (
@@ -51,26 +59,53 @@ export default function VideoSlidePlaceholder({
         </div>
 
         <div className="video-controls-tools">
-          {!uploadedVideoSrc ? (
-            <button 
-              className="video-tool-btn"
-              onClick={() => setShowInput(!showInput)}
-              title="Test with actual video file or URL for rehearsal"
-            >
-              <Upload className="w-3.5 h-3.5 mr-1" />
-              <span>{showInput ? "Hide Tester" : "Test Real Video (Optional)"}</span>
-            </button>
+          {uploadedVideoSrc ? (
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+              <span className="video-badge" style={{ margin: 0, background: 'rgba(16, 185, 129, 0.15)', color: '#34d399', border: '1px solid rgba(16, 185, 129, 0.3)' }}>
+                <CheckCircle className="w-3 h-3 mr-1" />
+                Video Active
+              </span>
+              <button 
+                className="video-tool-btn"
+                onClick={() => setShowInput(!showInput)}
+                title="Change or test another video file or URL"
+              >
+                <Upload className="w-3.5 h-3.5 mr-1" />
+                <span>{showInput ? "Hide Tester" : "Change Video"}</span>
+              </button>
+              <button className="video-tool-btn reset" onClick={resetVideo} title="View placeholder blueprint">
+                <RefreshCw className="w-3.5 h-3.5 mr-1" />
+                <span>Placeholder</span>
+              </button>
+            </div>
           ) : (
-            <button className="video-tool-btn reset" onClick={resetVideo}>
-              <RefreshCw className="w-3.5 h-3.5 mr-1" />
-              <span>Reset to Placeholder</span>
-            </button>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+              {videoSrc && (
+                <button 
+                  className="video-tool-btn"
+                  onClick={restoreDefaultVideo}
+                  style={{ background: 'rgba(255, 85, 0, 0.2)', borderColor: 'var(--border-focus)', color: '#FF7733', fontWeight: 600 }}
+                  title="Play loaded video"
+                >
+                  <Play className="w-3.5 h-3.5 mr-1 fill-current" />
+                  <span>Play Field Video</span>
+                </button>
+              )}
+              <button 
+                className="video-tool-btn"
+                onClick={() => setShowInput(!showInput)}
+                title="Test with actual video file or URL for rehearsal"
+              >
+                <Upload className="w-3.5 h-3.5 mr-1" />
+                <span>{showInput ? "Hide Tester" : "Test Real Video (Optional)"}</span>
+              </button>
+            </div>
           )}
         </div>
       </div>
 
       {/* Optional test video input panel */}
-      {showInput && !uploadedVideoSrc && (
+      {showInput && (
         <div className="video-input-panel">
           <label className="file-upload-label">
             <Upload className="w-4 h-4 mr-2" />
@@ -101,14 +136,21 @@ export default function VideoSlidePlaceholder({
         {uploadedVideoSrc ? (
           <div className="actual-video-wrapper">
             <video 
+              key={uploadedVideoSrc}
               src={uploadedVideoSrc} 
               controls 
               autoPlay 
+              playsInline
+              preload="auto"
               className="actual-video-element"
             />
           </div>
         ) : (
-          <div className="video-placeholder-canvas">
+          <div 
+            className="video-placeholder-canvas" 
+            onClick={videoSrc ? restoreDefaultVideo : undefined}
+            style={{ cursor: videoSrc ? 'pointer' : 'default' }}
+          >
             {/* Dark grid texture & subtle glow */}
             <div className="video-placeholder-ambient" />
 
@@ -127,12 +169,12 @@ export default function VideoSlidePlaceholder({
               {/* Exact editable placeholder label from requirements */}
               <div className="placeholder-editable-label">
                 <span className="label-bracket">[</span>
-                <span className="label-text">{label}</span>
+                <span className="label-text">{videoSrc ? "CLICK TO PLAY FIELD FOOTAGE" : label}</span>
                 <span className="label-bracket">]</span>
               </div>
 
               <p className="placeholder-sublabel">
-                16:9 Widescreen Footage Placeholder • Ready for Canva Video Embed
+                {videoSrc ? "Field Video Ready: P 1 F - Trim problem .mp4" : "16:9 Widescreen Footage Placeholder • Ready for Canva Video Embed"}
               </p>
             </div>
 
@@ -158,7 +200,7 @@ export default function VideoSlidePlaceholder({
         </div>
         <div className="academic-badge">
           <AlertCircle className="w-3.5 h-3.5 text-teal-accent mr-1 inline" />
-          <span>Preliminary qualitative student fieldwork</span>
+          <span>{disclaimer || "Preliminary qualitative student fieldwork"}</span>
         </div>
       </div>
     </div>
