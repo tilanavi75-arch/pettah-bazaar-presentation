@@ -9111,14 +9111,55 @@
   margin-top: 0.15rem;
 }
 
+/* Slide 8: Theory card field photo banner */
+.theory-photo-banner {
+  position: relative;
+  width: 100%;
+  height: 85px;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: #050811;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+.theory-photo-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 30%;
+  transition: transform 0.35s ease;
+}
+
+.theory-card:hover .theory-photo-img {
+  transform: scale(1.05);
+}
+
+.theory-photo-caption {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(180deg, transparent 0%, rgba(8, 13, 26, 0.92) 50%, rgba(8, 13, 26, 0.98) 100%);
+  padding: 0.28rem 0.5rem;
+  font-size: 0.65rem;
+  font-weight: 600;
+  color: #E2E8F0;
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 .theory-def-box {
   background: rgba(6, 182, 212, 0.06);
-  padding: 0.6rem 0.8rem;
+  padding: 0.55rem 0.75rem;
   border-radius: 8px;
   border-left: 3px solid #06B6D4;
   border: 1px solid rgba(6, 182, 212, 0.2);
   border-left-width: 3px;
-  margin-bottom: 0.6rem;
+  margin-bottom: 0.5rem;
 }
 
 .def-label {
@@ -9773,6 +9814,7 @@
    ============================================================= */
 @media (min-height: 750px) {
   .theory-concept-name { font-size: 1.2rem; }
+  .theory-photo-banner { height: 110px; }
   .def-text, .app-label, .theory-card .presentation-point-item { font-size: 0.92rem; line-height: 1.5; }
   .segment-var-title { font-size: 1.25rem; }
   .segment-card .point-item-text { font-size: 0.92rem; line-height: 1.5; }
@@ -9792,6 +9834,7 @@
 }
 
 .is-fullscreen .theory-concept-name { font-size: 1.2rem; }
+.is-fullscreen .theory-photo-banner { height: 110px; }
 .is-fullscreen .def-text, .is-fullscreen .app-label, .is-fullscreen .theory-card .presentation-point-item { font-size: 0.92rem; line-height: 1.5; }
 .is-fullscreen .segment-var-title { font-size: 1.25rem; }
 .is-fullscreen .segment-card .point-item-text { font-size: 0.92rem; line-height: 1.5; }

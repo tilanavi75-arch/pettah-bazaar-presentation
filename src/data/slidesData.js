@@ -336,6 +336,8 @@ export const slidesData = [
       {
         concept: "Customer Needs",
         academicDefinition: "Basic human requirements that drive behaviour (Kotler & Armstrong, 2021).",
+        image: "/assets/pettah_field_1_crowd_needs.jpg",
+        imageCaption: "Field Evidence 01: Severe crowd congestion & heat fatigue",
         points: [
           "Physical necessity to procure specialized fabrics, tech parts & spices",
           "Underlying need: Avoid extreme heat, fatigue, and lost productive hours"
@@ -344,6 +346,8 @@ export const slidesData = [
       {
         concept: "Customer Wants",
         academicDefinition: "Needs directed to specific objects shaped by culture and individual personality.",
+        image: "/assets/pettah_field_2_textiles_wants.png",
+        imageCaption: "Field Evidence 02: Shoppers browsing specialized textile stalls",
         points: [
           "Desire for on-demand smartphone shop discovery before arriving",
           "Prefer instant digital guidance over chaotic verbal directions"
@@ -352,6 +356,8 @@ export const slidesData = [
       {
         concept: "Market Demand",
         academicDefinition: "Human wants backed by an ability and willingness to buy or adopt.",
+        image: "/assets/pettah_field_3_stalls_demand.jpg",
+        imageCaption: "Field Evidence 03: Curbside retail volume & purchasing intent",
         points: [
           "Immediate consumer demand for a free, frictionless search service",
           "Growing merchant willingness to claim verified digital store profiles"
@@ -360,6 +366,8 @@ export const slidesData = [
       {
         concept: "Customer Value",
         academicDefinition: "Perceived customer benefits minus total cost of acquisition.",
+        image: "/assets/pettah_field_4_carrying_value.jpg",
+        imageCaption: "Field Evidence 04: Physical exertion & manual cart hauling",
         points: [
           "Benefits: 85%+ walking time saved, zero disorientation, verified stalls",
           "Cost: Zero financial cost + seconds of lightweight mobile data"
@@ -368,6 +376,8 @@ export const slidesData = [
       {
         concept: "Customer Satisfaction",
         academicDefinition: "Degree to which a product's perceived performance matches buyer expectations.",
+        image: "/assets/pettah_field_5_shoppers_satisfaction.jpg",
+        imageCaption: "Field Evidence 05: Diverse shoppers at multi-category retail stalls",
         points: [
           "Driven by 100% accurate shop phone numbers and landmark cues",
           "Empirically validated through direct field testing with shoppers"
@@ -376,6 +386,8 @@ export const slidesData = [
       {
         concept: "Marketing Orientation",
         academicDefinition: "Organizational philosophy focusing on discovering and satisfying customer needs better than rivals.",
+        image: "/assets/pettah_real_prototype_screen.png",
+        imageCaption: "Field Evidence 06: Student prototype shaped by merchant feedback",
         points: [
           "Iterative platform design shaped directly by student field observations",
           "Ongoing stakeholder feedback loops with local Pettah merchants"

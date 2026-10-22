@@ -1053,13 +1053,24 @@ export default function SlideRenderer({ slide, direction = 'next', spotlightMode
                         </div>
                       </div>
 
-                      <div className="theory-def-box mt-2">
+                      {/* Field Observation Evidence Photo */}
+                      {row.image && (
+                        <div className="theory-photo-banner mb-2">
+                          <img src={row.image} alt={row.concept} className="theory-photo-img" />
+                          <div className="theory-photo-caption">
+                            <MapPin className="w-2.5 h-2.5 text-primary-flame mr-1 flex-shrink-0" />
+                            <span>{row.imageCaption}</span>
+                          </div>
+                        </div>
+                      )}
+
+                      <div className="theory-def-box">
                         <span className="def-label">Academic Definition:</span>
                         <p className="def-text text-xs leading-relaxed">{row.academicDefinition}</p>
                       </div>
                     </div>
 
-                    <div className="theory-app-box mt-2">
+                    <div className="theory-app-box mt-1.5">
                       <span className="app-label">Pettah Bazaar Application:</span>
                       <PointList points={row.points || [row.application]} color="gold" />
                     </div>
@@ -1074,16 +1085,28 @@ export default function SlideRenderer({ slide, direction = 'next', spotlightMode
               <table className="marketing-theory-table w-full">
                 <thead>
                   <tr>
-                    <th style={{ width: '22%' }}>Core Marketing Concept</th>
-                    <th style={{ width: '38%' }}>Academic Theoretical Definition (Kotler & Armstrong)</th>
-                    <th style={{ width: '40%' }}>Practical Application to Pettah Bazaar</th>
+                    <th style={{ width: '26%' }}>Core Marketing Concept & Evidence</th>
+                    <th style={{ width: '36%' }}>Academic Theoretical Definition (Kotler & Armstrong)</th>
+                    <th style={{ width: '38%' }}>Practical Application to Pettah Bazaar</th>
                   </tr>
                 </thead>
                 <tbody>
                   {currentConceptItems.map((row, idx) => (
                     <tr key={idx} className={idx % 2 === 0 ? 'even-row' : 'odd-row'}>
                       <td className="concept-cell">
-                        <strong>{row.concept}</strong>
+                        <div className="flex items-center gap-2.5">
+                          {row.image && (
+                            <img 
+                              src={row.image} 
+                              alt={row.concept} 
+                              className="w-11 h-11 object-cover rounded-md border border-teal-500/30 flex-shrink-0" 
+                            />
+                          )}
+                          <div>
+                            <strong>{row.concept}</strong>
+                            <span className="block text-[10px] text-slate-400 mt-0.5">{row.imageCaption}</span>
+                          </div>
+                        </div>
                       </td>
                       <td className="academic-cell">{row.academicDefinition}</td>
                       <td className="application-cell">
