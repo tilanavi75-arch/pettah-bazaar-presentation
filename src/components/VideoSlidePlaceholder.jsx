@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Video, Play, Upload, Film, RefreshCw, AlertCircle, CheckCircle, Globe, Sparkles, ExternalLink } from 'lucide-react';
+import { Video, Play, Upload, Film, RefreshCw, CheckCircle, Globe, ExternalLink } from 'lucide-react';
 
 function getDriveEmbedUrl(url) {
   if (!url) return null;
@@ -18,18 +18,13 @@ export default function VideoSlidePlaceholder({
   slideNumber, 
   heading, 
   label, 
-  caption, 
   presenter, 
-  context, 
-  disclaimer, 
   videoSrc,
   driveUrl,
-  videoTitle,
-  keyTakeaways
+  videoTitle
 }) {
   const [customVideoUrl, setCustomVideoUrl] = useState('');
   const [showInput, setShowInput] = useState(false);
-  // Prefer videoSrc if provided, otherwise driveUrl
   const [activeVideoSrc, setActiveVideoSrc] = useState(videoSrc || driveUrl || null);
   const [useDriveEmbed, setUseDriveEmbed] = useState(false);
 
@@ -96,14 +91,19 @@ export default function VideoSlidePlaceholder({
 
   return (
     <div className="fullscreen-video-slide">
-      {/* Subtle top header bar */}
+      {/* Sleek, compact top header strip */}
       <div className="video-slide-top-bar">
         <div className="video-slide-heading-wrap">
-          <span className="video-badge">
-            <Film className="w-3.5 h-3.5 mr-1 text-orange-accent" />
-            FIELDWORK VIDEO SLIDE {slideNumber}
-          </span>
-          <h1 className="video-slide-heading">{heading}</h1>
+          <div className="flex items-center gap-2">
+            <span className="video-badge">
+              <Film className="w-3.5 h-3.5 mr-1 text-orange-accent" />
+              SLIDE {slideNumber} • FIELDWORK VIDEO
+            </span>
+            <span className="text-xs text-slate-400 font-medium">
+              Presenter: {presenter}
+            </span>
+          </div>
+          <h2 className="video-slide-heading">{heading}</h2>
         </div>
 
         <div className="video-controls-tools">
@@ -120,7 +120,7 @@ export default function VideoSlidePlaceholder({
                   target="_blank"
                   rel="noopener noreferrer"
                   className="video-tool-btn"
-                  title="Open video in Google Drive"
+                  title="Open video in Google Drive in new tab"
                   style={{ textDecoration: 'none', display: 'flex', alignItems: 'center' }}
                 >
                   <ExternalLink className="w-3.5 h-3.5 mr-1 text-teal-accent" />
@@ -136,7 +136,7 @@ export default function VideoSlidePlaceholder({
                   style={{ background: 'rgba(255, 85, 0, 0.15)', color: '#FF7733', borderColor: 'rgba(255, 85, 0, 0.3)' }}
                 >
                   <Globe className="w-3.5 h-3.5 mr-1" />
-                  <span>{isCurrentDrive ? "Use Local Video" : "Use Drive Stream"}</span>
+                  <span>{isCurrentDrive ? "Local Video" : "Drive Stream"}</span>
                 </button>
               )}
 
@@ -146,11 +146,11 @@ export default function VideoSlidePlaceholder({
                 title="Change or test another video file or URL"
               >
                 <Upload className="w-3.5 h-3.5 mr-1" />
-                <span>{showInput ? "Hide Tester" : "Change Video"}</span>
+                <span>{showInput ? "Hide" : "Change"}</span>
               </button>
               <button className="video-tool-btn reset" onClick={resetVideo} title="View placeholder blueprint">
                 <RefreshCw className="w-3.5 h-3.5 mr-1" />
-                <span>Placeholder</span>
+                <span>Reset</span>
               </button>
             </div>
           ) : (
@@ -163,7 +163,7 @@ export default function VideoSlidePlaceholder({
                   title="Play loaded video"
                 >
                   <Play className="w-3.5 h-3.5 mr-1 fill-current" />
-                  <span>Play Field Video</span>
+                  <span>Play Video</span>
                 </button>
               )}
               <button 
@@ -172,7 +172,7 @@ export default function VideoSlidePlaceholder({
                 title="Test with actual video file or URL for rehearsal"
               >
                 <Upload className="w-3.5 h-3.5 mr-1" />
-                <span>{showInput ? "Hide Tester" : "Test Real Video (Optional)"}</span>
+                <span>{showInput ? "Hide" : "Test Video"}</span>
               </button>
             </div>
           )}
@@ -206,8 +206,8 @@ export default function VideoSlidePlaceholder({
         </div>
       )}
 
-      {/* 16:9 Widescreen Video Cinema Container */}
-      <div className="widescreen-video-frame">
+      {/* Fullscreen Video Cinema Container (Expands to 100% height and width) */}
+      <div className="widescreen-video-frame cinema-fullscreen">
         {activeVideoSrc ? (
           <div className="actual-video-wrapper">
             {isCurrentDrive && driveEmbedSrc ? (
@@ -274,8 +274,8 @@ export default function VideoSlidePlaceholder({
             {/* Bottom metadata tags */}
             <div className="video-frame-footer">
               <div className="footer-left">
-                <div className="aspect-ratio-pill">16:9 HD Format</div>
-                <div className="duration-pill">~45–60 Seconds Recommended</div>
+                <div className="aspect-ratio-pill">16:9 HD Cinema Format</div>
+                <div className="duration-pill">Full Slide Cinema View</div>
               </div>
               <div className="footer-right">
                 <span className="presenter-tag">Coordinated by: {presenter}</span>
@@ -283,33 +283,6 @@ export default function VideoSlidePlaceholder({
             </div>
           </div>
         )}
-      </div>
-
-      {/* Key Point-Wise Takeaways Banner */}
-      {keyTakeaways && keyTakeaways.length > 0 && (
-        <div className="video-takeaways-strip animate-slide-up">
-          <div className="takeaways-label">Key Takeaways:</div>
-          <div className="takeaways-chips-row">
-            {keyTakeaways.map((tk, idx) => (
-              <div key={idx} className="takeaway-chip">
-                <span className="takeaway-dot"></span>
-                <span>{tk}</span>
-              </div>
-            ))}
-          </div>
-        </div>
-      )}
-
-      {/* Slide Caption & Academic Context */}
-      <div className="video-slide-caption-bar">
-        <div className="caption-text-group">
-          <p className="primary-caption">“{caption}”</p>
-          <p className="context-detail">{context}</p>
-        </div>
-        <div className="academic-badge">
-          <AlertCircle className="w-3.5 h-3.5 text-teal-accent mr-1 inline" />
-          <span>{disclaimer || "Preliminary qualitative student fieldwork"}</span>
-        </div>
       </div>
     </div>
   );

@@ -118,14 +118,10 @@ export default function SlideRenderer({ slide, direction = 'next', spotlightMode
           slideNumber={slide.slideNumber}
           heading={slide.videoHeading}
           label={slide.videoLabel}
-          caption={slide.videoCaption}
           presenter={slide.presenter}
-          context={slide.videoContext}
-          disclaimer={slide.disclaimer}
           videoSrc={slide.videoSrc}
           driveUrl={slide.driveUrl}
           videoTitle={slide.videoTitle}
-          keyTakeaways={slide.keyTakeaways}
         />
       </div>
     );

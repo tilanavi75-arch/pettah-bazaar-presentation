@@ -164,15 +164,8 @@ export const slidesData = [
     rubricRef: "Market Problem & Fieldwork",
     isVideoSlide: true,
     videoSrc: "/assets/P 1 F - Trim problem .mp4",
-    videoLabel: "INSERT VIDEO 1 – MARKET PROBLEM",
-    videoHeading: "THE PROBLEM WE OBSERVED",
-    videoCaption: "Preliminary Field Observation: Searching for the Right Shop in Pettah",
-    videoContext: "Unfiltered field footage recorded by our group in Pettah, documenting real-world shoppers attempting to locate specific product categories and asking shopkeepers for directions.",
-    keyTakeaways: [
-      "Heavy physical street congestion along 1st Cross Street",
-      "Shopper inquiries to multiple vendors before locating replacement part",
-      "Confirms genuine customer pain point and market demand for digital indexing"
-    ],
+    videoLabel: "MARKET PROBLEM FIELD OBSERVATION",
+    videoHeading: "THE PROBLEM WE OBSERVED IN PETTAH",
     speakerNotes: "We now present a short clip from our initial field visit in Pettah. Notice the physical density of the street and how a shopper trying to find an electrical replacement item must ask three different vendors before finding the right cross street. [Play 45-second field video clip]."
   },
   {
@@ -861,14 +854,6 @@ export const slidesData = [
     videoTitle: "Customer Feedback Video (Google Drive Stream)",
     videoLabel: "CUSTOMER FEEDBACK FIELD FOOTAGE",
     videoHeading: "WHAT DO PEOPLE THINK ABOUT PETTAH BAZAAR?",
-    videoCaption: "Initial Concept Feedback: Listening to Potential Users and Shop Owners",
-    videoContext: "Preliminary qualitative video interviews conducted with local Colombo shoppers and shopkeepers, gathering candid feedback on the prototype concept and usability requirements.",
-    keyTakeaways: [
-      "Shoppers enthusiastically validate the value of product-keyword search",
-      "Shopkeepers welcome free digital visibility without upfront marketing fees",
-      "Reaffirms strong product-market fit across consumer and merchant segments"
-    ],
-    disclaimer: "Academic Transparency: Qualitative stakeholder feedback gathered during pilot scoping.",
     speakerNotes: "We now share our second dedicated video. We showed our clickable prototype to ordinary shoppers and several shopkeepers in Pettah to gather raw, candid impressions. Let us watch their genuine reactions. [Play 45-second feedback video clip]."
   },
   {
