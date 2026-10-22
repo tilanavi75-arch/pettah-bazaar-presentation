@@ -95,7 +95,7 @@ export default function SlideRenderer({ slide, direction = 'next', spotlightMode
   const [subCard18, setSubCard18] = useState(0); // Slide 18: 0: Pillars 1-3, 1: Pillars 4-6 & Trust
   const [activeEthic, setActiveEthic] = useState(null); // For Slide 18 ethics cards
   const [subCard19, setSubCard19] = useState(0); // Slide 19: 0: Executive Scorecard, 1: Strategic Recap & Brand Mission
-  const [slide20View, setSlide20View] = useState('thankYou'); // 'thankYou' or 'references' for Slide 20
+  const [subCard20, setSubCard20] = useState(0); // Slide 20: 0: Q&A Closing, 1: 10 Presenters Roster, 2: Academic References
 
   const animClass = direction === 'prev' ? 'slide-anim-prev' : 'slide-anim-next';
   const spotlightClass = spotlightMode ? 'spotlight-on' : '';
@@ -184,9 +184,12 @@ export default function SlideRenderer({ slide, direction = 'next', spotlightMode
   // Slide 2: Introduction & Brand Identity
   if (slide.id === 2) {
     const tabs2 = [
-      { label: "Card 1: 4 Core Brand Pillars (Specialty, Discovery & Direct Access)", icon: <Target className="w-3.5 h-3.5 mr-1 text-teal-300" /> },
-      { label: "Card 2: Operational Metrics & Core Brand Purpose", icon: <Store className="w-3.5 h-3.5 mr-1 text-orange-400" />, proposed: true }
+      { label: "Card 1: 01 & 02 — Platform Concept & Colombo 11 Geographic Focus", icon: <Target className="w-3.5 h-3.5 mr-1 text-teal-300" /> },
+      { label: "Card 2: 03 & 04 — Identity, Mission & Live Operational Metrics", icon: <Store className="w-3.5 h-3.5 mr-1 text-orange-400" />, proposed: true }
     ];
+
+    const pillars1to2 = slide.brandPillars.slice(0, 2);
+    const pillars3to4 = slide.brandPillars.slice(2, 4);
 
     return (
       <div className={`slide-content slide-two-column ${animClass} ${spotlightClass}`}>
@@ -202,72 +205,87 @@ export default function SlideRenderer({ slide, direction = 'next', spotlightMode
         <SubCardNav activeIndex={subCard2} onSelect={setSubCard2} tabs={tabs2} />
 
         {subCard2 === 0 && (
-          <div className="slide-subcard-container animate-fade-in">
-            <div className="pillars-grid-2x2">
-              {slide.brandPillars.map((p, idx) => (
-                <div key={idx} className="brand-pillar-card visual-interactive-card">
-                  <div className="pillar-header">
-                    <div className="pillar-num-badge">0{idx + 1}</div>
-                    <div className="flex-1">
-                      <h4 className="pillar-title">{p.title}</h4>
-                      <span className="pillar-micro-tag">{p.tag}</span>
+          <div className="slide-subcard-container animate-fade-in flex flex-col justify-between">
+            <div className="pillars-grid-2col flex-1 min-h-0">
+              {pillars1to2.map((p, idx) => (
+                <div key={idx} className="brand-pillar-large-card">
+                  <div>
+                    <div className="pillar-header">
+                      <div className="pillar-num-badge">0{idx + 1}</div>
+                      <div className="flex-1">
+                        <h4 className="pillar-title">{p.title}</h4>
+                        <span className="pillar-micro-tag">{p.tag}</span>
+                      </div>
                     </div>
+                    
+                    <PointList 
+                      points={p.points || [p.desc]} 
+                      color={idx === 0 ? "orange" : "cyan"} 
+                    />
                   </div>
                   
-                  {/* Point-wise presentation bullet items */}
-                  <PointList 
-                    points={p.points || [p.desc]} 
-                    color={idx === 0 ? "orange" : idx === 1 ? "cyan" : idx === 2 ? "gold" : "emerald"} 
-                  />
-                  
-                  <div className="pillar-progress-track">
-                    <div className="pillar-progress-fill" style={{ width: `${80 + idx * 5}%` }}></div>
+                  <div className="pillar-progress-track mt-3">
+                    <div className="pillar-progress-fill" style={{ width: `${85 + idx * 8}%` }}></div>
                   </div>
                 </div>
               ))}
+            </div>
+
+            <div className="p-2.5 rounded-lg bg-slate-900/80 border border-teal-500/30 flex items-center mt-2 flex-shrink-0">
+              <CheckCircle2 className="w-4 h-4 text-teal-300 mr-2 flex-shrink-0" />
+              <span className="text-slate-300 text-xs">Pettah Bazaar bridges the gap between chaotic street shopping and digital efficiency, specifically tailored to Colombo 11's commercial density.</span>
             </div>
           </div>
         )}
 
         {subCard2 === 1 && (
-          <div className="slide-subcard-container animate-fade-in">
+          <div className="slide-subcard-container animate-fade-in flex flex-col justify-between">
+            <div className="pillars-grid-2col flex-1 min-h-0">
+              {pillars3to4.map((p, idx) => (
+                <div key={idx} className="brand-pillar-large-card">
+                  <div>
+                    <div className="pillar-header">
+                      <div className="pillar-num-badge">0{idx + 3}</div>
+                      <div className="flex-1">
+                        <h4 className="pillar-title">{p.title}</h4>
+                        <span className="pillar-micro-tag">{p.tag}</span>
+                      </div>
+                    </div>
+                    
+                    <PointList 
+                      points={p.points || [p.desc]} 
+                      color={idx === 0 ? "gold" : "emerald"} 
+                    />
+                  </div>
+                  
+                  <div className="pillar-progress-track mt-3">
+                    <div className="pillar-progress-fill" style={{ width: `${90 + idx * 5}%` }}></div>
+                  </div>
+                </div>
+              ))}
+            </div>
+
             {/* Live Commercial Metrics Strip */}
-            <div className="commercial-metrics-strip">
+            <div className="commercial-metrics-strip mt-2 flex-shrink-0">
               <div className="metric-pod">
-                <MapPin className="w-5 h-5 text-primary-flame mb-1" />
+                <MapPin className="w-4 h-4 text-primary-flame mb-1" />
                 <div className="pod-number">11</div>
                 <div className="pod-label">Micro-Streets Mapped</div>
               </div>
               <div className="metric-pod">
-                <Store className="w-5 h-5 text-gold-400 mb-1" />
+                <Store className="w-4 h-4 text-gold-400 mb-1" />
                 <div className="pod-number">28+</div>
                 <div className="pod-label">Verified Stalls Active</div>
               </div>
               <div className="metric-pod">
-                <DollarSign className="w-5 h-5 text-emerald-400 mb-1" />
+                <DollarSign className="w-4 h-4 text-emerald-400 mb-1" />
                 <div className="pod-number">0 LKR</div>
                 <div className="pod-label">Merchant Listing Fee</div>
               </div>
               <div className="metric-pod">
-                <Clock className="w-5 h-5 text-cyan-400 mb-1" />
+                <Clock className="w-4 h-4 text-cyan-400 mb-1" />
                 <div className="pod-number">&lt; 3 Min</div>
                 <div className="pod-label">Avg Discovery Time</div>
-              </div>
-            </div>
-
-            <div className="brand-purpose-banner visual-glow-banner mt-3">
-              <div className="purpose-icon-wrap">
-                <HeartHandshake className="w-7 h-7 text-primary-flame flex-shrink-0 animate-pulse" />
-              </div>
-              <div className="purpose-text">
-                <strong className="text-white text-base block mb-1">Core Brand Purpose & Mission:</strong>
-                <p className="text-slate-200 text-sm leading-relaxed">
-                  Pettah Bazaar aims to make discovering relevant shops in Pettah more convenient, bridging physical street commerce with modern digital accessibility for every shopper and family-owned stall.
-                </p>
-              </div>
-              <div className="purpose-badge-pill">
-                <Activity className="w-4 h-4 mr-1 text-emerald-400" />
-                Active Student Mission
               </div>
             </div>
           </div>
@@ -327,32 +345,16 @@ export default function SlideRenderer({ slide, direction = 'next', spotlightMode
               </div>
             </div>
 
-            <div className="grid grid-cols-2 gap-3 flex-1 min-h-0">
+            <div className="problem-dilemmas-4col mt-1 flex-1 min-h-0">
               {slide.problemPoints.map((pt, idx) => (
-                <div key={idx} className="problem-item-card visual-card">
+                <div key={idx} className="problem-dilemma-card">
                   <div className="problem-item-header">
                     <span className="problem-tag">{pt.tag}</span>
-                    <h4 className="problem-item-title">{pt.title}</h4>
+                    <h4 className="problem-item-title text-white font-bold text-xs mt-1">{pt.title}</h4>
                   </div>
                   <PointList points={pt.points || [pt.desc]} color="red" />
                 </div>
               ))}
-            </div>
-
-            {/* Problem Severity Indicators */}
-            <div className="severity-indicators-row mt-1">
-              <div className="severity-pill">
-                <span className="pill-dot red"></span>
-                <span>Walking Fatigue: <strong>89% High</strong></span>
-              </div>
-              <div className="severity-pill">
-                <span className="pill-dot red"></span>
-                <span>Directory Coverage: <strong>0% Unmapped</strong></span>
-              </div>
-              <div className="severity-pill">
-                <span className="pill-dot gold"></span>
-                <span>Heat & Fatigue Friction: <strong>Extreme</strong></span>
-              </div>
             </div>
           </div>
         )}
@@ -360,35 +362,53 @@ export default function SlideRenderer({ slide, direction = 'next', spotlightMode
         {subCard3 === 1 && (
           <div className="slide-subcard-container animate-fade-in">
             <div className="card-detail-two-col flex-1 min-h-0">
-              <div className="detail-col-features">
-                <div className="photo-switcher-tabs mb-2">
-                  <button 
-                    className={`photo-tab-btn ${problemPhoto === 'alley' ? 'active' : ''}`}
-                    onClick={() => setProblemPhoto('alley')}
-                  >
-                    Photo 1: Congested Interior Alleys
-                  </button>
-                  <button 
-                    className={`photo-tab-btn ${problemPhoto === 'traffic' ? 'active' : ''}`}
-                    onClick={() => setProblemPhoto('traffic')}
-                  >
-                    Photo 2: Street Traffic Gridlock
-                  </button>
+              <div className="detail-col-features flex flex-col justify-between">
+                <div>
+                  <div className="photo-switcher-tabs mb-2">
+                    <button 
+                      className={`photo-tab-btn ${problemPhoto === 'alley' ? 'active' : ''}`}
+                      onClick={() => setProblemPhoto('alley')}
+                    >
+                      Photo 1: Congested Interior Alleys
+                    </button>
+                    <button 
+                      className={`photo-tab-btn ${problemPhoto === 'traffic' ? 'active' : ''}`}
+                      onClick={() => setProblemPhoto('traffic')}
+                    >
+                      Photo 2: Street Traffic Gridlock
+                    </button>
+                  </div>
+
+                  <div className="spacious-strategy-card p-3">
+                    <h4 className="text-white text-sm font-bold mb-1.5 flex items-center">
+                      <AlertCircle className="w-4 h-4 text-orange-400 mr-2" />
+                      Field Observation & Shopper Psychology:
+                    </h4>
+                    <p className="text-slate-200 text-xs leading-relaxed mb-2">
+                      {slide.observationNote}
+                    </p>
+                    <div className="p-2.5 rounded-lg bg-slate-900/70 border border-teal-500/30">
+                      <strong className="text-teal-300 text-[11px] uppercase tracking-wider block mb-0.5">Key Field Takeaway:</strong>
+                      <span className="text-slate-300 text-xs leading-relaxed">
+                        Pettah's dense cross-streets (1st to 5th Cross St) have massive item diversity, but shoppers waste hours due to lack of digital visibility.
+                      </span>
+                    </div>
+                  </div>
                 </div>
 
-                <div className="spacious-strategy-card p-4 flex-1">
-                  <h4 className="text-white text-base font-bold mb-2 flex items-center">
-                    <AlertCircle className="w-4 h-4 text-orange-400 mr-2" />
-                    Field Observation & Shopper Psychology:
-                  </h4>
-                  <p className="text-slate-200 text-sm leading-relaxed mb-3">
-                    {slide.observationNote}
-                  </p>
-                  <div className="p-3 rounded-lg bg-slate-900/70 border border-teal-500/30">
-                    <strong className="text-teal-300 text-xs uppercase tracking-wider block mb-1">Key Field Takeaway:</strong>
-                    <span className="text-slate-300 text-xs leading-relaxed">
-                      Pettah's dense cross-streets (1st to 5th Cross St) have massive item diversity, but shoppers waste hours due to lack of digital visibility.
-                    </span>
+                {/* Problem Severity Indicators placed cleanly on Card 2 */}
+                <div className="severity-indicators-row mt-2 flex-shrink-0">
+                  <div className="severity-pill">
+                    <span className="pill-dot red"></span>
+                    <span>Walking Fatigue: <strong>89% High</strong></span>
+                  </div>
+                  <div className="severity-pill">
+                    <span className="pill-dot red"></span>
+                    <span>Directory Coverage: <strong>0% Unmapped</strong></span>
+                  </div>
+                  <div className="severity-pill">
+                    <span className="pill-dot gold"></span>
+                    <span>Heat & Fatigue: <strong>Extreme</strong></span>
                   </div>
                 </div>
               </div>
@@ -1053,19 +1073,19 @@ export default function SlideRenderer({ slide, direction = 'next', spotlightMode
                   </div>
                 </div>
 
-                <div className="primary-cohort-box mt-3 p-3 bg-slate-900/80 rounded-lg border border-primary-flame/40">
-                  <div className="font-bold text-primary-flame text-sm mb-1">{slide.targetGroups.primary.title}</div>
-                  <div className="text-white text-xs font-semibold mb-1.5">{slide.targetGroups.primary.cohort}</div>
+                <div className="primary-cohort-box mt-2 p-2.5 bg-slate-900/80 rounded-lg border border-primary-flame/40">
+                  <div className="font-bold text-primary-flame text-xs mb-1">{slide.targetGroups.primary.title}</div>
+                  <div className="text-white text-[11px] font-semibold mb-1">{slide.targetGroups.primary.cohort}</div>
                   <PointList points={slide.targetGroups.primary.points} color="orange" />
                 </div>
               </div>
 
-              <div className="secondary-targets-list flex flex-col justify-between p-3 bg-slate-900/60 rounded-xl border border-slate-700/60">
-                <div className="secondary-header font-bold text-white text-sm mb-2">Secondary Market Cohorts (Specialized Audiences):</div>
-                <div className="grid grid-cols-1 gap-2.5 flex-1">
+              <div className="secondary-targets-list flex flex-col justify-between p-2.5 bg-slate-900/60 rounded-xl border border-slate-700/60">
+                <div className="secondary-header font-bold text-white text-xs mb-1.5">Secondary Market Cohorts (Specialized Audiences):</div>
+                <div className="grid grid-cols-1 gap-1.5 flex-1">
                   {slide.targetGroups.secondary.map((sec, idx) => (
-                    <div key={idx} className="secondary-item p-3 rounded-lg bg-slate-800/80 border border-slate-700/80">
-                      <div className="font-bold text-cyan-300 text-xs mb-1.5">{sec.name}</div>
+                    <div key={idx} className="secondary-item p-2 rounded-lg bg-slate-800/80 border border-slate-700/80">
+                      <div className="font-bold text-cyan-300 text-xs mb-1">{sec.name}</div>
                       <PointList points={sec.points} color="cyan" />
                     </div>
                   ))}
@@ -2275,28 +2295,137 @@ export default function SlideRenderer({ slide, direction = 'next', spotlightMode
   // Slide 20: Thank You & Any Questions (Grand Finale Q&A + Academic Literature)
   if (slide.id === 20) {
     const tabs20 = [
-      { label: "Card 1: Executive Closing, Grand Finale Q&A & 10 Presenters", icon: <HelpCircle className="w-3.5 h-3.5 mr-1 text-teal-300" /> },
-      { label: "Card 2: Academic Literature (APA 7th) & 100-Mark Rubric Matrix", icon: <BookOpen className="w-3.5 h-3.5 mr-1 text-orange-400" /> }
+      { label: "Card 1: Executive Closing, Grand Finale Q&A & Live Access", icon: <HelpCircle className="w-3.5 h-3.5 mr-1 text-teal-300" /> },
+      { label: "Card 2: Group 10 Presentation Team (All 10 Presenters)", icon: <Users className="w-3.5 h-3.5 mr-1 text-gold-400" /> },
+      { label: "Card 3: Academic Literature (APA 7th) & 100-Mark Rubric Matrix", icon: <BookOpen className="w-3.5 h-3.5 mr-1 text-orange-400" /> }
     ];
 
     return (
       <div className={`slide-content slide-thank-you-layout ${animClass} ${spotlightClass}`}>
         <div className="slide-header-bar">
           <div>
-            <span className="section-tag theory">{slide20View === 'references' ? 'Academic Rigour & References' : 'BSM 12012 • Presentation Finale'}</span>
-            <h2 className="slide-heading">{slide20View === 'references' ? 'Academic Literature & Rubric Alignment' : 'Grand Finale, Q&A & Presenter Credits'}</h2>
-            <p className="slide-subheading">{slide20View === 'references' ? 'Theoretical Grounding (APA 7th) & Comprehensive Assessment Criteria Matrix' : 'The floor is now open for evaluation feedback, panel questions, and academic discussion.'}</p>
+            <span className="section-tag theory">
+              {subCard20 === 2 ? 'Academic Rigour & References' : subCard20 === 1 ? 'Intake 43 • Presentation Team' : 'BSM 12012 • Presentation Finale'}
+            </span>
+            <h2 className="slide-heading">
+              {subCard20 === 2 ? 'Academic Literature & Rubric Alignment' : subCard20 === 1 ? 'Group 10 Presentation Team Roster' : 'Grand Finale, Q&A & Presenter Credits'}
+            </h2>
+            <p className="slide-subheading">
+              {subCard20 === 2 
+                ? 'Theoretical Grounding (APA 7th) & Comprehensive Assessment Criteria Matrix' 
+                : subCard20 === 1 
+                ? 'All 10 Dedicated Presenters & Academic Contributions (BSc in Management, Intake 43)' 
+                : 'The floor is now open for evaluation feedback, panel questions, and academic discussion.'}
+            </p>
           </div>
           <div className="presenter-tag-box">Presenter: {slide.presenter}</div>
         </div>
 
         <SubCardNav 
-          activeIndex={slide20View === 'references' ? 1 : 0} 
-          onSelect={(idx) => setSlide20View(idx === 1 ? 'references' : 'thankYou')} 
+          activeIndex={subCard20} 
+          onSelect={setSubCard20} 
           tabs={tabs20} 
         />
 
-        {slide20View === 'references' ? (
+        {subCard20 === 0 && (
+          <div className="slide-subcard-container animate-fade-in flex flex-col justify-between">
+            {/* Main Hero Card */}
+            <div className="thank-you-hero-card">
+              <div className="thank-you-top-meta">
+                <span className="meta-badge-intake">
+                  <Sparkles className="w-3.5 h-3.5 text-gold-400 mr-1.5" />
+                  KDU Faculty of Management • Intake 43 • BSM 12012
+                </span>
+                <span className="meta-badge-venture">Pettah Bazaar Digital Platform</span>
+              </div>
+
+              <h1 className="thank-you-main-title">
+                THANK <span className="brand-name-orange">YOU!</span>
+              </h1>
+
+              <div className="any-questions-banner">
+                <div className="questions-icon-wrap">
+                  <HelpCircle className="w-6 h-6 text-gold-400 animate-bounce" />
+                </div>
+                <div className="questions-text-block">
+                  <h3 className="questions-headline">ANY QUESTIONS?</h3>
+                  <p className="questions-caption">
+                    The floor is now open for evaluation feedback, panel questions, and academic discussion.
+                  </p>
+                </div>
+                <div className="questions-status-chip">
+                  <MessageSquare className="w-3.5 h-3.5 mr-1 text-primary-flame" />
+                  Open Q&A Session
+                </div>
+              </div>
+            </div>
+
+            {/* Bottom Interactive Toolbar */}
+            <div className="thank-you-toolbar mt-2 flex-shrink-0">
+              <button className="celebrate-action-btn" onClick={triggerCelebration}>
+                <Sparkles className="w-4 h-4 mr-1.5 text-gold-400" />
+                Celebrate Completion 🎉
+              </button>
+
+              <button 
+                className="view-academic-btn"
+                onClick={() => setSubCard20(1)}
+              >
+                <Users className="w-4 h-4 mr-1.5 text-gold-400" />
+                View 10 Presenters Roster →
+              </button>
+
+              <div className="live-url-pill">
+                <Globe className="w-3.5 h-3.5 mr-1.5 text-primary-flame" />
+                pettah-bazaar.vercel.app
+              </div>
+            </div>
+          </div>
+        )}
+
+        {subCard20 === 1 && (
+          <div className="slide-subcard-container animate-fade-in flex flex-col justify-between">
+            <div className="thank-you-roster-box flex-1 flex flex-col justify-between">
+              <div className="roster-header-bar">
+                <div className="flex items-center gap-2">
+                  <Users className="w-5 h-5 text-primary-flame" />
+                  <span className="roster-heading text-sm">Group 10 Presentation Team (All 10 Presenters):</span>
+                </div>
+                <span className="roster-intake-tag">BSc (Hons) in Management • Intake 43 • General Sir John Kotelawala Defence University</span>
+              </div>
+
+              <div className="thank-you-roster-grid flex-1 items-center">
+                {teamMembers.map((m) => (
+                  <div key={m.id} className="roster-member-card p-2.5">
+                    <div className="member-avatar-chip">
+                      {m.id}
+                    </div>
+                    <div className="member-info">
+                      <span className="member-name text-sm">{m.name}</span>
+                      <span className="member-focus text-xs text-slate-300">{m.focus}</span>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              <div className="p-2.5 rounded-lg bg-slate-900/80 border border-teal-500/30 flex items-center justify-between mt-2 flex-shrink-0">
+                <div className="flex items-center text-xs text-slate-300">
+                  <CheckCircle2 className="w-4 h-4 text-teal-300 mr-2 flex-shrink-0" />
+                  <span>Each presenter has delivered dedicated marketing strategy components aligned with the BSM 12012 capstone syllabus.</span>
+                </div>
+                <button 
+                  className="view-academic-btn"
+                  onClick={() => setSubCard20(2)}
+                >
+                  <BookOpen className="w-4 h-4 mr-1.5 text-primary-flame" />
+                  View Academic References & 100-Mark Rubric →
+                </button>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {subCard20 === 2 && (
           <div className="slide-subcard-container animate-fade-in">
             {/* 100-Mark Rubric Score Target Visual Banner */}
             <div className="rubric-score-visual-banner mt-1">
@@ -2376,86 +2505,6 @@ export default function SlideRenderer({ slide, direction = 'next', spotlightMode
                       ))}
                     </tbody>
                   </table>
-                </div>
-              </div>
-            </div>
-          </div>
-        ) : (
-          <div className="slide-subcard-container animate-fade-in">
-            {/* Main Hero Card */}
-            <div className="thank-you-hero-card">
-              <div className="thank-you-top-meta">
-                <span className="meta-badge-intake">
-                  <Sparkles className="w-3.5 h-3.5 text-gold-400 mr-1.5" />
-                  KDU Faculty of Management • Intake 43 • BSM 12012
-                </span>
-                <span className="meta-badge-venture">Pettah Bazaar Digital Platform</span>
-              </div>
-
-              <h1 className="thank-you-main-title">
-                THANK <span className="brand-name-orange">YOU!</span>
-              </h1>
-
-              <div className="any-questions-banner">
-                <div className="questions-icon-wrap">
-                  <HelpCircle className="w-6 h-6 text-gold-400 animate-bounce" />
-                </div>
-                <div className="questions-text-block">
-                  <h3 className="questions-headline">ANY QUESTIONS?</h3>
-                  <p className="questions-caption">
-                    The floor is now open for evaluation feedback, panel questions, and academic discussion.
-                  </p>
-                </div>
-                <div className="questions-status-chip">
-                  <MessageSquare className="w-3.5 h-3.5 mr-1 text-primary-flame" />
-                  Open Q&A Session
-                </div>
-              </div>
-            </div>
-
-            {/* 10 Team Members Roster Grid */}
-            <div className="thank-you-roster-box mt-2 flex-1 min-h-0 flex flex-col justify-between">
-              <div className="roster-header-bar">
-                <div className="flex items-center gap-2">
-                  <Users className="w-4 h-4 text-primary-flame" />
-                  <span className="roster-heading">Group 10 Presentation Team (All 10 Presenters):</span>
-                </div>
-                <span className="roster-intake-tag">BSc (Hons) in Management • Intake 43</span>
-              </div>
-
-              <div className="thank-you-roster-grid">
-                {teamMembers.map((m) => (
-                  <div key={m.id} className="roster-member-card">
-                    <div className="member-avatar-chip">
-                      {m.id}
-                    </div>
-                    <div className="member-info">
-                      <span className="member-name">{m.name}</span>
-                      <span className="member-focus">{m.focus.split(',')[0]}</span>
-                    </div>
-                  </div>
-                ))}
-              </div>
-
-              {/* Bottom Interactive Toolbar */}
-              <div className="thank-you-toolbar mt-2">
-                <button className="celebrate-action-btn" onClick={triggerCelebration}>
-                  <Sparkles className="w-4 h-4 mr-1.5 text-gold-400" />
-                  Celebrate Completion 🎉
-                </button>
-
-                <button 
-                  className="view-academic-btn"
-                  onClick={() => setSlide20View('references')}
-                >
-                  <BookOpen className="w-4 h-4 mr-1.5 text-primary-flame" />
-                  View Academic References & 100/100 Rubric Checklist
-                  <ArrowRight className="w-3.5 h-3.5 ml-1.5 text-primary-flame" />
-                </button>
-
-                <div className="live-url-pill">
-                  <Globe className="w-3.5 h-3.5 mr-1.5 text-primary-flame" />
-                  pettah-bazaar.vercel.app
                 </div>
               </div>
             </div>
