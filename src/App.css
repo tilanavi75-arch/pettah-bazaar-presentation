@@ -3812,42 +3812,51 @@
 .commercial-metrics-strip {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 0.85rem;
-  margin: 0.85rem 0;
+  gap: 0.75rem;
+  margin: 0.45rem 0 0 0;
 }
 
 .metric-pod {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
+  gap: 0.75rem;
   background: var(--bg-pitch-card);
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-sm);
-  padding: 0.75rem 0.5rem;
-  text-align: center;
+  padding: 0.45rem 0.85rem;
+  text-align: left;
   transition: all 0.25s ease;
+}
+
+.metric-pod svg {
+  margin-bottom: 0 !important;
+  flex-shrink: 0;
+  width: 1.25rem;
+  height: 1.25rem;
 }
 
 .metric-pod:hover {
   border-color: rgba(255, 85, 0, 0.5);
-  transform: translateY(-3px);
-  box-shadow: 0 6px 18px rgba(255, 85, 0, 0.2);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 14px rgba(255, 85, 0, 0.2);
 }
 
 .pod-number {
   font-family: var(--font-heading);
-  font-size: 1.35rem;
+  font-size: 1.15rem;
   font-weight: 800;
   color: #FFFFFF;
   line-height: 1.1;
 }
 
 .pod-label {
-  font-size: 0.7rem;
+  font-size: 0.68rem;
   color: var(--color-text-muted);
-  margin-top: 0.2rem;
+  margin-top: 0.1rem;
   font-weight: 500;
+  white-space: nowrap;
 }
 
 /* Slide 3: Friction Comparison Meter & Hotspots */
@@ -7187,25 +7196,204 @@
 .bg-orange-500\/20 { background-color: rgba(249, 115, 22, 0.2); }
 
 /* =============================================================
-   SLIDE 2: PILLARS IN 2 COLUMNS
+/* =============================================================
+   SLIDE 2: PILLARS IN 2 COLUMNS (LARGE PRESENTATION CARDS)
    ============================================================= */
 .pillars-grid-2col {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 1rem;
+  gap: 1.15rem;
   height: 100%;
 }
 
 .brand-pillar-large-card {
-  background: var(--bg-pitch-card);
-  border: 1px solid var(--border-subtle);
-  border-radius: var(--radius-md);
-  padding: 1.25rem 1.4rem;
+  background: linear-gradient(155deg, rgba(22, 33, 56, 0.75) 0%, rgba(11, 18, 33, 0.95) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 14px;
+  padding: 1.1rem 1.35rem;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.35);
+  justify-content: flex-start;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(14px);
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
 }
+
+.brand-pillar-large-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.brand-pillar-large-card.pillar-theme-1::before {
+  background: linear-gradient(90deg, #FF5500, #FF8844);
+}
+.brand-pillar-large-card.pillar-theme-2::before {
+  background: linear-gradient(90deg, #0EA5E9, #38BDF8);
+}
+.brand-pillar-large-card.pillar-theme-3::before {
+  background: linear-gradient(90deg, #F59E0B, #FBBF24);
+}
+.brand-pillar-large-card.pillar-theme-4::before {
+  background: linear-gradient(90deg, #10B981, #34D399);
+}
+
+.brand-pillar-large-card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(255, 255, 255, 0.22);
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.5);
+}
+
+.pillar-card-body {
+  display: flex;
+  flex-direction: column;
+}
+
+.pillar-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  margin-bottom: 0.65rem;
+}
+
+.pillar-badge-group {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.pillar-num-badge {
+  font-family: var(--font-heading, 'Outfit', sans-serif);
+  font-size: 1.15rem;
+  font-weight: 800;
+  line-height: 1;
+  padding: 0.35rem 0.6rem;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.08);
+  color: #FFFFFF;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.pillar-theme-1 .pillar-num-badge {
+  background: rgba(255, 85, 0, 0.16);
+  color: #FF7733;
+  border-color: rgba(255, 85, 0, 0.35);
+  box-shadow: 0 0 12px rgba(255, 85, 0, 0.2);
+}
+
+.pillar-theme-2 .pillar-num-badge {
+  background: rgba(14, 165, 233, 0.16);
+  color: #38BDF8;
+  border-color: rgba(14, 165, 233, 0.35);
+  box-shadow: 0 0 12px rgba(14, 165, 233, 0.2);
+}
+
+.pillar-theme-3 .pillar-num-badge {
+  background: rgba(245, 158, 11, 0.16);
+  color: #FBBF24;
+  border-color: rgba(245, 158, 11, 0.35);
+  box-shadow: 0 0 12px rgba(245, 158, 11, 0.2);
+}
+
+.pillar-theme-4 .pillar-num-badge {
+  background: rgba(16, 185, 129, 0.16);
+  color: #34D399;
+  border-color: rgba(16, 185, 129, 0.35);
+  box-shadow: 0 0 12px rgba(16, 185, 129, 0.2);
+}
+
+.pillar-icon-box {
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.pillar-theme-1 .pillar-icon-box { color: #FF7733; }
+.pillar-theme-2 .pillar-icon-box { color: #38BDF8; }
+.pillar-theme-3 .pillar-icon-box { color: #FBBF24; }
+.pillar-theme-4 .pillar-icon-box { color: #34D399; }
+
+.pillar-header-titles {
+  display: flex;
+  flex-direction: column;
+  gap: 0.12rem;
+}
+
+.pillar-micro-tag {
+  font-size: 0.74rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.pillar-theme-1 .pillar-micro-tag { color: #FF8844; }
+.pillar-theme-2 .pillar-micro-tag { color: #38BDF8; }
+.pillar-theme-3 .pillar-micro-tag { color: #FBBF24; }
+.pillar-theme-4 .pillar-micro-tag { color: #34D399; }
+
+.pillar-title {
+  font-family: var(--font-heading, 'Outfit', sans-serif);
+  font-size: 1.32rem;
+  font-weight: 700;
+  color: #FFFFFF;
+  line-height: 1.25;
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+
+/* Slide 2 Point List & High-Contrast Typography */
+.brand-pillar-large-card .presentation-point-list {
+  margin: 0.35rem 0 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.brand-pillar-large-card .presentation-point-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  font-size: 1.02rem;
+  line-height: 1.48;
+  font-weight: 500;
+  color: #F1F5F9;
+  padding: 0.2rem 0.35rem;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+}
+
+.brand-pillar-large-card .presentation-point-item:hover {
+  background: rgba(255, 255, 255, 0.04);
+  color: #FFFFFF;
+  transform: translateX(4px);
+}
+
+.brand-pillar-large-card .point-marker-dot {
+  width: 8px;
+  height: 8px;
+  margin-top: 0.45rem;
+  box-shadow: 0 0 10px currentColor;
+  flex-shrink: 0;
+}
+
+.brand-pillar-large-card .point-item-text {
+  font-size: 1.02rem;
+  line-height: 1.48;
+  color: #F8FAFC;
+}
+
+
 
 /* =============================================================
    SLIDE 3: PROBLEM DILEMMAS 4 COLUMNS

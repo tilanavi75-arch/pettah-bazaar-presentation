@@ -206,13 +206,18 @@ export default function SlideRenderer({ slide, direction = 'next', spotlightMode
           <div className="slide-subcard-container animate-fade-in flex flex-col justify-between">
             <div className="pillars-grid-2col flex-1 min-h-0">
               {pillars1to2.map((p, idx) => (
-                <div key={idx} className="brand-pillar-large-card">
-                  <div>
+                <div key={idx} className={`brand-pillar-large-card pillar-theme-${idx + 1}`}>
+                  <div className="pillar-card-body">
                     <div className="pillar-header">
-                      <div className="pillar-num-badge">0{idx + 1}</div>
-                      <div className="flex-1">
-                        <h4 className="pillar-title">{p.title}</h4>
+                      <div className="pillar-badge-group">
+                        <span className="pillar-num-badge">0{idx + 1}</span>
+                        <div className="pillar-icon-box">
+                          {idx === 0 ? <Compass className="w-5 h-5 text-orange-400" /> : <MapPin className="w-5 h-5 text-cyan-400" />}
+                        </div>
+                      </div>
+                      <div className="pillar-header-titles">
                         <span className="pillar-micro-tag">{p.tag}</span>
+                        <h4 className="pillar-title">{p.title}</h4>
                       </div>
                     </div>
                     
@@ -221,17 +226,13 @@ export default function SlideRenderer({ slide, direction = 'next', spotlightMode
                       color={idx === 0 ? "orange" : "cyan"} 
                     />
                   </div>
-                  
-                  <div className="pillar-progress-track mt-3">
-                    <div className="pillar-progress-fill" style={{ width: `${85 + idx * 8}%` }}></div>
-                  </div>
                 </div>
               ))}
             </div>
 
-            <div className="p-2.5 rounded-lg bg-slate-900/80 border border-teal-500/30 flex items-center mt-2 flex-shrink-0">
-              <CheckCircle2 className="w-4 h-4 text-teal-300 mr-2 flex-shrink-0" />
-              <span className="text-slate-300 text-xs">Pettah Bazaar bridges the gap between chaotic street shopping and digital efficiency, specifically tailored to Colombo 11's commercial density.</span>
+            <div className="p-2.5 rounded-xl bg-slate-900/90 border border-teal-500/40 flex items-center mt-2 flex-shrink-0 shadow-lg">
+              <CheckCircle2 className="w-4 h-4 text-teal-400 mr-2 flex-shrink-0" />
+              <span className="text-slate-200 text-xs sm:text-sm font-medium">Pettah Bazaar bridges the gap between chaotic street shopping and digital efficiency, specifically tailored to Colombo 11's commercial density.</span>
             </div>
           </div>
         )}
@@ -240,13 +241,18 @@ export default function SlideRenderer({ slide, direction = 'next', spotlightMode
           <div className="slide-subcard-container animate-fade-in flex flex-col justify-between">
             <div className="pillars-grid-2col flex-1 min-h-0">
               {pillars3to4.map((p, idx) => (
-                <div key={idx} className="brand-pillar-large-card">
-                  <div>
+                <div key={idx} className={`brand-pillar-large-card pillar-theme-${idx + 3}`}>
+                  <div className="pillar-card-body">
                     <div className="pillar-header">
-                      <div className="pillar-num-badge">0{idx + 3}</div>
-                      <div className="flex-1">
-                        <h4 className="pillar-title">{p.title}</h4>
+                      <div className="pillar-badge-group">
+                        <span className="pillar-num-badge">0{idx + 3}</span>
+                        <div className="pillar-icon-box">
+                          {idx === 0 ? <Tag className="w-5 h-5 text-amber-400" /> : <HeartHandshake className="w-5 h-5 text-emerald-400" />}
+                        </div>
+                      </div>
+                      <div className="pillar-header-titles">
                         <span className="pillar-micro-tag">{p.tag}</span>
+                        <h4 className="pillar-title">{p.title}</h4>
                       </div>
                     </div>
                     
@@ -255,10 +261,6 @@ export default function SlideRenderer({ slide, direction = 'next', spotlightMode
                       color={idx === 0 ? "gold" : "emerald"} 
                     />
                   </div>
-                  
-                  <div className="pillar-progress-track mt-3">
-                    <div className="pillar-progress-fill" style={{ width: `${90 + idx * 5}%` }}></div>
-                  </div>
                 </div>
               ))}
             </div>
@@ -266,24 +268,32 @@ export default function SlideRenderer({ slide, direction = 'next', spotlightMode
             {/* Live Commercial Metrics Strip */}
             <div className="commercial-metrics-strip mt-2 flex-shrink-0">
               <div className="metric-pod">
-                <MapPin className="w-4 h-4 text-primary-flame mb-1" />
-                <div className="pod-number">11</div>
-                <div className="pod-label">Micro-Streets Mapped</div>
+                <MapPin className="text-primary-flame flex-shrink-0" />
+                <div>
+                  <div className="pod-number">11</div>
+                  <div className="pod-label">Micro-Streets Mapped</div>
+                </div>
               </div>
               <div className="metric-pod">
-                <Store className="w-4 h-4 text-gold-400 mb-1" />
-                <div className="pod-number">28+</div>
-                <div className="pod-label">Verified Stalls Active</div>
+                <Store className="text-gold-400 flex-shrink-0" />
+                <div>
+                  <div className="pod-number">28+</div>
+                  <div className="pod-label">Verified Stalls Active</div>
+                </div>
               </div>
               <div className="metric-pod">
-                <DollarSign className="w-4 h-4 text-emerald-400 mb-1" />
-                <div className="pod-number">0 LKR</div>
-                <div className="pod-label">Merchant Listing Fee</div>
+                <DollarSign className="text-emerald-400 flex-shrink-0" />
+                <div>
+                  <div className="pod-number">0 LKR</div>
+                  <div className="pod-label">Merchant Listing Fee</div>
+                </div>
               </div>
               <div className="metric-pod">
-                <Clock className="w-4 h-4 text-cyan-400 mb-1" />
-                <div className="pod-number">&lt; 3 Min</div>
-                <div className="pod-label">Avg Discovery Time</div>
+                <Clock className="text-cyan-400 flex-shrink-0" />
+                <div>
+                  <div className="pod-number">&lt; 3 Min</div>
+                  <div className="pod-label">Avg Discovery Time</div>
+                </div>
               </div>
             </div>
           </div>
