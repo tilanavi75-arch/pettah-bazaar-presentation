@@ -82,6 +82,7 @@ export default function SlideRenderer({ slide, direction = 'next', spotlightMode
   const [subCard2, setSubCard2] = useState(0); // Slide 2: 0: Pillars, 1: Metrics & Purpose
   const [subCard3, setSubCard3] = useState(0); // Slide 3: 0: Dilemmas, 1: Field Evidence & Photos
   const [subCard5, setSubCard5] = useState(0); // Slide 5: 0: Shopper Evolution, 1: Commercial Clustering & Insights
+  const [subCard6, setSubCard6] = useState(0); // Slide 6: 0: 3-Step Discovery Journey, 1: Mobile App Showroom
   const [subCard7, setSubCard7] = useState(0); // Slide 7: 0: Value Prop & Pillars, 1: Strategy Curve & Benchmarks
   const [subCard8, setSubCard8] = useState(0); // Slide 8: 0: Needs/Wants/Demand, 1: Value/Satisfaction/Orientation
   const [subCard9, setSubCard9] = useState(0); // Slide 9: 0: 4 Segmentation Variables, 1: Customer Archetypes
@@ -553,6 +554,53 @@ export default function SlideRenderer({ slide, direction = 'next', spotlightMode
 
   // Slide 6: Product Concept (Interactive Showroom)
   if (slide.id === 6) {
+    const tabs6 = [
+      { label: "Card 1: 3-Step Discovery Journey (Search, Discover & Locate)", icon: <Compass className="w-3.5 h-3.5 mr-1 text-teal-300" /> },
+      { label: "Card 2: Interactive Mobile Prototype Showroom (Handheld App Experience)", icon: <Smartphone className="w-3.5 h-3.5 mr-1 text-orange-400" /> }
+    ];
+
+    const hotspotDetails = [
+      {
+        step: "01",
+        name: "1. Product Search Bar",
+        subtitle: "Product-First Direct Matching Engine",
+        icon: <Search className="w-5 h-5 text-primary-flame" />,
+        highlightColor: "#FF5500",
+        desc: "Buyers enter exact item keywords (e.g. 'Linen', 'Arduino', 'Cinnamon') to immediately filter through verified Pettah inventory without needing to know specific shop names upfront.",
+        features: [
+          "Instant predictive keyword suggestion engine",
+          "Bypasses 2+ hours of wandering across 11 congested streets",
+          "Direct match to specific micro-stall inventory"
+        ]
+      },
+      {
+        step: "02",
+        name: "2. Curated Sector Categories",
+        subtitle: "One-Tap Street Cluster Filtering",
+        icon: <Tag className="w-5 h-5 text-cyan-400" />,
+        highlightColor: "#06B6D4",
+        desc: "Visual category pills categorize Pettah's natural street specializations (Textiles, Electronics, Hardware, Spices) for instant exploration.",
+        features: [
+          "Textiles on 2nd Cross, Tech on 1st Cross, Spices on Bankshall",
+          "Verified stall badges with opening hours & floor locations",
+          "One-tap direct WhatsApp merchant contact link"
+        ]
+      },
+      {
+        step: "03",
+        name: "3. Micro-Street Walking Map",
+        subtitle: "Landmark-Based Micro-Navigation",
+        icon: <MapPin className="w-5 h-5 text-emerald-400" />,
+        highlightColor: "#10B981",
+        desc: "Unlike standard GPS that drops a pin in the middle of a crowded block, Pettah Bazaar pinpoints the exact cross-street alleyway and landmark cues.",
+        features: [
+          "Landmarks like Red Mosque, Khan Clock Tower & Old City Hall",
+          "Precise stall numbers, floor levels, and alleyway coordinates",
+          "100% offline-ready Progressive Web App (PWA) guidance"
+        ]
+      }
+    ];
+
     return (
       <div className={`slide-content ${animClass} ${spotlightClass}`}>
         <div className="slide-header-bar">
@@ -564,14 +612,16 @@ export default function SlideRenderer({ slide, direction = 'next', spotlightMode
           <div className="presenter-tag-box">Presenter: {slide.presenter}</div>
         </div>
 
-        <div className="concept-showroom-split">
-          {/* Left: 3-step interactive journey */}
-          <div className="concept-steps-col">
-            <div className="interactive-step-selector">
+        <SubCardNav activeIndex={subCard6} onSelect={setSubCard6} tabs={tabs6} />
+
+        {subCard6 === 0 && (
+          <div className="slide-subcard-container animate-fade-in flex flex-col justify-between">
+            {/* 3-Step Journey Grid across 3 columns */}
+            <div className="concept-steps-grid-3col">
               {slide.steps.map((st, idx) => (
                 <div 
                   key={idx} 
-                  className={`concept-step-card interactive-step ${activeStep === idx ? 'step-selected' : ''}`}
+                  className={`concept-step-card-3col ${activeStep === idx ? 'step-highlighted' : ''}`}
                   onClick={() => setActiveStep(idx)}
                 >
                   <div className="concept-step-top">
@@ -584,63 +634,138 @@ export default function SlideRenderer({ slide, direction = 'next', spotlightMode
                   {/* Point-wise presentation bullet items */}
                   <PointList points={st.points || [st.desc]} color="orange" />
                   
-                  {activeStep === idx && (
-                    <div className="active-step-cue animate-fade-in">
-                      <Sparkles className="w-3.5 h-3.5 mr-1 text-primary-flame" />
-                      Inspecting Step {idx + 1}
-                    </div>
-                  )}
+                  <div className="concept-step-footer-tag">
+                    {idx === 0 && <Search className="w-3.5 h-3.5 mr-1.5 text-primary-flame flex-shrink-0" />}
+                    {idx === 1 && <Tag className="w-3.5 h-3.5 mr-1.5 text-cyan-400 flex-shrink-0" />}
+                    {idx === 2 && <MapPin className="w-3.5 h-3.5 mr-1.5 text-emerald-400 flex-shrink-0" />}
+                    <span>{idx === 0 ? "Frictionless Input" : idx === 1 ? "Verified Store Match" : "Precision Foot-Navigation"}</span>
+                  </div>
                 </div>
               ))}
             </div>
 
-            <div className="academic-integrity-callout mt-3">
+            <div className="academic-integrity-callout mt-2">
               <CheckCircle2 className="w-4 h-4 text-emerald-400 mr-2 flex-shrink-0" />
               <span>{slide.clarityNote}</span>
             </div>
           </div>
+        )}
 
-          {/* Right: Real mobile prototype in hand with interactive hotspots */}
-          <div className="concept-mockup-col">
-            <div className="concept-mockup-frame">
-              <img 
-                src="/assets/pettah_real_app_mockup_hand.png" 
-                alt="Pettah Bazaar mobile app prototype in hand" 
-                className="concept-mockup-img"
-              />
+        {subCard6 === 1 && (
+          <div className="slide-subcard-container animate-fade-in flex-1 min-h-0">
+            <div className="prototype-showroom-showcase">
+              {/* Left Column: Big Handheld Mockup with Hotspots */}
+              <div className="prototype-showroom-mockup-wrap">
+                <div className="concept-mockup-frame-large">
+                  <img 
+                    src="/assets/pettah_real_app_mockup_hand.png" 
+                    alt="Pettah Bazaar mobile app prototype in hand" 
+                    className="concept-mockup-img-large"
+                  />
 
-              {/* Animated Floating Hotspots with Active Focus */}
-              <div className={`mockup-hotspot hs-search ${activeStep === 0 ? 'active-pulse' : ''}`} onClick={() => setActiveStep(0)}>
-                <div className="hotspot-pulse"></div>
-                <div className="hotspot-tooltip">
-                  <Search className="w-3 h-3 mr-1 text-primary-flame" />
-                  <span>1. Product Search Bar</span>
+                  {/* Animated Hotspots on the phone */}
+                  <div 
+                    className={`mockup-hotspot hs-search ${activeStep === 0 ? 'active-pulse' : ''}`} 
+                    onClick={() => setActiveStep(0)}
+                    title="Click to inspect Search Bar"
+                  >
+                    <div className="hotspot-pulse"></div>
+                    <div className="hotspot-tooltip">
+                      <Search className="w-3 h-3 mr-1 text-primary-flame" />
+                      <span>1. Product Search Bar</span>
+                    </div>
+                  </div>
+
+                  <div 
+                    className={`mockup-hotspot hs-categories ${activeStep === 1 ? 'active-pulse' : ''}`} 
+                    onClick={() => setActiveStep(1)}
+                    title="Click to inspect Sector Categories"
+                  >
+                    <div className="hotspot-pulse"></div>
+                    <div className="hotspot-tooltip">
+                      <Tag className="w-3 h-3 mr-1 text-cyan-400" />
+                      <span>2. Curated Sector Categories</span>
+                    </div>
+                  </div>
+
+                  <div 
+                    className={`mockup-hotspot hs-map ${activeStep === 2 ? 'active-pulse' : ''}`} 
+                    onClick={() => setActiveStep(2)}
+                    title="Click to inspect Micro-Street Walking Map"
+                  >
+                    <div className="hotspot-pulse"></div>
+                    <div className="hotspot-tooltip">
+                      <MapPin className="w-3 h-3 mr-1 text-emerald-400" />
+                      <span>3. Micro-Street Walking Map</span>
+                    </div>
+                  </div>
                 </div>
+
+                <a 
+                  href="https://pettah-bazaar.vercel.app" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="mockup-live-url-btn mt-2"
+                >
+                  <Globe className="w-3.5 h-3.5 mr-1.5 text-primary-flame" />
+                  <span>Live App: pettah-bazaar.vercel.app</span>
+                  <ExternalLink className="w-3 h-3 ml-1 text-slate-400" />
+                </a>
               </div>
 
-              <div className={`mockup-hotspot hs-categories ${activeStep === 1 ? 'active-pulse' : ''}`} onClick={() => setActiveStep(1)}>
-                <div className="hotspot-pulse"></div>
-                <div className="hotspot-tooltip">
-                  <Tag className="w-3 h-3 mr-1 text-cyan-400" />
-                  <span>2. Curated Sector Categories</span>
+              {/* Right Column: Active Hotspot & Feature Inspector */}
+              <div className="prototype-showroom-details-wrap">
+                <div className="hotspot-selector-tabs">
+                  {hotspotDetails.map((hd, hIdx) => (
+                    <button 
+                      key={hIdx}
+                      className={`hotspot-tab-pill ${activeStep === hIdx ? 'active' : ''}`}
+                      onClick={() => setActiveStep(hIdx)}
+                    >
+                      {hd.icon}
+                      <span>{hd.name}</span>
+                    </button>
+                  ))}
                 </div>
-              </div>
 
-              <div className={`mockup-hotspot hs-map ${activeStep === 2 ? 'active-pulse' : ''}`} onClick={() => setActiveStep(2)}>
-                <div className="hotspot-pulse"></div>
-                <div className="hotspot-tooltip">
-                  <MapPin className="w-3 h-3 mr-1 text-emerald-400" />
-                  <span>3. Micro-Street Walking Map</span>
+                {/* Detailed card of active feature */}
+                <div className="active-feature-inspector-card">
+                  <div className="inspector-card-header">
+                    <div className="inspector-icon-box">
+                      {hotspotDetails[activeStep].icon}
+                    </div>
+                    <div>
+                      <span className="inspector-stage-tag">Step {hotspotDetails[activeStep].step} Live Feature Highlight</span>
+                      <h3 className="inspector-title">{hotspotDetails[activeStep].name}</h3>
+                      <p className="inspector-subtitle">{hotspotDetails[activeStep].subtitle}</p>
+                    </div>
+                  </div>
+
+                  <p className="inspector-desc">{hotspotDetails[activeStep].desc}</p>
+
+                  <div className="inspector-capabilities">
+                    <span className="capabilities-label">Key Prototype & UX Capabilities:</span>
+                    <ul className="capabilities-list">
+                      {hotspotDetails[activeStep].features.map((feat, fIdx) => (
+                        <li key={fIdx}>
+                          <CheckCircle className="w-4 h-4 text-emerald-400 mr-2 flex-shrink-0" />
+                          <span>{feat}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  <div className="inspector-tech-badges">
+                    <span className="tech-badge">PWA Ready</span>
+                    <span className="tech-badge">Zero Install Barrier</span>
+                    <span className="tech-badge">&lt; 1.5s Fast Load</span>
+                    <span className="tech-badge">Colombo 11 Micro-Index</span>
+                  </div>
                 </div>
-              </div>
-
-              <div className="mockup-footer-badge">
-                <Globe className="w-3.5 h-3.5 mr-1 text-primary-flame" />
-                Live Application: pettah-bazaar.vercel.app
               </div>
             </div>
           </div>
-        </div>
+        )}
       </div>
     );
   }
