@@ -267,18 +267,11 @@ export default function SlideRenderer({ slide, direction = 'next', spotlightMode
     );
   }
 
-  // Slide 2: Introduction & Brand Identity
+  // Slide 2: Introduction & Brand Identity (Unified Next-Level Keynote View)
   if (slide.id === 2) {
-    const tabs2 = [
-      { label: "Card 1: 01 & 02 — Platform Concept & Colombo 11 Geographic Focus", icon: <Target className="w-3.5 h-3.5 mr-1 text-teal-300" /> },
-      { label: "Card 2: 03 & 04 — Identity, Mission & Live Operational Metrics", icon: <Store className="w-3.5 h-3.5 mr-1 text-orange-400" />, proposed: true }
-    ];
-
-    const pillars1to2 = slide.brandPillars.slice(0, 2);
-    const pillars3to4 = slide.brandPillars.slice(2, 4);
-
     return (
       <div className={`slide-content slide-two-column ${animClass} ${spotlightClass}`}>
+        {/* Header Bar */}
         <div className="slide-header-bar">
           <div>
             <span className="section-tag">{slide.section}</span>
@@ -288,117 +281,98 @@ export default function SlideRenderer({ slide, direction = 'next', spotlightMode
           <div className="presenter-tag-box">Presenter: {slide.presenter}</div>
         </div>
 
-        <SubCardNav activeIndex={subCard2} onSelect={setSubCard2} tabs={tabs2} />
-
-        {subCard2 === 0 && (
-          <div className="slide-subcard-container animate-fade-in flex flex-col justify-between">
-            <div className="pillars-grid-2col flex-1 min-h-0">
-              {pillars1to2.map((p, idx) => (
-                <div key={idx} className={`brand-pillar-large-card pillar-theme-${idx + 1}`}>
-                  <div className="pillar-card-body">
-                    <div className="pillar-header">
-                      <div className="pillar-badge-group">
-                        <span className="pillar-num-badge">0{idx + 1}</span>
-                        <div className="pillar-icon-box">
-                          {idx === 0 ? <Compass className="w-5 h-5 text-orange-400" /> : <MapPin className="w-5 h-5 text-cyan-400" />}
-                        </div>
-                      </div>
-                      <div className="pillar-header-titles">
-                        <span className="pillar-micro-tag">{p.tag}</span>
-                        <h4 className="pillar-title">{p.title}</h4>
-                      </div>
+        {/* Unified All-in-One Presentation Stage */}
+        <div className="slide-unified-container">
+          {/* 4 Brand Pillars Grid (All 4 Pillars Visible) */}
+          <div className="pillars-grid-4col">
+            {slide.brandPillars.map((p, idx) => (
+              <div key={idx} className={`brand-pillar-nl-card pillar-accent-${idx + 1}`}>
+                <div className="pillar-nl-header">
+                  <div className="pillar-nl-badge-wrap">
+                    <span className="pillar-nl-num">0{idx + 1}</span>
+                    <div className="pillar-nl-icon">
+                      {idx === 0 && <Compass className="w-4 h-4 text-orange-400" />}
+                      {idx === 1 && <MapPin className="w-4 h-4 text-cyan-400" />}
+                      {idx === 2 && <Tag className="w-4 h-4 text-amber-400" />}
+                      {idx === 3 && <HeartHandshake className="w-4 h-4 text-emerald-400" />}
                     </div>
-                    
-                    <PointList 
-                      points={p.points || [p.desc]} 
-                      color={idx === 0 ? "orange" : "cyan"} 
-                    />
                   </div>
+                  <span className="pillar-nl-tag">{p.tag}</span>
                 </div>
-              ))}
-            </div>
+                <h4 className="pillar-nl-title">{p.title}</h4>
+                <PointList 
+                  points={p.points || [p.desc]} 
+                  color={idx === 0 ? "orange" : idx === 1 ? "cyan" : idx === 2 ? "gold" : "emerald"} 
+                />
+              </div>
+            ))}
+          </div>
 
-            <div className="p-2.5 rounded-xl bg-slate-900/90 border border-teal-500/40 flex items-center mt-2 flex-shrink-0 shadow-lg">
-              <CheckCircle2 className="w-4 h-4 text-teal-400 mr-2 flex-shrink-0" />
-              <span className="text-slate-200 text-xs sm:text-sm font-medium">Pettah Bazaar bridges the gap between chaotic street shopping and digital efficiency, specifically tailored to Colombo 11's commercial density.</span>
+          {/* Central Brand Purpose Glass Banner */}
+          <div className="brand-purpose-glass-strip">
+            <div className="purpose-glass-icon-box">
+              <Sparkles className="w-5 h-5 text-primary-flame animate-pulse flex-shrink-0" />
+            </div>
+            <div className="purpose-glass-content">
+              <span className="purpose-glass-label">CORE STRATEGIC PURPOSE</span>
+              <p className="purpose-glass-text">
+                Pettah Bazaar connects everyday Sri Lankan shoppers directly to specialized street stalls in under 3 minutes, transforming Colombo 11's dense commercial maze into an accessible, verified digital directory.
+              </p>
+            </div>
+            <div className="purpose-glass-badge">
+              <CheckCircle className="w-3.5 h-3.5 mr-1 text-emerald-400" />
+              <span>100% Free & Open Access</span>
             </div>
           </div>
-        )}
 
-        {subCard2 === 1 && (
-          <div className="slide-subcard-container animate-fade-in flex flex-col justify-between">
-            <div className="pillars-grid-2col flex-1 min-h-0">
-              {pillars3to4.map((p, idx) => (
-                <div key={idx} className={`brand-pillar-large-card pillar-theme-${idx + 3}`}>
-                  <div className="pillar-card-body">
-                    <div className="pillar-header">
-                      <div className="pillar-badge-group">
-                        <span className="pillar-num-badge">0{idx + 3}</span>
-                        <div className="pillar-icon-box">
-                          {idx === 0 ? <Tag className="w-5 h-5 text-amber-400" /> : <HeartHandshake className="w-5 h-5 text-emerald-400" />}
-                        </div>
-                      </div>
-                      <div className="pillar-header-titles">
-                        <span className="pillar-micro-tag">{p.tag}</span>
-                        <h4 className="pillar-title">{p.title}</h4>
-                      </div>
-                    </div>
-                    
-                    <PointList 
-                      points={p.points || [p.desc]} 
-                      color={idx === 0 ? "gold" : "emerald"} 
-                    />
-                  </div>
-                </div>
-              ))}
+          {/* Live Operational Metrics Strip (5 Metric Pods) */}
+          <div className="commercial-metrics-strip">
+            <div className="metric-pod">
+              <MapPin className="text-primary-flame flex-shrink-0 w-4 h-4" />
+              <div>
+                <div className="pod-number">11</div>
+                <div className="pod-label">Micro-Streets Mapped</div>
+              </div>
             </div>
-
-            {/* Live Commercial Metrics Strip */}
-            <div className="commercial-metrics-strip mt-2 flex-shrink-0">
-              <div className="metric-pod">
-                <MapPin className="text-primary-flame flex-shrink-0" />
-                <div>
-                  <div className="pod-number">11</div>
-                  <div className="pod-label">Micro-Streets Mapped</div>
-                </div>
+            <div className="metric-pod">
+              <Store className="text-gold-400 flex-shrink-0 w-4 h-4" />
+              <div>
+                <div className="pod-number">28+</div>
+                <div className="pod-label">Verified Stalls Active</div>
               </div>
-              <div className="metric-pod">
-                <Store className="text-gold-400 flex-shrink-0" />
-                <div>
-                  <div className="pod-number">28+</div>
-                  <div className="pod-label">Verified Stalls Active</div>
-                </div>
+            </div>
+            <div className="metric-pod">
+              <DollarSign className="text-emerald-400 flex-shrink-0 w-4 h-4" />
+              <div>
+                <div className="pod-number">0 LKR</div>
+                <div className="pod-label">Merchant Listing Fee</div>
               </div>
-              <div className="metric-pod">
-                <DollarSign className="text-emerald-400 flex-shrink-0" />
-                <div>
-                  <div className="pod-number">0 LKR</div>
-                  <div className="pod-label">Merchant Listing Fee</div>
-                </div>
+            </div>
+            <div className="metric-pod">
+              <Clock className="text-cyan-400 flex-shrink-0 w-4 h-4" />
+              <div>
+                <div className="pod-number">&lt; 3 Min</div>
+                <div className="pod-label">Avg Discovery Time</div>
               </div>
-              <div className="metric-pod">
-                <Clock className="text-cyan-400 flex-shrink-0" />
-                <div>
-                  <div className="pod-number">&lt; 3 Min</div>
-                  <div className="pod-label">Avg Discovery Time</div>
-                </div>
+            </div>
+            <div className="metric-pod">
+              <Smartphone className="text-purple-400 flex-shrink-0 w-4 h-4" />
+              <div>
+                <div className="pod-number">85%+</div>
+                <div className="pod-label">Smartphone Adoption</div>
               </div>
             </div>
           </div>
-        )}
+        </div>
       </div>
     );
   }
 
-  // Slide 3: Market Problem
+  // Slide 3: Market Problem & Field Ground Reality (Unified Next-Level View)
   if (slide.id === 3) {
-    const tabs3 = [
-      { label: "Card 1: 4 Core Shopping Dilemmas (Status Quo vs Solution Meter)", icon: <AlertTriangle className="w-3.5 h-3.5 mr-1 text-red-400" /> },
-      { label: "Card 2: Field Ground Reality & Photography (Alley & Traffic Evidence)", icon: <Eye className="w-3.5 h-3.5 mr-1 text-teal-300" /> }
-    ];
-
     return (
       <div className={`slide-content slide-problem ${animClass} ${spotlightClass}`}>
+        {/* Header Bar */}
         <div className="slide-header-bar">
           <div>
             <span className="section-tag problem">{slide.section}</span>
@@ -408,129 +382,116 @@ export default function SlideRenderer({ slide, direction = 'next', spotlightMode
           <div className="presenter-tag-box">Presenter: {slide.presenter}</div>
         </div>
 
-        <SubCardNav activeIndex={subCard3} onSelect={setSubCard3} tabs={tabs3} />
-
-        {subCard3 === 0 && (
-          <div className="slide-subcard-container animate-fade-in">
-            {/* Visual Friction Comparison Meter */}
-            <div className="friction-meter-card">
-              <div className="friction-side old">
-                <div className="friction-label">
-                  <AlertTriangle className="w-4 h-4 text-red-400 mr-1.5" />
-                  <span>Current Status Quo (Random Walking & Asking Directions)</span>
-                </div>
-                <div className="friction-meter-wrap">
-                  <div className="meter-bar red" style={{ width: '85%' }}>
-                    <span>~150 mins searching time • Severe exhaustion</span>
-                  </div>
-                </div>
-              </div>
-
-              <div className="friction-vs-badge">VS</div>
-
-              <div className="friction-side new">
-                <div className="friction-label">
-                  <Flame className="w-4 h-4 text-primary-flame mr-1.5" />
-                  <span>With Pettah Bazaar Platform (Product-First Match)</span>
-                </div>
-                <div className="friction-meter-wrap">
-                  <div className="meter-bar green" style={{ width: '20%' }}>
-                    <span>&lt; 3 mins discovery • Direct navigation</span>
-                  </div>
-                </div>
+        {/* Visual Friction Comparison Meter */}
+        <div className="friction-meter-card">
+          <div className="friction-side old">
+            <div className="friction-label">
+              <AlertTriangle className="w-4 h-4 text-red-400 mr-1.5" />
+              <span>Current Status Quo (Random Wandering & Asking Directions)</span>
+            </div>
+            <div className="friction-meter-wrap">
+              <div className="meter-bar red" style={{ width: '85%' }}>
+                <span>~150 mins searching time • Severe physical exhaustion</span>
               </div>
             </div>
+          </div>
 
-            <div className="problem-dilemmas-4col mt-1.5 flex-1 min-h-0">
+          <div className="friction-vs-badge">VS</div>
+
+          <div className="friction-side new">
+            <div className="friction-label">
+              <Flame className="w-4 h-4 text-primary-flame mr-1.5" />
+              <span>With Pettah Bazaar Platform (Product-First Match)</span>
+            </div>
+            <div className="friction-meter-wrap">
+              <div className="meter-bar green" style={{ width: '20%' }}>
+                <span>&lt; 3 mins discovery • Direct landmark navigation</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Main Content Split: Left Dilemmas (2x2) + Right Field Photos */}
+        <div className="problem-split-master-grid">
+          {/* LEFT: 4 Dilemma Cards + Severity Pills */}
+          <div className="problem-left-col">
+            <div className="problem-dilemmas-2x2-grid">
               {slide.problemPoints.map((pt, idx) => (
-                <div key={idx} className="problem-dilemma-card">
-                  <div className="problem-item-header">
-                    <div className="problem-badge-row">
-                      <span className="problem-num-pill">0{idx + 1}</span>
-                      <span className="problem-tag">{pt.tag}</span>
-                    </div>
-                    <h4 className="problem-item-title">{pt.title}</h4>
+                <div key={idx} className="problem-dilemma-nl-card">
+                  <div className="problem-nl-header">
+                    <span className="problem-nl-num">0{idx + 1}</span>
+                    <span className="problem-nl-tag">{pt.tag}</span>
                   </div>
+                  <h4 className="problem-nl-title">{pt.title}</h4>
                   <PointList points={pt.points || [pt.desc]} color="red" />
                 </div>
               ))}
             </div>
-          </div>
-        )}
 
-        {subCard3 === 1 && (
-          <div className="slide-subcard-container animate-fade-in">
-            <div className="card-detail-two-col flex-1 min-h-0">
-              <div className="detail-col-features flex flex-col justify-between">
-                <div>
-                  <div className="photo-switcher-tabs mb-2">
-                    <button 
-                      className={`photo-tab-btn ${problemPhoto === 'alley' ? 'active' : ''}`}
-                      onClick={() => setProblemPhoto('alley')}
-                    >
-                      Photo 1: Congested Interior Alleys
-                    </button>
-                    <button 
-                      className={`photo-tab-btn ${problemPhoto === 'traffic' ? 'active' : ''}`}
-                      onClick={() => setProblemPhoto('traffic')}
-                    >
-                      Photo 2: Street Traffic Gridlock
-                    </button>
-                  </div>
-
-                  <div className="spacious-strategy-card p-3">
-                    <h4 className="text-white text-sm font-bold mb-1.5 flex items-center">
-                      <AlertCircle className="w-4 h-4 text-orange-400 mr-2" />
-                      Field Observation & Shopper Psychology:
-                    </h4>
-                    <p className="text-slate-200 text-xs leading-relaxed mb-2">
-                      {slide.observationNote}
-                    </p>
-                    <div className="p-2.5 rounded-lg bg-slate-900/70 border border-teal-500/30">
-                      <strong className="text-teal-300 text-[11px] uppercase tracking-wider block mb-0.5">Key Field Takeaway:</strong>
-                      <span className="text-slate-300 text-xs leading-relaxed">
-                        Pettah's dense cross-streets (1st to 5th Cross St) have massive item diversity, but shoppers waste hours due to lack of digital visibility.
-                      </span>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Problem Severity Indicators placed cleanly on Card 2 */}
-                <div className="severity-indicators-row mt-2 flex-shrink-0">
-                  <div className="severity-pill">
-                    <span className="pill-dot red"></span>
-                    <span>Walking Fatigue: <strong>89% High</strong></span>
-                  </div>
-                  <div className="severity-pill">
-                    <span className="pill-dot red"></span>
-                    <span>Directory Coverage: <strong>0% Unmapped</strong></span>
-                  </div>
-                  <div className="severity-pill">
-                    <span className="pill-dot gold"></span>
-                    <span>Heat & Fatigue: <strong>Extreme</strong></span>
-                  </div>
-                </div>
+            {/* Severity Indicators Row */}
+            <div className="severity-indicators-row">
+              <div className="severity-pill">
+                <span className="pill-dot red"></span>
+                <span>Walking Fatigue: <strong>89% High</strong></span>
               </div>
-
-              <div className="detail-col-media">
-                <div className="problem-photo-card h-full flex flex-col">
-                  <img 
-                    src={problemPhoto === 'alley' ? slide.image : slide.trafficImage} 
-                    alt="Pettah field study photograph" 
-                    className="problem-photo flex-1 object-cover"
-                  />
-                  <div className="photo-caption-bar">
-                    <span>
-                      {problemPhoto === 'alley' 
-                        ? "Field Photo: Narrow interior cross-streets with heavy cart and pedestrian congestion"
-                        : "Field Photo: Vehicle gridlock and bustling commerce along Pettah entrance routes"}
-                    </span>
-                  </div>
-                </div>
+              <div className="severity-pill">
+                <span className="pill-dot red"></span>
+                <span>Directory Coverage: <strong>0% Unmapped</strong></span>
+              </div>
+              <div className="severity-pill">
+                <span className="pill-dot gold"></span>
+                <span>Heat & Fatigue: <strong>Extreme</strong></span>
               </div>
             </div>
           </div>
-        )}
+
+          {/* RIGHT: Real Photographic Ground Evidence */}
+          <div className="problem-right-photo-col">
+            {/* Interactive Photo Tabs */}
+            <div className="photo-switcher-nl-tabs">
+              <button 
+                className={`photo-nl-tab ${problemPhoto === 'alley' ? 'active' : ''}`}
+                onClick={() => setProblemPhoto('alley')}
+              >
+                <MapPin className="w-3.5 h-3.5 mr-1" />
+                <span>Interior Alleys (1st-5th Cross)</span>
+              </button>
+              <button 
+                className={`photo-nl-tab ${problemPhoto === 'traffic' ? 'active' : ''}`}
+                onClick={() => setProblemPhoto('traffic')}
+              >
+                <Navigation2 className="w-3.5 h-3.5 mr-1" />
+                <span>Entrance Traffic & Stalls</span>
+              </button>
+            </div>
+
+            {/* Photo Card with Caption */}
+            <div className="problem-photo-nl-card">
+              <img 
+                src={problemPhoto === 'alley' ? slide.image : slide.trafficImage} 
+                alt="Pettah field study photograph" 
+                className="problem-photo-nl-img"
+              />
+              <div className="problem-photo-nl-caption">
+                <Eye className="w-3.5 h-3.5 text-primary-flame mr-1.5 flex-shrink-0" />
+                <span>
+                  {problemPhoto === 'alley' 
+                    ? "Field Scoping: Dense pedestrian & cart congestion with unindexed stalls" 
+                    : "Field Scoping: Severe vehicular and pedestrian bottlenecks at Pettah entry"}
+                </span>
+              </div>
+            </div>
+
+            {/* Academic Observation Callout Box */}
+            <div className="problem-academic-nl-note">
+              <AlertCircle className="w-4 h-4 text-gold-400 mr-2 flex-shrink-0 mt-0.5" />
+              <div className="text-xs leading-relaxed text-slate-300">
+                <strong className="text-white block mb-0.5">Direct Academic Observation:</strong>
+                {slide.observationNote}
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     );
   }

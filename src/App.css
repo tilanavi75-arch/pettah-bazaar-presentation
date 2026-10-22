@@ -10347,6 +10347,523 @@
   }
 }
 
+/* =============================================================
+   SLIDE 2: BRAND PILLARS & STRATEGIC PURPOSE (NEXT-LEVEL UNIFIED)
+   ============================================================= */
+.slide-unified-container {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+  gap: 0.75rem;
+  justify-content: space-between;
+}
 
+.pillars-grid-4col {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.85rem;
+  flex: 1;
+  min-height: 0;
+}
 
+.brand-pillar-nl-card {
+  display: flex;
+  flex-direction: column;
+  background: rgba(23, 23, 31, 0.72);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  border-radius: 12px;
+  padding: 0.95rem 1rem;
+  transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+  overflow: hidden;
+}
 
+.brand-pillar-nl-card:hover {
+  transform: translateY(-3px);
+  background: rgba(27, 27, 38, 0.88);
+  box-shadow: 0 10px 24px -6px rgba(0, 0, 0, 0.6);
+}
+
+.brand-pillar-nl-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+}
+
+.brand-pillar-nl-card.pillar-accent-1::before {
+  background: linear-gradient(90deg, #FF381E, #FF7700);
+}
+.brand-pillar-nl-card.pillar-accent-1:hover {
+  border-color: rgba(255, 85, 0, 0.35);
+  box-shadow: 0 10px 24px -6px rgba(255, 85, 0, 0.25);
+}
+
+.brand-pillar-nl-card.pillar-accent-2::before {
+  background: linear-gradient(90deg, #06B6D4, #38BDF8);
+}
+.brand-pillar-nl-card.pillar-accent-2:hover {
+  border-color: rgba(6, 182, 212, 0.35);
+  box-shadow: 0 10px 24px -6px rgba(6, 182, 212, 0.22);
+}
+
+.brand-pillar-nl-card.pillar-accent-3::before {
+  background: linear-gradient(90deg, #F59E0B, #FBBF24);
+}
+.brand-pillar-nl-card.pillar-accent-3:hover {
+  border-color: rgba(245, 158, 11, 0.35);
+  box-shadow: 0 10px 24px -6px rgba(245, 158, 11, 0.22);
+}
+
+.brand-pillar-nl-card.pillar-accent-4::before {
+  background: linear-gradient(90deg, #10B981, #34D399);
+}
+.brand-pillar-nl-card.pillar-accent-4:hover {
+  border-color: rgba(16, 185, 129, 0.35);
+  box-shadow: 0 10px 24px -6px rgba(16, 185, 129, 0.22);
+}
+
+.pillar-nl-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.55rem;
+}
+
+.pillar-nl-badge-wrap {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.pillar-nl-num {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.72rem;
+  font-weight: 800;
+  color: #A1A1AA;
+  background: rgba(255, 255, 255, 0.06);
+  padding: 0.15rem 0.45rem;
+  border-radius: 4px;
+}
+
+.pillar-nl-icon {
+  width: 1.75rem;
+  height: 1.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.pillar-nl-tag {
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #FF8533;
+  background: rgba(255, 85, 0, 0.12);
+  border: 1px solid rgba(255, 85, 0, 0.25);
+  padding: 0.18rem 0.5rem;
+  border-radius: 9999px;
+}
+
+.pillar-nl-title {
+  font-family: var(--font-heading);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #FFFFFF;
+  line-height: 1.25;
+  margin-bottom: 0.55rem;
+}
+
+/* Slide 2: Brand Purpose Glass Ribbon */
+.brand-purpose-glass-strip {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  padding: 0.65rem 1.1rem;
+  background: linear-gradient(90deg, rgba(255, 85, 0, 0.1) 0%, rgba(17, 17, 22, 0.85) 40%, rgba(245, 158, 11, 0.09) 100%);
+  border: 1px solid rgba(255, 85, 0, 0.28);
+  border-radius: 10px;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.purpose-glass-icon-box {
+  width: 2.2rem;
+  height: 2.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  background: rgba(255, 85, 0, 0.16);
+  border: 1px solid rgba(255, 85, 0, 0.35);
+  flex-shrink: 0;
+}
+
+.purpose-glass-content {
+  flex: 1;
+}
+
+.purpose-glass-label {
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #FF8533;
+  display: block;
+}
+
+.purpose-glass-text {
+  font-size: 0.82rem;
+  color: #E4E4E7;
+  line-height: 1.35;
+  margin-top: 0.15rem;
+}
+
+.purpose-glass-badge {
+  display: flex;
+  align-items: center;
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: #34D399;
+  background: rgba(16, 185, 129, 0.12);
+  border: 1px solid rgba(16, 185, 129, 0.28);
+  padding: 0.35rem 0.75rem;
+  border-radius: 9999px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+/* Slide 2: Commercial Metrics Strip */
+.commercial-metrics-strip {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 0.75rem;
+}
+
+.metric-pod {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.55rem 0.85rem;
+  background: rgba(23, 23, 31, 0.65);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+  transition: all 0.22s ease;
+}
+
+.metric-pod:hover {
+  background: rgba(27, 27, 38, 0.9);
+  border-color: rgba(255, 85, 0, 0.35);
+  transform: translateY(-2px);
+}
+
+.pod-number {
+  font-family: var(--font-heading);
+  font-size: 1.12rem;
+  font-weight: 800;
+  color: #FFFFFF;
+  line-height: 1.1;
+}
+
+.pod-label {
+  font-size: 0.65rem;
+  color: #A1A1AA;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  margin-top: 0.1rem;
+}
+
+/* =============================================================
+   SLIDE 3: MARKET PROBLEM & GROUND REALITY (NEXT-LEVEL SPLIT)
+   ============================================================= */
+.friction-meter-card {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  padding: 0.65rem 1.1rem;
+  background: rgba(17, 17, 22, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  margin-bottom: 0.75rem;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  flex-shrink: 0;
+}
+
+.friction-side {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.friction-label {
+  display: flex;
+  align-items: center;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #E4E4E7;
+}
+
+.friction-meter-wrap {
+  width: 100%;
+  height: 22px;
+  background: rgba(0, 0, 0, 0.55);
+  border-radius: 9999px;
+  overflow: hidden;
+  padding: 2px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.meter-bar {
+  height: 100%;
+  border-radius: 9999px;
+  display: flex;
+  align-items: center;
+  padding: 0 0.65rem;
+  font-size: 0.68rem;
+  font-weight: 700;
+  white-space: nowrap;
+  transition: width 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.meter-bar.red {
+  background: linear-gradient(90deg, #DC2626 0%, #EF4444 100%);
+  color: #FFFFFF;
+  box-shadow: 0 0 14px rgba(239, 68, 68, 0.45);
+}
+
+.meter-bar.green {
+  background: linear-gradient(90deg, #FF5500 0%, #10B981 100%);
+  color: #FFFFFF;
+  box-shadow: 0 0 14px rgba(16, 185, 129, 0.45);
+}
+
+.friction-vs-badge {
+  font-size: 0.72rem;
+  font-weight: 900;
+  color: #F59E0B;
+  background: rgba(245, 158, 11, 0.15);
+  border: 1px solid rgba(245, 158, 11, 0.35);
+  padding: 0.25rem 0.55rem;
+  border-radius: 8px;
+  letter-spacing: 0.05em;
+  flex-shrink: 0;
+}
+
+.problem-split-master-grid {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 0.95rem;
+  flex: 1;
+  min-height: 0;
+}
+
+.problem-left-col {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 0.6rem;
+  min-height: 0;
+}
+
+.problem-dilemmas-2x2-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.65rem;
+  flex: 1;
+  min-height: 0;
+}
+
+.problem-dilemma-nl-card {
+  display: flex;
+  flex-direction: column;
+  padding: 0.8rem 0.95rem;
+  background: rgba(23, 23, 31, 0.68);
+  border: 1px solid rgba(239, 68, 68, 0.2);
+  border-top: 3px solid #EF4444;
+  border-radius: 10px;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  transition: all 0.25s ease;
+}
+
+.problem-dilemma-nl-card:hover {
+  background: rgba(27, 27, 38, 0.88);
+  border-color: rgba(239, 68, 68, 0.45);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px -4px rgba(239, 68, 68, 0.2);
+}
+
+.problem-nl-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.35rem;
+}
+
+.problem-nl-num {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.7rem;
+  font-weight: 800;
+  color: #EF4444;
+  background: rgba(239, 68, 68, 0.12);
+  padding: 0.12rem 0.42rem;
+  border-radius: 4px;
+}
+
+.problem-nl-tag {
+  font-size: 0.62rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #FCA5A5;
+  background: rgba(239, 68, 68, 0.12);
+  padding: 0.15rem 0.45rem;
+  border-radius: 4px;
+  letter-spacing: 0.03em;
+}
+
+.problem-nl-title {
+  font-family: var(--font-heading);
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: #FFFFFF;
+  margin-bottom: 0.4rem;
+  line-height: 1.25;
+}
+
+.severity-indicators-row {
+  display: flex;
+  gap: 0.55rem;
+  margin-top: auto;
+}
+
+.severity-pill {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.7rem;
+  color: #D4D4D8;
+  background: rgba(0, 0, 0, 0.45);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 0.35rem 0.65rem;
+  border-radius: 6px;
+  white-space: nowrap;
+}
+
+.pill-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.pill-dot.red {
+  background: #EF4444;
+  box-shadow: 0 0 6px #EF4444;
+}
+
+.pill-dot.gold {
+  background: #F59E0B;
+  box-shadow: 0 0 6px #F59E0B;
+}
+
+/* Slide 3: Right Photo Column */
+.problem-right-photo-col {
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+  min-height: 0;
+}
+
+.photo-switcher-nl-tabs {
+  display: flex;
+  gap: 0.35rem;
+  background: rgba(17, 17, 22, 0.7);
+  padding: 0.25rem;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  flex-shrink: 0;
+}
+
+.photo-nl-tab {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.38rem 0.65rem;
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: #A1A1AA;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+  background: transparent;
+}
+
+.photo-nl-tab:hover {
+  color: #FFFFFF;
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.photo-nl-tab.active {
+  color: #FFFFFF;
+  background: linear-gradient(135deg, rgba(255, 85, 0, 0.32) 0%, rgba(245, 158, 11, 0.24) 100%);
+  border: 1px solid rgba(255, 85, 0, 0.5);
+  box-shadow: 0 2px 10px rgba(255, 85, 0, 0.2);
+}
+
+.problem-photo-nl-card {
+  position: relative;
+  flex: 1;
+  min-height: 180px;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
+}
+
+.problem-photo-nl-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s ease;
+}
+
+.problem-photo-nl-card:hover .problem-photo-nl-img {
+  transform: scale(1.03);
+}
+
+.problem-photo-nl-caption {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 0.6rem 0.85rem;
+  background: linear-gradient(180deg, rgba(9, 9, 12, 0) 0%, rgba(9, 9, 12, 0.88) 40%, rgba(9, 9, 12, 0.98) 100%);
+  display: flex;
+  align-items: center;
+  font-size: 0.72rem;
+  color: #E4E4E7;
+}
+
+.problem-academic-nl-note {
+  display: flex;
+  align-items: flex-start;
+  padding: 0.6rem 0.85rem;
+  background: rgba(245, 158, 11, 0.08);
+  border: 1px solid rgba(245, 158, 11, 0.25);
+  border-radius: 8px;
+  flex-shrink: 0;
+}
