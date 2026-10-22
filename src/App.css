@@ -9111,45 +9111,101 @@
   margin-top: 0.15rem;
 }
 
-/* Slide 8: Theory card field photo banner */
-.theory-photo-banner {
-  position: relative;
-  width: 100%;
-  height: 85px;
-  border-radius: 8px;
-  overflow: hidden;
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  background: #050811;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+/* Slide 8: Two-Column Slidable Cards Layout (Photo Left, Description Right) */
+.theory-two-col-layout {
+  display: grid;
+  grid-template-columns: 1fr 1.3fr;
+  gap: 1.15rem;
+  flex: 1;
+  min-height: 0;
+  height: 100%;
 }
 
-.theory-photo-img {
+.theory-col-photo {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  height: 100%;
+}
+
+.theory-large-photo-frame {
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 85, 0, 0.4);
+  background: #080D1A;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.theory-photo-body {
+  position: relative;
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+  background: #040711;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.theory-full-photo {
   width: 100%;
   height: 100%;
   object-fit: cover;
   object-position: center 30%;
-  transition: transform 0.35s ease;
+  transition: transform 0.4s ease;
 }
 
-.theory-card:hover .theory-photo-img {
-  transform: scale(1.05);
+.theory-large-photo-frame:hover .theory-full-photo {
+  transform: scale(1.03);
 }
 
-.theory-photo-caption {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background: linear-gradient(180deg, transparent 0%, rgba(8, 13, 26, 0.92) 50%, rgba(8, 13, 26, 0.98) 100%);
-  padding: 0.28rem 0.5rem;
-  font-size: 0.65rem;
-  font-weight: 600;
-  color: #E2E8F0;
+.theory-col-desc {
   display: flex;
-  align-items: center;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  flex-direction: column;
+  min-height: 0;
+  height: 100%;
+}
+
+.theory-detail-panel {
+  background: linear-gradient(155deg, rgba(22, 30, 48, 0.92) 0%, rgba(12, 17, 30, 0.98) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 12px;
+  padding: 1.1rem 1.25rem;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.theory-icon-wrap.large {
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  background: rgba(255, 85, 0, 0.12);
+  border: 1px solid rgba(255, 85, 0, 0.35);
+}
+
+.theory-author-pill.large {
+  font-size: 0.74rem;
+  padding: 0.25rem 0.65rem;
+  border-radius: 6px;
+}
+
+.theory-points-large .presentation-point-item {
+  font-size: 0.88rem;
+  line-height: 1.5;
+  margin-bottom: 0.45rem;
+}
+
+.theory-strategic-insight-bar {
+  border-radius: 8px;
+  background: rgba(15, 23, 42, 0.92);
+  border: 1px solid rgba(20, 184, 166, 0.35);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35);
 }
 
 .theory-def-box {

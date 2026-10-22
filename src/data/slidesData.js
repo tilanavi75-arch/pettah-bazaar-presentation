@@ -337,7 +337,8 @@ export const slidesData = [
         concept: "Customer Needs",
         academicDefinition: "Basic human requirements that drive behaviour (Kotler & Armstrong, 2021).",
         image: "/assets/pettah_field_1_crowd_needs.jpg",
-        imageCaption: "Field Evidence 01: Severe crowd congestion & heat fatigue",
+        imageCaption: "Field Evidence 01: Severe crowd congestion & heat fatigue in 2nd Cross Street",
+        strategicNote: "Transforms chaotic physical retail searches into pre-planned digital journeys, mitigating high Colombo humidity & physical exhaustion.",
         points: [
           "Physical necessity to procure specialized fabrics, tech parts & spices",
           "Underlying need: Avoid extreme heat, fatigue, and lost productive hours"
@@ -347,7 +348,8 @@ export const slidesData = [
         concept: "Customer Wants",
         academicDefinition: "Needs directed to specific objects shaped by culture and individual personality.",
         image: "/assets/pettah_field_2_textiles_wants.png",
-        imageCaption: "Field Evidence 02: Shoppers browsing specialized textile stalls",
+        imageCaption: "Field Evidence 02: Shoppers browsing specialized textile & apparel stalls",
+        strategicNote: "Replaces unstructured word-of-mouth alley directions with precise digital stall indexing and direct category filters.",
         points: [
           "Desire for on-demand smartphone shop discovery before arriving",
           "Prefer instant digital guidance over chaotic verbal directions"
@@ -357,7 +359,8 @@ export const slidesData = [
         concept: "Market Demand",
         academicDefinition: "Human wants backed by an ability and willingness to buy or adopt.",
         image: "/assets/pettah_field_3_stalls_demand.jpg",
-        imageCaption: "Field Evidence 03: Curbside retail volume & purchasing intent",
+        imageCaption: "Field Evidence 03: High curbside retail volume & active vendor interactions",
+        strategicNote: "Combines zero financial cost for shoppers with strong micro-merchant appetite for digital visibility without advertising overheads.",
         points: [
           "Immediate consumer demand for a free, frictionless search service",
           "Growing merchant willingness to claim verified digital store profiles"
@@ -367,7 +370,8 @@ export const slidesData = [
         concept: "Customer Value",
         academicDefinition: "Perceived customer benefits minus total cost of acquisition.",
         image: "/assets/pettah_field_4_carrying_value.jpg",
-        imageCaption: "Field Evidence 04: Physical exertion & manual cart hauling",
+        imageCaption: "Field Evidence 04: Heavy physical exertion & manual cart hauling in Pettah",
+        strategicNote: "Maximizes perceived net customer value by eliminating non-monetary costs: 85%+ walking time saved and zero disorientation.",
         points: [
           "Benefits: 85%+ walking time saved, zero disorientation, verified stalls",
           "Cost: Zero financial cost + seconds of lightweight mobile data"
@@ -377,7 +381,8 @@ export const slidesData = [
         concept: "Customer Satisfaction",
         academicDefinition: "Degree to which a product's perceived performance matches buyer expectations.",
         image: "/assets/pettah_field_5_shoppers_satisfaction.jpg",
-        imageCaption: "Field Evidence 05: Diverse shoppers at multi-category retail stalls",
+        imageCaption: "Field Evidence 05: Diverse shoppers navigating multi-category retail stalls",
+        strategicNote: "Ensures post-visit buyer satisfaction through 100% verified shop phone numbers, direct WhatsApp links, and reliable stall landmarks.",
         points: [
           "Driven by 100% accurate shop phone numbers and landmark cues",
           "Empirically validated through direct field testing with shoppers"
