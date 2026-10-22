@@ -2297,7 +2297,7 @@ export default function SlideRenderer({ slide, direction = 'next', spotlightMode
     const tabs20 = [
       { label: "Card 1: Executive Closing, Grand Finale Q&A & Live Access", icon: <HelpCircle className="w-3.5 h-3.5 mr-1 text-teal-300" /> },
       { label: "Card 2: Group 10 Presentation Team (All 10 Presenters)", icon: <Users className="w-3.5 h-3.5 mr-1 text-gold-400" /> },
-      { label: "Card 3: Academic Literature (APA 7th) & 100-Mark Rubric Matrix", icon: <BookOpen className="w-3.5 h-3.5 mr-1 text-orange-400" /> }
+      { label: "Card 3: Academic Literature (APA 7th) & Syllabus Assessment Matrix", icon: <BookOpen className="w-3.5 h-3.5 mr-1 text-orange-400" /> }
     ];
 
     return (
@@ -2308,7 +2308,7 @@ export default function SlideRenderer({ slide, direction = 'next', spotlightMode
               {subCard20 === 2 ? 'Academic Rigour & References' : subCard20 === 1 ? 'Intake 43 • Presentation Team' : 'BSM 12012 • Presentation Finale'}
             </span>
             <h2 className="slide-heading">
-              {subCard20 === 2 ? 'Academic Literature & Rubric Alignment' : subCard20 === 1 ? 'Group 10 Presentation Team Roster' : 'Grand Finale, Q&A & Presenter Credits'}
+              {subCard20 === 2 ? 'Academic Literature & Syllabus Alignment' : subCard20 === 1 ? 'Group 10 Presentation Team Roster' : 'Grand Finale, Q&A & Presenter Credits'}
             </h2>
             <p className="slide-subheading">
               {subCard20 === 2 
@@ -2418,7 +2418,7 @@ export default function SlideRenderer({ slide, direction = 'next', spotlightMode
                   onClick={() => setSubCard20(2)}
                 >
                   <BookOpen className="w-4 h-4 mr-1.5 text-primary-flame" />
-                  View Academic References & 100-Mark Rubric →
+                  View Academic References & Syllabus Alignment →
                 </button>
               </div>
             </div>
@@ -2427,37 +2427,37 @@ export default function SlideRenderer({ slide, direction = 'next', spotlightMode
 
         {subCard20 === 2 && (
           <div className="slide-subcard-container animate-fade-in">
-            {/* 100-Mark Rubric Score Target Visual Banner */}
+            {/* Syllabus Alignment & Core Academic Coverage Visual Banner */}
             <div className="rubric-score-visual-banner mt-1">
               <div className="target-score-badge">
                 <Trophy className="w-5 h-5 text-gold-400 mr-2 animate-pulse" />
-                <span>Target Assessment Score: <strong>100 / 100 Marks</strong></span>
+                <span>Academic Scope: <strong>Complete Syllabus Alignment</strong></span>
               </div>
               <div className="criteria-mini-bars">
-                <div className="mini-bar-item" title="Problem: 20/20">
+                <div className="mini-bar-item" title="Problem: Field Validated">
                   <span>Problem</span>
                   <div className="mini-track"><div className="mini-fill" style={{ width: '100%' }}></div></div>
-                  <strong>20/20</strong>
+                  <strong className="text-emerald-400">Validated</strong>
                 </div>
-                <div className="mini-bar-item" title="Marketing Mix: 20/20">
+                <div className="mini-bar-item" title="Marketing Mix: 7Ps Complete">
                   <span>Mix (7Ps)</span>
                   <div className="mini-track"><div className="mini-fill" style={{ width: '100%' }}></div></div>
-                  <strong>20/20</strong>
+                  <strong className="text-emerald-400">Applied</strong>
                 </div>
-                <div className="mini-bar-item" title="STP & Positioning: 20/20">
+                <div className="mini-bar-item" title="STP: 4 Variables Mapped">
                   <span>STP</span>
                   <div className="mini-track"><div className="mini-fill" style={{ width: '100%' }}></div></div>
-                  <strong>20/20</strong>
+                  <strong className="text-emerald-400">Defined</strong>
                 </div>
-                <div className="mini-bar-item" title="Prototype: 20/20">
+                <div className="mini-bar-item" title="Prototype: Interactive Search Engine">
                   <span>Prototype</span>
                   <div className="mini-track"><div className="mini-fill" style={{ width: '100%' }}></div></div>
-                  <strong>20/20</strong>
+                  <strong className="text-emerald-400">Functional</strong>
                 </div>
-                <div className="mini-bar-item" title="Presentation: 20/20">
+                <div className="mini-bar-item" title="Delivery: 10 Presenters">
                   <span>Delivery</span>
                   <div className="mini-track"><div className="mini-fill" style={{ width: '100%' }}></div></div>
-                  <strong>20/20</strong>
+                  <strong className="text-emerald-400">10 Speakers</strong>
                 </div>
               </div>
             </div>
@@ -2484,14 +2484,14 @@ export default function SlideRenderer({ slide, direction = 'next', spotlightMode
               <div className="rubric-checklist-col overflow-hidden">
                 <h4 className="col-subheading">
                   <CheckCircle2 className="w-4 h-4 text-emerald-400 mr-1.5" />
-                  Official Rubric Coverage (100 Marks Breakdown)
+                  Syllabus Benchmark Coverage Matrix
                 </h4>
                 <div className="rubric-summary-table-wrap">
                   <table className="rubric-summary-table w-full">
                     <thead>
                       <tr>
                         <th>Criteria Benchmark</th>
-                        <th>Weight</th>
+                        <th>Scope Status</th>
                         <th>Demonstrated Evidence</th>
                       </tr>
                     </thead>
@@ -2499,7 +2499,7 @@ export default function SlideRenderer({ slide, direction = 'next', spotlightMode
                       {slide.rubricHighlights.map((rh, idx) => (
                         <tr key={idx}>
                           <td className="font-semibold text-white text-xs">{rh.criterion}</td>
-                          <td className="text-gold-400 font-mono font-bold text-xs">{rh.marks}</td>
+                          <td className="text-emerald-400 font-semibold text-xs whitespace-nowrap">{rh.status}</td>
                           <td className="text-slate-300 text-xs">{rh.evidence}</td>
                         </tr>
                       ))}

@@ -100,9 +100,9 @@ export default function Navigation({
           </div>
 
           {slideData.rubricRef && (
-            <div className="rubric-mini-tag" onClick={toggleRubric} title="Click to view Rubric details">
+            <div className="rubric-mini-tag" onClick={toggleRubric} title="Click to view Academic Syllabus details">
               <Award className="w-3.5 h-3.5 text-gold-accent mr-1" />
-              <span>{slideData.rubricRef.split('(')[0]}</span>
+              <span>{slideData.rubricRef}</span>
             </div>
           )}
         </div>

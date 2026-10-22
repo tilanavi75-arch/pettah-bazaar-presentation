@@ -34,7 +34,7 @@ export default function PresenterNotesDrawer({ isOpen, onClose, slideData, nextS
               <div className="meta-val">{slideData.allocatedTime}</div>
             </div>
             <div className="meta-box">
-              <div className="meta-label">Rubric Target</div>
+              <div className="meta-label">Syllabus Focus</div>
               <div className="meta-val gold">{slideData.rubricRef}</div>
             </div>
           </div>

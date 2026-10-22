@@ -306,14 +306,14 @@ export default function App() {
               <span className="hud-btn-lbl">Notes</span>
             </button>
 
-            {/* Rubric Button */}
+            {/* Syllabus / Assessment Matrix Button */}
             <button 
               className="hud-icon-btn"
               onClick={() => setShowRubric(true)}
-              title="100-Mark Rubric Assessment Matrix (Shortcut: R)"
+              title="Academic Syllabus & Assessment Matrix (Shortcut: R)"
             >
               <Award className="w-3.5 h-3.5 mr-1 text-gold-accent" />
-              <span className="hud-btn-lbl">Rubric</span>
+              <span className="hud-btn-lbl">Syllabus</span>
             </button>
 
             {/* Deck Grid Button */}

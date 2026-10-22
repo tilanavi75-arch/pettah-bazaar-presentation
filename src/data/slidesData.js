@@ -12,14 +12,14 @@ export const teamMembers = [
 ];
 
 export const rubricCriteria = [
-  { id: 1, title: "Identification of Market Problem or Opportunity", marks: 10, slides: [3, 4, 5], desc: "Rigorous observation of shopper search friction in Pettah without overstating universal claims." },
-  { id: 2, title: "Product Concept, Innovation & Customer Value", marks: 15, slides: [6, 7], desc: "Distinctive 3-step value journey, realistic feasibility, and clear customer time-saving focus." },
-  { id: 3, title: "Application of Marketing Concepts", marks: 10, slides: [8], desc: "Systematic mapping of Needs, Wants, Demand, Customer Value, Satisfaction, and Market Orientation." },
-  { id: 4, title: "Segmentation, Targeting & Positioning (STP)", marks: 20, slides: [9, 10], desc: "High-weight criteria: 4 segmentation variables, primary/secondary targets, and formal positioning statement." },
-  { id: 5, title: "Competitor Analysis", marks: 10, slides: [11], desc: "Evidence-based matrix comparing Google Maps, Search, Social Media, and Pettah Bazaar fairly." },
-  { id: 6, title: "Marketing Mix (7Ps Framework)", marks: 20, slides: [12, 13, 14, 15, 16], desc: "Comprehensive 7Ps analysis: Product, Price, Place, Promotion, People, Process, and Physical Evidence applied to Pettah Bazaar." },
-  { id: 7, title: "Product Sample / Prototype", marks: 10, slides: [17], desc: "Interactive working search simulation demonstrating core customer journey with transparent feature labelling." },
-  { id: 8, title: "Presentation, Teamwork & Professionalism", marks: 5, slides: [1, 2, 18, 19, 20], desc: "Cohesive aesthetic, balanced 10-member roles, strict 20-min timing adherence, and APA references." }
+  { id: 1, title: "Identification of Market Problem or Opportunity", slides: [3, 4, 5], desc: "Rigorous observation of shopper search friction in Pettah without overstating universal claims." },
+  { id: 2, title: "Product Concept, Innovation & Customer Value", slides: [6, 7], desc: "Distinctive 3-step value journey, realistic feasibility, and clear customer time-saving focus." },
+  { id: 3, title: "Application of Marketing Concepts", slides: [8], desc: "Systematic mapping of Needs, Wants, Demand, Customer Value, Satisfaction, and Market Orientation." },
+  { id: 4, title: "Segmentation, Targeting & Positioning (STP)", slides: [9, 10], desc: "Comprehensive strategy: 4 segmentation variables, primary/secondary targets, and formal positioning statement." },
+  { id: 5, title: "Competitor Analysis", slides: [11], desc: "Evidence-based matrix comparing Google Maps, Search, Social Media, and Pettah Bazaar fairly." },
+  { id: 6, title: "Marketing Mix (7Ps Framework)", slides: [12, 13, 14, 15, 16], desc: "Comprehensive 7Ps analysis: Product, Price, Place, Promotion, People, Process, and Physical Evidence applied to Pettah Bazaar." },
+  { id: 7, title: "Product Sample / Prototype", slides: [17], desc: "Interactive working search simulation demonstrating core customer journey with transparent feature labelling." },
+  { id: 8, title: "Presentation, Teamwork & Professionalism", slides: [1, 2, 18, 19, 20], desc: "Cohesive aesthetic, balanced 10-member roles, strict 20-min timing adherence, and APA references." }
 ];
 
 export const slidesData = [
@@ -29,7 +29,7 @@ export const slidesData = [
     section: "Brand Introduction",
     presenter: "Chenaya (Member 1)",
     allocatedTime: "1.0 min",
-    rubricRef: "Presentation & Teamwork (5 Marks)",
+    rubricRef: "Presentation & Teamwork",
     title: "PETTAH BAZAAR",
     tagline: "Find the Shop. Save Your Time.",
     subtitle: "A Proposed Digital Shop-Discovery Platform for Pettah, Colombo",
@@ -45,7 +45,7 @@ export const slidesData = [
     keyHighlights: [
       { label: "Core Challenge", val: "Retail Search Friction", desc: "No micro-street index in Colombo 11" },
       { label: "Our Innovation", val: "Product-to-Stall PWA", desc: "Instant matching under 3 minutes" },
-      { label: "Academic Scope", val: "100-Mark Rubric", desc: "10 Presenters • BSM 12012 Capstone" }
+      { label: "Academic Scope", val: "BSM 12012 Capstone", desc: "10 Presenters • KDU Intake 43" }
     ],
     heroImage: "/assets/pettah_real_street_crowd.jpg",
     speakerNotes: "Good morning respected lecturer and fellow colleagues. Today, our group is proud to present 'Pettah Bazaar', a student-developed digital shop-discovery concept designed to solve one of the most relatable retail navigation challenges in Colombo. In the next 20 minutes, our 10 team members will walk you through our marketing foundation, market problem, STP, strategic marketing mix, prototype, and ethical framework."
@@ -56,7 +56,7 @@ export const slidesData = [
     section: "Brand Identity",
     presenter: "Chenaya (Member 1)",
     allocatedTime: "1.0 min",
-    rubricRef: "Product Concept & Innovation (15 Marks)",
+    rubricRef: "Product Concept & Innovation",
     title: "Brand Identity & Strategic Purpose",
     subtitle: "Bridging Pettah's Traditional Commerce with Digital Convenience",
     brandPillars: [
@@ -109,7 +109,7 @@ export const slidesData = [
     section: "Market Problem",
     presenter: "Amandi (Member 2)",
     allocatedTime: "1.5 min",
-    rubricRef: "Market Problem Identification (10 Marks)",
+    rubricRef: "Market Problem Identification",
     title: "Finding the Right Shop Can Be a Challenge",
     subtitle: "Preliminary Field Observations in the Bustling Alleys of Pettah",
     problemPoints: [
@@ -161,7 +161,7 @@ export const slidesData = [
     section: "Video Evidence 1",
     presenter: "Amandi (Member 2)",
     allocatedTime: "1.0 min",
-    rubricRef: "Market Problem & Fieldwork (10 Marks)",
+    rubricRef: "Market Problem & Fieldwork",
     isVideoSlide: true,
     videoSrc: "/assets/P 1 F - Trim problem .mp4",
     videoLabel: "INSERT VIDEO 1 – MARKET PROBLEM",
@@ -181,7 +181,7 @@ export const slidesData = [
     section: "Market Opportunity",
     presenter: "Amandi (Member 2)",
     allocatedTime: "1.5 min",
-    rubricRef: "Market Problem & Opportunity (10 Marks)",
+    rubricRef: "Market Problem & Opportunity",
     title: "Market Opportunity & Research Insights",
     subtitle: "From Observed Consumer Friction to Structured Digital Opportunity",
     journey: [
@@ -238,7 +238,7 @@ export const slidesData = [
     section: "Product Concept",
     presenter: "Tilan (Member 3)",
     allocatedTime: "1.5 min",
-    rubricRef: "Product Concept & Innovation (15 Marks)",
+    rubricRef: "Product Concept & Innovation",
     title: "Introducing the Solution: Pettah Bazaar",
     subtitle: "A Frictionless 3-Step Discovery Journey for Colombo Shoppers",
     steps: [
@@ -286,7 +286,7 @@ export const slidesData = [
     section: "Innovation & Value Proposition",
     presenter: "Tilan (Member 3)",
     allocatedTime: "1.5 min",
-    rubricRef: "Product Concept & Innovation (15 Marks)",
+    rubricRef: "Product Concept & Innovation",
     title: "Innovation, Benefits & Value Proposition",
     subtitle: "Delivering Meaningful Customer Value Through Focused Simplicity",
     valueProposition: "“Find any product in Pettah within minutes — bridging traditional street stalls with instant, verified digital discovery.”",
@@ -336,7 +336,7 @@ export const slidesData = [
     section: "Marketing Theory",
     presenter: "Buddhini (Member 4)",
     allocatedTime: "1.5 min",
-    rubricRef: "Application of Marketing Concepts (10 Marks)",
+    rubricRef: "Application of Marketing Concepts",
     title: "Application of Core Marketing Concepts",
     subtitle: "Grounding the Platform in Established Academic Marketing Theory",
     table: [
@@ -397,7 +397,7 @@ export const slidesData = [
     section: "STP — Segmentation",
     presenter: "Vishadani (Member 5)",
     allocatedTime: "1.5 min",
-    rubricRef: "STP Analysis (20 Marks)",
+    rubricRef: "STP Framework — Market Segmentation",
     title: "Market Segmentation Framework",
     subtitle: "Categorising Pettah's Diverse Foot-Traffic into Meaningful Cohorts",
     segments: [
@@ -443,7 +443,7 @@ export const slidesData = [
       }
     ],
     summaryNote: "Academic Reflection: Rather than treating Pettah visitors as a uniform mass, segmentation enables targeted feature design like sector filters and student project tags.",
-    speakerNotes: "Hello everyone, I am Vishadani. Segmentation is crucial for our 20-mark STP evaluation. We have divided potential users across four classic dimensions: Geographic, Demographic, Psychographic, and Behavioural. Notably, in our psychographic and behavioural analysis, we identified that unfamiliar visitors and time-conscious entrepreneurs have the highest search anxiety in Pettah."
+    speakerNotes: "Hello everyone, I am Vishadani. Segmentation is crucial for our STP strategic analysis. We have divided potential users across four classic dimensions: Geographic, Demographic, Psychographic, and Behavioural. Notably, in our psychographic and behavioural analysis, we identified that unfamiliar visitors and time-conscious entrepreneurs have the highest search anxiety in Pettah."
   },
   {
     id: 10,
@@ -451,7 +451,7 @@ export const slidesData = [
     section: "STP — Targeting & Positioning",
     presenter: "Savinu (Member 6)",
     allocatedTime: "1.5 min",
-    rubricRef: "STP Analysis (20 Marks)",
+    rubricRef: "STP Framework — Targeting & Positioning",
     title: "Targeting & Positioning Strategy",
     subtitle: "Establishing a Distinct and Defensible Niche in Colombo Retail Navigation",
     targetGroups: {
@@ -495,7 +495,7 @@ export const slidesData = [
     section: "Competitor Analysis",
     presenter: "Vihanga (Member 7)",
     allocatedTime: "1.5 min",
-    rubricRef: "Competitor Analysis (10 Marks)",
+    rubricRef: "Competitor Analysis Matrix",
     title: "Competitor & Alternative Solution Analysis",
     subtitle: "Objective Comparison of Existing Information Channels in Pettah",
     competitors: [
@@ -541,7 +541,7 @@ export const slidesData = [
       }
     ],
     keyTakeaway: "Strategic Assessment: Pettah Bazaar does not attempt to replace Google Maps; rather, it complements it with product-level shop discovery.",
-    speakerNotes: "Good day, I am Vihanga. A critical criterion in our rubric is an honest, evidence-based competitor analysis. We must never claim that competitors do nothing. Google Maps is world-class for driving directions, but in Pettah's 1st Cross Street, GPS bounces between multi-story buildings and doesn't tell you which 2nd-floor shop sells electronic relays. Pettah Bazaar fills that precise granularity gap."
+    speakerNotes: "Good day, I am Vihanga. A critical criterion in our academic analysis is an honest, evidence-based competitor comparison. We must never claim that competitors do nothing. Google Maps is world-class for driving directions, but in Pettah's 1st Cross Street, GPS bounces between multi-story buildings and doesn't tell you which 2nd-floor shop sells electronic relays. Pettah Bazaar fills that precise granularity gap."
   },
   {
     id: 12,
@@ -550,7 +550,7 @@ export const slidesData = [
     section: "Marketing Mix (7Ps) — Product",
     presenter: "Devindi (Member 8)",
     allocatedTime: "1.0 min",
-    rubricRef: "Marketing Mix 7Ps (20 Marks)",
+    rubricRef: "Marketing Mix (7Ps) — Product",
     title: "Product Strategy (7Ps: 1. Product)",
     subtitle: "What PETTAH BAZAAR Offers: Core Digital Features & Clear Development Roadmap",
     tagline: "Find the Shop. Save Your Time.",
@@ -616,7 +616,7 @@ export const slidesData = [
     section: "Marketing Mix (7Ps) — Price & Place",
     presenter: "Devindi (Member 8)",
     allocatedTime: "1.0 min",
-    rubricRef: "Marketing Mix 7Ps (20 Marks)",
+    rubricRef: "Marketing Mix (7Ps) — Price & Place",
     title: "Price & Place Strategy (7Ps: 2. Price & 3. Place)",
     subtitle: "Zero-Barrier Access for Adoption and Ubiquitous Digital Distribution",
     tagline: "Find the Shop. Save Your Time.",
@@ -692,7 +692,7 @@ export const slidesData = [
     section: "Marketing Mix (7Ps) — Promotion & People",
     presenter: "Devindi (Member 8)",
     allocatedTime: "1.0 min",
-    rubricRef: "Marketing Mix 7Ps (20 Marks)",
+    rubricRef: "Marketing Mix (7Ps) — Promotion & People",
     title: "Promotion & People Strategy (7Ps: 4. Promotion & 5. People)",
     subtitle: "Community-Led Promotional Outreach and the Essential Human Pillar",
     tagline: "Find the Shop. Save Your Time.",
@@ -770,7 +770,7 @@ export const slidesData = [
     section: "Marketing Mix (7Ps) — Process & Physical Evidence",
     presenter: "Devindi (Member 8)",
     allocatedTime: "1.0 min",
-    rubricRef: "Marketing Mix 7Ps (20 Marks)",
+    rubricRef: "Marketing Mix (7Ps) — Process & Physical Evidence",
     title: "Process & Physical Evidence (7Ps: 6. Process & 7. Physical Evidence)",
     subtitle: "A Frictionless 5-Step Customer Flow and Tangible Proof That Validates Quality",
     tagline: "Find the Shop. Save Your Time.",
@@ -855,7 +855,7 @@ export const slidesData = [
     section: "Video Evidence 2",
     presenter: "Devindi (Member 8)",
     allocatedTime: "1.0 min",
-    rubricRef: "Customer Feedback & 4Ps (20 Marks)",
+    rubricRef: "Customer Feedback & Concept Validation",
     isVideoSlide: true,
     videoLabel: "INSERT VIDEO 2 – CUSTOMER FEEDBACK",
     videoHeading: "WHAT DO PEOPLE THINK ABOUT PETTAH BAZAAR?",
@@ -875,7 +875,7 @@ export const slidesData = [
     section: "Prototype Demonstration",
     presenter: "Nethmi (Member 9)",
     allocatedTime: "1.5 min",
-    rubricRef: "Product Sample / Prototype (10 Marks)",
+    rubricRef: "Product Sample & Interactive Prototype",
     title: "From Concept to Prototype: Interactive Demo",
     subtitle: "A Real-Time Walkthrough of Pettah Bazaar's Core Discovery Engine",
     interactiveDemo: true,
@@ -905,7 +905,7 @@ export const slidesData = [
     section: "Ethics & Responsibility",
     presenter: "Sanithu (Member 10)",
     allocatedTime: "1.5 min",
-    rubricRef: "Ethics & Professionalism (5 Marks)",
+    rubricRef: "Ethics & Responsible Marketing",
     title: "Ethics & Responsible Marketing",
     subtitle: "Upholding Integrity, Privacy, and Trust in Digital Retail Operations",
     pillars: [
@@ -972,7 +972,7 @@ export const slidesData = [
     section: "Conclusion & Summary",
     presenter: "Chenaya (Member 1)",
     allocatedTime: "1.5 min",
-    rubricRef: "Presentation, Teamwork & Professionalism (5 Marks)",
+    rubricRef: "Presentation, Teamwork & Professionalism",
     title: "Conclusion & Strategic Summary",
     subtitle: "A Cohesive, Academically Rigorous, and Practical Marketing Proposition",
     recapCards: [
@@ -1006,7 +1006,7 @@ export const slidesData = [
       tagline: "“Find the Shop. Save Your Time.”",
       acknowledgement: "On behalf of our 10 team members from KDU Intake 43, thank you for your attention. We now invite your questions."
     },
-    speakerNotes: "In conclusion, Pettah Bazaar represents more than an academic exercise: it is a practical, grounded, and ethically conscious response to a real-world shopping challenge in Colombo. We have satisfied all eight rubric criteria across problem identification, theory, STP, the 4Ps, prototype feasibility, and teamwork. Thank you, and we welcome your questions."
+    speakerNotes: "In conclusion, Pettah Bazaar represents more than an academic exercise: it is a practical, grounded, and ethically conscious response to a real-world shopping challenge in Colombo. We have comprehensively addressed all core syllabus areas across problem identification, theory, STP, the 7Ps, prototype feasibility, and teamwork. Thank you, and we welcome your questions."
   },
   {
     id: 20,
@@ -1014,7 +1014,7 @@ export const slidesData = [
     section: "Conclusion & Q&A",
     presenter: "All Team Members (Intake 43)",
     allocatedTime: "Q&A Window",
-    rubricRef: "Academic Rigour & References (Rubric Alignment)",
+    rubricRef: "Academic Rigour & References",
     title: "Thank You!",
     subtitle: "Any Questions? • Floor Open for Panel Discussion & Academic Q&A",
     references: [
@@ -1036,16 +1036,16 @@ export const slidesData = [
       }
     ],
     rubricHighlights: [
-      { criterion: "1. Market Problem", marks: "10 / 10", evidence: "Slide 3 field observations & Slide 4 field video evidence." },
-      { criterion: "2. Product & Innovation", marks: "15 / 15", evidence: "Slide 6 3-step journey & Slide 7 customer value proposition." },
-      { criterion: "3. Marketing Concepts", marks: "10 / 10", evidence: "Slide 8 comprehensive Kotlerian concept mapping table." },
-      { criterion: "4. STP Framework", marks: "20 / 20", evidence: "Slide 9 4-variable segmentation & Slide 10 positioning statement." },
-      { criterion: "5. Competitor Analysis", marks: "10 / 10", evidence: "Slide 11 balanced matrix vs Google Maps, Search, and Social." },
-      { criterion: "6. Marketing Mix (4Ps)", marks: "20 / 20", evidence: "Slides 12–16 Product, Price, Place, Promotion with QR poster mockup." },
-      { criterion: "7. Product Prototype", marks: "10 / 10", evidence: "Slide 17 live interactive search simulator with verified data." },
-      { criterion: "8. Teamwork & Professionalism", marks: "5 / 5", evidence: "10 active presenters, 20-min timing adherence & ethics." }
+      { criterion: "1. Market Problem", status: "Field Validated", evidence: "Slide 3 field observations & Slide 4 field video evidence." },
+      { criterion: "2. Product & Innovation", status: "Fully Developed", evidence: "Slide 6 3-step journey & Slide 7 customer value proposition." },
+      { criterion: "3. Marketing Concepts", status: "Theoretically Mapped", evidence: "Slide 8 comprehensive Kotlerian concept mapping table." },
+      { criterion: "4. STP Framework", status: "Strategically Applied", evidence: "Slide 9 4-variable segmentation & Slide 10 positioning statement." },
+      { criterion: "5. Competitor Analysis", status: "Empirically Tested", evidence: "Slide 11 balanced matrix vs Google Maps, Search, and Social." },
+      { criterion: "6. Marketing Mix (7Ps)", status: "Comprehensively Documented", evidence: "Slides 12–16 Product, Price, Place, Promotion with QR poster mockup." },
+      { criterion: "7. Product Prototype", status: "Interactive Simulation", evidence: "Slide 17 live interactive search simulator with verified data." },
+      { criterion: "8. Teamwork & Ethics", status: "10 Presenters Active", evidence: "10 active presenters, 20-min timing adherence & ethics." }
     ],
-    speakerNotes: "Here we provide our genuine academic literature citations in APA 7th edition style, along with our direct slide-by-slide mapping against the official 100-mark evaluation rubric. All members are now ready to answer any questions from the panel."
+    speakerNotes: "Here we provide our genuine academic literature citations in APA 7th edition style, along with our direct slide-by-slide mapping against the academic syllabus assessment criteria. All members are now ready to answer any questions from the panel."
   }
 ];
 

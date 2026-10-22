@@ -1,11 +1,9 @@
 import React from 'react';
-import { X, Award, CheckCircle2, ArrowUpRight, GraduationCap } from 'lucide-react';
+import { X, CheckCircle2, ArrowUpRight, GraduationCap } from 'lucide-react';
 import { rubricCriteria } from '../data/slidesData';
 
 export default function RubricModal({ isOpen, onClose, onSelectSlide, currentSlideId }) {
   if (!isOpen) return null;
-
-  const totalMarks = rubricCriteria.reduce((sum, item) => sum + item.marks, 0);
 
   return (
     <div className="modal-overlay" onClick={onClose}>
@@ -16,7 +14,7 @@ export default function RubricModal({ isOpen, onClose, onSelectSlide, currentSli
               <GraduationCap className="w-6 h-6 text-primary-flame" />
             </div>
             <div>
-              <h2 className="modal-title">Official Evaluation Rubric (100 Marks)</h2>
+              <h2 className="modal-title">Academic Syllabus & Evaluation Matrix</h2>
               <p className="modal-subtitle">
                 BSM 12012 — Principles of Marketing • KDU Faculty of Management
               </p>
@@ -29,11 +27,11 @@ export default function RubricModal({ isOpen, onClose, onSelectSlide, currentSli
 
         <div className="rubric-summary-banner">
           <div className="banner-text">
-            <strong>Target: High Distinction (A+)</strong> — Every slide directly addresses specific rubric benchmarks. Note that <strong>STP (20m)</strong> and <strong>Marketing Mix 4Ps (20m)</strong> constitute 40% of the total score.
+            <strong>Academic Scope: Capstone Rigour</strong> — Every slide directly addresses core syllabus benchmarks across market problem, Kotlerian theory, STP analysis, 7Ps marketing mix, and interactive prototype validation.
           </div>
           <div className="banner-score">
-            <span className="score-num">100</span>
-            <span className="score-total">Total Marks</span>
+            <span className="score-num">8 / 8</span>
+            <span className="score-total">Core Modules</span>
           </div>
         </div>
 
@@ -48,8 +46,8 @@ export default function RubricModal({ isOpen, onClose, onSelectSlide, currentSli
                 <div className="criterion-top">
                   <div className="criterion-id-badge">Criterion {item.id}</div>
                   <div className="criterion-marks-badge">
-                    <Award className="w-3.5 h-3.5 mr-1 text-orange-accent" />
-                    <strong>{item.marks}</strong> Marks
+                    <CheckCircle2 className="w-3.5 h-3.5 mr-1 text-emerald-400" />
+                    <strong className="text-emerald-400">Core Syllabus</strong>
                   </div>
                 </div>
 
@@ -85,7 +83,7 @@ export default function RubricModal({ isOpen, onClose, onSelectSlide, currentSli
             Click any slide button above to jump directly to that presentation segment.
           </span>
           <button className="done-btn" onClick={onClose}>
-            Close Rubric
+            Close Matrix
           </button>
         </div>
       </div>
