@@ -1830,7 +1830,7 @@ export default function SlideRenderer({ slide, direction = 'next', spotlightMode
           </div>
         </div>
 
-        {/* Card 1: Price Strategy */}
+        {/* Card 1: Price Strategy (With Official Flexible Pricing Plans Infographic) */}
         {subCard13 === 0 && (
           <div className="seven-ps-active-card-container animate-fade-in">
             {/* Customer Benefit Banner for Price */}
@@ -1842,31 +1842,61 @@ export default function SlideRenderer({ slide, direction = 'next', spotlightMode
                 <div className="benefit-label-row">
                   <span className="benefit-badge">2. Price</span>
                   <span className="benefit-title">Customer Value & Benefit:</span>
-                  <span className="benefit-pill">Zero Cost Barrier & Fair Merchant Access</span>
+                  <span className="benefit-pill">Zero Cost Barrier & Scalable Merchant Tiers</span>
                 </div>
                 <p className="benefit-description">{slide.priceStrategy.customerBenefit}</p>
               </div>
             </div>
 
-            {/* 4 Spacious Price Strategy Cards in 2x2 Grid */}
-            <div className="spacious-four-grid mt-2">
-              {slide.priceStrategy.points.map((pt, idx) => (
-                <div key={idx} className="spacious-strategy-card">
-                  <div className="strategy-card-header">
-                    <span className="strategy-pill-badge teal">{pt.badge}</span>
-                    <strong className="strategy-card-heading text-white text-sm">{pt.title}</strong>
+            {/* Two-Column Split: 4 Pricing Strategy Cards on Left, Official Pricing Infographic on Right */}
+            <div className="card-detail-two-col mt-2">
+              <div className="detail-col-features">
+                <div className="col-top-badge proto mb-1.5 flex items-center justify-between">
+                  <div className="flex items-center">
+                    <DollarSign className="w-4 h-4 text-teal-400 mr-1.5" />
+                    <strong className="text-teal-300 text-sm">Tiered Monetization & Inclusivity Architecture:</strong>
                   </div>
-                  <p className="strategy-card-text text-slate-200 text-xs mt-2 leading-relaxed">{pt.desc}</p>
+                  <span className="text-[10px] text-teal-300 bg-teal-500/10 px-2 py-0.5 rounded font-mono font-bold">3 Tiers</span>
                 </div>
-              ))}
-            </div>
+                <div className="features-spacious-grid">
+                  {slide.priceStrategy.points.map((pt, idx) => (
+                    <div key={idx} className="spacious-feature-card proto">
+                      <div className="feature-top-header">
+                        <span className={`feature-dot-badge ${idx === 0 ? 'teal' : idx === 1 ? 'orange' : idx === 2 ? 'gold' : 'cyan'}`}>
+                          {idx === 0 ? '01' : idx === 1 ? '02' : idx === 2 ? '03' : '04'}
+                        </span>
+                        <h4 className="feature-head text-white text-sm font-bold">{pt.title}</h4>
+                      </div>
+                      <p className="feature-body-text text-slate-200 text-xs mt-1.5 leading-relaxed">{pt.desc}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
 
-            {/* Price Summary Bar */}
-            <div className="pricing-summary-bar mt-2.5">
-              <Scale className="w-4 h-4 text-teal-300 mr-1.5 flex-shrink-0" />
-              <span className="text-xs text-slate-200">
-                <strong>Platform Affordability & Transparency:</strong> Ensures basic inclusion is free for traditional shopkeepers, while any future paid promotions will be explicitly labeled.
-              </span>
+              {/* Right: Official Flexible Pricing Plans Infographic */}
+              <div className="detail-col-media">
+                <div className="media-large-frame proto-frame">
+                  <div className="frame-header-strip">
+                    <span className="text-xs font-bold text-teal-300 flex items-center">
+                      <Sparkles className="w-3.5 h-3.5 mr-1 text-gold-400" />
+                      Price Strategy — Flexible Pricing Plans
+                    </span>
+                    <span className="verified-chip text-[10px]">pettahbazaar.lk</span>
+                  </div>
+                  <div className="frame-image-wrap bg-slate-950/90 p-2">
+                    <img 
+                      src={slide.pricingPlansImage} 
+                      alt="Pettah Bazaar Flexible Pricing Plans Infographic" 
+                      className="frame-full-img pricing-plans-img"
+                    />
+                  </div>
+                  <div className="frame-footer-caption">
+                    <span className="text-slate-300 text-xs">
+                      Transparent 3-tier structure: Free 0 LKR (Shoppers), 3,000 LKR (Starter/Growth), 7,500 LKR (Pro Merchant).
+                    </span>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         )}

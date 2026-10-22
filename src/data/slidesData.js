@@ -613,30 +613,31 @@ export const slidesData = [
     title: "Price & Place Strategy (7Ps: 2. Price & 3. Place)",
     subtitle: "Zero-Barrier Access for Adoption and Ubiquitous Digital Distribution",
     tagline: "Find the Shop. Save Your Time.",
+    pricingPlansImage: "/assets/pettah_pricing_strategy_plans.png",
     priceStrategy: {
       elementName: "Price Strategy",
       pNumber: "2. Price",
       icon: "dollar-sign",
-      customerBenefit: "Shoppers enjoy 100% free search with zero fees or paywalls; small family shops gain accessible digital visibility without expensive advertising overheads.",
+      customerBenefit: "Shoppers enjoy 100% free search with zero fees; vendors access tiered plans from 0 LKR free listing to scalable 3,000 LKR growth and 7,500 LKR pro tools.",
       points: [
         {
-          title: "Free Customer Access at Launch",
-          desc: "100% free for all shoppers to search products, browse categories, and view shop location information with no subscription or mandatory paywall.",
-          badge: "Launch Strategy"
+          title: "Free Plan (0 LKR / month)",
+          desc: "100% free for shoppers and basic shop listing. Includes basic product indexing, store search, email support, and standard stall visibility.",
+          badge: "Free Tier"
         },
         {
-          title: "Affordable for Small Pettah Businesses",
-          desc: "Basic directory listing is free for local shopkeepers, ensuring small micro-vendors in deep alleys have equal digital visibility without financial burden.",
-          badge: "Vendor Inclusivity"
+          title: "Starter/Growth Plan (3,000 LKR / mo)",
+          desc: "Most popular monthly tier for active traders. Includes Verified Badge, priority search ranking, product analytics & insights, and discount promo tools.",
+          badge: "Most Popular"
         },
         {
-          title: "Explore Paid Listings (Future Revenue)",
-          desc: "Exploring optional paid shop listings or top-of-category promotional placements as potential future revenue sources once user traffic grows.",
-          badge: "Proposed Revenue"
+          title: "Pro Merchant Plan (7,500 LKR / mo)",
+          desc: "Engineered for established wholesalers. Includes premium analytics & reports, top search placement, unlimited products, homepage banner, and dedicated account manager.",
+          badge: "Pro Merchant"
         },
         {
-          title: "Clearly Labeled Paid Promotions",
-          desc: "Any future promotional or sponsored listings will be transparently labeled (e.g., 'Sponsored Stall') to preserve platform honesty and consumer trust.",
+          title: "Ethical & Transparent Platform",
+          desc: "All plans include secure payments, easy upgrade/downgrade anytime. Paid promotions are clearly labeled to maintain shopper trust.",
           badge: "Ethical Standard"
         }
       ]
