@@ -79,236 +79,50 @@ export default function SlideRenderer({ slide, direction = 'next', spotlightMode
   // Slide 1: Executive Cover Page & Brand Introduction
   if (slide.id === 1) {
     return (
-      <div className={`slide-content cover-page-master cover-new-layout ${animClass} ${spotlightClass}`}>
-
-        {/* LEFT: Full-bleed Hero Image */}
-        <div className="cover-image-panel">
-          <img
-            src={slide.heroImage}
-            alt="Pettah commercial epicenter"
-            className="cover-fullbleed-img"
-          />
-          {/* subtle gradient overlay so it blends into right panel */}
-          <div className="cover-img-fade-right" />
-        </div>
-
-        {/* RIGHT: Brand Identity */}
-        <div className="cover-brand-panel">
-
-          {/* KDU credential pill */}
-          <div className="cover-credential-pill">
-            <Award className="w-3.5 h-3.5 text-primary-flame mr-1.5 flex-shrink-0" />
-            <span>{slide.meta.university} • {slide.meta.module}</span>
-          </div>
-
-          {/* Category chip */}
-          <div className="cover-category-chip mt-2">
-            <Flame className="w-3.5 h-3.5 text-primary-flame mr-1.5 animate-pulse" />
-            <span>PROPOSED DIGITAL SHOP-DISCOVERY PLATFORM • COLOMBO 11</span>
-          </div>
-
-          {/* Main brand name */}
-          <h1 className="cover-brand-title cover-brand-title-new">
-            PETTAH<br />
-            <span className="cover-brand-glow">BAZAAR</span>
-          </h1>
-
-          {/* Tagline */}
-          <div className="cover-tagline-glass cover-tagline-new">
-            <span className="tagline-quote">"</span>
-            <span className="tagline-main">{slide.tagline}</span>
-            <span className="tagline-quote">"</span>
-          </div>
-
-          {/* Deployed URL pill */}
-          <div className="cover-url-pill mt-4">
-            <Globe className="w-3.5 h-3.5 mr-1.5 text-primary-flame" />
-            pettah-bazaar.vercel.app
-          </div>
-
-          {/* Live badge */}
-          <div className="cover-live-badge mt-3">
-            <span className="cover-live-dot" />
-            Live Prototype Tested
-          </div>
-
-          {/* Presenter count */}
-          <div className="cover-team-pill mt-3">
-            <Users className="w-3.5 h-3.5 mr-1.5 text-primary-flame" />
-            10 Presenters • KDU Intake 43 • BSM 12012
-          </div>
-
-          {/* Duration */}
-          <div className="cover-duration-badge mt-2">
-            <Clock className="w-3.5 h-3.5 mr-1.5 text-gold-400" />
-            {slide.meta.duration}
-          </div>
-
-        </div>
-
-      </div>
-    );
-  }
-
-        {/* Background Ambient Glow Elements */}
-        <div className="cover-ambient-glow top-right"></div>
-        <div className="cover-ambient-glow bottom-left"></div>
-
-        {/* Top Academic & Presentation Credential Header */}
-        <div className="cover-top-ribbon">
-          <div className="ribbon-university-group">
-            <div className="univ-crest-badge">
-              <Award className="w-4 h-4 text-primary-flame" />
-              <span>KDU</span>
-            </div>
-            <div className="univ-text-meta">
-              <span className="univ-name">{slide.meta.university}</span>
-              <span className="univ-sub">{slide.meta.faculty} • {slide.meta.degree}</span>
-            </div>
-          </div>
-
-          <div className="ribbon-module-group">
-            <span className="module-badge">
-              <span className="badge-pulse-dot"></span>
-              {slide.meta.module}
-            </span>
-            <span className="duration-badge">
-              <Clock className="w-3.5 h-3.5 text-gold-400 mr-1" />
-              {slide.meta.duration}
-            </span>
-          </div>
-        </div>
-
-        {/* Center Main Stage (Hero Typography + Cinematic Photography Showcase) */}
-        <div className="cover-hero-grid">
-          {/* Left Hero Content */}
-          <div className="cover-hero-text">
-            <div className="cover-category-chip">
-              <Flame className="w-3.5 h-3.5 text-primary-flame mr-1.5 animate-pulse" />
-              <span>PROPOSED DIGITAL SHOP-DISCOVERY PLATFORM • COLOMBO 11</span>
-            </div>
-
-            <h1 className="cover-brand-title">
-              PETTAH<span className="cover-brand-glow">BAZAAR</span>
+      <div className={`slide-content cover-page-minimal ${animClass} ${spotlightClass}`}>
+        {/* LEFT COLUMN: Brand Name & Presenters */}
+        <div className="cover-left-column">
+          {/* Main Website Name - Extra Large */}
+          <div className="cover-brand-header">
+            <h1 className="cover-main-brand-title">
+              PETTAH <span className="brand-accent-text">BAZAAR</span>
             </h1>
+            <p className="cover-main-tagline">
+              "Find the Shop. Save Your Time."
+            </p>
+          </div>
 
-            <div className="cover-tagline-glass">
-              <span className="tagline-quote">“</span>
-              <span className="tagline-main">{slide.tagline}</span>
-              <span className="tagline-quote">”</span>
+          {/* Presenters / Team Member Names */}
+          <div className="cover-presenters-section">
+            <div className="cover-presenters-title">
+              <Users className="w-4 h-4 text-primary-flame mr-2" />
+              <span>PRESENTERS</span>
             </div>
-
-            {/* Point-Wise Executive Takeaway Chips (Replaces verbose paragraph) */}
-            <div className="cover-points-strip stagger-1">
-              {slide.keyHighlights?.map((kh, idx) => (
-                <div key={idx} className="cover-key-point-chip">
-                  <div className="chip-badge-label">{kh.label}</div>
-                  <div className="chip-highlight-val">{kh.val}</div>
-                  <div className="chip-desc">{kh.desc}</div>
+            <div className="cover-names-grid">
+              {teamMembers.map((member, idx) => (
+                <div key={member.id} className="cover-name-badge">
+                  <span className="member-num">{idx + 1 < 10 ? `0${idx + 1}` : idx + 1}</span>
+                  <span className="member-name">{member.name}</span>
                 </div>
               ))}
             </div>
-
-            {/* Key Platform Value Badges */}
-            <div className="cover-stats-row">
-              <div className="cover-stat-card">
-                <MapPin className="w-4 h-4 text-cyan-400 mb-0.5" />
-                <div className="stat-val">11</div>
-                <div className="stat-lbl">Micro-Streets Mapped</div>
-              </div>
-
-              <div className="cover-stat-card">
-                <Store className="w-4 h-4 text-gold-400 mb-0.5" />
-                <div className="stat-val">28+</div>
-                <div className="stat-lbl">Verified Stalls Active</div>
-              </div>
-
-              <div className="cover-stat-card">
-                <Clock className="w-4 h-4 text-emerald-400 mb-0.5" />
-                <div className="stat-val">&lt; 3 Min</div>
-                <div className="stat-lbl">Discovery Speed</div>
-              </div>
-
-              <div className="cover-stat-card">
-                <Globe className="w-4 h-4 text-primary-flame mb-0.5" />
-                <div className="stat-val">Zero LKR</div>
-                <div className="stat-lbl">Merchant Barrier</div>
-              </div>
-            </div>
-          </div>
-
-          {/* Right Hero Visual Showcase */}
-          <div className="cover-hero-visual">
-            <div className="cover-photo-frame">
-              <img 
-                src={slide.heroImage} 
-                alt="Pettah commercial epicenter crowd in Colombo" 
-                className="cover-hero-img"
-              />
-
-              {/* Floating Live Badges */}
-              <div className="cover-float-chip chip-top-right animate-float">
-                <div className="chip-indicator-dot green"></div>
-                <span>Live Prototype Tested</span>
-              </div>
-
-              <div className="cover-float-chip chip-bottom-left animate-float-delay">
-                <MapPin className="w-3.5 h-3.5 text-cyan-400 mr-1" />
-                <span>2nd Cross & Keyzer St</span>
-              </div>
-
-              <div className="cover-photo-overlay">
-                <div className="photo-credit-text">
-                  <Sparkles className="w-3.5 h-3.5 text-gold-400 mr-1.5" />
-                  <span>Field Research Photography • Colombo 11 Commercial Epicenter</span>
-                </div>
-                <div className="deployed-link-pill">
-                  pettah-bazaar.vercel.app
-                </div>
-              </div>
-            </div>
           </div>
         </div>
 
-        {/* Bottom Executive Presenter Deck (All 10 Team Members) */}
-        <div className="cover-team-deck">
-          <div className="team-deck-header">
-            <div className="deck-title">
-              <Users className="w-4 h-4 text-primary-flame mr-1.5" />
-              <span>PROJECT EXECUTIVE TEAM — 10 PRESENTERS (INTAKE 43 — BSM 12012):</span>
-            </div>
-            <div className="deck-meta">
-              BSc (Hons) in Management • KDU Faculty of Management, Social Sciences & Humanities
+        {/* RIGHT COLUMN: Large Hero Image (dakunu paththe) */}
+        <div className="cover-right-image-column">
+          <div className="cover-hero-image-wrapper">
+            <img
+              src={slide.heroImage}
+              alt="Pettah Commercial Epicenter"
+              className="cover-hero-image"
+            />
+            <div className="cover-image-overlay-glow" />
+            <div className="cover-image-caption">
+              <MapPin className="w-3.5 h-3.5 text-primary-flame mr-1.5 flex-shrink-0" />
+              <span>Pettah Commercial District • Colombo 11</span>
             </div>
           </div>
-
-          <div className="cover-presenters-grid">
-            {teamMembers.map((m) => (
-              <div 
-                key={m.id} 
-                className={`presenter-card-cover ${hoveredMember === m.id ? 'active' : ''}`}
-                onMouseEnter={() => setHoveredMember(m.id)}
-                onMouseLeave={() => setHoveredMember(null)}
-                title={`${m.role}: ${m.focus}`}
-              >
-                <div className="presenter-num-chip">0{m.id}</div>
-                <div className="presenter-info">
-                  <div className="presenter-name-cover">{m.name}</div>
-                  <div className="presenter-role-cover">{m.focus}</div>
-                </div>
-              </div>
-            ))}
-          </div>
-
-          {/* Live Hover Info Cue */}
-          {hoveredMember && (
-            <div className="cover-hover-cue animate-fade-in">
-              <Sparkles className="w-3.5 h-3.5 text-gold-400 mr-1.5 flex-shrink-0" />
-              <span>
-                <strong>{teamMembers.find(m => m.id === hoveredMember)?.name}</strong>: {teamMembers.find(m => m.id === hoveredMember)?.role} — <em>{teamMembers.find(m => m.id === hoveredMember)?.focus}</em>
-              </span>
-            </div>
-          )}
         </div>
       </div>
     );
