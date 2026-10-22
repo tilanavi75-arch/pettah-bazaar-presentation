@@ -9,6 +9,27 @@
   overflow: hidden;
 }
 
+.presentation-app::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: 
+    radial-gradient(circle at 50% 30%, rgba(20, 12, 6, 0.45) 0%, rgba(8, 8, 10, 0.95) 100%),
+    url('/assets/pettah_real_cross_street_alley.jpg');
+  background-size: cover;
+  background-position: center 30%;
+  background-repeat: no-repeat;
+  opacity: 0.06;
+  filter: blur(3px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.presentation-app > * {
+  position: relative;
+  z-index: 1;
+}
+
 .presentation-app.is-fullscreen {
   cursor: default;
 }
@@ -325,6 +346,23 @@
   flex-direction: column;
 }
 
+.slide-card-container::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: 
+    radial-gradient(ellipse at 50% 35%, rgba(15, 23, 42, 0.6) 0%, rgba(8, 13, 24, 0.92) 100%),
+    url('/assets/pettah_real_street_crowd.jpg');
+  background-size: cover;
+  background-position: center 25%;
+  background-repeat: no-repeat;
+  opacity: 0.12;
+  filter: saturate(1.15) contrast(1.1);
+  pointer-events: none;
+  z-index: 0;
+  transition: opacity 0.3s ease;
+}
+
 /* -------------------------------------------------------------
    SLIDE CONTENT COMMON TYPOGRAPHY & HEADER
 ------------------------------------------------------------- */
@@ -337,6 +375,7 @@
   position: relative;
   overflow: hidden;
   animation: slideFadeIn 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 1;
 }
 
 @keyframes slideFadeIn {
