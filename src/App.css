@@ -3903,30 +3903,30 @@
   display: grid;
   grid-template-columns: 1fr auto 1fr;
   align-items: center;
-  gap: 1rem;
+  gap: 0.75rem;
   background: var(--bg-pitch-card);
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-sm);
-  padding: 0.85rem 1.2rem;
-  margin-bottom: 0.9rem;
+  padding: 0.35rem 0.85rem;
+  margin-bottom: 0.35rem;
 }
 
 .friction-side {
   display: flex;
   flex-direction: column;
-  gap: 0.4rem;
+  gap: 0.2rem;
 }
 
 .friction-label {
   display: flex;
   align-items: center;
-  font-size: 0.76rem;
+  font-size: 0.72rem;
   font-weight: 700;
   color: #F1F5F9;
 }
 
 .friction-meter-wrap {
-  height: 24px;
+  height: 20px;
   background: rgba(0, 0, 0, 0.4);
   border-radius: 9999px;
   overflow: hidden;
@@ -3938,8 +3938,8 @@
   height: 100%;
   display: flex;
   align-items: center;
-  padding: 0 0.75rem;
-  font-size: 0.68rem;
+  padding: 0 0.65rem;
+  font-size: 0.65rem;
   font-weight: 700;
   white-space: nowrap;
   transition: width 0.8s cubic-bezier(0.16, 1, 0.3, 1);
@@ -7507,6 +7507,35 @@
 /* =============================================================
    SLIDE 3: PROBLEM DILEMMAS 4 COLUMNS
    ============================================================= */
+@media (max-height: 700px) {
+  .slide-content.slide-problem {
+    padding: 0.4rem 1.2rem;
+  }
+  .slide-content.slide-problem .slide-header-bar {
+    margin-bottom: 0.2rem;
+    padding-bottom: 0.2rem;
+  }
+  .slide-content.slide-problem .slide-heading {
+    font-size: 1.25rem;
+  }
+  .slide-content.slide-problem .slide-subheading {
+    font-size: 0.74rem;
+    margin-top: 0.05rem;
+  }
+  .slide-content.slide-problem .presenter-tag-box {
+    font-size: 0.68rem;
+    padding: 0.18rem 0.5rem;
+  }
+  .slide-content.slide-problem .subtab-pill-btn {
+    padding: 0.22rem 0.55rem;
+    font-size: 0.70rem;
+  }
+  .slide-content.slide-problem .friction-meter-card {
+    padding: 0.18rem 0.65rem;
+    margin-bottom: 0.15rem;
+  }
+}
+
 .problem-dilemmas-4col {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -7516,19 +7545,274 @@
 }
 
 .problem-dilemma-card {
-  background: var(--bg-pitch-card);
-  border: 1px solid rgba(239, 68, 68, 0.3);
-  border-radius: var(--radius-sm);
-  padding: 0.85rem 0.95rem;
+  background: linear-gradient(155deg, rgba(32, 20, 24, 0.82) 0%, rgba(16, 11, 14, 0.96) 100%);
+  border: 1px solid rgba(239, 68, 68, 0.32);
+  border-radius: 10px;
+  padding: 0.45rem 0.65rem;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: flex-start;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(14px);
+  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.problem-dilemma-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #EF4444, #F87171);
 }
 
 .problem-dilemma-card:hover {
   border-color: #EF4444;
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(239, 68, 68, 0.2);
+  box-shadow: 0 10px 24px rgba(239, 68, 68, 0.28);
+}
+
+.problem-item-header {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  margin-bottom: 0.12rem;
+}
+
+.problem-badge-row {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.problem-num-pill {
+  font-family: var(--font-heading, 'Outfit', sans-serif);
+  font-size: 0.64rem;
+  font-weight: 800;
+  padding: 0.1rem 0.4rem;
+  border-radius: 4px;
+  background: rgba(239, 68, 68, 0.18);
+  color: #F87171;
+  border: 1px solid rgba(239, 68, 68, 0.38);
+  line-height: 1;
+}
+
+.problem-tag {
+  font-size: 0.63rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 0.1rem 0.4rem;
+  border-radius: 4px;
+  background: rgba(239, 68, 68, 0.12);
+  color: #FCA5A5;
+  border: 1px solid rgba(239, 68, 68, 0.25);
+  line-height: 1;
+}
+
+.problem-item-title {
+  font-family: var(--font-heading, 'Outfit', sans-serif);
+  font-size: 0.80rem;
+  font-weight: 700;
+  color: #FFFFFF;
+  line-height: 1.15;
+  margin: 0.03rem 0 0 0;
+  letter-spacing: -0.01em;
+}
+
+/* Slide 3 Dilemma Point List Typography */
+.problem-dilemma-card .presentation-point-list {
+  margin: 0.15rem 0 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.18rem;
+}
+
+.problem-dilemma-card .presentation-point-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.38rem;
+  font-size: 0.68rem;
+  line-height: 1.25;
+  font-weight: 450;
+  color: #F1F5F9;
+  padding: 0.03rem 0.08rem;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+}
+
+.problem-dilemma-card .presentation-point-item:hover {
+  background: rgba(255, 255, 255, 0.05);
+  color: #FFFFFF;
+  transform: translateX(3px);
+}
+
+.problem-dilemma-card .point-marker-dot {
+  width: 5px;
+  height: 5px;
+  margin-top: 0.3rem;
+  box-shadow: 0 0 6px rgba(239, 68, 68, 0.8);
+  flex-shrink: 0;
+}
+
+.problem-dilemma-card .point-item-text {
+  font-size: 0.70rem;
+  line-height: 1.28;
+  color: #F8FAFC;
+}
+
+/* Fullscreen / High-Resolution Viewport Scaling */
+@media (min-height: 750px) {
+  .friction-meter-card {
+    padding: 0.55rem 1rem;
+    margin-bottom: 0.65rem;
+  }
+  .friction-meter-wrap {
+    height: 22px;
+  }
+  .friction-label {
+    font-size: 0.80rem;
+  }
+  .meter-bar {
+    font-size: 0.72rem;
+  }
+
+  .problem-dilemmas-4col {
+    gap: 0.85rem;
+  }
+
+  .problem-dilemma-card {
+    padding: 0.95rem 1.05rem;
+    border-radius: 12px;
+  }
+
+  .problem-item-header {
+    gap: 0.35rem;
+    margin-bottom: 0.3rem;
+  }
+
+  .problem-badge-row {
+    gap: 0.45rem;
+  }
+
+  .problem-num-pill {
+    font-size: 0.76rem;
+    padding: 0.18rem 0.55rem;
+    border-radius: 5px;
+  }
+
+  .problem-tag {
+    font-size: 0.72rem;
+    padding: 0.18rem 0.55rem;
+    border-radius: 5px;
+  }
+
+  .problem-item-title {
+    font-size: 1.12rem;
+    line-height: 1.25;
+    margin-top: 0.12rem;
+  }
+
+  .problem-dilemma-card .presentation-point-list {
+    margin: 0.5rem 0 0 0;
+    gap: 0.5rem;
+  }
+
+  .problem-dilemma-card .presentation-point-item {
+    gap: 0.55rem;
+    font-size: 0.90rem;
+    line-height: 1.42;
+    padding: 0.12rem 0.25rem;
+  }
+
+  .problem-dilemma-card .point-marker-dot {
+    width: 7px;
+    height: 7px;
+    margin-top: 0.42rem;
+    box-shadow: 0 0 8px rgba(239, 68, 68, 0.9);
+  }
+
+  .problem-dilemma-card .point-item-text {
+    font-size: 0.90rem;
+    line-height: 1.42;
+  }
+}
+
+.is-fullscreen .friction-meter-card {
+  padding: 0.55rem 1rem;
+  margin-bottom: 0.65rem;
+}
+.is-fullscreen .friction-meter-wrap {
+  height: 22px;
+}
+.is-fullscreen .friction-label {
+  font-size: 0.80rem;
+}
+.is-fullscreen .meter-bar {
+  font-size: 0.72rem;
+}
+
+.is-fullscreen .problem-dilemmas-4col {
+  gap: 0.85rem;
+}
+
+.is-fullscreen .problem-dilemma-card {
+  padding: 0.95rem 1.05rem;
+  border-radius: 12px;
+}
+
+.is-fullscreen .problem-item-header {
+  gap: 0.35rem;
+  margin-bottom: 0.3rem;
+}
+
+.is-fullscreen .problem-badge-row {
+  gap: 0.45rem;
+}
+
+.is-fullscreen .problem-num-pill {
+  font-size: 0.76rem;
+  padding: 0.18rem 0.55rem;
+  border-radius: 5px;
+}
+
+.is-fullscreen .problem-tag {
+  font-size: 0.72rem;
+  padding: 0.18rem 0.55rem;
+  border-radius: 5px;
+}
+
+.is-fullscreen .problem-item-title {
+  font-size: 1.12rem;
+  line-height: 1.25;
+  margin-top: 0.12rem;
+}
+
+.is-fullscreen .problem-dilemma-card .presentation-point-list {
+  margin: 0.5rem 0 0 0;
+  gap: 0.5rem;
+}
+
+.is-fullscreen .problem-dilemma-card .presentation-point-item {
+  gap: 0.55rem;
+  font-size: 0.90rem;
+  line-height: 1.42;
+  padding: 0.12rem 0.25rem;
+}
+
+.is-fullscreen .problem-dilemma-card .point-marker-dot {
+  width: 7px;
+  height: 7px;
+  margin-top: 0.42rem;
+  box-shadow: 0 0 8px rgba(239, 68, 68, 0.9);
+}
+
+.is-fullscreen .problem-dilemma-card .point-item-text {
+  font-size: 0.90rem;
+  line-height: 1.42;
 }
 
 /* =============================================================

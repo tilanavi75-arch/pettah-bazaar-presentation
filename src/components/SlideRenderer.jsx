@@ -353,12 +353,15 @@ export default function SlideRenderer({ slide, direction = 'next', spotlightMode
               </div>
             </div>
 
-            <div className="problem-dilemmas-4col mt-1 flex-1 min-h-0">
+            <div className="problem-dilemmas-4col mt-1.5 flex-1 min-h-0">
               {slide.problemPoints.map((pt, idx) => (
                 <div key={idx} className="problem-dilemma-card">
                   <div className="problem-item-header">
-                    <span className="problem-tag">{pt.tag}</span>
-                    <h4 className="problem-item-title text-white font-bold text-xs mt-1">{pt.title}</h4>
+                    <div className="problem-badge-row">
+                      <span className="problem-num-pill">0{idx + 1}</span>
+                      <span className="problem-tag">{pt.tag}</span>
+                    </div>
+                    <h4 className="problem-item-title">{pt.title}</h4>
                   </div>
                   <PointList points={pt.points || [pt.desc]} color="red" />
                 </div>
