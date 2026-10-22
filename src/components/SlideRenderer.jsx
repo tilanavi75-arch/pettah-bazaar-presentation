@@ -1727,26 +1727,26 @@ export default function SlideRenderer({ slide, direction = 'next', spotlightMode
                 </div>
               </div>
 
-              {/* Right: Pettah Alleys Context Image */}
+              {/* Right: Official Mobile App & Campaign Poster */}
               <div className="detail-col-media">
                 <div className="media-large-frame proposed-frame">
                   <div className="frame-header-strip orange-strip">
                     <span className="text-xs font-bold text-orange-300 flex items-center">
-                      <MapPin className="w-3.5 h-3.5 mr-1 text-orange-400" />
-                      Colombo 11 Micro-Alleys Context
+                      <Sparkles className="w-3.5 h-3.5 mr-1 text-orange-400" />
+                      Official Platform & Mobile Campaign
                     </span>
-                    <span className="verified-chip text-[10px]">Future Target</span>
+                    <span className="verified-chip text-[10px]">pettah-bazaar.vercel.app</span>
                   </div>
-                  <div className="frame-image-wrap">
+                  <div className="frame-image-wrap bg-slate-950/90 flex items-center justify-center p-1.5">
                     <img 
-                      src={slide.marketImage} 
-                      alt="Pettah Cross Street Alley" 
-                      className="frame-full-img"
+                      src={slide.campaignPromoImage || slide.marketImage} 
+                      alt="Pettah Bazaar - Find the shop, save you Time Mobile Campaign" 
+                      className="frame-full-img promo-campaign-poster-img"
                     />
                   </div>
                   <div className="frame-footer-caption">
                     <span className="text-slate-300 text-xs">
-                      Dense pedestrian corridors where future indoor foot directions will be applied.
+                      “Find the shop, save you Time” • Live PWA web app on pettah-bazaar.vercel.app with instant QR access.
                     </span>
                   </div>
                 </div>
@@ -1769,10 +1769,41 @@ export default function SlideRenderer({ slide, direction = 'next', spotlightMode
   // Slide 13: 2. Price & 3. Place Strategy (Marketing Mix 7Ps — Part 2: Slidable Cards)
   if (slide.id === 13) {
     const streets = {
-      '1st': { name: "1st Cross Street", specialty: "Electronics, Microcontrollers, Audio & Mobile Tech", shops: "8 Verified Tech Stalls" },
-      '2nd': { name: "2nd Cross Street", specialty: "Textiles, Silk Sarees, Center Point & Wholesale Fabric", shops: "12 Verified Saree Stalls" },
-      'bankshall': { name: "Bankshall Street", specialty: "Pure Ceylon Spices, Cinnamon, Cardamom & Ayurvedic Herbs", shops: "6 Spice Wholesalers" },
-      'keyzer': { name: "Keyzer Street", specialty: "Hardware, Electrical Tools & Raw Manufacturing Supplies", shops: "9 Hardware Emporiums" }
+      '1st': { 
+        name: "1st Cross Street", 
+        zone: "Electronics & Tech Alley",
+        specialty: "Electronics, microcontrollers, Arduino components, audio amplifiers, smartphone accessories & hardware repair tools.", 
+        shops: "8 Verified Tech Stalls",
+        landmarks: "3-min walk from Main St; dense tech cluster"
+      },
+      '2nd': { 
+        name: "2nd Cross Street", 
+        zone: "Textiles & Saree Center",
+        specialty: "Silk sarees, bridal fabrics, center point wholesale textiles, tailoring materials & cotton garments.", 
+        shops: "12 Verified Saree Stalls",
+        landmarks: "Famous central textile corridor"
+      },
+      'bankshall': { 
+        name: "Bankshall Street", 
+        zone: "Ceylon Spices & Herbs",
+        specialty: "Pure Ceylon cinnamon, cardamom, cloves, black pepper, wholesale bulk spices & Ayurvedic medicinal herbs.", 
+        shops: "6 Spice Wholesalers",
+        landmarks: "Near Colombo Port gate; spice route"
+      },
+      'keyzer': { 
+        name: "Keyzer Street", 
+        zone: "Heavy Tools & Trade Hub",
+        specialty: "Power tools, heavy electrical hardware, industrial fixtures, machinery parts & metal fabrication supplies.", 
+        shops: "9 Hardware Emporiums",
+        landmarks: "Near Sea St junction; heavy trade supply"
+      },
+      'main': {
+        name: "Main Street",
+        zone: "Arterial Retail Corridor",
+        specialty: "Footwear, luggage, fashion retail, umbrellas, leather goods & everyday consumer merchandise.",
+        shops: "15 Verified Retail Stores",
+        landmarks: "Front promenade facing Fort Station"
+      }
     };
 
     return (
@@ -1922,56 +1953,89 @@ export default function SlideRenderer({ slide, direction = 'next', spotlightMode
             <div className="card-detail-two-col mt-2">
               {/* Left: 4 Place Strategy Cards */}
               <div className="detail-col-features">
+                <div className="col-top-badge proto mb-1.5 flex items-center justify-between">
+                  <div className="flex items-center">
+                    <MapPin className="w-4 h-4 text-teal-400 mr-1.5" />
+                    <strong className="text-teal-300 text-sm">Distribution Architecture & Accessibility:</strong>
+                  </div>
+                  <span className="text-[10px] text-teal-300 bg-teal-500/10 px-2 py-0.5 rounded font-mono font-bold">4 Pillars</span>
+                </div>
                 <div className="features-spacious-grid">
                   {slide.placeStrategy.points.map((pt, idx) => (
-                    <div key={idx} className="spacious-strategy-card">
-                      <div className="strategy-card-header">
-                        <span className="strategy-pill-badge teal">{pt.badge}</span>
-                        <strong className="strategy-card-heading text-white text-sm">{pt.title}</strong>
+                    <div key={idx} className="spacious-feature-card proto">
+                      <div className="feature-top-header">
+                        <span className={`feature-dot-badge ${idx === 0 ? 'teal' : idx === 1 ? 'orange' : idx === 2 ? 'gold' : 'cyan'}`}>
+                          {idx === 0 ? '01' : idx === 1 ? '02' : idx === 2 ? '03' : '04'}
+                        </span>
+                        <h4 className="feature-head text-white text-sm font-bold">{pt.title}</h4>
                       </div>
-                      <p className="strategy-card-text text-slate-200 text-xs mt-1.5 leading-relaxed">{pt.desc}</p>
+                      <p className="feature-body-text text-slate-200 text-xs mt-1.5 leading-relaxed">{pt.desc}</p>
                     </div>
                   ))}
                 </div>
               </div>
 
-              {/* Right: Interactive Street Specialty Explorer & Traffic Context */}
+              {/* Right: Interactive Pettah Micro-District Specialty Explorer (Photo slot removed) */}
               <div className="detail-col-media">
-                <div className="street-micro-selector">
-                  <div className="text-xs font-semibold text-slate-200 mb-1.5 flex items-center">
-                    <Compass className="w-3.5 h-3.5 text-teal-300 mr-1.5" />
-                    Interactive Pettah Micro-District Specialty Explorer:
-                  </div>
-                  <div className="flex flex-wrap gap-1.5">
-                    {Object.keys(streets).map((key) => (
-                      <button
-                        key={key}
-                        className={`micro-street-btn ${selectedStreet === key ? 'active' : ''}`}
-                        onClick={() => setSelectedStreet(key)}
-                      >
-                        {streets[key].name}
-                      </button>
-                    ))}
-                  </div>
-                  <div className="micro-street-details mt-2 p-2.5 rounded bg-slate-900/90 border border-teal-500/35">
-                    <div className="font-bold text-teal-300 text-sm">{streets[selectedStreet]?.name}:</div>
-                    <div className="text-slate-200 text-xs mt-1">{streets[selectedStreet]?.specialty}</div>
-                    <span className="shops-count-badge mt-1.5 inline-block text-[11px] text-orange-300 font-semibold">
-                      {streets[selectedStreet]?.shops}
+                <div className="media-large-frame proto-frame flex flex-col h-full justify-between">
+                  <div className="frame-header-strip">
+                    <span className="text-xs font-bold text-teal-300 flex items-center">
+                      <Compass className="w-3.5 h-3.5 mr-1 text-gold-400" />
+                      Interactive Pettah Micro-District Specialty Explorer
                     </span>
+                    <span className="verified-chip text-[10px]">Colombo 11 Grid</span>
                   </div>
-                </div>
 
-                <div className="place-traffic-photo-frame mt-2 flex-1 min-h-0">
-                  <div className="traffic-photo-inner">
-                    <img 
-                      src={slide.marketImage} 
-                      alt="Colombo Traffic & Lotus Tower" 
-                      className="traffic-photo-img"
-                    />
-                    <div className="traffic-overlay-badge">
-                      <MapPin className="w-3.5 h-3.5 text-primary-flame mr-1 flex-shrink-0" />
-                      <span>Colombo 11 Commercial Gateway & Dense Traffic Hub</span>
+                  <div className="street-explorer-hub-body p-3 flex-1 flex flex-col justify-between bg-slate-950/80">
+                    <div>
+                      <div className="text-[11px] font-semibold text-slate-300 mb-2 flex items-center justify-between">
+                        <span>Select Commercial Street:</span>
+                        <span className="text-teal-400 text-[10px]">Click street to inspect cluster</span>
+                      </div>
+                      <div className="flex flex-wrap gap-1.5">
+                        {Object.keys(streets).map((key) => (
+                          <button
+                            key={key}
+                            className={`micro-street-btn ${selectedStreet === key ? 'active' : ''}`}
+                            onClick={() => setSelectedStreet(key)}
+                          >
+                            {streets[key].name}
+                          </button>
+                        ))}
+                      </div>
+                    </div>
+
+                    {/* Active Street Detailed Showcase */}
+                    <div className="street-active-card p-3 rounded-lg bg-slate-900/90 border border-teal-500/40 shadow-inner my-2">
+                      <div className="flex items-center justify-between mb-1.5">
+                        <div className="flex items-center gap-1.5">
+                          <MapPin className="w-4 h-4 text-primary-flame flex-shrink-0" />
+                          <h4 className="font-bold text-teal-300 text-sm tracking-wide">{streets[selectedStreet]?.name}</h4>
+                        </div>
+                        <span className="text-[10px] uppercase font-bold text-teal-300 bg-teal-500/15 px-2 py-0.5 rounded border border-teal-500/30">
+                          {streets[selectedStreet]?.zone}
+                        </span>
+                      </div>
+                      <p className="text-slate-200 text-xs leading-relaxed">
+                        {streets[selectedStreet]?.specialty}
+                      </p>
+                      <div className="flex items-center justify-between mt-2 pt-2 border-t border-slate-800 text-[11px]">
+                        <span className="text-orange-300 font-semibold flex items-center">
+                          <Store className="w-3.5 h-3.5 mr-1 text-orange-400" />
+                          {streets[selectedStreet]?.shops}
+                        </span>
+                        <span className="text-slate-400 italic text-[10px]">
+                          📍 {streets[selectedStreet]?.landmarks}
+                        </span>
+                      </div>
+                    </div>
+
+                    {/* Zero-barrier distribution highlight */}
+                    <div className="street-channel-footer p-2.5 rounded bg-teal-950/40 border border-teal-500/25 flex items-center gap-2">
+                      <Smartphone className="w-4 h-4 text-teal-400 flex-shrink-0" />
+                      <span className="text-[11px] text-slate-300 leading-snug">
+                        <strong>Lightweight Web App (PWA):</strong> Accessible 24/7 on any mobile browser with zero app installation overhead for on-the-go Pettah shoppers.
+                      </span>
                     </div>
                   </div>
                 </div>

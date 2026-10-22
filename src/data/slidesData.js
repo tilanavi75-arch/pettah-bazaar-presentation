@@ -600,6 +600,7 @@ export const slidesData = [
     },
     prototypeImage: "/assets/pettah_real_prototype_screen.png",
     marketImage: "/assets/pettah_real_cross_street_alley.jpg",
+    campaignPromoImage: "/assets/pettah_find_shop_save_time_promo.png",
     speakerNotes: "Respected lecturer and colleagues, I am Devindi, presenting the Marketing Mix 7Ps for PETTAH BAZAAR. On Slide 1, we focus on Product Strategy. PETTAH BAZAAR is a proposed digital platform that solves retail search friction by connecting shoppers directly to shops based on the products they need. The primary customer value is convenience: shoppers save time instead of wandering through Colombo 11. Importantly, as university researchers, we clearly distinguish what is already operational in our working prototype—such as product-based search, shop names, street locations, and categorized browsing—from our proposed future features, such as verified shop badges, direct WhatsApp contact, live opening hours, and indoor foot navigation."
   },
   {

@@ -9469,46 +9469,51 @@
   object-position: center 35%;
 }
 
-/* Slide 13 Place: Traffic photo frame */
-.place-traffic-photo-frame {
-  border-radius: 12px;
-  overflow: hidden;
-  border: 1px solid rgba(255, 85, 0, 0.4);
-  background: #080D1A;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
-  display: flex;
-  flex-direction: column;
-  height: 160px;
-}
-
-.traffic-photo-inner {
-  position: relative;
+.proposed-frame .promo-campaign-poster-img {
   width: 100%;
   height: 100%;
-}
-
-.traffic-photo-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center 55%;
-}
-
-.traffic-overlay-badge {
-  position: absolute;
-  bottom: 8px;
-  left: 8px;
-  right: 8px;
-  background: rgba(11, 16, 28, 0.88);
-  backdrop-filter: blur(8px);
-  padding: 0.35rem 0.65rem;
+  object-fit: contain;
+  background: #040711;
   border-radius: 6px;
-  border: 1px solid rgba(255, 85, 0, 0.3);
-  font-size: 0.74rem;
-  font-weight: 700;
+}
+
+/* Slide 13 Place: Micro-street buttons & explorer hub */
+.micro-street-btn {
+  background: rgba(15, 23, 42, 0.85);
+  border: 1px solid rgba(20, 184, 166, 0.35);
+  color: #CBD5E1;
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 0.32rem 0.6rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.micro-street-btn:hover {
+  background: rgba(20, 184, 166, 0.15);
+  border-color: rgba(20, 184, 166, 0.6);
   color: #FFFFFF;
-  display: flex;
-  align-items: center;
+}
+
+.micro-street-btn.active {
+  background: linear-gradient(135deg, rgba(20, 184, 166, 0.3) 0%, rgba(13, 148, 136, 0.5) 100%);
+  border-color: #14B8A6;
+  color: #FFFFFF;
+  box-shadow: 0 0 10px rgba(20, 184, 166, 0.35);
+}
+
+.street-active-card {
+  border-radius: 8px;
+  border: 1px solid rgba(20, 184, 166, 0.35);
+  background: rgba(15, 23, 42, 0.95);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+}
+
+.street-channel-footer {
+  border-radius: 6px;
+  border: 1px solid rgba(20, 184, 166, 0.25);
+  background: rgba(4, 47, 46, 0.4);
 }
 
 /* Slide 14 Promotion: Mockup hand frame */
@@ -9778,7 +9783,6 @@
   .feature-body-text { font-size: 0.88rem; line-height: 1.5; }
   .frame-full-img { max-height: 340px; }
   .showcase-img { max-height: 280px; }
-  .place-traffic-photo-frame { height: 210px; }
   .promotion-mockup-frame { height: 210px; }
   .mockup-hand-img { max-height: 195px; }
   .ethics-title { font-size: 1.2rem; }
@@ -9798,7 +9802,6 @@
 .is-fullscreen .feature-body-text { font-size: 0.88rem; line-height: 1.5; }
 .is-fullscreen .frame-full-img { max-height: 340px; }
 .is-fullscreen .showcase-img { max-height: 280px; }
-.is-fullscreen .place-traffic-photo-frame { height: 210px; }
 .is-fullscreen .promotion-mockup-frame { height: 210px; }
 .is-fullscreen .mockup-hand-img { max-height: 195px; }
 .is-fullscreen .ethics-title { font-size: 1.2rem; }
