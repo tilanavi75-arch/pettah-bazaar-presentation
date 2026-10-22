@@ -9050,124 +9050,760 @@
 }
 
 /* =============================================================
-   SLIDE 20: GRAND FINALE Q&A, ROSTER & RUBRIC
+   SLIDES 8 TO 19: ADVANCED TYPOGRAPHY, CARD STYLING & IMAGE ALIGNMENT
    ============================================================= */
-.thank-you-roster-box {
-  background: var(--bg-pitch-card);
-  border: 1px solid var(--border-subtle);
-  border-radius: var(--radius-md);
-  padding: 0.65rem 0.85rem;
+
+/* --- SLIDE 8: THEORY CARDS & TABLE --- */
+.theory-card {
+  background: linear-gradient(155deg, rgba(22, 30, 48, 0.85) 0%, rgba(12, 17, 30, 0.95) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 1rem 1.15rem;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.roster-header-bar {
+.theory-card:hover {
+  border-color: rgba(255, 85, 0, 0.5);
+  transform: translateY(-3px);
+  box-shadow: 0 12px 30px rgba(255, 85, 0, 0.15);
+}
+
+.theory-card-header {
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  gap: 0.75rem;
   margin-bottom: 0.5rem;
 }
 
-.roster-heading {
-  font-family: var(--font-heading);
-  font-size: 0.78rem;
-  font-weight: 700;
-  color: #FFFFFF;
-}
-
-.roster-intake-tag {
-  font-size: 0.65rem;
-  color: var(--color-gold-400);
-}
-
-.thank-you-roster-grid {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 0.45rem;
-}
-
-.roster-member-card {
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.06);
-  border-radius: 6px;
-  padding: 0.35rem 0.45rem;
-  display: flex;
-  align-items: center;
-  gap: 0.45rem;
-}
-
-.member-avatar-chip {
-  width: 22px;
-  height: 22px;
-  border-radius: 50%;
-  background: rgba(255, 85, 0, 0.2);
-  color: #FF8533;
-  font-size: 0.65rem;
-  font-weight: 800;
+.theory-icon-wrap {
+  width: 38px;
+  height: 38px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
 }
 
-.member-name {
-  font-size: 0.72rem;
-  font-weight: 700;
+.theory-concept-name {
+  font-family: var(--font-heading);
+  font-size: 1.05rem;
+  font-weight: 800;
   color: #FFFFFF;
-  display: block;
+  line-height: 1.25;
 }
 
-.member-focus {
-  font-size: 0.58rem;
-  color: var(--color-text-muted);
-  display: block;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+.theory-author-pill {
+  font-size: 0.68rem;
+  font-weight: 700;
+  color: #FBBF24;
+  background: rgba(245, 158, 11, 0.15);
+  padding: 0.12rem 0.5rem;
+  border-radius: 4px;
+  border: 1px solid rgba(245, 158, 11, 0.3);
+  display: inline-block;
+  margin-top: 0.15rem;
 }
 
-.thank-you-toolbar {
+.theory-def-box {
+  background: rgba(6, 182, 212, 0.06);
+  padding: 0.6rem 0.8rem;
+  border-radius: 8px;
+  border-left: 3px solid #06B6D4;
+  border: 1px solid rgba(6, 182, 212, 0.2);
+  border-left-width: 3px;
+  margin-bottom: 0.6rem;
+}
+
+.def-label {
+  font-size: 0.68rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: #22D3EE;
+  display: block;
+  letter-spacing: 0.04em;
+  margin-bottom: 0.2rem;
+}
+
+.def-text {
+  font-size: 0.82rem;
+  color: #E2E8F0;
+  line-height: 1.42;
+}
+
+.theory-app-box {
+  background: rgba(255, 85, 0, 0.08);
+  padding: 0.6rem 0.8rem;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 85, 0, 0.25);
+  border-left: 3px solid #FF5500;
+}
+
+.app-label {
+  font-size: 0.68rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: #FF8533;
+  display: block;
+  letter-spacing: 0.04em;
+  margin-bottom: 0.3rem;
+}
+
+.kotler-value-flow-strip {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 0.65rem;
-}
-
-.celebrate-action-btn {
-  background: linear-gradient(135deg, #FF5500, #F59E0B);
-  color: #FFFFFF;
-  font-family: var(--font-heading);
-  font-size: 0.74rem;
+  background: rgba(15, 23, 42, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
+  padding: 0.45rem 1rem;
+  font-size: 0.78rem;
   font-weight: 700;
-  padding: 0.4rem 0.85rem;
-  border-radius: 6px;
-  border: none;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  box-shadow: 0 4px 14px rgba(255, 85, 0, 0.4);
+  color: #94A3B8;
 }
 
-.view-academic-btn {
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  color: #FFFFFF;
-  font-size: 0.72rem;
-  font-weight: 600;
-  padding: 0.4rem 0.75rem;
-  border-radius: 6px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
+.kotler-value-flow-strip .flow-step {
+  padding: 0.2rem 0.6rem;
+  border-radius: 5px;
+  transition: all 0.2s ease;
 }
 
-.live-url-pill {
-  display: flex;
-  align-items: center;
-  font-size: 0.7rem;
-  font-family: monospace;
+.kotler-value-flow-strip .flow-step.highlight {
+  background: rgba(45, 212, 191, 0.15);
+  color: #2DD4BF;
+  border: 1px solid rgba(45, 212, 191, 0.35);
+}
+
+.kotler-value-flow-strip .flow-step.highlight-orange {
+  background: rgba(255, 85, 0, 0.18);
   color: #FF8533;
-  background: rgba(255, 85, 0, 0.1);
+  border: 1px solid rgba(255, 85, 0, 0.4);
+}
+
+.marketing-concepts-table-container {
+  background: var(--bg-pitch-card);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 0.6rem;
+  height: 100%;
+}
+
+.marketing-theory-table {
+  height: 100%;
+  display: table;
+}
+
+.marketing-theory-table th {
+  background: rgba(255, 255, 255, 0.05);
+  color: #FFFFFF;
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  padding: 0.65rem 0.95rem;
+}
+
+.marketing-theory-table td {
+  padding: 0.75rem 0.95rem;
+  font-size: 0.82rem;
+  line-height: 1.45;
+}
+
+/* --- SLIDE 9: SEGMENTATION QUAD GRID --- */
+.segmentation-quad-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.85rem;
+  height: 100%;
+}
+
+.segment-card {
+  background: linear-gradient(155deg, rgba(22, 30, 48, 0.85) 0%, rgba(12, 17, 30, 0.95) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 1.1rem 1.15rem;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: all 0.25s ease;
+}
+
+.segment-card:hover {
+  border-color: rgba(45, 212, 191, 0.5);
+  transform: translateY(-3px);
+  box-shadow: 0 12px 28px rgba(45, 212, 191, 0.15);
+}
+
+.segment-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.65rem;
+}
+
+.segment-icon-wrap {
+  width: 42px;
+  height: 42px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.segment-var-title {
+  font-family: var(--font-heading);
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: #FFFFFF;
+}
+
+.segment-focus-tag {
+  font-size: 0.74rem;
+  font-weight: 600;
+  color: #5EEAD4;
+}
+
+.segment-persona-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  margin-top: 0.75rem;
+}
+
+.persona-chip {
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 0.25rem 0.65rem;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.08);
+  color: #F8FAFC;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+/* --- SLIDE 10: BULLSEYE & POSITIONING --- */
+.bullseye-rings-visual {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.25rem 0;
+}
+
+.ring.outer-ring {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1.5px dashed rgba(255, 255, 255, 0.2);
+  padding: 0.75rem;
+  border-radius: 14px;
+  width: 100%;
+}
+
+.ring.middle-ring {
+  background: rgba(6, 182, 212, 0.06);
+  border: 1.5px solid rgba(6, 182, 212, 0.35);
+  padding: 0.75rem;
+  border-radius: 10px;
+  width: 95%;
+  margin-top: 0.35rem;
+}
+
+.ring.inner-ring {
+  background: linear-gradient(135deg, rgba(255, 85, 0, 0.25) 0%, rgba(20, 16, 24, 0.95) 100%);
+  border: 2px solid #FF5500;
+  padding: 0.75rem;
+  border-radius: 8px;
+  width: 92%;
+  margin-top: 0.35rem;
+  box-shadow: 0 4px 16px rgba(255, 85, 0, 0.3);
+}
+
+.ring-label {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: #CBD5E1;
+  text-align: center;
+}
+
+.ring-label.active-bullseye {
+  color: #FFA500;
+  font-size: 0.88rem;
+  font-weight: 800;
+}
+
+.perceptual-matrix {
+  position: relative;
+  background: #08080E;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  height: 250px;
+  overflow: hidden;
+}
+
+.matrix-axis {
+  position: absolute;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #94A3B8;
+  z-index: 5;
+}
+
+.matrix-axis.y-top { top: 8px; left: 50%; transform: translateX(-50%); color: #22D3EE; }
+.matrix-axis.y-bottom { bottom: 8px; left: 50%; transform: translateX(-50%); }
+.matrix-axis.x-left { left: 10px; top: 50%; transform: translateY(-50%); }
+.matrix-axis.x-right { right: 10px; top: 50%; transform: translateY(-50%); color: #FBBF24; }
+
+.point-label-us {
+  font-size: 0.84rem;
+  font-weight: 900;
+  color: #FFA500;
+  background: rgba(255, 85, 0, 0.2);
+  padding: 0.2rem 0.55rem;
+  border-radius: 5px;
+  border: 1px solid #FF5500;
+  white-space: nowrap;
+  box-shadow: 0 0 16px rgba(255, 85, 0, 0.4);
+}
+
+/* --- SLIDE 11: COMPETITOR MATRIX TABLE --- */
+.competitor-table {
+  width: 100%;
+  height: 100%;
+  border-collapse: collapse;
+}
+
+.competitor-table th {
+  background: rgba(255, 255, 255, 0.06);
+  color: #FFFFFF;
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  padding: 0.65rem 0.85rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.competitor-table td {
+  padding: 0.7rem 0.85rem;
+  font-size: 0.82rem;
+  line-height: 1.4;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  vertical-align: middle;
+}
+
+.competitor-table tr.highlight-row {
+  background: linear-gradient(90deg, rgba(255, 85, 0, 0.18) 0%, rgba(20, 20, 30, 0.95) 100%);
+  border-left: 4px solid #FF5500;
+}
+
+.competitor-table tr.highlight-row td {
+  border-bottom: 1px solid rgba(255, 85, 0, 0.35);
+}
+
+/* --- SLIDES 12 TO 15: 7Ps MEDIA & IMAGE ALIGNMENT --- */
+.media-large-frame {
+  background: #090E1C;
+  border: 1px solid rgba(20, 184, 166, 0.4);
+  border-radius: 12px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.55);
+}
+
+.media-large-frame.proto-frame {
+  border-color: rgba(45, 212, 191, 0.45);
+}
+
+.media-large-frame.proposed-frame {
+  border-color: rgba(255, 85, 0, 0.45);
+}
+
+.frame-image-wrap {
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+  position: relative;
+  background: #060914;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem;
+}
+
+.frame-full-img {
+  width: auto;
+  height: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  border-radius: 8px;
+  transition: transform 0.3s ease;
+}
+
+.proto-frame .frame-full-img {
+  width: auto;
+  height: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.7);
+}
+
+.frame-image-wrap:hover .frame-full-img {
+  transform: scale(1.02);
+}
+
+.proposed-frame .frame-full-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 35%;
+}
+
+/* Slide 13 Place: Traffic photo frame */
+.place-traffic-photo-frame {
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 85, 0, 0.4);
+  background: #080D1A;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
+  display: flex;
+  flex-direction: column;
+  height: 160px;
+}
+
+.traffic-photo-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.traffic-photo-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 55%;
+}
+
+.traffic-overlay-badge {
+  position: absolute;
+  bottom: 8px;
+  left: 8px;
+  right: 8px;
+  background: rgba(11, 16, 28, 0.88);
+  backdrop-filter: blur(8px);
   padding: 0.35rem 0.65rem;
   border-radius: 6px;
   border: 1px solid rgba(255, 85, 0, 0.3);
+  font-size: 0.74rem;
+  font-weight: 700;
+  color: #FFFFFF;
+  display: flex;
+  align-items: center;
 }
+
+/* Slide 14 Promotion: Mockup hand frame */
+.promotion-mockup-frame {
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid rgba(20, 184, 166, 0.4);
+  background: #060914;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
+  display: flex;
+  flex-direction: column;
+  height: 175px;
+}
+
+.mockup-hand-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mockup-hand-img {
+  width: auto;
+  height: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.milestone-pod {
+  padding: 0.85rem 1.15rem;
+  border-radius: 12px;
+  background: linear-gradient(135deg, rgba(15, 23, 42, 0.95) 0%, rgba(10, 16, 28, 0.98) 100%);
+  border: 1px solid rgba(20, 184, 166, 0.35);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+}
+
+.mockup-overlay-badge {
+  position: absolute;
+  bottom: 8px;
+  left: 8px;
+  right: 8px;
+  background: rgba(11, 16, 28, 0.88);
+  backdrop-filter: blur(8px);
+  padding: 0.35rem 0.65rem;
+  border-radius: 6px;
+  border: 1px solid rgba(20, 184, 166, 0.35);
+  font-size: 0.74rem;
+  font-weight: 700;
+  color: #5EEAD4;
+  display: flex;
+  align-items: center;
+}
+
+/* Slide 15 Physical Evidence: Dual Showcase */
+.evidence-dual-showcase {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+  height: 100%;
+}
+
+.showcase-card {
+  background: #090E1C;
+  border: 1px solid rgba(20, 184, 166, 0.35);
+  border-radius: 12px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
+}
+
+.showcase-header {
+  background: rgba(15, 23, 42, 0.95);
+  padding: 0.45rem 0.75rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  flex-shrink: 0;
+}
+
+.showcase-img {
+  width: 100%;
+  height: 100%;
+  max-height: 220px;
+  object-fit: contain;
+  background: #050812;
+  padding: 0.35rem;
+  transition: transform 0.3s ease;
+}
+
+.showcase-card:hover .showcase-img {
+  transform: scale(1.03);
+}
+
+.showcase-caption {
+  background: rgba(11, 19, 43, 0.95);
+  padding: 0.4rem 0.75rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  flex-shrink: 0;
+  font-size: 0.74rem;
+  color: #CBD5E1;
+  text-align: center;
+}
+
+/* --- SLIDE 18: ETHICS CARDS --- */
+.ethics-card {
+  background: linear-gradient(155deg, rgba(16, 28, 24, 0.85) 0%, rgba(10, 18, 16, 0.95) 100%);
+  border: 1px solid rgba(16, 185, 129, 0.35);
+  border-radius: 12px;
+  padding: 1.1rem 1.25rem;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+  transition: all 0.25s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.ethics-card:hover {
+  border-color: rgba(16, 185, 129, 0.6);
+  transform: translateY(-3px);
+  box-shadow: 0 12px 28px rgba(16, 185, 129, 0.18);
+}
+
+.ethics-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.65rem;
+}
+
+.ethics-icon-box {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background: rgba(16, 185, 129, 0.15);
+  border: 1px solid rgba(16, 185, 129, 0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.ethics-title {
+  font-family: var(--font-heading);
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: #FFFFFF;
+}
+
+.ethics-code-badge {
+  font-size: 0.68rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  background: rgba(16, 185, 129, 0.2);
+  color: #34D399;
+  padding: 0.15rem 0.5rem;
+  border-radius: 4px;
+  border: 1px solid rgba(16, 185, 129, 0.4);
+}
+
+.ethics-badge-tag {
+  display: flex;
+  align-items: center;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #34D399;
+  background: rgba(16, 185, 129, 0.1);
+  padding: 0.35rem 0.75rem;
+  border-radius: 6px;
+  border: 1px solid rgba(16, 185, 129, 0.25);
+}
+
+.ethics-trust-statement {
+  display: flex;
+  align-items: center;
+  background: linear-gradient(135deg, rgba(255, 85, 0, 0.12) 0%, rgba(16, 185, 129, 0.1) 100%);
+  border: 1px solid rgba(255, 85, 0, 0.35);
+  padding: 0.75rem 1.15rem;
+  border-radius: 10px;
+  font-size: 0.82rem;
+  color: #CBD5E1;
+}
+
+/* --- SLIDE 19: EXECUTIVE SCORECARD --- */
+.executive-scorecard-strip {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.75rem;
+}
+
+.scorecard-item {
+  background: linear-gradient(145deg, rgba(22, 28, 42, 0.85) 0%, rgba(12, 16, 26, 0.95) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 14px;
+  padding: 1rem 1.15rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 0.35rem;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.scorecard-item:hover {
+  transform: translateY(-2px);
+  border-color: rgba(255, 255, 255, 0.25);
+}
+
+.scorecard-icon-circle {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0.2rem;
+}
+
+.scorecard-icon-circle.emerald { background: rgba(16, 185, 129, 0.15); border: 1px solid rgba(16, 185, 129, 0.4); }
+.scorecard-icon-circle.cyan { background: rgba(6, 182, 212, 0.15); border: 1px solid rgba(6, 182, 212, 0.4); }
+.scorecard-icon-circle.gold { background: rgba(245, 158, 11, 0.15); border: 1px solid rgba(245, 158, 11, 0.4); }
+.scorecard-icon-circle.flame { background: rgba(255, 85, 0, 0.15); border: 1px solid rgba(255, 85, 0, 0.4); }
+
+.scorecard-val {
+  font-family: var(--font-heading);
+  font-size: 1.18rem;
+  font-weight: 900;
+  color: #FFFFFF;
+}
+
+.scorecard-lbl {
+  font-size: 0.76rem;
+  font-weight: 600;
+  color: #94A3B8;
+}
+
+.scorecard-badge {
+  font-size: 0.65rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  padding: 0.15rem 0.5rem;
+  border-radius: 4px;
+  margin-top: 0.2rem;
+}
+
+.scorecard-badge.emerald { background: rgba(16, 185, 129, 0.15); color: #34D399; border: 1px solid rgba(16, 185, 129, 0.35); }
+.scorecard-badge.cyan { background: rgba(6, 182, 212, 0.15); color: #22D3EE; border: 1px solid rgba(6, 182, 212, 0.35); }
+.scorecard-badge.gold { background: rgba(245, 158, 11, 0.15); color: #FBBF24; border: 1px solid rgba(245, 158, 11, 0.35); }
+.scorecard-badge.flame { background: rgba(255, 85, 0, 0.15); color: #FF8533; border: 1px solid rgba(255, 85, 0, 0.35); }
+
+/* =============================================================
+   FULLSCREEN & HIGH-RES VIEWPORT SCALING FOR SLIDES 8 TO 19
+   ============================================================= */
+@media (min-height: 750px) {
+  .theory-concept-name { font-size: 1.2rem; }
+  .def-text, .app-label, .theory-card .presentation-point-item { font-size: 0.92rem; line-height: 1.5; }
+  .segment-var-title { font-size: 1.25rem; }
+  .segment-card .point-item-text { font-size: 0.92rem; line-height: 1.5; }
+  .persona-chip { font-size: 0.82rem; padding: 0.3rem 0.75rem; }
+  .competitor-table th { font-size: 0.88rem; padding: 0.85rem 1.1rem; }
+  .competitor-table td { font-size: 0.92rem; padding: 0.85rem 1.1rem; }
+  .feature-head { font-size: 1.1rem; }
+  .feature-body-text { font-size: 0.88rem; line-height: 1.5; }
+  .frame-full-img { max-height: 340px; }
+  .showcase-img { max-height: 280px; }
+  .place-traffic-photo-frame { height: 210px; }
+  .promotion-mockup-frame { height: 210px; }
+  .mockup-hand-img { max-height: 195px; }
+  .ethics-title { font-size: 1.2rem; }
+  .ethics-card .point-item-text { font-size: 0.92rem; line-height: 1.5; }
+  .scorecard-val { font-size: 1.35rem; }
+  .scorecard-lbl { font-size: 0.85rem; }
+}
+
+.is-fullscreen .theory-concept-name { font-size: 1.2rem; }
+.is-fullscreen .def-text, .is-fullscreen .app-label, .is-fullscreen .theory-card .presentation-point-item { font-size: 0.92rem; line-height: 1.5; }
+.is-fullscreen .segment-var-title { font-size: 1.25rem; }
+.is-fullscreen .segment-card .point-item-text { font-size: 0.92rem; line-height: 1.5; }
+.is-fullscreen .persona-chip { font-size: 0.82rem; padding: 0.3rem 0.75rem; }
+.is-fullscreen .competitor-table th { font-size: 0.88rem; padding: 0.85rem 1.1rem; }
+.is-fullscreen .competitor-table td { font-size: 0.92rem; padding: 0.85rem 1.1rem; }
+.is-fullscreen .feature-head { font-size: 1.1rem; }
+.is-fullscreen .feature-body-text { font-size: 0.88rem; line-height: 1.5; }
+.is-fullscreen .frame-full-img { max-height: 340px; }
+.is-fullscreen .showcase-img { max-height: 280px; }
+.is-fullscreen .place-traffic-photo-frame { height: 210px; }
+.is-fullscreen .promotion-mockup-frame { height: 210px; }
+.is-fullscreen .mockup-hand-img { max-height: 195px; }
+.is-fullscreen .ethics-title { font-size: 1.2rem; }
+.is-fullscreen .ethics-card .point-item-text { font-size: 0.92rem; line-height: 1.5; }
+.is-fullscreen .scorecard-val { font-size: 1.35rem; }
+.is-fullscreen .scorecard-lbl { font-size: 0.85rem; }
+
 

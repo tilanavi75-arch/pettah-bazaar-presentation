@@ -1280,40 +1280,52 @@ export default function SlideRenderer({ slide, direction = 'next', spotlightMode
 
         {subCard10 === 0 && (
           <div className="slide-subcard-container animate-fade-in">
-            <div className="grid grid-cols-2 gap-4 flex-1 min-h-0">
-              <div className="bullseye-diagram-card flex flex-col justify-between">
+            <div className="grid grid-cols-2 gap-3 flex-1 min-h-0">
+              <div className="bullseye-diagram-card flex flex-col justify-between p-3.5">
                 <div>
-                  <div className="bullseye-header">
-                    <Target className="w-4 h-4 text-primary-flame mr-1.5" />
-                    <span>Target Market Prioritization (Bullseye Analysis)</span>
+                  <div className="bullseye-header flex items-center justify-between mb-2">
+                    <span className="flex items-center text-sm font-bold text-white">
+                      <Target className="w-4 h-4 text-primary-flame mr-1.5" />
+                      Target Market Prioritization (Bullseye Model)
+                    </span>
+                    <span className="text-[11px] font-semibold text-teal-300 bg-teal-500/10 px-2 py-0.5 rounded border border-teal-500/30">Kotler STP Focus</span>
                   </div>
                   
-                  <div className="bullseye-rings-visual mt-2">
+                  <div className="bullseye-rings-visual my-1">
                     <div className="ring outer-ring">
-                      <span className="ring-label">Broad Colombo Retail Visitors</span>
+                      <span className="ring-label">Broad Colombo Retail Visitors (General Footfall)</span>
                       <div className="ring middle-ring">
                         <span className="ring-label">Secondary: Outstation Buyers & Tech Students</span>
                         <div className="ring inner-ring">
-                          <span className="ring-label active-bullseye">🎯 Primary Target: Shoppers Seeking Specific Items</span>
+                          <span className="ring-label active-bullseye">🎯 Primary Core: Shoppers Seeking Specific Products</span>
                         </div>
                       </div>
                     </div>
                   </div>
                 </div>
 
-                <div className="primary-cohort-box mt-2 p-2.5 bg-slate-900/80 rounded-lg border border-primary-flame/40">
-                  <div className="font-bold text-primary-flame text-xs mb-1">{slide.targetGroups.primary.title}</div>
-                  <div className="text-white text-[11px] font-semibold mb-1">{slide.targetGroups.primary.cohort}</div>
+                <div className="primary-cohort-box mt-2 p-3 bg-slate-900/90 rounded-xl border border-primary-flame/50 shadow-lg">
+                  <div className="flex items-center justify-between mb-1.5">
+                    <span className="font-extrabold text-primary-flame text-xs uppercase tracking-wider">{slide.targetGroups.primary.title}</span>
+                    <span className="text-[10px] bg-primary-flame/20 text-orange-300 font-bold px-2 py-0.5 rounded-full border border-primary-flame/40">Tier 1 Priority</span>
+                  </div>
+                  <div className="text-white text-xs font-bold mb-1.5">{slide.targetGroups.primary.cohort}</div>
                   <PointList points={slide.targetGroups.primary.points} color="orange" />
                 </div>
               </div>
 
-              <div className="secondary-targets-list flex flex-col justify-between p-2.5 bg-slate-900/60 rounded-xl border border-slate-700/60">
-                <div className="secondary-header font-bold text-white text-xs mb-1.5">Secondary Market Cohorts (Specialized Audiences):</div>
-                <div className="grid grid-cols-1 gap-1.5 flex-1">
+              <div className="secondary-targets-list flex flex-col justify-between p-3 bg-slate-900/70 rounded-xl border border-slate-700/60">
+                <div className="secondary-header flex items-center justify-between mb-2">
+                  <span className="font-bold text-white text-xs uppercase tracking-wider">Secondary Market Cohorts (Specialized Audiences):</span>
+                  <span className="text-[10px] text-cyan-300 bg-cyan-500/10 px-2 py-0.5 rounded border border-cyan-500/30">Tier 2 Expansion</span>
+                </div>
+                <div className="grid grid-cols-1 gap-2 flex-1">
                   {slide.targetGroups.secondary.map((sec, idx) => (
-                    <div key={idx} className="secondary-item p-2 rounded-lg bg-slate-800/80 border border-slate-700/80">
-                      <div className="font-bold text-cyan-300 text-xs mb-1">{sec.name}</div>
+                    <div key={idx} className="secondary-item p-2.5 rounded-lg bg-slate-800/80 border border-slate-700/80 flex flex-col justify-between">
+                      <div className="flex items-center justify-between mb-1">
+                        <strong className="text-cyan-300 text-xs font-bold">{sec.name}</strong>
+                        <span className="text-[10px] text-slate-400 font-mono">Cohort 0{idx + 1}</span>
+                      </div>
                       <PointList points={sec.points} color="cyan" />
                     </div>
                   ))}
@@ -1920,13 +1932,18 @@ export default function SlideRenderer({ slide, direction = 'next', spotlightMode
                   </div>
                 </div>
 
-                <div className="media-large-frame mt-2" style={{ maxHeight: '115px' }}>
-                  <img 
-                    src={slide.marketImage} 
-                    alt="Colombo Traffic & Lotus Tower" 
-                    className="frame-full-img"
-                    style={{ maxHeight: '115px' }}
-                  />
+                <div className="place-traffic-photo-frame mt-2 flex-1 min-h-0">
+                  <div className="traffic-photo-inner">
+                    <img 
+                      src={slide.marketImage} 
+                      alt="Colombo Traffic & Lotus Tower" 
+                      className="traffic-photo-img"
+                    />
+                    <div className="traffic-overlay-badge">
+                      <MapPin className="w-3.5 h-3.5 text-primary-flame mr-1 flex-shrink-0" />
+                      <span>Colombo 11 Commercial Gateway & Dense Traffic Hub</span>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -2048,13 +2065,18 @@ export default function SlideRenderer({ slide, direction = 'next', spotlightMode
                   </div>
                 </div>
 
-                <div className="media-large-frame mt-2" style={{ maxHeight: '140px' }}>
-                  <img 
-                    src={slide.appMockup} 
-                    alt="Pettah Bazaar Mobile Mockup" 
-                    className="frame-full-img"
-                    style={{ maxHeight: '140px' }}
-                  />
+                <div className="promotion-mockup-frame mt-2 flex-1 min-h-0">
+                  <div className="mockup-hand-inner">
+                    <img 
+                      src={slide.appMockup} 
+                      alt="Pettah Bazaar Mobile Mockup" 
+                      className="mockup-hand-img"
+                    />
+                    <div className="mockup-overlay-badge">
+                      <Smartphone className="w-3.5 h-3.5 text-teal-300 mr-1 flex-shrink-0" />
+                      <span>On-The-Go Discovery in Crowded Alleys</span>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -2246,10 +2268,10 @@ export default function SlideRenderer({ slide, direction = 'next', spotlightMode
             </div>
 
             <div className="card-detail-two-col mt-2">
-              {/* Left: 5 Physical Evidence Elements */}
-              <div className="detail-col-features">
+              {/* Left: 4 Physical Evidence Elements + Proof of Concept Banner */}
+              <div className="detail-col-features flex flex-col justify-between">
                 <div className="evidence-spacious-list">
-                  {slide.physicalEvidenceStrategy.elements.map((ev, idx) => (
+                  {slide.physicalEvidenceStrategy.elements.slice(0, 4).map((ev, idx) => (
                     <div key={idx} className="spacious-evidence-item">
                       <div className="evidence-header-row">
                         <span className="evidence-pill-tag teal">{ev.tag}</span>
@@ -2259,6 +2281,14 @@ export default function SlideRenderer({ slide, direction = 'next', spotlightMode
                       <p className="evidence-item-desc text-slate-200 text-xs mt-1 leading-relaxed">{ev.desc}</p>
                     </div>
                   ))}
+                </div>
+                
+                <div className="p-2.5 rounded-lg bg-slate-900/90 border border-teal-500/40 flex items-center justify-between mt-2">
+                  <div className="flex items-center">
+                    <CheckCircle2 className="w-4 h-4 text-teal-400 mr-2 flex-shrink-0" />
+                    <span className="text-slate-200 text-xs font-semibold">Proof of Concept: Actual Live Screen & Handheld Mockup Demonstrated on Right</span>
+                  </div>
+                  <span className="text-[10px] text-teal-300 font-mono font-bold bg-teal-500/10 px-2 py-0.5 rounded border border-teal-500/30">Verified</span>
                 </div>
               </div>
 
@@ -2331,6 +2361,18 @@ export default function SlideRenderer({ slide, direction = 'next', spotlightMode
 
     const currentPillars = subCard18 === 0 ? slide.pillars.slice(0, 3) : slide.pillars.slice(3, 6);
 
+    const getEthicsIcon = (code) => {
+      switch (code) {
+        case 'E1': return <ShieldCheck className="w-5 h-5 text-emerald-400" />;
+        case 'E2': return <HeartHandshake className="w-5 h-5 text-teal-300" />;
+        case 'E3': return <Scale className="w-5 h-5 text-cyan-400" />;
+        case 'E4': return <Lock className="w-5 h-5 text-gold-400" />;
+        case 'E5': return <Eye className="w-5 h-5 text-pink-400" />;
+        case 'E6': return <CheckCircle2 className="w-5 h-5 text-emerald-400" />;
+        default: return <ShieldCheck className="w-5 h-5 text-emerald-400" />;
+      }
+    };
+
     return (
       <div className={`slide-content ${animClass} ${spotlightClass}`}>
         <div className="slide-header-bar">
@@ -2354,15 +2396,23 @@ export default function SlideRenderer({ slide, direction = 'next', spotlightMode
                 >
                   <div>
                     <div className="ethics-header">
-                      <div className="ethics-code-badge">{eth.code}</div>
-                      <h4 className="ethics-title text-sm font-bold">{eth.title}</h4>
+                      <div className="ethics-icon-box">
+                        {getEthicsIcon(eth.code)}
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        <div className="flex items-center gap-1.5 mb-0.5">
+                          <span className="ethics-code-badge">{eth.code}</span>
+                          <span className="text-[10px] text-emerald-400/80 font-bold uppercase tracking-wider">Kotler Ethics Pillar</span>
+                        </div>
+                        <h4 className="ethics-title text-sm font-bold text-white leading-tight">{eth.title}</h4>
+                      </div>
                     </div>
-                    <PointList points={eth.points || [eth.desc]} color="emerald" />
+                    <PointList points={eth.points || [eth.desc]} color="emerald" className="mt-2" />
                   </div>
                   
-                  <div className="ethics-badge-tag mt-2">
-                    <ShieldCheck className="w-3.5 h-3.5 text-emerald-400 mr-1" />
-                    Verified Ethical Standard
+                  <div className="ethics-badge-tag mt-3">
+                    <ShieldCheck className="w-3.5 h-3.5 text-emerald-400 mr-1.5 flex-shrink-0" />
+                    <span>Verified Academic Ethical Standard</span>
                   </div>
                 </div>
               ))}
@@ -2371,7 +2421,7 @@ export default function SlideRenderer({ slide, direction = 'next', spotlightMode
         )}
 
         {subCard18 === 1 && (
-          <div className="slide-subcard-container animate-fade-in">
+          <div className="slide-subcard-container animate-fade-in flex flex-col justify-between">
             <div className="grid grid-cols-3 gap-3 flex-1 min-h-0">
               {currentPillars.map((eth, idx) => (
                 <div 
@@ -2380,24 +2430,32 @@ export default function SlideRenderer({ slide, direction = 'next', spotlightMode
                 >
                   <div>
                     <div className="ethics-header">
-                      <div className="ethics-code-badge">{eth.code}</div>
-                      <h4 className="ethics-title text-sm font-bold">{eth.title}</h4>
+                      <div className="ethics-icon-box">
+                        {getEthicsIcon(eth.code)}
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        <div className="flex items-center gap-1.5 mb-0.5">
+                          <span className="ethics-code-badge">{eth.code}</span>
+                          <span className="text-[10px] text-emerald-400/80 font-bold uppercase tracking-wider">Kotler Ethics Pillar</span>
+                        </div>
+                        <h4 className="ethics-title text-sm font-bold text-white leading-tight">{eth.title}</h4>
+                      </div>
                     </div>
-                    <PointList points={eth.points || [eth.desc]} color="emerald" />
+                    <PointList points={eth.points || [eth.desc]} color="emerald" className="mt-2" />
                   </div>
                   
-                  <div className="ethics-badge-tag mt-2">
-                    <ShieldCheck className="w-3.5 h-3.5 text-emerald-400 mr-1" />
-                    Verified Ethical Standard
+                  <div className="ethics-badge-tag mt-3">
+                    <ShieldCheck className="w-3.5 h-3.5 text-emerald-400 mr-1.5 flex-shrink-0" />
+                    <span>Verified Academic Ethical Standard</span>
                   </div>
                 </div>
               ))}
             </div>
 
-            <div className="ethics-trust-statement visual-glow-banner mt-2">
-              <ShieldCheck className="w-5 h-5 text-primary-flame mr-2 flex-shrink-0 animate-pulse" />
+            <div className="ethics-trust-statement visual-glow-banner mt-2.5">
+              <ShieldCheck className="w-5 h-5 text-primary-flame mr-2.5 flex-shrink-0 animate-pulse" />
               <span className="text-xs leading-relaxed text-slate-200">
-                <strong>Our Commitment to Trust:</strong> Responsible marketing requires that consumer and merchant trust is treated as the venture's most valuable asset. We maintain strict academic integrity, full price transparency, and verified data veracity.
+                <strong className="text-white">Our Formal Commitment to Trust:</strong> Responsible marketing requires that consumer and merchant trust is treated as the venture's most valuable asset. We maintain strict academic research integrity, zero phantom listings, and verified data veracity.
               </span>
             </div>
           </div>
@@ -2433,45 +2491,70 @@ export default function SlideRenderer({ slide, direction = 'next', spotlightMode
         <SubCardNav activeIndex={subCard19} onSelect={setSubCard19} tabs={tabs19} />
 
         {subCard19 === 0 && (
-          <div className="slide-subcard-container animate-fade-in">
+          <div className="slide-subcard-container animate-fade-in flex flex-col justify-between flex-1 min-h-0">
             {/* 4-Pillar Executive Summary Scorecard */}
             <div className="executive-scorecard-strip">
               <div className="scorecard-item">
-                <CheckCircle2 className="w-5 h-5 text-emerald-400 mb-1" />
-                <div className="scorecard-val text-lg">Validated</div>
-                <div className="scorecard-lbl">Real Market Problem</div>
+                <div className="scorecard-icon-circle emerald">
+                  <CheckCircle2 className="w-5 h-5 text-emerald-400" />
+                </div>
+                <div className="scorecard-val">Validated</div>
+                <div className="scorecard-lbl">Real Market Problem in Pettah</div>
+                <span className="scorecard-badge emerald">100% Problem Confirmed</span>
               </div>
               <div className="scorecard-item">
-                <Globe className="w-5 h-5 text-cyan-400 mb-1" />
-                <div className="scorecard-val text-lg">Live Deployed</div>
+                <div className="scorecard-icon-circle cyan">
+                  <Globe className="w-5 h-5 text-cyan-400" />
+                </div>
+                <div className="scorecard-val">Live Deployed</div>
                 <div className="scorecard-lbl">Working PWA Prototype</div>
+                <span className="scorecard-badge cyan">pettah-bazaar.vercel.app</span>
               </div>
               <div className="scorecard-item">
-                <Scale className="w-5 h-5 text-gold-400 mb-1" />
-                <div className="scorecard-val text-lg">Ethical & Free</div>
-                <div className="scorecard-lbl">Vendor Empowerment</div>
+                <div className="scorecard-icon-circle gold">
+                  <Scale className="w-5 h-5 text-gold-400" />
+                </div>
+                <div className="scorecard-val">Ethical & Free</div>
+                <div className="scorecard-lbl">Vendor Empowerment Model</div>
+                <span className="scorecard-badge gold">Zero Paywalls for Stalls</span>
               </div>
               <div className="scorecard-item">
-                <Users className="w-5 h-5 text-primary-flame mb-1" />
-                <div className="scorecard-val text-lg">10 Presenters</div>
-                <div className="scorecard-lbl">KDU Intake 43 Team</div>
+                <div className="scorecard-icon-circle flame">
+                  <Users className="w-5 h-5 text-primary-flame" />
+                </div>
+                <div className="scorecard-val">10 Presenters</div>
+                <div className="scorecard-lbl">KDU Intake 43 Presentation</div>
+                <span className="scorecard-badge flame">Collaborative Defense</span>
               </div>
             </div>
 
-            <div className="spacious-strategy-card flex-1 min-h-0 mt-3 p-4 flex flex-col justify-between">
+            <div className="spacious-strategy-card flex-1 min-h-0 mt-2.5 p-3.5 flex flex-col justify-between">
               <div>
-                <h4 className="text-white text-base font-bold mb-2 flex items-center">
-                  <Award className="w-5 h-5 text-gold-400 mr-2" />
-                  Key Strategic Milestones Delivered:
-                </h4>
+                <div className="flex items-center justify-between mb-2">
+                  <h4 className="text-white text-base font-bold flex items-center">
+                    <Award className="w-5 h-5 text-gold-400 mr-2" />
+                    Key Strategic Milestones Delivered:
+                  </h4>
+                  <span className="text-xs text-teal-300 font-semibold bg-teal-500/10 px-2.5 py-0.5 rounded border border-teal-500/30">Capstone Ready</span>
+                </div>
                 <div className="grid grid-cols-2 gap-3 mt-2">
-                  <div className="p-3 rounded-lg bg-slate-900/80 border border-teal-500/30">
-                    <strong className="text-teal-300 text-xs block mb-1">1. Academic Rigor</strong>
-                    <span className="text-slate-300 text-xs">Mapped to Kotler 7Ps, STP Segmentation, Perceptual Map, and ethical compliance standards.</span>
+                  <div className="milestone-pod p-3 rounded-xl bg-slate-900/90 border border-teal-500/40 shadow-md">
+                    <div className="flex items-center gap-2 mb-1.5">
+                      <BookOpen className="w-4 h-4 text-teal-300 flex-shrink-0" />
+                      <strong className="text-teal-300 text-sm font-bold">1. Academic Marketing Rigor</strong>
+                    </div>
+                    <p className="text-slate-200 text-xs leading-relaxed">
+                      Fully grounded in Kotler 7Ps Framework, STP Segmentation (Geographic, Demographic, Psychographic, Behavioural), Strategic Perceptual Map, and ethical compliance standards.
+                    </p>
                   </div>
-                  <div className="p-3 rounded-lg bg-slate-900/80 border border-teal-500/30">
-                    <strong className="text-teal-300 text-xs block mb-1">2. Market Viability</strong>
-                    <span className="text-slate-300 text-xs">Verified high foot traffic in Pettah with genuine shopkeeper needs for digital discovery.</span>
+                  <div className="milestone-pod p-3 rounded-xl bg-slate-900/90 border border-teal-500/40 shadow-md">
+                    <div className="flex items-center gap-2 mb-1.5">
+                      <Target className="w-4 h-4 text-orange-400 flex-shrink-0" />
+                      <strong className="text-orange-300 text-sm font-bold">2. Field Viability & Commercial Value</strong>
+                    </div>
+                    <p className="text-slate-200 text-xs leading-relaxed">
+                      Direct field observations across 1st to 5th Cross Streets confirm huge item density, walking fatigue, and strong merchant willingness to claim free digital store profiles.
+                    </p>
                   </div>
                 </div>
               </div>
