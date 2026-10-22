@@ -1,5 +1,18 @@
 import React, { useState, useEffect } from 'react';
-import { Video, Play, Upload, Film, RefreshCw, AlertCircle, CheckCircle } from 'lucide-react';
+import { Video, Play, Upload, Film, RefreshCw, AlertCircle, CheckCircle, Globe, Sparkles, ExternalLink } from 'lucide-react';
+
+function getDriveEmbedUrl(url) {
+  if (!url) return null;
+  const match = url.match(/\/file\/d\/([a-zA-Z0-9_-]+)/);
+  if (match && match[1]) {
+    return `https://drive.google.com/file/d/${match[1]}/preview`;
+  }
+  const idMatch = url.match(/[?&]id=([a-zA-Z0-9_-]+)/);
+  if (idMatch && idMatch[1]) {
+    return `https://drive.google.com/file/d/${idMatch[1]}/preview`;
+  }
+  return null;
+}
 
 export default function VideoSlidePlaceholder({ 
   slideNumber, 
@@ -10,42 +23,76 @@ export default function VideoSlidePlaceholder({
   context, 
   disclaimer, 
   videoSrc,
+  driveUrl,
+  videoTitle,
   keyTakeaways
 }) {
   const [customVideoUrl, setCustomVideoUrl] = useState('');
   const [showInput, setShowInput] = useState(false);
-  const [uploadedVideoSrc, setUploadedVideoSrc] = useState(videoSrc || null);
+  // Prefer videoSrc if provided, otherwise driveUrl
+  const [activeVideoSrc, setActiveVideoSrc] = useState(videoSrc || driveUrl || null);
+  const [useDriveEmbed, setUseDriveEmbed] = useState(false);
 
   useEffect(() => {
-    setUploadedVideoSrc(videoSrc || null);
-  }, [videoSrc]);
+    setActiveVideoSrc(videoSrc || driveUrl || null);
+    if (!videoSrc && driveUrl) {
+      setUseDriveEmbed(true);
+    }
+  }, [videoSrc, driveUrl]);
 
   const handleFileUpload = (e) => {
     const file = e.target.files[0];
     if (file) {
       const url = URL.createObjectURL(file);
-      setUploadedVideoSrc(url);
+      setActiveVideoSrc(url);
+      setUseDriveEmbed(false);
     }
   };
 
   const handleUrlSubmit = (e) => {
     e.preventDefault();
     if (customVideoUrl.trim()) {
-      setUploadedVideoSrc(customVideoUrl.trim());
+      const trimmed = customVideoUrl.trim();
+      const driveEmbed = getDriveEmbedUrl(trimmed);
+      if (driveEmbed) {
+        setActiveVideoSrc(driveEmbed);
+        setUseDriveEmbed(true);
+      } else {
+        setActiveVideoSrc(trimmed);
+        setUseDriveEmbed(false);
+      }
       setShowInput(false);
     }
   };
 
   const resetVideo = () => {
-    setUploadedVideoSrc(null);
+    setActiveVideoSrc(null);
     setCustomVideoUrl('');
+    setUseDriveEmbed(false);
   };
 
   const restoreDefaultVideo = () => {
     if (videoSrc) {
-      setUploadedVideoSrc(videoSrc);
+      setActiveVideoSrc(videoSrc);
+      setUseDriveEmbed(false);
+    } else if (driveUrl) {
+      setActiveVideoSrc(driveUrl);
+      setUseDriveEmbed(true);
     }
   };
+
+  const toggleSourceMode = () => {
+    if (useDriveEmbed && videoSrc) {
+      setActiveVideoSrc(videoSrc);
+      setUseDriveEmbed(false);
+    } else if (!useDriveEmbed && driveUrl) {
+      setActiveVideoSrc(driveUrl);
+      setUseDriveEmbed(true);
+    }
+  };
+
+  const isCurrentDrive = useDriveEmbed || (activeVideoSrc && (activeVideoSrc.includes('drive.google.com') || getDriveEmbedUrl(activeVideoSrc) !== null));
+  const driveEmbedSrc = isCurrentDrive ? getDriveEmbedUrl(activeVideoSrc || driveUrl) : null;
 
   return (
     <div className="fullscreen-video-slide">
@@ -60,12 +107,39 @@ export default function VideoSlidePlaceholder({
         </div>
 
         <div className="video-controls-tools">
-          {uploadedVideoSrc ? (
+          {activeVideoSrc ? (
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
               <span className="video-badge" style={{ margin: 0, background: 'rgba(16, 185, 129, 0.15)', color: '#34d399', border: '1px solid rgba(16, 185, 129, 0.3)' }}>
                 <CheckCircle className="w-3 h-3 mr-1" />
-                Video Active
+                {isCurrentDrive ? "Drive Stream Active" : "HD Video Active"}
               </span>
+
+              {driveUrl && (
+                <a
+                  href={driveUrl.replace('/preview', '/view')}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="video-tool-btn"
+                  title="Open video in Google Drive"
+                  style={{ textDecoration: 'none', display: 'flex', alignItems: 'center' }}
+                >
+                  <ExternalLink className="w-3.5 h-3.5 mr-1 text-teal-accent" />
+                  <span>Open Drive</span>
+                </a>
+              )}
+
+              {driveUrl && videoSrc && (
+                <button
+                  className="video-tool-btn"
+                  onClick={toggleSourceMode}
+                  title={isCurrentDrive ? "Switch to Local HD Video" : "Switch to Google Drive Stream"}
+                  style={{ background: 'rgba(255, 85, 0, 0.15)', color: '#FF7733', borderColor: 'rgba(255, 85, 0, 0.3)' }}
+                >
+                  <Globe className="w-3.5 h-3.5 mr-1" />
+                  <span>{isCurrentDrive ? "Use Local Video" : "Use Drive Stream"}</span>
+                </button>
+              )}
+
               <button 
                 className="video-tool-btn"
                 onClick={() => setShowInput(!showInput)}
@@ -81,7 +155,7 @@ export default function VideoSlidePlaceholder({
             </div>
           ) : (
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-              {videoSrc && (
+              {(videoSrc || driveUrl) && (
                 <button 
                   className="video-tool-btn"
                   onClick={restoreDefaultVideo}
@@ -122,7 +196,7 @@ export default function VideoSlidePlaceholder({
           <form onSubmit={handleUrlSubmit} className="flex gap-2">
             <input 
               type="url" 
-              placeholder="Paste video URL (mp4)..." 
+              placeholder="Paste Google Drive or MP4 URL..." 
               value={customVideoUrl}
               onChange={(e) => setCustomVideoUrl(e.target.value)}
               className="video-url-input"
@@ -134,23 +208,39 @@ export default function VideoSlidePlaceholder({
 
       {/* 16:9 Widescreen Video Cinema Container */}
       <div className="widescreen-video-frame">
-        {uploadedVideoSrc ? (
+        {activeVideoSrc ? (
           <div className="actual-video-wrapper">
-            <video 
-              key={uploadedVideoSrc}
-              src={uploadedVideoSrc} 
-              controls 
-              autoPlay 
-              playsInline
-              preload="auto"
-              className="actual-video-element"
-            />
+            {isCurrentDrive && driveEmbedSrc ? (
+              <iframe
+                src={driveEmbedSrc}
+                className="actual-video-element"
+                style={{ border: 'none', width: '100%', height: '100%' }}
+                allow="autoplay; encrypted-media; fullscreen"
+                allowFullScreen
+                title={heading}
+              />
+            ) : (
+              <video 
+                key={activeVideoSrc}
+                src={activeVideoSrc} 
+                controls 
+                autoPlay 
+                playsInline
+                preload="auto"
+                className="actual-video-element"
+                onError={() => {
+                  if (driveUrl) {
+                    setUseDriveEmbed(true);
+                  }
+                }}
+              />
+            )}
           </div>
         ) : (
           <div 
             className="video-placeholder-canvas" 
-            onClick={videoSrc ? restoreDefaultVideo : undefined}
-            style={{ cursor: videoSrc ? 'pointer' : 'default' }}
+            onClick={(videoSrc || driveUrl) ? restoreDefaultVideo : undefined}
+            style={{ cursor: (videoSrc || driveUrl) ? 'pointer' : 'default' }}
           >
             {/* Dark grid texture & subtle glow */}
             <div className="video-placeholder-ambient" />
@@ -167,15 +257,17 @@ export default function VideoSlidePlaceholder({
                 </div>
               </div>
 
-              {/* Exact editable placeholder label from requirements */}
+              {/* Exact editable placeholder label */}
               <div className="placeholder-editable-label">
                 <span className="label-bracket">[</span>
-                <span className="label-text">{videoSrc ? "CLICK TO PLAY FIELD FOOTAGE" : label}</span>
+                <span className="label-text">{(videoSrc || driveUrl) ? "CLICK TO PLAY FIELD FOOTAGE" : label}</span>
                 <span className="label-bracket">]</span>
               </div>
 
               <p className="placeholder-sublabel">
-                {videoSrc ? "Field Video Ready: P 1 F - Trim problem .mp4" : "16:9 Widescreen Footage Placeholder • Ready for Canva Video Embed"}
+                {(videoSrc || driveUrl) 
+                  ? (videoTitle || `Field Video Ready: ${slideNumber === "16" ? "Customer Feedback Interview Video" : "Market Problem Video"}`)
+                  : "16:9 Widescreen Footage Placeholder • Ready for Video Embed"}
               </p>
             </div>
 

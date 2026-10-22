@@ -123,6 +123,8 @@ export default function SlideRenderer({ slide, direction = 'next', spotlightMode
           context={slide.videoContext}
           disclaimer={slide.disclaimer}
           videoSrc={slide.videoSrc}
+          driveUrl={slide.driveUrl}
+          videoTitle={slide.videoTitle}
           keyTakeaways={slide.keyTakeaways}
         />
       </div>
