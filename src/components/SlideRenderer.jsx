@@ -995,26 +995,7 @@ export default function SlideRenderer({ slide, direction = 'next', spotlightMode
             <h2 className="slide-heading">{slide.title}</h2>
             <p className="slide-subheading">{slide.subtitle}</p>
           </div>
-          <div className="flex items-center gap-3">
-            {/* View Switcher: Visual Cards vs Academic Table */}
-            <div className="view-mode-toggle">
-              <button 
-                className={`toggle-view-btn ${theoryView === 'cards' ? 'active' : ''}`}
-                onClick={() => setTheoryView('cards')}
-              >
-                <LayoutGrid className="w-3.5 h-3.5 mr-1" />
-                Visual Cards
-              </button>
-              <button 
-                className={`toggle-view-btn ${theoryView === 'table' ? 'active' : ''}`}
-                onClick={() => setTheoryView('table')}
-              >
-                <Layers className="w-3.5 h-3.5 mr-1" />
-                Theory Table
-              </button>
-            </div>
-            <div className="presenter-tag-box">Presenter: {slide.presenter}</div>
-          </div>
+          <div className="presenter-tag-box">Presenter: {slide.presenter}</div>
         </div>
 
         <SubCardNav activeIndex={subCard8} onSelect={setSubCard8} tabs={tabs8} />
@@ -1032,132 +1013,91 @@ export default function SlideRenderer({ slide, direction = 'next', spotlightMode
           <div className={`flow-step ${subCard8 === 4 ? 'highlight-orange' : ''}`}>5. Satisfaction & Loyalty</div>
         </div>
 
-        {theoryView === 'cards' ? (
-          <div className="slide-subcard-container animate-fade-in flex-1 min-h-0">
-            <div className="theory-two-col-layout">
-              {/* Left Column: Photo (Photo eka wamen) */}
-              <div className="theory-col-photo">
-                <div className="theory-large-photo-frame">
-                  <div className="frame-header-strip">
-                    <span className="text-xs font-bold text-teal-300 flex items-center">
-                      <MapPin className="w-3.5 h-3.5 mr-1 text-primary-flame" />
-                      Field Evidence #{subCard8 + 1} • Colombo 11
-                    </span>
-                    <span className="verified-chip text-[10px]">Empirical Study</span>
-                  </div>
-                  <div className="theory-photo-body">
-                    <img 
-                      src={currentConcept.image} 
-                      alt={currentConcept.concept} 
-                      className="theory-full-photo" 
-                    />
-                  </div>
-                  <div className="frame-footer-caption">
-                    <span className="text-slate-200 text-xs font-medium">
-                      📸 {currentConcept.imageCaption}
-                    </span>
-                  </div>
+        <div className="slide-subcard-container animate-fade-in flex-1 min-h-0">
+          <div className="theory-two-col-layout">
+            {/* Left Column: Photo (Photo eka wamen) */}
+            <div className="theory-col-photo">
+              <div className="theory-large-photo-frame">
+                <div className="frame-header-strip">
+                  <span className="text-xs font-bold text-teal-300 flex items-center">
+                    <MapPin className="w-3.5 h-3.5 mr-1 text-primary-flame" />
+                    Field Evidence #{subCard8 + 1} • Colombo 11
+                  </span>
+                  <span className="verified-chip text-[10px]">Empirical Study</span>
+                </div>
+                <div className="theory-photo-body">
+                  <img 
+                    src={currentConcept.image} 
+                    alt={currentConcept.concept} 
+                    className="theory-full-photo" 
+                  />
+                </div>
+                <div className="frame-footer-caption">
+                  <span className="text-slate-200 text-xs font-medium">
+                    📸 {currentConcept.imageCaption}
+                  </span>
                 </div>
               </div>
+            </div>
 
-              {/* Right Column: Description (Description eka dakunen) */}
-              <div className="theory-col-desc">
-                <div className="theory-detail-panel">
-                  <div>
-                    <div className="concept-header-bar flex items-center justify-between mb-2.5 pb-2 border-b border-slate-700/60">
-                      <div className="flex items-center gap-2.5">
-                        <div className="theory-icon-wrap large">
-                          {subCard8 === 0 && <Target className="w-5 h-5 text-primary-flame" />}
-                          {subCard8 === 1 && <ShoppingBag className="w-5 h-5 text-gold-400" />}
-                          {subCard8 === 2 && <TrendingUp className="w-5 h-5 text-cyan-400" />}
-                          {subCard8 === 3 && <Sparkles className="w-5 h-5 text-emerald-400" />}
-                          {subCard8 === 4 && <Star className="w-5 h-5 text-pink-400" />}
-                        </div>
-                        <div>
-                          <div className="text-[10px] uppercase font-bold text-primary-flame tracking-wider">
-                            Kotler & Armstrong Framework • Concept 0{subCard8 + 1} of 05
-                          </div>
-                          <h3 className="text-lg font-extrabold text-white">{currentConcept.concept}</h3>
-                        </div>
+            {/* Right Column: Description (Description eka dakunen) */}
+            <div className="theory-col-desc">
+              <div className="theory-detail-panel">
+                <div>
+                  <div className="concept-header-bar flex items-center justify-between mb-2.5 pb-2 border-b border-slate-700/60">
+                    <div className="flex items-center gap-2.5">
+                      <div className="theory-icon-wrap large">
+                        {subCard8 === 0 && <Target className="w-5 h-5 text-primary-flame" />}
+                        {subCard8 === 1 && <ShoppingBag className="w-5 h-5 text-gold-400" />}
+                        {subCard8 === 2 && <TrendingUp className="w-5 h-5 text-cyan-400" />}
+                        {subCard8 === 3 && <Sparkles className="w-5 h-5 text-emerald-400" />}
+                        {subCard8 === 4 && <Star className="w-5 h-5 text-pink-400" />}
                       </div>
-                      <span className="theory-author-pill large">Kotler & Armstrong (2021)</span>
+                      <div>
+                        <div className="text-[10px] uppercase font-bold text-primary-flame tracking-wider">
+                          Kotler & Armstrong Framework • Concept 0{subCard8 + 1} of 05
+                        </div>
+                        <h3 className="text-lg font-extrabold text-white">{currentConcept.concept}</h3>
+                      </div>
                     </div>
-
-                    {/* Academic Definition Box */}
-                    <div className="theory-def-box mb-2.5">
-                      <span className="def-label flex items-center gap-1.5">
-                        <BookOpen className="w-3.5 h-3.5 text-cyan-400" />
-                        Academic Theoretical Definition:
-                      </span>
-                      <p className="def-text text-xs leading-relaxed">{currentConcept.academicDefinition}</p>
-                    </div>
-
-                    {/* Pettah Bazaar Practical Application Box */}
-                    <div className="theory-app-box mb-2.5">
-                      <span className="app-label flex items-center gap-1.5 mb-1.5">
-                        <Sparkles className="w-3.5 h-3.5 text-gold-400" />
-                        Practical Platform Application to Pettah Bazaar:
-                      </span>
-                      <PointList points={currentConcept.points} color="gold" className="theory-points-large" />
-                    </div>
+                    <span className="theory-author-pill large">Kotler & Armstrong (2021)</span>
                   </div>
 
-                  {/* Strategic Insight Takeaway Footer */}
-                  <div className="theory-strategic-insight-bar p-2.5 rounded-lg bg-slate-900/90 border border-teal-500/30 flex items-center justify-between">
-                    <div className="flex items-center gap-2">
-                      <ShieldCheck className="w-4 h-4 text-teal-400 flex-shrink-0" />
-                      <span className="text-xs text-slate-200">
-                        <strong>Strategic Takeaway:</strong> {currentConcept.strategicNote}
-                      </span>
-                    </div>
-                    <span className="text-[11px] font-mono text-teal-300 bg-teal-500/10 px-2 py-0.5 rounded font-bold flex-shrink-0 ml-2">
-                      Step {subCard8 + 1}/5
+                  {/* Academic Definition Box */}
+                  <div className="theory-def-box mb-2.5">
+                    <span className="def-label flex items-center gap-1.5">
+                      <BookOpen className="w-3.5 h-3.5 text-cyan-400" />
+                      Academic Theoretical Definition:
+                    </span>
+                    <p className="def-text text-xs leading-relaxed">{currentConcept.academicDefinition}</p>
+                  </div>
+
+                  {/* Pettah Bazaar Practical Application Box */}
+                  <div className="theory-app-box mb-2.5">
+                    <span className="app-label flex items-center gap-1.5 mb-1.5">
+                      <Sparkles className="w-3.5 h-3.5 text-gold-400" />
+                      Practical Platform Application to Pettah Bazaar:
+                    </span>
+                    <PointList points={currentConcept.points} color="gold" className="theory-points-large" />
+                  </div>
+                </div>
+
+                {/* Strategic Insight Takeaway Footer */}
+                <div className="theory-strategic-insight-bar p-2.5 rounded-lg bg-slate-900/90 border border-teal-500/30 flex items-center justify-between">
+                  <div className="flex items-center gap-2">
+                    <ShieldCheck className="w-4 h-4 text-teal-400 flex-shrink-0" />
+                    <span className="text-xs text-slate-200">
+                      <strong>Strategic Takeaway:</strong> {currentConcept.strategicNote}
                     </span>
                   </div>
+                  <span className="text-[11px] font-mono text-teal-300 bg-teal-500/10 px-2 py-0.5 rounded font-bold flex-shrink-0 ml-2">
+                    Step {subCard8 + 1}/5
+                  </span>
                 </div>
               </div>
             </div>
           </div>
-        ) : (
-          <div className="slide-subcard-container animate-fade-in">
-            <div className="marketing-concepts-table-container flex-1 min-h-0 overflow-hidden">
-              <table className="marketing-theory-table w-full">
-                <thead>
-                  <tr>
-                    <th style={{ width: '25%' }}>Core Marketing Concept & Evidence</th>
-                    <th style={{ width: '37%' }}>Academic Theoretical Definition (Kotler & Armstrong)</th>
-                    <th style={{ width: '38%' }}>Practical Application to Pettah Bazaar</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {slide.table.slice(0, 5).map((row, idx) => (
-                    <tr key={idx} className={idx % 2 === 0 ? 'even-row' : 'odd-row'}>
-                      <td className="concept-cell">
-                        <div className="flex items-center gap-2.5">
-                          {row.image && (
-                            <img 
-                              src={row.image} 
-                              alt={row.concept} 
-                              className="w-12 h-12 object-cover rounded-md border border-teal-500/30 flex-shrink-0" 
-                            />
-                          )}
-                          <div>
-                            <strong>{row.concept}</strong>
-                            <span className="block text-[10px] text-slate-400 mt-0.5">{row.imageCaption}</span>
-                          </div>
-                        </div>
-                      </td>
-                      <td className="academic-cell">{row.academicDefinition}</td>
-                      <td className="application-cell">
-                        <PointList points={row.points || [row.application]} color="gold" />
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-          </div>
-        )}
+        </div>
       </div>
     );
   }
