@@ -812,68 +812,160 @@ export default function SlideRenderer({ slide, direction = 'next', spotlightMode
         )}
 
         {subCard7 === 1 && (
-          <div className="slide-subcard-container animate-fade-in">
-            {/* Visual Benchmark Stats */}
-            <div className="innovation-benchmarks-strip">
-              <div className="benchmark-stat">
-                <div className="benchmark-number text-primary-flame">85%</div>
-                <div className="benchmark-label">Search Effort Reduction</div>
-              </div>
-              <div className="benchmark-stat">
-                <div className="benchmark-number text-cyan-400">&lt; 1.5s</div>
-                <div className="benchmark-label">Low-Bandwidth PWA Load</div>
-              </div>
-              <div className="benchmark-stat">
-                <div className="benchmark-number text-gold-400">100%</div>
-                <div className="benchmark-label">Pettah Hyper-Local Focus</div>
-              </div>
-              <div className="benchmark-stat">
-                <div className="benchmark-number text-emerald-400">Zero Cost</div>
-                <div className="benchmark-label">Free Onboarding for Stalls</div>
-              </div>
-            </div>
-
-            {/* Strategy Canvas / Value Curve Mini-Visual */}
-            <div className="strategy-canvas-banner flex-1 min-h-0 mt-2">
-              <div className="canvas-header">
-                <BarChart2 className="w-4 h-4 text-primary-flame mr-1.5" />
-                <span>Value Innovation Curve: Pettah Bazaar vs Alternatives</span>
-              </div>
-              <div className="canvas-bars-row">
-                <div className="canvas-col">
-                  <span className="canvas-col-title">Hyper-Local Detail</span>
-                  <div className="canvas-bar-track">
-                    <div className="canvas-bar-fill orange" style={{ height: '95%' }} title="Pettah Bazaar: 95%"></div>
-                    <div className="canvas-bar-fill gray" style={{ height: '35%' }} title="Google Maps: 35%"></div>
+          <div className="slide-subcard-container animate-fade-in flex flex-col justify-between flex-1 min-h-0">
+            {/* Strategy Canvas / Value Innovation Curve Full-Scale Visual */}
+            <div className="strategy-canvas-banner flex-1 min-h-0 flex flex-col justify-between">
+              <div className="canvas-header-bar">
+                <div className="canvas-title-group">
+                  <BarChart2 className="w-5 h-5 text-primary-flame mr-2 flex-shrink-0" />
+                  <span className="canvas-main-title">Value Innovation Curve: Pettah Bazaar vs Alternatives</span>
+                  <span className="canvas-sub-title">Chan Kim & Mauborgne Strategic Canvas Framework</span>
+                </div>
+                
+                {/* Visual Legend */}
+                <div className="canvas-legend">
+                  <div className="legend-item">
+                    <span className="legend-box pb-orange"></span>
+                    <span className="legend-name">Pettah Bazaar (PWA)</span>
                   </div>
-                  <span className="canvas-col-label">PB (95%) vs GM (35%)</span>
+                  <div className="legend-item">
+                    <span className="legend-box alt-gray"></span>
+                    <span className="legend-name">Traditional Alternatives</span>
+                  </div>
+                </div>
+              </div>
+
+              <div className="canvas-bars-row flex-1 min-h-0">
+                <div className="canvas-col">
+                  <div className="canvas-col-header">
+                    <span className="col-benchmark-tag text-gold-400">100% Pettah Focus</span>
+                    <span className="canvas-col-title">Hyper-Local Detail</span>
+                    <span className="canvas-col-sub">Micro-street & stall-level</span>
+                  </div>
+                  
+                  <div className="canvas-bar-track">
+                    <div className="track-grid-lines">
+                      <span className="grid-line" style={{ bottom: '75%' }}></span>
+                      <span className="grid-line" style={{ bottom: '50%' }}></span>
+                      <span className="grid-line" style={{ bottom: '25%' }}></span>
+                    </div>
+
+                    <div className="canvas-bar-group">
+                      <div className="canvas-bar-fill orange" style={{ height: '95%' }} title="Pettah Bazaar: 95%">
+                        <span className="bar-val-badge">95%</span>
+                      </div>
+                      <div className="canvas-bar-fill gray" style={{ height: '35%' }} title="Google Maps: 35%">
+                        <span className="bar-val-badge">35%</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="canvas-col-footer">
+                    <div className="canvas-col-labels">
+                      <span className="pb-label">PB: 95%</span>
+                      <span className="alt-label">GM: 35%</span>
+                    </div>
+                    <span className="advantage-badge">+60% Local Depth</span>
+                  </div>
                 </div>
 
                 <div className="canvas-col">
-                  <span className="canvas-col-title">3G Data Lightness</span>
-                  <div className="canvas-bar-track">
-                    <div className="canvas-bar-fill orange" style={{ height: '90%' }} title="Pettah Bazaar: 90%"></div>
-                    <div className="canvas-bar-fill gray" style={{ height: '40%' }} title="Social Apps: 40%"></div>
+                  <div className="canvas-col-header">
+                    <span className="col-benchmark-tag text-cyan-400">&lt; 1.5s Fast Load</span>
+                    <span className="canvas-col-title">3G Data Lightness</span>
+                    <span className="canvas-col-sub">PWA load under 1.5s</span>
                   </div>
-                  <span className="canvas-col-label">PB (90%) vs Apps (40%)</span>
+
+                  <div className="canvas-bar-track">
+                    <div className="track-grid-lines">
+                      <span className="grid-line" style={{ bottom: '75%' }}></span>
+                      <span className="grid-line" style={{ bottom: '50%' }}></span>
+                      <span className="grid-line" style={{ bottom: '25%' }}></span>
+                    </div>
+
+                    <div className="canvas-bar-group">
+                      <div className="canvas-bar-fill orange" style={{ height: '90%' }} title="Pettah Bazaar: 90%">
+                        <span className="bar-val-badge">90%</span>
+                      </div>
+                      <div className="canvas-bar-fill gray" style={{ height: '40%' }} title="Social Apps: 40%">
+                        <span className="bar-val-badge">40%</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="canvas-col-footer">
+                    <div className="canvas-col-labels">
+                      <span className="pb-label">PB: 90%</span>
+                      <span className="alt-label">Apps: 40%</span>
+                    </div>
+                    <span className="advantage-badge">2.3x Faster Access</span>
+                  </div>
                 </div>
 
                 <div className="canvas-col">
-                  <span className="canvas-col-title">Merchant Verification</span>
-                  <div className="canvas-bar-track">
-                    <div className="canvas-bar-fill orange" style={{ height: '92%' }} title="Pettah Bazaar: 92%"></div>
-                    <div className="canvas-bar-fill gray" style={{ height: '20%' }} title="Asking Walkers: 20%"></div>
+                  <div className="canvas-col-header">
+                    <span className="col-benchmark-tag text-emerald-400">Zero Cost Stall Entry</span>
+                    <span className="canvas-col-title">Merchant Verification</span>
+                    <span className="canvas-col-sub">Direct WhatsApp & badges</span>
                   </div>
-                  <span className="canvas-col-label">PB (92%) vs Walk (20%)</span>
+
+                  <div className="canvas-bar-track">
+                    <div className="track-grid-lines">
+                      <span className="grid-line" style={{ bottom: '75%' }}></span>
+                      <span className="grid-line" style={{ bottom: '50%' }}></span>
+                      <span className="grid-line" style={{ bottom: '25%' }}></span>
+                    </div>
+
+                    <div className="canvas-bar-group">
+                      <div className="canvas-bar-fill orange" style={{ height: '92%' }} title="Pettah Bazaar: 92%">
+                        <span className="bar-val-badge">92%</span>
+                      </div>
+                      <div className="canvas-bar-fill gray" style={{ height: '20%' }} title="Asking Walkers: 20%">
+                        <span className="bar-val-badge">20%</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="canvas-col-footer">
+                    <div className="canvas-col-labels">
+                      <span className="pb-label">PB: 92%</span>
+                      <span className="alt-label">Walk: 20%</span>
+                    </div>
+                    <span className="advantage-badge">+72% Trust Factor</span>
+                  </div>
                 </div>
 
                 <div className="canvas-col">
-                  <span className="canvas-col-title">Time Savings</span>
-                  <div className="canvas-bar-track">
-                    <div className="canvas-bar-fill orange" style={{ height: '96%' }} title="Pettah Bazaar: 96%"></div>
-                    <div className="canvas-bar-fill gray" style={{ height: '15%' }} title="Traditional: 15%"></div>
+                  <div className="canvas-col-header">
+                    <span className="col-benchmark-tag text-primary-flame">85% Effort Saved</span>
+                    <span className="canvas-col-title">Shopper Time Savings</span>
+                    <span className="canvas-col-sub">Cuts hours to &lt; 3 mins</span>
                   </div>
-                  <span className="canvas-col-label">PB (96%) vs Trad (15%)</span>
+
+                  <div className="canvas-bar-track">
+                    <div className="track-grid-lines">
+                      <span className="grid-line" style={{ bottom: '75%' }}></span>
+                      <span className="grid-line" style={{ bottom: '50%' }}></span>
+                      <span className="grid-line" style={{ bottom: '25%' }}></span>
+                    </div>
+
+                    <div className="canvas-bar-group">
+                      <div className="canvas-bar-fill orange" style={{ height: '96%' }} title="Pettah Bazaar: 96%">
+                        <span className="bar-val-badge">96%</span>
+                      </div>
+                      <div className="canvas-bar-fill gray" style={{ height: '15%' }} title="Traditional Walking: 15%">
+                        <span className="bar-val-badge">15%</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="canvas-col-footer">
+                    <div className="canvas-col-labels">
+                      <span className="pb-label">PB: 96%</span>
+                      <span className="alt-label">Trad: 15%</span>
+                    </div>
+                    <span className="advantage-badge">&gt; 95% Time Saved</span>
+                  </div>
                 </div>
               </div>
             </div>
