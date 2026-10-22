@@ -7,9 +7,10 @@ export default function VideoSlidePlaceholder({
   label, 
   caption, 
   presenter, 
-  context,
-  disclaimer,
-  videoSrc
+  context, 
+  disclaimer, 
+  videoSrc,
+  keyTakeaways
 }) {
   const [customVideoUrl, setCustomVideoUrl] = useState('');
   const [showInput, setShowInput] = useState(false);
@@ -191,6 +192,21 @@ export default function VideoSlidePlaceholder({
           </div>
         )}
       </div>
+
+      {/* Key Point-Wise Takeaways Banner */}
+      {keyTakeaways && keyTakeaways.length > 0 && (
+        <div className="video-takeaways-strip animate-slide-up">
+          <div className="takeaways-label">Key Takeaways:</div>
+          <div className="takeaways-chips-row">
+            {keyTakeaways.map((tk, idx) => (
+              <div key={idx} className="takeaway-chip">
+                <span className="takeaway-dot"></span>
+                <span>{tk}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
 
       {/* Slide Caption & Academic Context */}
       <div className="video-slide-caption-bar">

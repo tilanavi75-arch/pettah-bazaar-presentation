@@ -17,7 +17,9 @@ export default function Navigation({
   toggleRubric, 
   toggleGrid,
   isFullscreen,
-  toggleFullscreen
+  toggleFullscreen,
+  spotlightMode,
+  toggleSpotlight
 }) {
   // 20-minute presentation timer (20 * 60 = 1200 seconds)
   const [seconds, setSeconds] = useState(0);
@@ -156,6 +158,15 @@ export default function Navigation({
           >
             <Grid className="w-4 h-4 mr-1" />
             <span className="btn-text">Slides</span>
+          </button>
+
+          <button 
+            className={`action-btn ${spotlightMode ? 'active' : ''}`}
+            onClick={toggleSpotlight}
+            title="Toggle Presenter Spotlight Mode (Shortcut: B)"
+          >
+            <Sparkles className="w-4 h-4 mr-1 text-gold-accent" />
+            <span className="btn-text">Spotlight</span>
           </button>
 
           <button 

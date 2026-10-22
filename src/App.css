@@ -300,10 +300,12 @@
 ------------------------------------------------------------- */
 .presentation-stage {
   flex: 1;
+  min-height: 0;         /* ← Critical: lets flex child shrink below content size */
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  padding: 1rem 1.5rem;
+  justify-content: flex-start;
+  padding: 0.75rem 1.25rem;
   overflow: hidden;
   position: relative;
 }
@@ -311,8 +313,8 @@
 .slide-card-container {
   width: 100%;
   max-width: 1560px;
-  height: 100%;
-  max-height: 877px; /* 16:9 ratio target */
+  flex: 1;
+  min-height: 0;         /* ← Critical: prevents blowing past parent height */
   background: var(--bg-pitch-surface);
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-lg);
@@ -5542,5 +5544,550 @@
   padding: 0.2rem 0.55rem;
   border-radius: 4px;
 }
+
+/* -------------------------------------------------------------
+   SLIDE DIRECTIONAL BUILD TRANSITIONS & KEYFRAMES
+------------------------------------------------------------- */
+.slide-anim-next {
+  animation: slideInFromRight 0.38s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.slide-anim-prev {
+  animation: slideInFromLeft 0.38s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes slideInFromRight {
+  0% {
+    opacity: 0;
+    transform: translateX(36px) scale(0.985);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+}
+
+@keyframes slideInFromLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-36px) scale(0.985);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+}
+
+/* -------------------------------------------------------------
+   PRESENTATION POINT-WISE BULLETS & STAGGERED ENTRANCES
+------------------------------------------------------------- */
+.presentation-point-list {
+  list-style: none;
+  padding: 0;
+  margin: 0.5rem 0 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.42rem;
+}
+
+.presentation-point-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.55rem;
+  font-size: 0.82rem;
+  line-height: 1.45;
+  color: #E2E8F0;
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.presentation-point-item:hover {
+  color: #FFFFFF;
+  transform: translateX(3px);
+}
+
+.point-item-text {
+  flex: 1;
+}
+
+.point-marker-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  margin-top: 0.42rem;
+  flex-shrink: 0;
+  box-shadow: 0 0 8px currentColor;
+  transition: transform 0.2s ease;
+}
+
+.presentation-point-item:hover .point-marker-dot {
+  transform: scale(1.35);
+}
+
+.point-marker-dot.orange {
+  background-color: #FF5500;
+  color: rgba(255, 85, 0, 0.8);
+}
+
+.point-marker-dot.cyan {
+  background-color: #38BDF8;
+  color: rgba(56, 189, 248, 0.8);
+}
+
+.point-marker-dot.gold {
+  background-color: #F59E0B;
+  color: rgba(245, 158, 11, 0.8);
+}
+
+.point-marker-dot.emerald {
+  background-color: #10B981;
+  color: rgba(16, 185, 129, 0.8);
+}
+
+.point-marker-dot.pink {
+  background-color: #EC4899;
+  color: rgba(236, 72, 153, 0.8);
+}
+
+.point-marker-dot.red {
+  background-color: #EF4444;
+  color: rgba(239, 68, 68, 0.8);
+}
+
+/* Stagger entrance delays */
+.stagger-1 {
+  animation: pointFadeSlideIn 0.35s cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation-delay: 0.05s;
+}
+
+.stagger-2 {
+  animation: pointFadeSlideIn 0.35s cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation-delay: 0.12s;
+}
+
+.stagger-3 {
+  animation: pointFadeSlideIn 0.35s cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation-delay: 0.19s;
+}
+
+.stagger-4 {
+  animation: pointFadeSlideIn 0.35s cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation-delay: 0.26s;
+}
+
+.stagger-5 {
+  animation: pointFadeSlideIn 0.35s cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation-delay: 0.33s;
+}
+
+.stagger-6 {
+  animation: pointFadeSlideIn 0.35s cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation-delay: 0.40s;
+}
+
+@keyframes pointFadeSlideIn {
+  0% {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* -------------------------------------------------------------
+   COVER PAGE POINT CHIPS
+------------------------------------------------------------- */
+.cover-points-strip {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.75rem;
+  margin: 1.1rem 0;
+}
+
+.cover-key-point-chip {
+  background: rgba(18, 18, 24, 0.75);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
+  padding: 0.65rem 0.85rem;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.25s ease;
+}
+
+.cover-key-point-chip::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 3px;
+  height: 100%;
+  background: var(--color-primary-gradient);
+  opacity: 0.7;
+}
+
+.cover-key-point-chip:hover {
+  transform: translateY(-2px);
+  background: rgba(26, 26, 36, 0.85);
+  border-color: rgba(255, 85, 0, 0.35);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+}
+
+.cover-key-point-chip .chip-badge-label {
+  font-size: 0.62rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #FFA500;
+  margin-bottom: 0.2rem;
+}
+
+.cover-key-point-chip .chip-highlight-val {
+  font-size: 0.88rem;
+  font-weight: 800;
+  color: #FFFFFF;
+  margin-bottom: 0.2rem;
+}
+
+.cover-key-point-chip .chip-desc {
+  font-size: 0.72rem;
+  color: #94A3B8;
+  line-height: 1.35;
+}
+
+/* -------------------------------------------------------------
+   VIDEO SLIDE POINT-WISE TAKEAWAYS
+------------------------------------------------------------- */
+.video-takeaways-box {
+  background: rgba(18, 18, 24, 0.85);
+  border: 1px solid rgba(255, 85, 0, 0.25);
+  border-radius: 10px;
+  padding: 0.85rem 1.1rem;
+  margin-bottom: 0.85rem;
+}
+
+.takeaways-heading {
+  display: flex;
+  align-items: center;
+  font-size: 0.74rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #FFA500;
+  margin-bottom: 0.5rem;
+}
+
+.takeaways-chips-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.6rem;
+}
+
+.takeaway-point-chip {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.45rem;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 6px;
+  padding: 0.5rem 0.65rem;
+  font-size: 0.76rem;
+  line-height: 1.35;
+  color: #E2E8F0;
+  transition: all 0.2s ease;
+}
+
+.takeaway-point-chip:hover {
+  background: rgba(255, 85, 0, 0.08);
+  border-color: rgba(255, 85, 0, 0.3);
+  transform: translateY(-1px);
+}
+
+/* -------------------------------------------------------------
+   PRESENTATION BOTTOM HUD & 20-SLIDE INTERACTIVE SCRUBBER
+------------------------------------------------------------- */
+.presentation-bottom-hud {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.4rem 1.25rem 0.55rem;
+  background: rgba(10, 10, 14, 0.85);
+  backdrop-filter: blur(12px);
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  z-index: 30;
+  flex-shrink: 0;
+}
+
+.hud-scrubber-wrap {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.scrubber-dots-row {
+  display: flex;
+  align-items: center;
+  gap: 0.32rem;
+}
+
+.scrubber-dot {
+  position: relative;
+  width: 18px;
+  height: 6px;
+  border-radius: 3px;
+  background: rgba(255, 255, 255, 0.15);
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.scrubber-dot:hover {
+  background: rgba(255, 255, 255, 0.4);
+  transform: scaleY(1.5);
+}
+
+.scrubber-dot.active {
+  background: var(--color-primary-gradient);
+  width: 28px;
+  box-shadow: 0 0 10px var(--color-primary-glow);
+}
+
+.scrubber-dot.visited:not(.active) {
+  background: rgba(255, 85, 0, 0.45);
+}
+
+.scrubber-tooltip {
+  position: absolute;
+  bottom: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%);
+  background: #181822;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #FFFFFF;
+  padding: 0.35rem 0.65rem;
+  border-radius: 6px;
+  font-size: 0.68rem;
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.15s ease, transform 0.15s ease;
+  z-index: 50;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
+}
+
+.scrubber-dot:hover .scrubber-tooltip {
+  opacity: 1;
+  transform: translateX(-50%) translateY(-2px);
+}
+
+.hud-shortcuts-hint {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.7rem;
+  color: #64748B;
+}
+
+.kbd-chip {
+  display: inline-block;
+  padding: 0.1rem 0.35rem;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 3px;
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  color: #94A3B8;
+}
+
+.hud-spotlight-status {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.68rem;
+  font-weight: 600;
+  color: #FFA500;
+  background: rgba(255, 165, 0, 0.1);
+  padding: 0.2rem 0.55rem;
+  border-radius: 4px;
+  border: 1px solid rgba(255, 165, 0, 0.25);
+}
+
+.spotlight-pulse-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #FFA500;
+  box-shadow: 0 0 8px #FFA500;
+  animation: pulse 1.5s infinite;
+}
+
+/* -------------------------------------------------------------
+   SPOTLIGHT PRESENTER FOCUS MODE
+------------------------------------------------------------- */
+.spotlight-on .visual-card,
+.spotlight-on .visual-interactive-card,
+.spotlight-on .problem-item-card,
+.spotlight-on .opportunity-card,
+.spotlight-on .concept-step-card,
+.spotlight-on .innovation-card,
+.spotlight-on .theory-card,
+.spotlight-on .segment-card,
+.spotlight-on .pricing-tier-card,
+.spotlight-on .place-card,
+.spotlight-on .promo-tool-item,
+.spotlight-on .ethics-card,
+.spotlight-on .recap-card {
+  transition: all 0.3s ease;
+  opacity: 0.45;
+  filter: grayscale(30%);
+}
+
+.spotlight-on .visual-card:hover,
+.spotlight-on .visual-interactive-card:hover,
+.spotlight-on .problem-item-card:hover,
+.spotlight-on .opportunity-card:hover,
+.spotlight-on .concept-step-card:hover,
+.spotlight-on .innovation-card:hover,
+.spotlight-on .theory-card:hover,
+.spotlight-on .segment-card:hover,
+.spotlight-on .pricing-tier-card:hover,
+.spotlight-on .place-card:hover,
+.spotlight-on .promo-tool-item:hover,
+.spotlight-on .ethics-card:hover,
+.spotlight-on .recap-card:hover {
+  opacity: 1;
+  filter: grayscale(0%);
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 0 12px 30px rgba(255, 85, 0, 0.25), 0 0 0 1px rgba(255, 85, 0, 0.4);
+  z-index: 10;
+}
+
+/* -------------------------------------------------------------
+   NAVBAR SPOTLIGHT TOGGLE BUTTON
+------------------------------------------------------------- */
+.nav-spotlight-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #94A3B8;
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 0.32rem 0.65rem;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.nav-spotlight-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #FFFFFF;
+}
+
+.nav-spotlight-btn.active {
+  background: rgba(255, 165, 0, 0.18);
+  border-color: #FFA500;
+  color: #FFA500;
+  box-shadow: 0 0 12px rgba(255, 165, 0, 0.25);
+}
+
+/* -------------------------------------------------------------
+   BOTTOM HUD & SCRUBBER STRIP
+------------------------------------------------------------- */
+.presentation-bottom-hud {
+  width: 100%;
+  max-width: 1560px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.35rem 0.85rem;
+  margin-top: 0.45rem;
+  background: rgba(10, 10, 14, 0.82);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 10px;
+}
+
+.scrubber-dots-row {
+  display: flex;
+  align-items: center;
+  gap: 0.28rem;
+  flex-wrap: nowrap;
+}
+
+.scrubber-dot {
+  position: relative;
+  width: 16px;
+  height: 5px;
+  border-radius: 3px;
+  background: rgba(255, 255, 255, 0.14);
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.scrubber-dot:hover {
+  background: rgba(255, 255, 255, 0.38);
+  transform: scaleY(1.6);
+}
+
+.scrubber-dot.active {
+  background: linear-gradient(135deg, #FF381E 0%, #FF7700 100%);
+  width: 26px;
+  box-shadow: 0 0 8px rgba(255, 85, 0, 0.6);
+}
+
+.scrubber-dot.visited:not(.active) {
+  background: rgba(255, 85, 0, 0.4);
+}
+
+/* Tooltip shown on hover */
+.dot-tooltip {
+  position: absolute;
+  bottom: calc(100% + 7px);
+  left: 50%;
+  transform: translateX(-50%);
+  background: #16161F;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  color: #E2E8F0;
+  padding: 0.28rem 0.6rem;
+  border-radius: 5px;
+  font-size: 0.66rem;
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.14s ease, transform 0.14s ease;
+  z-index: 100;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.65);
+}
+
+.scrubber-dot:hover .dot-tooltip {
+  opacity: 1;
+  transform: translateX(-50%) translateY(-2px);
+}
+
+.hud-status-badge {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-shrink: 0;
+}
+
+.hud-key-hint {
+  font-size: 0.68rem;
+  color: #64748B;
+  font-family: var(--font-mono);
+}
+
+.hud-sep {
+  color: rgba(255, 255, 255, 0.15);
+  font-size: 0.7rem;
+}
+
+
 
 

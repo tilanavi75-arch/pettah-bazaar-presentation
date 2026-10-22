@@ -15,7 +15,22 @@ import VideoSlidePlaceholder from './VideoSlidePlaceholder';
 import InteractivePrototype from './InteractivePrototype';
 import { teamMembers } from '../data/slidesData';
 
-export default function SlideRenderer({ slide, onJumpToSlide }) {
+// Reusable point-wise presentation list component with staggered build animations
+function PointList({ points, color = "orange", className = "" }) {
+  if (!points || !points.length) return null;
+  return (
+    <ul className={`presentation-point-list ${className}`}>
+      {points.map((pt, i) => (
+        <li key={i} className={`presentation-point-item stagger-${(i % 5) + 1}`}>
+          <span className={`point-marker-dot ${color}`}></span>
+          <span className="point-item-text">{pt}</span>
+        </li>
+      ))}
+    </ul>
+  );
+}
+
+export default function SlideRenderer({ slide, direction = 'next', spotlightMode = false, onJumpToSlide }) {
   // State for interactive features on specific slides
   const [problemPhoto, setProblemPhoto] = useState('alley'); // 'alley' or 'traffic'
   const [activeStep, setActiveStep] = useState(0); // For Slide 6 concept step
@@ -28,6 +43,9 @@ export default function SlideRenderer({ slide, onJumpToSlide }) {
   const [pricingCycle, setPricingCycle] = useState('phase1'); // For Slide 13 pricing tiers
   const [activeEthic, setActiveEthic] = useState(null); // For Slide 18 ethics cards
   const [slide20View, setSlide20View] = useState('thankYou'); // 'thankYou' or 'references' for Slide 20
+
+  const animClass = direction === 'prev' ? 'slide-anim-prev' : 'slide-anim-next';
+  const spotlightClass = spotlightMode ? 'spotlight-on' : '';
 
   // Confetti celebration trigger for Slide 19
   const triggerCelebration = () => {
@@ -42,23 +60,96 @@ export default function SlideRenderer({ slide, onJumpToSlide }) {
   // If it's a dedicated video slide (Slide 4 or Slide 16)
   if (slide.isVideoSlide) {
     return (
-      <VideoSlidePlaceholder 
-        slideNumber={slide.slideNumber}
-        heading={slide.videoHeading}
-        label={slide.videoLabel}
-        caption={slide.videoCaption}
-        presenter={slide.presenter}
-        context={slide.videoContext}
-        disclaimer={slide.disclaimer}
-        videoSrc={slide.videoSrc}
-      />
+      <div className={`slide-content video-slide-container ${animClass} ${spotlightClass}`}>
+        <VideoSlidePlaceholder 
+          slideNumber={slide.slideNumber}
+          heading={slide.videoHeading}
+          label={slide.videoLabel}
+          caption={slide.videoCaption}
+          presenter={slide.presenter}
+          context={slide.videoContext}
+          disclaimer={slide.disclaimer}
+          videoSrc={slide.videoSrc}
+          keyTakeaways={slide.keyTakeaways}
+        />
+      </div>
     );
   }
 
   // Slide 1: Executive Cover Page & Brand Introduction
   if (slide.id === 1) {
     return (
-      <div className="slide-content cover-page-master">
+      <div className={`slide-content cover-page-master cover-new-layout ${animClass} ${spotlightClass}`}>
+
+        {/* LEFT: Full-bleed Hero Image */}
+        <div className="cover-image-panel">
+          <img
+            src={slide.heroImage}
+            alt="Pettah commercial epicenter"
+            className="cover-fullbleed-img"
+          />
+          {/* subtle gradient overlay so it blends into right panel */}
+          <div className="cover-img-fade-right" />
+        </div>
+
+        {/* RIGHT: Brand Identity */}
+        <div className="cover-brand-panel">
+
+          {/* KDU credential pill */}
+          <div className="cover-credential-pill">
+            <Award className="w-3.5 h-3.5 text-primary-flame mr-1.5 flex-shrink-0" />
+            <span>{slide.meta.university} • {slide.meta.module}</span>
+          </div>
+
+          {/* Category chip */}
+          <div className="cover-category-chip mt-2">
+            <Flame className="w-3.5 h-3.5 text-primary-flame mr-1.5 animate-pulse" />
+            <span>PROPOSED DIGITAL SHOP-DISCOVERY PLATFORM • COLOMBO 11</span>
+          </div>
+
+          {/* Main brand name */}
+          <h1 className="cover-brand-title cover-brand-title-new">
+            PETTAH<br />
+            <span className="cover-brand-glow">BAZAAR</span>
+          </h1>
+
+          {/* Tagline */}
+          <div className="cover-tagline-glass cover-tagline-new">
+            <span className="tagline-quote">"</span>
+            <span className="tagline-main">{slide.tagline}</span>
+            <span className="tagline-quote">"</span>
+          </div>
+
+          {/* Deployed URL pill */}
+          <div className="cover-url-pill mt-4">
+            <Globe className="w-3.5 h-3.5 mr-1.5 text-primary-flame" />
+            pettah-bazaar.vercel.app
+          </div>
+
+          {/* Live badge */}
+          <div className="cover-live-badge mt-3">
+            <span className="cover-live-dot" />
+            Live Prototype Tested
+          </div>
+
+          {/* Presenter count */}
+          <div className="cover-team-pill mt-3">
+            <Users className="w-3.5 h-3.5 mr-1.5 text-primary-flame" />
+            10 Presenters • KDU Intake 43 • BSM 12012
+          </div>
+
+          {/* Duration */}
+          <div className="cover-duration-badge mt-2">
+            <Clock className="w-3.5 h-3.5 mr-1.5 text-gold-400" />
+            {slide.meta.duration}
+          </div>
+
+        </div>
+
+      </div>
+    );
+  }
+
         {/* Background Ambient Glow Elements */}
         <div className="cover-ambient-glow top-right"></div>
         <div className="cover-ambient-glow bottom-left"></div>
@@ -107,9 +198,16 @@ export default function SlideRenderer({ slide, onJumpToSlide }) {
               <span className="tagline-quote">”</span>
             </div>
 
-            <p className="cover-subtitle-lead">
-              A student-developed digital discovery engine designed to bridge Colombo’s most congested commercial hub with instant, product-first micro-location search.
-            </p>
+            {/* Point-Wise Executive Takeaway Chips (Replaces verbose paragraph) */}
+            <div className="cover-points-strip stagger-1">
+              {slide.keyHighlights?.map((kh, idx) => (
+                <div key={idx} className="cover-key-point-chip">
+                  <div className="chip-badge-label">{kh.label}</div>
+                  <div className="chip-highlight-val">{kh.val}</div>
+                  <div className="chip-desc">{kh.desc}</div>
+                </div>
+              ))}
+            </div>
 
             {/* Key Platform Value Badges */}
             <div className="cover-stats-row">
@@ -219,7 +317,7 @@ export default function SlideRenderer({ slide, onJumpToSlide }) {
   // Slide 2: Introduction & Brand Identity
   if (slide.id === 2) {
     return (
-      <div className="slide-content slide-two-column">
+      <div className={`slide-content slide-two-column ${animClass} ${spotlightClass}`}>
         <div className="slide-header-bar">
           <div>
             <span className="section-tag">{slide.section}</span>
@@ -236,15 +334,15 @@ export default function SlideRenderer({ slide, onJumpToSlide }) {
                 <div className="pillar-num-badge">0{idx + 1}</div>
                 <div className="flex-1">
                   <h4 className="pillar-title">{p.title}</h4>
-                  <span className="pillar-micro-tag">
-                    {idx === 0 && "Core Discovery Engine"}
-                    {idx === 1 && "High-Density Commercial Grid"}
-                    {idx === 2 && "Heritage Meets Technology"}
-                    {idx === 3 && "Customer Value Promise"}
-                  </span>
+                  <span className="pillar-micro-tag">{p.tag}</span>
                 </div>
               </div>
-              <p className="pillar-desc">{p.desc}</p>
+              
+              {/* Point-wise presentation bullet items */}
+              <PointList 
+                points={p.points || [p.desc]} 
+                color={idx === 0 ? "orange" : idx === 1 ? "cyan" : idx === 2 ? "gold" : "emerald"} 
+              />
               
               <div className="pillar-progress-track">
                 <div className="pillar-progress-fill" style={{ width: `${80 + idx * 5}%` }}></div>
@@ -296,7 +394,7 @@ export default function SlideRenderer({ slide, onJumpToSlide }) {
   // Slide 3: Market Problem
   if (slide.id === 3) {
     return (
-      <div className="slide-content slide-problem">
+      <div className={`slide-content slide-problem ${animClass} ${spotlightClass}`}>
         <div className="slide-header-bar">
           <div>
             <span className="section-tag problem">{slide.section}</span>
@@ -343,7 +441,9 @@ export default function SlideRenderer({ slide, onJumpToSlide }) {
                   <span className="problem-tag">{pt.tag}</span>
                   <h4 className="problem-item-title">{pt.title}</h4>
                 </div>
-                <p className="problem-item-desc">{pt.desc}</p>
+                
+                {/* Point-wise presentation bullet items */}
+                <PointList points={pt.points || [pt.desc]} color="red" />
               </div>
             ))}
 
@@ -405,7 +505,7 @@ export default function SlideRenderer({ slide, onJumpToSlide }) {
   // Slide 5: Market Opportunity & Research Insights
   if (slide.id === 5) {
     return (
-      <div className="slide-content">
+      <div className={`slide-content ${animClass} ${spotlightClass}`}>
         <div className="slide-header-bar">
           <div>
             <span className="section-tag opportunity">{slide.section}</span>
@@ -427,7 +527,9 @@ export default function SlideRenderer({ slide, onJumpToSlide }) {
                   {idx === 2 && <ShoppingBag className="w-5 h-5 text-primary-flame" />}
                 </div>
                 <h4 className="journey-stage-title">{j.stage}</h4>
-                <p className="journey-desc">{j.desc}</p>
+                
+                {/* Point-wise presentation bullet items */}
+                <PointList points={j.points || [j.desc]} color={idx === 0 ? "red" : idx === 1 ? "gold" : "emerald"} />
               </div>
               {idx < slide.journey.length - 1 && (
                 <div className="journey-arrow">
@@ -494,7 +596,7 @@ export default function SlideRenderer({ slide, onJumpToSlide }) {
   // Slide 6: Product Concept (Interactive Showroom)
   if (slide.id === 6) {
     return (
-      <div className="slide-content">
+      <div className={`slide-content ${animClass} ${spotlightClass}`}>
         <div className="slide-header-bar">
           <div>
             <span className="section-tag solution">{slide.section}</span>
@@ -520,7 +622,9 @@ export default function SlideRenderer({ slide, onJumpToSlide }) {
                   </div>
                   <h3 className="concept-title">{st.title}</h3>
                   <div className="concept-subtitle">{st.subtitle}</div>
-                  <p className="concept-desc">{st.desc}</p>
+                  
+                  {/* Point-wise presentation bullet items */}
+                  <PointList points={st.points || [st.desc]} color="orange" />
                   
                   {activeStep === idx && (
                     <div className="active-step-cue animate-fade-in">
@@ -586,7 +690,7 @@ export default function SlideRenderer({ slide, onJumpToSlide }) {
   // Slide 7: Innovation, Customer Benefits & Value Proposition
   if (slide.id === 7) {
     return (
-      <div className="slide-content">
+      <div className={`slide-content ${animClass} ${spotlightClass}`}>
         <div className="slide-header-bar">
           <div>
             <span className="section-tag">{slide.section}</span>
@@ -673,7 +777,7 @@ export default function SlideRenderer({ slide, onJumpToSlide }) {
             <div key={idx} className="innovation-card visual-card">
               <div className="card-top-tag">{pil.tag}</div>
               <h4 className="card-heading">{pil.title}</h4>
-              <p className="card-body">{pil.desc}</p>
+              <PointList points={pil.points || [pil.desc]} color="orange" />
             </div>
           ))}
         </div>
@@ -684,7 +788,7 @@ export default function SlideRenderer({ slide, onJumpToSlide }) {
   // Slide 8: Application of Marketing Concepts (Dashboard + Table Toggle)
   if (slide.id === 8) {
     return (
-      <div className="slide-content">
+      <div className={`slide-content ${animClass} ${spotlightClass}`}>
         <div className="slide-header-bar">
           <div>
             <span className="section-tag theory">{slide.section}</span>
@@ -752,7 +856,7 @@ export default function SlideRenderer({ slide, onJumpToSlide }) {
 
                 <div className="theory-app-box">
                   <span className="app-label">Pettah Bazaar Application:</span>
-                  <p className="app-text">{row.application}</p>
+                  <PointList points={row.points || [row.application]} color="gold" />
                 </div>
               </div>
             ))}
@@ -775,7 +879,7 @@ export default function SlideRenderer({ slide, onJumpToSlide }) {
                     </td>
                     <td className="academic-cell">{row.academicDefinition}</td>
                     <td className="application-cell">
-                      <span className="app-highlight">{row.application}</span>
+                      <PointList points={row.points || [row.application]} color="gold" />
                     </td>
                   </tr>
                 ))}
@@ -814,7 +918,7 @@ export default function SlideRenderer({ slide, onJumpToSlide }) {
     ];
 
     return (
-      <div className="slide-content">
+      <div className={`slide-content ${animClass} ${spotlightClass}`}>
         <div className="slide-header-bar">
           <div>
             <span className="section-tag stp">{slide.section}</span>
@@ -839,7 +943,12 @@ export default function SlideRenderer({ slide, onJumpToSlide }) {
                   <span className="segment-focus-tag">{seg.focus}</span>
                 </div>
               </div>
-              <p className="segment-details">{seg.details}</p>
+              
+              {/* Point-wise presentation bullet items */}
+              <PointList 
+                points={seg.points || [seg.details]} 
+                color={idx === 0 ? "cyan" : idx === 1 ? "orange" : idx === 2 ? "gold" : "pink"} 
+              />
 
               {/* Visual Persona Chips */}
               <div className="segment-persona-chips">
@@ -925,7 +1034,7 @@ export default function SlideRenderer({ slide, onJumpToSlide }) {
   // Slide 10: Targeting & Positioning Strategy
   if (slide.id === 10) {
     return (
-      <div className="slide-content">
+      <div className={`slide-content ${animClass} ${spotlightClass}`}>
         <div className="slide-header-bar">
           <div>
             <span className="section-tag stp">{slide.section}</span>
@@ -1010,16 +1119,25 @@ export default function SlideRenderer({ slide, onJumpToSlide }) {
                     </div>
                   </div>
                 </div>
+
+                <div className="primary-cohort-box mt-3 p-3 bg-slate-900/60 rounded-lg border border-primary-flame/30">
+                  <div className="font-semibold text-primary-flame text-sm mb-1">{slide.targetGroups.primary.title}</div>
+                  <div className="text-white text-xs font-medium mb-1.5">{slide.targetGroups.primary.cohort}</div>
+                  <PointList points={slide.targetGroups.primary.points} color="orange" />
+                </div>
               </div>
             )}
 
             <div className="secondary-targets-list mt-3">
-              <div className="secondary-header">Detailed Target Cohorts:</div>
-              {slide.targetGroups.secondary.map((sec, idx) => (
-                <div key={idx} className="secondary-item">
-                  <strong>{sec.name}:</strong> <span>{sec.desc}</span>
-                </div>
-              ))}
+              <div className="secondary-header font-semibold text-white mb-2">Target Market Cohorts (Key Highlights):</div>
+              <div className="grid grid-cols-1 gap-2">
+                {slide.targetGroups.secondary.map((sec, idx) => (
+                  <div key={idx} className="secondary-item p-2 rounded bg-slate-800/60 border border-slate-700/60">
+                    <div className="font-semibold text-cyan-300 text-xs mb-1">{sec.name}</div>
+                    <PointList points={sec.points} color="cyan" />
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
 
@@ -1060,7 +1178,7 @@ export default function SlideRenderer({ slide, onJumpToSlide }) {
   // Slide 11: Competitor Analysis Matrix
   if (slide.id === 11) {
     return (
-      <div className="slide-content">
+      <div className={`slide-content ${animClass} ${spotlightClass}`}>
         <div className="slide-header-bar">
           <div>
             <span className="section-tag competitor">{slide.section}</span>
@@ -1175,7 +1293,7 @@ export default function SlideRenderer({ slide, onJumpToSlide }) {
   // Slide 12: Product Strategy (4Ps: Product)
   if (slide.id === 12) {
     return (
-      <div className="slide-content">
+      <div className={`slide-content ${animClass} ${spotlightClass}`}>
         <div className="slide-header-bar">
           <div>
             <span className="section-tag mix">{slide.section}</span>
@@ -1238,7 +1356,7 @@ export default function SlideRenderer({ slide, onJumpToSlide }) {
                     <span>{f.feature}</span>
                     <span className="feature-status current">{f.status}</span>
                   </div>
-                  <p className="feature-detail">{f.detail}</p>
+                  <PointList points={f.points || [f.detail]} color="emerald" />
                 </div>
               ))}
             </div>
@@ -1260,7 +1378,7 @@ export default function SlideRenderer({ slide, onJumpToSlide }) {
                     <span>{f.feature}</span>
                     <span className="feature-status future">{f.status}</span>
                   </div>
-                  <p className="feature-detail">{f.detail}</p>
+                  <PointList points={f.points || [f.detail]} color="orange" />
                 </div>
               ))}
             </div>
@@ -1273,7 +1391,7 @@ export default function SlideRenderer({ slide, onJumpToSlide }) {
   // Slide 13: Pricing Strategy (4Ps: Price)
   if (slide.id === 13) {
     return (
-      <div className="slide-content">
+      <div className={`slide-content ${animClass} ${spotlightClass}`}>
         <div className="slide-header-bar">
           <div>
             <span className="section-tag mix">{slide.section}</span>
@@ -1309,13 +1427,11 @@ export default function SlideRenderer({ slide, onJumpToSlide }) {
 
               {/* Price visual pill */}
               <div className="tier-cost-badge">
-                {idx === 0 && <span className="price-tag-big">LKR 0 <small>/ Always Free</small></span>}
-                {idx === 1 && <span className="price-tag-big">LKR 750 <small>/ Month</small></span>}
-                {idx === 2 && <span className="price-tag-big">LKR 1,500 <small>/ Month</small></span>}
+                <span className="price-tag-big">{m.price} <small>{m.frequency}</small></span>
               </div>
 
-              <p className="tier-desc">{m.desc}</p>
-              <div className="tier-rationale-box">
+              <PointList points={m.points || [m.desc]} color={idx === 0 ? "emerald" : "gold"} />
+              <div className="tier-rationale-box mt-2">
                 <strong>Strategic Rationale:</strong> {m.rationale}
               </div>
             </div>
@@ -1341,7 +1457,7 @@ export default function SlideRenderer({ slide, onJumpToSlide }) {
     };
 
     return (
-      <div className="slide-content">
+      <div className={`slide-content ${animClass} ${spotlightClass}`}>
         <div className="slide-header-bar">
           <div>
             <span className="section-tag mix">{slide.section}</span>
@@ -1390,7 +1506,7 @@ export default function SlideRenderer({ slide, onJumpToSlide }) {
                   <span className="place-status-tag">{ch.status}</span>
                 </div>
               </div>
-              <p className="place-desc">{ch.desc}</p>
+              <PointList points={ch.points || [ch.desc]} color={idx === 0 ? "orange" : idx === 1 ? "gold" : idx === 2 ? "cyan" : "pink"} />
             </div>
           ))}
         </div>
@@ -1424,7 +1540,7 @@ export default function SlideRenderer({ slide, onJumpToSlide }) {
   // Slide 15: Promotion Strategy (4Ps: Promotion)
   if (slide.id === 15) {
     return (
-      <div className="slide-content">
+      <div className={`slide-content ${animClass} ${spotlightClass}`}>
         <div className="slide-header-bar">
           <div>
             <span className="section-tag mix">{slide.section}</span>
@@ -1468,7 +1584,7 @@ export default function SlideRenderer({ slide, onJumpToSlide }) {
                     <span className="tool-tag">{p.tag}</span>
                     <h5 className="tool-title">{p.tool} — <span className="platform-name">{p.platform}</span></h5>
                   </div>
-                  <p className="tool-concept">{p.concept}</p>
+                  <PointList points={p.points || [p.concept]} color="orange" />
                 </div>
               ))}
             </div>
@@ -1495,7 +1611,7 @@ export default function SlideRenderer({ slide, onJumpToSlide }) {
   // Slide 17: Prototype Demonstration (Interactive Prototype)
   if (slide.id === 17) {
     return (
-      <div className="slide-content proto-slide">
+      <div className={`slide-content proto-slide ${animClass} ${spotlightClass}`}>
         <div className="slide-header-bar">
           <div>
             <span className="section-tag prototype">{slide.section}</span>
@@ -1514,7 +1630,7 @@ export default function SlideRenderer({ slide, onJumpToSlide }) {
   // Slide 18: Ethics & Responsible Marketing
   if (slide.id === 18) {
     return (
-      <div className="slide-content">
+      <div className={`slide-content ${animClass} ${spotlightClass}`}>
         <div className="slide-header-bar">
           <div>
             <span className="section-tag ethics">{slide.section}</span>
@@ -1536,9 +1652,9 @@ export default function SlideRenderer({ slide, onJumpToSlide }) {
                 <div className="ethics-code-badge">{eth.code}</div>
                 <h4 className="ethics-title">{eth.title}</h4>
               </div>
-              <p className="ethics-desc">{eth.desc}</p>
+              <PointList points={eth.points || [eth.desc]} color="emerald" />
               
-              <div className="ethics-badge-tag">
+              <div className="ethics-badge-tag mt-2">
                 <ShieldCheck className="w-3.5 h-3.5 text-emerald-400 mr-1" />
                 Verified Ethical Standard
               </div>
@@ -1559,7 +1675,7 @@ export default function SlideRenderer({ slide, onJumpToSlide }) {
   // Slide 19: Conclusion & Strategic Summary
   if (slide.id === 19) {
     return (
-      <div className="slide-content">
+      <div className={`slide-content ${animClass} ${spotlightClass}`}>
         <div className="slide-header-bar">
           <div>
             <span className="section-tag conclusion">{slide.section}</span>
@@ -1604,7 +1720,7 @@ export default function SlideRenderer({ slide, onJumpToSlide }) {
             <div key={idx} className="recap-card visual-interactive-card">
               <div className="recap-num">0{idx + 1}</div>
               <h4 className="recap-title">{rc.title}</h4>
-              <p className="recap-desc">{rc.desc}</p>
+              <PointList points={rc.points || [rc.desc]} color="orange" />
             </div>
           ))}
         </div>
@@ -1633,7 +1749,7 @@ export default function SlideRenderer({ slide, onJumpToSlide }) {
   if (slide.id === 20) {
     if (slide20View === 'references') {
       return (
-        <div className="slide-content slide-thank-you-layout">
+        <div className={`slide-content slide-thank-you-layout ${animClass} ${spotlightClass}`}>
           <div className="slide-header-bar">
             <div>
               <span className="section-tag theory">Academic Rigour & References</span>
@@ -1739,7 +1855,7 @@ export default function SlideRenderer({ slide, onJumpToSlide }) {
 
     // Default Full-Screen Grand Finale Q&A View
     return (
-      <div className="slide-content slide-thank-you-layout">
+      <div className={`slide-content slide-thank-you-layout ${animClass} ${spotlightClass}`}>
         {/* Main Hero Card */}
         <div className="thank-you-hero-card">
           <div className="thank-you-top-meta">

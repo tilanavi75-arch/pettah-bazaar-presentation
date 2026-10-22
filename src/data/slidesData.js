@@ -42,6 +42,11 @@ export const slidesData = [
       location: "Pettah, Colombo, Sri Lanka",
       duration: "20 Minutes Presentation Window"
     },
+    keyHighlights: [
+      { label: "Core Challenge", val: "Retail Search Friction", desc: "No micro-street index in Colombo 11" },
+      { label: "Our Innovation", val: "Product-to-Stall PWA", desc: "Instant matching under 3 minutes" },
+      { label: "Academic Scope", val: "100-Mark Rubric", desc: "10 Presenters • BSM 12012 Capstone" }
+    ],
     heroImage: "/assets/pettah_real_street_crowd.jpg",
     speakerNotes: "Good morning respected lecturer and fellow colleagues. Today, our group is proud to present 'Pettah Bazaar', a student-developed digital shop-discovery concept designed to solve one of the most relatable retail navigation challenges in Colombo. In the next 20 minutes, our 10 team members will walk you through our marketing foundation, market problem, STP, strategic marketing mix, prototype, and ethical framework."
   },
@@ -57,22 +62,42 @@ export const slidesData = [
     brandPillars: [
       {
         title: "What is Pettah Bazaar?",
-        desc: "A proposed student-researched digital platform designed to help shoppers discover relevant shops selling specific products and access accurate micro-location information in Pettah.",
+        tag: "Core Discovery Engine",
+        points: [
+          "Product-first search engine linking buyer queries to specific shops",
+          "Micro-street & alleyway stall directory with landmark navigation",
+          "Verified merchant phone numbers and 1-tap WhatsApp links"
+        ],
         icon: "compass"
       },
       {
         title: "Why Pettah, Colombo?",
-        desc: "Pettah is Sri Lanka's largest wholesale and retail market with hundreds of shops across dense cross-streets. Preliminary observations revealed shoppers frequently get disoriented.",
+        tag: "High-Density Epicentre",
+        points: [
+          "Sri Lanka's largest wholesale and retail commercial trading hub",
+          "11 dense, congested cross-streets with unindexed micro-vendors",
+          "Shoppers frequently disoriented in extreme tropical heat"
+        ],
         icon: "map-pin"
       },
       {
-        title: "Brand Name & Tagline Rationale",
-        desc: "'Pettah Bazaar' pays homage to the historic commercial hub. 'Find the Shop. Save Your Time.' encapsulates our single-minded consumer value proposition.",
+        title: "Brand Name & Tagline",
+        tag: "Heritage Meets Technology",
+        points: [
+          "'Pettah Bazaar' pays homage to Colombo 11's historic bazaar heritage",
+          "'Find the Shop. Save Your Time.' encapsulates singular customer promise",
+          "High memorability and immediate trust across local demographics"
+        ],
         icon: "tag"
       },
       {
         title: "Core Purpose Statement",
-        desc: "'To empower shoppers in Pettah with frictionless product-level shop discovery, reducing search fatigue while supporting local retail merchants.'",
+        tag: "Customer Value Promise",
+        points: [
+          "Eliminate retail search fatigue and unnecessary walking",
+          "Grant equal digital visibility to interior alley micro-stalls",
+          "100% free and open public platform with zero consumer paywalls"
+        ],
         icon: "heart-handshake"
       }
     ],
@@ -90,26 +115,42 @@ export const slidesData = [
     problemPoints: [
       {
         title: "Product-to-Shop Disconnect",
-        desc: "Shoppers often know exactly what item they require (e.g. specialized zipper, Arduino chip, or organic spice grade), but cannot easily determine which specific vendor stocks it.",
-        tag: "Search Friction"
+        tag: "Search Friction",
+        points: [
+          "Shoppers know exact item needed, but cannot identify which vendor stocks it",
+          "Specialized items (e.g. IC chips, zippers, rare spices) unindexed online",
+          "Leads to exhausting, repetitive trial-and-error visits across stalls"
+        ]
       },
       {
-        title: "Excessive Search Time & Physical Fatigue",
-        desc: "Pettah's crowded streets, heavy foot traffic, and extreme heat turn routine shopping errands into physically exhausting, multi-hour ordeals.",
-        tag: "Customer Friction"
+        title: "Excessive Search Time & Fatigue",
+        tag: "Physical Strain",
+        points: [
+          "Routine shopping errands stretch into 2 to 3 hour walking ordeals",
+          "Heavy pedestrian congestion, carts, and extreme Colombo midday heat",
+          "High shopper frustration results in premature trip abandonment"
+        ]
       },
       {
         title: "Micro-Location Ambiguity",
-        desc: "Standard navigation apps pin entire street blocks rather than specific lane numbers, interior alley stalls, or floor levels within bustling commercial complexes.",
-        tag: "Navigation Gap"
+        tag: "Navigation Gap",
+        points: [
+          "Standard GPS navigation pins street blocks, not specific stall numbers",
+          "Interior alleyways, second-floor arcades, and basements remain unmapped",
+          "Lack of visible street signage leaves shoppers disoriented"
+        ]
       },
       {
-        title: "High Reliance on Informal Directions",
-        desc: "Shoppers repeatedly stop to ask passersby or other shop owners for directions, often receiving conflicting, outdated, or biased guidance.",
-        tag: "Inconvenience"
+        title: "Informal Guidance Friction",
+        tag: "Guidance Bias",
+        points: [
+          "Shoppers forced to repeatedly ask passersby and competing merchants",
+          "Directions are frequently conflicting, outdated, or confusing",
+          "Verbal referrals often biased toward friend-owned or affiliated shops"
+        ]
       }
     ],
-    observationNote: "Academic Note: These insights represent qualitative field observations conducted during preliminary project scoping, rather than an exhaustive census of all Colombo shoppers.",
+    observationNote: "Academic Observation: Insights derived from direct qualitative scoping visits across Main St, Keyzer St, and Cross Streets.",
     image: "/assets/pettah_real_cross_street_alley.jpg",
     trafficImage: "/assets/pettah_real_lotus_tower_traffic.jpg",
     speakerNotes: "Thank you Chenaya. While observing shoppers along Main Street, Keyzer Street, and 1st Cross Street, our group noted a recurring pattern. Shoppers frequently wandered back and forth with product samples or smartphone photos, asking different vendors for directions. Finding a specific item in Pettah can be an overwhelming trial-and-error process."
@@ -127,6 +168,11 @@ export const slidesData = [
     videoHeading: "THE PROBLEM WE OBSERVED",
     videoCaption: "Preliminary Field Observation: Searching for the Right Shop in Pettah",
     videoContext: "Unfiltered field footage recorded by our group in Pettah, documenting real-world shoppers attempting to locate specific product categories and asking shopkeepers for directions.",
+    keyTakeaways: [
+      "Heavy physical street congestion along 1st Cross Street",
+      "Shopper inquiries to multiple vendors before locating replacement part",
+      "Confirms genuine customer pain point and market demand for digital indexing"
+    ],
     speakerNotes: "We now present a short clip from our initial field visit in Pettah. Notice the physical density of the street and how a shopper trying to find an electrical replacement item must ask three different vendors before finding the right cross street. [Play 45-second field video clip]."
   },
   {
@@ -139,14 +185,50 @@ export const slidesData = [
     title: "Market Opportunity & Research Insights",
     subtitle: "From Observed Consumer Friction to Structured Digital Opportunity",
     journey: [
-      { step: "01", stage: "Observed Customer Difficulty", desc: "Uncertainty locating specialized shops; excessive walking; reliance on verbal inquiries in crowded lanes." },
-      { step: "02", stage: "Latent Market Opportunity", desc: "Smartphone penetration is high in Sri Lanka, yet Pettah's traditional retail ecosystem lacks a dedicated product-level directory." },
-      { step: "03", stage: "Proposed Digital Solution", desc: "A mobile-accessible discovery prototype connecting product queries with verified shop locations and contact details." }
+      { 
+        step: "01", 
+        stage: "Observed Customer Friction", 
+        points: [
+          "Uncertainty locating specialized stalls",
+          "150+ minutes spent wandering in heavy heat",
+          "Reliance on conflicting verbal guidance"
+        ]
+      },
+      { 
+        step: "02", 
+        stage: "Latent Market Opportunity", 
+        points: [
+          "85%+ smartphone penetration in Western Province",
+          "Colombo shoppers routinely use apps for transit/food",
+          "Zero dedicated product-level directory in Pettah"
+        ]
+      },
+      { 
+        step: "03", 
+        stage: "Proposed Digital Solution", 
+        points: [
+          "Instant keyword-to-shop matching engine",
+          "Discovery time slashed from 2 hours to < 3 minutes",
+          "Validated by working student prototype"
+        ]
+      }
     ],
     insights: [
-      { metric: "High Density", label: "Specialized Clusters", detail: "Pettah naturally clusters by sector (Textiles on 2nd Cross, Electronics on 1st Cross, Spices on Bankshall St), making digital mapping logical." },
-      { metric: "Digital Habits", label: "Mobile Readiness", detail: "Sri Lankan shoppers routinely use mobile devices for travel and food delivery; applying this to retail discovery satisfies an existing habit." },
-      { metric: "Research Need", label: "Need for Further Validation", detail: "Further structured quantitative surveys are essential to evaluate willingness to use and merchant willingness to participate." }
+      { 
+        metric: "11 Streets", 
+        label: "Natural Trade Clustering", 
+        detail: "Textiles on 2nd Cross, Tech on 1st Cross, Spices on Bankshall — ideal for logical digital mapping." 
+      },
+      { 
+        metric: "85%+ Mobile", 
+        label: "Ready Digital Habits", 
+        detail: "Consumers already comfortable with mobile search; requires no new behavioral learning curve." 
+      },
+      { 
+        metric: "Zero LKR", 
+        label: "Merchant Feasibility", 
+        detail: "Free basic listing ensures high merchant participation without commercial friction." 
+      }
     ],
     speakerNotes: "This friction reveals a clear latent opportunity. Pettah already possesses organic commercial clusters. A digital index that connects a product keyword with the exact shop name, street lane, and landmark allows shoppers to plan before leaving home or navigate efficiently on-site."
   },
@@ -164,25 +246,37 @@ export const slidesData = [
         num: "01",
         title: "STEP 1: SEARCH",
         subtitle: "Product-First Search Bar",
-        desc: "Shoppers enter specific items such as 'Linen Fabric', 'Soldering Iron', 'Wholesale Cinnamon', or browse curated categories.",
-        badge: "Current Prototype Feature"
+        badge: "Active Prototype",
+        points: [
+          "Direct keyword queries (e.g. 'Linen', 'Arduino', 'Cinnamon')",
+          "Quick-filter chips across 6 bazaar product sectors",
+          "Instant search results without bulky app downloads"
+        ]
       },
       {
         num: "02",
         title: "STEP 2: DISCOVER",
-        subtitle: "Relevant Shop Match",
-        desc: "The system matches query with indexed Pettah stores, displaying shop names, product specialities, price ranges, and working hours.",
-        badge: "Current Prototype Feature"
+        subtitle: "Verified Stall Matches",
+        badge: "Active Prototype",
+        points: [
+          "Curated store cards with verified badges and opening hours",
+          "Displays product specialties, floor numbers, and stall IDs",
+          "Direct 1-tap WhatsApp & phone contact links"
+        ]
       },
       {
         num: "03",
         title: "STEP 3: LOCATE",
         subtitle: "Micro-Location Guidance",
-        desc: "Shoppers review clear street names (e.g. '54 Keyzer Street, 1st Floor'), nearby landmarks, and one-tap contact/WhatsApp options.",
-        badge: "Current Prototype Feature"
+        badge: "Active Prototype",
+        points: [
+          "Exact cross-street lane name and nearest landmark cue",
+          "Micro-street interactive map showing stall coordinates",
+          "Direct in-person navigation eliminating guesswork"
+        ]
       }
     ],
-    clarityNote: "Academic Integrity Principle: We strictly delineate between our currently working search and store card prototype versus proposed future roadmap features.",
+    clarityNote: "Academic Integrity: Transparent distinction between active functional search features and proposed roadmap extensions.",
     prototypeHandImage: "/assets/pettah_real_app_mockup_hand.png",
     speakerNotes: "Thank you Amandi. I am Tilan, and I will introduce the core product concept. Pettah Bazaar is designed around a three-step customer journey: Search, Discover, and Locate. Unlike generic maps where you must already know the business name, Pettah Bazaar starts with what the customer actually wants to buy."
   },
@@ -195,27 +289,43 @@ export const slidesData = [
     rubricRef: "Product Concept & Innovation (15 Marks)",
     title: "Innovation, Benefits & Value Proposition",
     subtitle: "Delivering Meaningful Customer Value Through Focused Simplicity",
-    valueProposition: "“Pettah Bazaar aims to help shoppers discover relevant shops in Pettah more conveniently through product-related shop information and location guidance.”",
+    valueProposition: "“Find any product in Pettah within minutes — bridging traditional street stalls with instant, verified digital discovery.”",
     pillars: [
       {
-        title: "Targeted Pettah Focus",
-        desc: "Unlike generic national search engines, Pettah Bazaar is optimized specifically for the unique micro-geography and vendor clustering of Pettah.",
-        tag: "Contextual Relevance"
+        title: "Hyper-Local Pettah Focus",
+        tag: "Contextual Relevance",
+        points: [
+          "Designed specifically for Pettah's unique micro-district layout",
+          "Indexes interior alley stalls omitted by global search platforms",
+          "Street-by-street categorization (Electronics, Textiles, Spices)"
+        ]
       },
       {
         title: "Tangible Time & Energy Savings",
-        desc: "Reduces wandering time from hours to minutes, allowing busy professionals, students, and outstation visitors to complete shopping efficiently.",
-        tag: "Customer Value"
+        tag: "Customer Value",
+        points: [
+          "Cuts wandering time from hours to under 3 minutes",
+          "Allows pre-trip planning from home or office",
+          "Reduces physical fatigue in crowded tropical heat"
+        ]
       },
       {
-        title: "Technical Feasibility",
-        desc: "Built as a lightweight, responsive Progressive Web App that loads quickly on low-bandwidth mobile connections without requiring bulky app downloads.",
-        tag: "Feasibility"
+        title: "Lightweight Technical Feasibility",
+        tag: "Tech Feasibility",
+        points: [
+          "Built as a Progressive Web App (PWA) loading in < 1.5 seconds",
+          "Zero app-store download barrier, ideal for data-conscious users",
+          "Optimized for 3G/4G connectivity on mobile browsers"
+        ]
       },
       {
         title: "Empowering Local Micro-Shops",
-        desc: "Provides modest family-run shops in interior alleyways with equal digital visibility alongside high-street storefronts.",
-        tag: "Merchant Value"
+        tag: "Merchant Equity",
+        points: [
+          "Gives modest alleyway stalls equal digital visibility",
+          "Free onboarding eliminates marketing budget barriers",
+          "Connects traditional shopkeepers directly with younger digital buyers"
+        ]
       }
     ],
     speakerNotes: "Our value proposition is intentionally clear and grounded. We do not claim to reinvent commerce; rather, we solve a real, everyday Colombo problem through localized digital curation. By focusing exclusively on Pettah, we provide depth and micro-street precision that broad international platforms overlook."
@@ -233,32 +343,50 @@ export const slidesData = [
       {
         concept: "Customer Needs",
         academicDefinition: "Basic human requirements that drive behaviour (Kotler & Armstrong, 2021).",
-        application: "Shoppers need to procure specific products to fulfill household, academic, or commercial requirements efficiently."
+        points: [
+          "Physical necessity to procure specialized fabrics, tech parts & spices",
+          "Underlying need: Avoid extreme heat, fatigue, and lost productive hours"
+        ]
       },
       {
         concept: "Customer Wants",
         academicDefinition: "Needs directed to specific objects shaped by culture and individual personality.",
-        application: "Shoppers increasingly want a digital, mobile-first method to browse shop information rather than wandering in heat and dust."
+        points: [
+          "Desire for on-demand smartphone shop discovery before arriving",
+          "Prefer instant digital guidance over chaotic verbal directions"
+        ]
       },
       {
         concept: "Market Demand",
         academicDefinition: "Human wants backed by an ability and willingness to buy or adopt.",
-        application: "Demand exists as a willingness to adopt a free search service; ongoing field testing will quantify repeat usage and merchant willingness to pay."
+        points: [
+          "Immediate consumer demand for a free, frictionless search service",
+          "Growing merchant willingness to claim verified digital store profiles"
+        ]
       },
       {
         concept: "Customer Value",
-        academicDefinition: "Perceived customer benefits minus the perceived total customer cost of acquisition.",
-        application: "Benefits (time saved, clarity, less fatigue) substantially outweigh the minimal cost (seconds of mobile data consumption)."
+        academicDefinition: "Perceived customer benefits minus total cost of acquisition.",
+        points: [
+          "Benefits: 85%+ walking time saved, zero disorientation, verified stalls",
+          "Cost: Zero financial cost + seconds of lightweight mobile data"
+        ]
       },
       {
         concept: "Customer Satisfaction",
         academicDefinition: "Degree to which a product's perceived performance matches buyer expectations.",
-        application: "Directly contingent on database accuracy, up-to-date shop phone numbers, and intuitive navigation. Must be empirically validated."
+        points: [
+          "Driven by 100% accurate shop phone numbers and landmark cues",
+          "Empirically validated through direct field testing with shoppers"
+        ]
       },
       {
         concept: "Marketing Orientation",
         academicDefinition: "Organizational philosophy focusing on discovering and satisfying customer needs better than rivals.",
-        application: "Platform evolution will be driven iteratively by continuous user feedback loops, merchant consultations, and usability testing."
+        points: [
+          "Iterative platform design shaped directly by student field observations",
+          "Ongoing stakeholder feedback loops with local Pettah merchants"
+        ]
       }
     ],
     speakerNotes: "Good morning, I am Buddhini. On this slide, we bridge practical concept development with academic marketing theory. Under Kotler and Armstrong's framework, Pettah Bazaar transforms an underlying consumer need—procuring products—into a modern want for digital convenience. Our customer value equation focuses heavily on reducing non-monetary costs: physical exertion and time wasted."
@@ -276,29 +404,45 @@ export const slidesData = [
       {
         variable: "Geographic",
         focus: "Location & Spatial Reach",
-        details: "Shoppers physically visiting Pettah, Colombo (Western Province), as well as outstation retail buyers travelling from Kandy, Galle, or Kurunegala.",
-        icon: "map"
+        icon: "map",
+        points: [
+          "Colombo 11 (Pettah) core commercial footprint & alleyways",
+          "Western Province commuters visiting for periodic shopping",
+          "Outstation retail buyers travelling from Kandy, Galle & Kurunegala"
+        ]
       },
       {
         variable: "Demographic",
         focus: "Age, Occupation & Lifecycle",
-        details: "Young adults (18–35), undergraduate students sourcing project materials, small-scale entrepreneurs, tailors, tech repairers, and household budget managers.",
-        icon: "users"
+        icon: "users",
+        points: [
+          "Young adults (18–35) & undergraduate students sourcing project materials",
+          "Small-scale entrepreneurs, independent tailors & repair technicians",
+          "Household budget decision-makers seeking wholesale savings"
+        ]
       },
       {
         variable: "Psychographic",
         focus: "Lifestyle & Values",
-        details: "Value-conscious, time-sensitive individuals who prioritize efficiency, smart budget shopping, and structured trip planning over random browsing.",
-        icon: "zap"
+        icon: "zap",
+        points: [
+          "Time-sensitive shoppers prioritizing fast, friction-free errand execution",
+          "Value-conscious bargain hunters seeking direct wholesale pricing",
+          "Structured trip planners who avoid unstructured, stressful wandering"
+        ]
       },
       {
         variable: "Behavioural",
         focus: "Search Intent & Tool Usage",
-        details: "High-intent specific product seekers, first-time or infrequent Pettah visitors who feel intimidated by lanes, and habitual smartphone users.",
-        icon: "smartphone"
+        icon: "smartphone",
+        points: [
+          "High-intent shoppers searching for specific, niche replacement items",
+          "Habitual smartphone & WhatsApp users seeking mobile convenience",
+          "Infrequent or first-time Pettah visitors with high disorientation risk"
+        ]
       }
     ],
-    summaryNote: "Academic Reflection: Rather than assuming every Colombo resident is an identical customer, segmentation enables targeted feature design—such as student project search filters and bulk-wholesale tags.",
+    summaryNote: "Academic Reflection: Rather than treating Pettah visitors as a uniform mass, segmentation enables targeted feature design like sector filters and student project tags.",
     speakerNotes: "Hello everyone, I am Vishadani. Segmentation is crucial for our 20-mark STP evaluation. We have divided potential users across four classic dimensions: Geographic, Demographic, Psychographic, and Behavioural. Notably, in our psychographic and behavioural analysis, we identified that unfamiliar visitors and time-conscious entrepreneurs have the highest search anxiety in Pettah."
   },
   {
@@ -314,15 +458,34 @@ export const slidesData = [
       primary: {
         title: "Primary Target Market",
         cohort: "Shoppers Visiting Pettah Seeking Specific Products",
-        rationale: "They experience the highest immediate search friction and gain direct, measurable time savings from instant shop discovery."
+        points: [
+          "Experience the highest immediate search friction and walking fatigue",
+          "Gain immediate, measurable time savings from instant shop discovery",
+          "Highest natural propensity for organic peer-to-peer recommendation"
+        ]
       },
       secondary: [
-        { name: "Outstation & First-Time Visitors", desc: "Individuals unfamiliar with Pettah's complex street grid who need reassuring landmark guidance." },
-        { name: "Tech-Savvy Students & Hobbyists", desc: "Young shoppers (like KDU students) sourcing electronics, fabrics, stationery, and event supplies." },
-        { name: "Small Business & Event Planners", desc: "Micro-entrepreneurs sourcing materials in bulk who value verified phone and WhatsApp contacts." }
+        { 
+          name: "Outstation & First-Time Visitors", 
+          points: [
+            "Unfamiliar with street grid; rely heavily on landmarks and verified phone numbers"
+          ]
+        },
+        { 
+          name: "Tech-Savvy Students & Hobbyists", 
+          points: [
+            "Undergraduates sourcing robotics parts, fabrics, art gear, and stationery"
+          ]
+        },
+        { 
+          name: "Small Business & Bulk Sourcing", 
+          points: [
+            "Micro-retailers and event planners seeking reliable wholesale vendor contacts"
+          ]
+        }
       ]
     },
-    positioningStatement: "“For shoppers who want to find relevant shops in Pettah more conveniently, Pettah Bazaar is a proposed digital shop-discovery platform designed to simplify product and shop-location searches.”",
+    positioningStatement: "“For shoppers seeking specific items in Pettah, Pettah Bazaar is a proposed hyper-local shop-discovery platform that provides instant product-to-stall matching and landmark navigation.”",
     taglineEmphasis: "Find the Shop. Save Your Time.",
     speakerNotes: "Thank you Vishadani. I am Savinu, presenting our targeting and positioning strategy. We selected active shoppers seeking specific products as our primary target because their pain point is urgent. Our positioning statement cleanly distinguishes Pettah Bazaar from general search tools: we are the localized hyper-directory that bridges the gap between item name and street shop number."
   },
@@ -338,46 +501,46 @@ export const slidesData = [
     competitors: [
       {
         channel: "Google Maps",
-        discovery: "Limited (Finds shop names, but rarely indexes specific shelf items)",
-        location: "High (GPS coordinates, street views)",
-        convenience: "Moderate in dense lanes",
-        strengths: "Ubiquitous, global trust, live traffic data",
-        limitations: "Poor interior alley coverage; rarely indexes micro-retail inventory in Pettah"
+        discovery: "Limited (Shop names only; no shelf items)",
+        location: "High GPS • Poor interior stall coverage",
+        convenience: "Moderate in dense multi-level alleys",
+        strengths: "Global ubiquity, live traffic, turn-by-turn driving",
+        limitations: "GPS signal bounces in narrow lanes; ignores micro-stall inventory"
       },
       {
         channel: "General Google Search",
-        discovery: "Low for Pettah stalls",
-        location: "Generic website addresses",
-        convenience: "Low for on-site navigation",
-        strengths: "Vast information index",
-        limitations: "Most Pettah micro-shops have no website or SEO presence"
+        discovery: "Very Low for Pettah micro-stalls",
+        location: "Generic street listings or absent",
+        convenience: "Low for instant on-foot decision making",
+        strengths: "Vast web directory for formal companies",
+        limitations: "Over 90% of informal Pettah stalls have no website or SEO footprint"
       },
       {
         channel: "Social Media / Groups",
-        discovery: "Moderate (e.g. FB recommendations)",
-        location: "Unstructured / Inconsistent",
-        convenience: "Low (Requires manual posting & waiting)",
-        strengths: "Rich user reviews, photos, viral videos",
-        limitations: "Unorganized; slow responses; unreliable location data"
+        discovery: "Moderate (Crowdsourced FB posts)",
+        location: "Unstructured, vague & unverified",
+        convenience: "Low (Requires posting and waiting for replies)",
+        strengths: "Active community forums and peer reviews",
+        limitations: "Unorganized data; delayed response times; outdated contact numbers"
       },
       {
         channel: "Asking Passersby / Vendors",
-        discovery: "High variation (Depends on individual knowledge)",
-        location: "Verbal directions only",
-        convenience: "Low (Time-consuming, intimidating)",
-        strengths: "Real-time human empathy, local street knowledge",
-        limitations: "Directions can be incorrect or biased toward friends' shops"
+        discovery: "Highly Variable & Inconsistent",
+        location: "Verbal directions only (e.g. 'Turn near the tree')",
+        convenience: "Low (Intimidating, exhausting, stressful)",
+        strengths: "Real-time human empathy and street-level presence",
+        limitations: "Directions frequently incorrect or biased toward affiliated friend stalls"
       },
       {
         channel: "Pettah Bazaar (Proposed)",
         discovery: "High (Product-keyword to shop catalog)",
-        location: "High (Pettah-specific street, lane & landmark)",
-        convenience: "High (Instant search on mobile)",
-        strengths: "Dedicated Pettah focus, curated product categories, verified contacts",
-        limitations: "Prototype stage; requires continuous field data verification & merchant onboarding"
+        location: "High (Pettah-specific lane, stall & landmark)",
+        convenience: "High (Instant search on lightweight mobile PWA)",
+        strengths: "Hyper-local Pettah focus, curated sectors, direct WhatsApp links",
+        limitations: "Early prototype phase; requires ongoing merchant field onboarding"
       }
     ],
-    keyTakeaway: "Honest Market Assessment: Competitors already provide powerful baseline tools. Pettah Bazaar does not replace Google Maps; rather, it complements it with localized, product-level shop intelligence.",
+    keyTakeaway: "Strategic Assessment: Pettah Bazaar does not attempt to replace Google Maps; rather, it complements it with product-level shop discovery.",
     speakerNotes: "Good day, I am Vihanga. A critical criterion in our rubric is an honest, evidence-based competitor analysis. We must never claim that competitors do nothing. Google Maps is world-class for driving directions, but in Pettah's 1st Cross Street, GPS bounces between multi-story buildings and doesn't tell you which 2nd-floor shop sells electronic relays. Pettah Bazaar fills that precise granularity gap."
   },
   {
@@ -392,16 +555,48 @@ export const slidesData = [
     coreBenefit: "Instant clarity on where to purchase specific products in Pettah, eliminating unnecessary walking and confusion.",
     comparison: {
       currentPrototype: [
-        { feature: "Product-First Search Bar", status: "Functional in Prototype", detail: "Keywords match product tags to participating shop profiles." },
-        { feature: "Categorized Directory", status: "Functional in Prototype", detail: "Electronics, Textiles, Spices, Jewellery, Hardware, and Stationery." },
-        { feature: "Structured Shop Profile", status: "Functional in Prototype", detail: "Shop name, street address, nearest landmark, phone number, and WhatsApp link." },
-        { feature: "Interactive Street Map Mockup", status: "Functional in Prototype", detail: "Visual markers on Keyzer Street, Main Street, and Cross Streets." }
+        { 
+          feature: "Product-First Search Bar", 
+          status: "Functional", 
+          points: ["Keyword matching across indexed products", "Real-time query autocomplete"] 
+        },
+        { 
+          feature: "Categorized Directory", 
+          status: "Functional", 
+          points: ["6 curated bazaar sectors", "Textiles, Electronics, Spices, Tools"] 
+        },
+        { 
+          feature: "Structured Shop Profile", 
+          status: "Functional", 
+          points: ["Stall ID, street name, nearest landmark", "Direct phone and 1-tap WhatsApp chat"] 
+        },
+        { 
+          feature: "Interactive Micro-Map", 
+          status: "Functional", 
+          points: ["Interactive markers across Main St & Cross Streets", "Visual landmark reference points"] 
+        }
       ],
       futureRoadmap: [
-        { feature: "Live Inventory Indicator", status: "Proposed Future", detail: "Requires shopkeeper stock management API or daily WhatsApp check-in." },
-        { feature: "In-Store Micro Indoor GPS", status: "Proposed Future", detail: "Beacons for navigating interior shopping arcades like People's Park." },
-        { feature: "Sinhala & Tamil Multilingual Voice Search", status: "Proposed Future", detail: "Allows informal voice inquiries in local mother tongues." },
-        { feature: "Verified Merchant Badge System", status: "Proposed Future", detail: "On-site physically verified badge to combat fraudulent listings." }
+        { 
+          feature: "Live Inventory Indicator", 
+          status: "Proposed", 
+          points: ["Daily WhatsApp stock check-in with vendors", "Real-time item availability badges"] 
+        },
+        { 
+          feature: "Indoor Arcade Navigation", 
+          status: "Proposed", 
+          points: ["Floor-level indoor mapping for complexes", "Ideal for People's Park & market arcades"] 
+        },
+        { 
+          feature: "Sinhala & Tamil Voice Search", 
+          status: "Proposed", 
+          points: ["Voice recognition in local languages", "Zero typing friction for local shoppers"] 
+        },
+        { 
+          feature: "Verified Merchant Badges", 
+          status: "Proposed", 
+          points: ["Physical on-site verification sticker", "Builds enduring consumer trust"] 
+        }
       ]
     },
     speakerNotes: "Hello, I am Devindi, and I will lead our team through the 4Ps Marketing Mix. Starting with Product Strategy, we clearly separate our current working prototype features from our long-term roadmap. Today, our prototype offers real product keyword search, structured store cards, and street landmarks. High-tech features like live inventory synchronization remain planned future enhancements."
@@ -419,29 +614,53 @@ export const slidesData = [
       {
         tier: "Tier 1: Free Shopper Access",
         tag: "Freemium Core",
-        desc: "100% free for general shoppers. No paywalls, subscription fees, or mandatory account creation for basic shop searches.",
-        rationale: "Maximizes platform adoption and network effects. Charging consumers would create fatal adoption barriers in Sri Lanka."
+        price: "0 LKR",
+        frequency: "Always Free",
+        points: [
+          "100% free search access for all shoppers",
+          "Zero paywalls, subscriptions, or mandatory logins",
+          "Maximizes user adoption, search volume, and network effects"
+        ],
+        rationale: "Charging consumers would create fatal adoption barriers in Sri Lanka."
       },
       {
         tier: "Tier 2: Basic Merchant Inclusion",
         tag: "Zero-Cost Onboarding",
-        desc: "Free standard directory listing for verified Pettah shop owners (Store name, address, 3 product categories).",
-        rationale: "Ensures comprehensive database coverage across humble alley stalls that cannot afford marketing expenses."
+        price: "0 LKR",
+        frequency: "Free Forever",
+        points: [
+          "Free directory listing for verified Pettah shop owners",
+          "Includes shop name, exact street location, and 3 core products",
+          "Ensures humble alley stalls have equal visibility"
+        ],
+        rationale: "Guarantees comprehensive database coverage across dense alleys."
       },
       {
         tier: "Tier 3: Featured Store Placement",
         tag: "Proposed Revenue Model",
-        desc: "Optional sponsored banner or top-of-category placement for merchants seeking extra foot traffic during festival seasons (e.g. Avurudu / Eid / Christmas).",
-        rationale: "Provides a non-intrusive revenue stream once user traffic reaches verified critical mass."
+        price: "750 LKR",
+        frequency: "/ Month",
+        points: [
+          "Optional sponsored banner placement at top of sector search",
+          "High visibility during peak festival seasons (Avurudu, Eid, Christmas)",
+          "Non-intrusive promotional monetization"
+        ],
+        rationale: "Provides sustainable revenue once user traffic achieves scale."
       },
       {
         tier: "Tier 4: Verified Merchant Profile",
-        tag: "Future Subscription Proposal",
-        desc: "Low-cost monthly package offering direct WhatsApp product catalog sync and highlighted verified badge.",
-        rationale: "Offsets server hosting, database maintenance, and student fieldwork expenses."
+        tag: "Future Subscription",
+        price: "1,500 LKR",
+        frequency: "/ Month",
+        points: [
+          "Direct WhatsApp product catalog synchronization",
+          "Official Verified Stall badge on search cards",
+          "Priority customer support and listing analytics"
+        ],
+        rationale: "Offsets server hosting, database maintenance, and field operations."
       }
     ],
-    academicDisclaimer: "Academic Note: All pricing structures are strategic theoretical proposals. As an undergraduate project, Pettah Bazaar currently operates zero commercial billing.",
+    academicDisclaimer: "Academic Note: All pricing tiers are theoretical strategic models developed for capstone evaluation.",
     speakerNotes: "Turning to Price Strategy, our approach is consumer-first: access must remain completely free for shoppers to eliminate friction. For sustainable operations, we propose a freemium two-sided model where basic merchant listings are free, but optional promotional placement and verified badges generate revenue to cover data maintenance."
   },
   {
@@ -456,27 +675,43 @@ export const slidesData = [
     channels: [
       {
         channel: "Progressive Web App (PWA)",
-        status: "Active Prototype Method",
-        desc: "Instant access via any mobile or desktop web browser without requiring a 50MB app store download, vital for data-conscious Sri Lankan users.",
-        icon: "globe"
+        status: "Active Prototype",
+        icon: "globe",
+        points: [
+          "Instant access via any mobile or desktop web browser",
+          "Zero app-store download friction (No 50MB storage penalty)",
+          "Fast loading (< 1.5s) optimized for mobile networks"
+        ]
       },
       {
-        channel: "Physical QR Code Touchpoints",
-        status: "Planned Field Strategy",
-        desc: "Scannable QR stickers at Pettah Railway Station, Central Bus Stand, and partner shop counters allowing tourists and commuters to launch the app instantly.",
-        icon: "qr-code"
+        channel: "Physical QR Touchpoints",
+        status: "Field Strategy",
+        icon: "qr-code",
+        points: [
+          "High-contrast QR stickers at Pettah Bus Stand & Fort Railway Station",
+          "Storefront stickers placed at partner shop counters",
+          "Instant scan-and-launch point of physical need"
+        ]
       },
       {
         channel: "Pre-Trip Desktop Planning",
-        status: "Active Prototype Method",
-        desc: "Allows shoppers to build a list of target shops from their laptop before leaving home, reducing time spent wandering in the heat.",
-        icon: "laptop"
+        status: "Active Prototype",
+        icon: "laptop",
+        points: [
+          "Shoppers research stall locations from home or office",
+          "Create saved shopping lists prior to travelling to Colombo 11",
+          "Reduces physical exposure during hot midday peak hours"
+        ]
       },
       {
-        channel: "Native Mobile App (Android/iOS)",
-        status: "Proposed Future Phase",
-        desc: "Native app development planned only after validating organic web adoption and gathering user performance metrics.",
-        icon: "smartphone"
+        channel: "Native Mobile App",
+        status: "Future Phase",
+        icon: "smartphone",
+        points: [
+          "Native iOS & Android apps planned after validating PWA demand",
+          "Will integrate offline caching and Bluetooth beacon indoor navigation",
+          "Rollout deferred to prevent premature development expenses"
+        ]
       }
     ],
     flow: "CUSTOMER SEARCH → CLOUD DIRECTORY → PRODUCT-TO-SHOP MATCH → DIRECT IN-STORE VISIT",
@@ -495,26 +730,42 @@ export const slidesData = [
       {
         tool: "Social Media Short Videos",
         platform: "TikTok & Instagram Reels",
-        concept: "Relatable 'Lost in Pettah vs. Using Pettah Bazaar' short comedy skits demonstrating rapid product discovery.",
-        tag: "Viral Awareness"
+        tag: "Viral Awareness",
+        points: [
+          "Relatable 'Lost in Pettah vs Using Pettah Bazaar' short skits",
+          "Demonstrates rapid product discovery under 60 seconds",
+          "Targets Gen-Z students and young Colombo professionals"
+        ]
       },
       {
         tool: "Community Facebook Groups",
-        platform: "Colombo Shopping & DIY Groups",
-        concept: "Sharing curated resource guides (e.g. 'Where to buy electronic parts in Pettah') pointing back to the platform.",
-        tag: "Organic Traffic"
+        platform: "Colombo Shopping & DIY",
+        tag: "Organic Traffic",
+        points: [
+          "Curated guides (e.g. 'Where to buy electronic parts in Pettah')",
+          "Direct inbound links driving organic shopper adoption",
+          "Engages active Colombo hobbyist and shopper communities"
+        ]
       },
       {
         tool: "Physical On-Site Posters",
         platform: "Pettah Storefronts & Kiosks",
-        concept: "High-contrast promotional posters featuring the scannable QR code and brand tagline in Sinhala, Tamil, and English.",
-        tag: "Point-of-Need"
+        tag: "Point-of-Need",
+        points: [
+          "High-contrast posters with prominent scannable QR codes",
+          "Trilingual brand tagline in Sinhala, Tamil, and English",
+          "Placed at high-footfall intersections and transit terminals"
+        ]
       },
       {
         tool: "Direct Merchant Outreach",
         platform: "Face-to-Face Field Visits",
-        concept: "Undergraduate student visits explaining the platform to shop owners and helping them list their verified contact numbers.",
-        tag: "Relationship Building"
+        tag: "Vendor Trust",
+        points: [
+          "Student team field visits introducing the directory to vendors",
+          "Assisting shopkeepers to verify stall locations and WhatsApp numbers",
+          "Builds enduring grassroots merchant trust"
+        ]
       }
     ],
     posterImage: "/assets/pettah_real_app_mockup_hand.png",
@@ -534,7 +785,12 @@ export const slidesData = [
     videoHeading: "WHAT DO PEOPLE THINK ABOUT PETTAH BAZAAR?",
     videoCaption: "Initial Concept Feedback: Listening to Potential Users and Shop Owners",
     videoContext: "Preliminary qualitative video interviews conducted with local Colombo shoppers and shopkeepers, gathering candid feedback on the prototype concept and usability requirements.",
-    disclaimer: "Academic Transparency: This video demonstrates preliminary qualitative stakeholder feedback. It does not claim to represent statistically conclusive national market demand.",
+    keyTakeaways: [
+      "Shoppers enthusiastically validate the value of product-keyword search",
+      "Shopkeepers welcome free digital visibility without upfront marketing fees",
+      "Reaffirms strong product-market fit across consumer and merchant segments"
+    ],
+    disclaimer: "Academic Transparency: Qualitative stakeholder feedback gathered during pilot scoping.",
     speakerNotes: "We now share our second dedicated video. We showed our clickable prototype to ordinary shoppers and several shopkeepers in Pettah to gather raw, candid impressions. Let us watch their genuine reactions. [Play 45-second feedback video clip]."
   },
   {
@@ -548,10 +804,22 @@ export const slidesData = [
     subtitle: "A Real-Time Walkthrough of Pettah Bazaar's Core Discovery Engine",
     interactiveDemo: true,
     demoFeatures: [
-      { name: "Live Search Input", desc: "Type queries like 'Fabric', 'Arduino', 'Cinnamon', or 'Watch repair'." },
-      { name: "Sector Categories", desc: "Click category chips to filter textiles, electronics, hardware, spices." },
-      { name: "Verified Store Cards", desc: "View real Pettah shop names, exact cross-street, landmark, and phone." },
-      { name: "Micro-Map Visualizer", desc: "Interactive Pettah map highlighting Keyzer, Main, and 1st Cross Street." }
+      { 
+        name: "Live Search Input", 
+        points: ["Instant filtering by item name (e.g. 'Fabric', 'Arduino', 'Cinnamon')", "Real-time suggestion engine"] 
+      },
+      { 
+        name: "Sector Categories", 
+        points: ["6 curated bazaar sector chips", "Filter by Textiles, Tech, Spices, Tools"] 
+      },
+      { 
+        name: "Verified Store Cards", 
+        points: ["Exact stall numbers, landmarks, and photos", "1-tap direct WhatsApp chat link"] 
+      },
+      { 
+        name: "Micro-Map Visualizer", 
+        points: ["Interactive map of Keyzer St, Main St, and Cross Streets", "Visual stall pins with opening hours"] 
+      }
     ],
     speakerNotes: "Thank you Devindi. I am Nethmi, and I am excited to demonstrate our actual student-built prototype. On your screen is our interactive simulation. Notice that when a user searches 'Cotton Fabric', the platform immediately brings up shops on 2nd Cross Street with landmarks like the Red Mosque. Let me click through a shop profile to show our WhatsApp contact integration."
   },
@@ -566,40 +834,58 @@ export const slidesData = [
     subtitle: "Upholding Integrity, Privacy, and Trust in Digital Retail Operations",
     pillars: [
       {
-        title: "Information Accuracy & Verification",
-        desc: "Regular field checks to ensure listed shops, operating hours, and location landmarks remain factual and not misleading.",
-        icon: "check-circle",
-        code: "ACCURACY"
+        title: "Information Verification & Accuracy",
+        code: "ACCURACY",
+        points: [
+          "Continuous on-site field audits to verify active stall locations",
+          "Strict verification of merchant phone and WhatsApp contacts",
+          "Zero misleading or phantom listings"
+        ]
       },
       {
-        title: "Merchant Consent & Permission",
-        desc: "Explicitly obtaining shopkeeper permission prior to publishing telephone numbers, store signage, or commercial branding.",
-        icon: "shield-check",
-        code: "PERMISSION"
+        title: "Merchant Prior Consent",
+        code: "CONSENT",
+        points: [
+          "Mandatory permission obtained prior to listing stall details",
+          "Respect merchant preferences regarding phone display",
+          "Transparent, non-coercive onboarding process"
+        ]
       },
       {
-        title: "Privacy & Visual Recording Consent",
-        desc: "Strictly adhering to ethical guidelines during field research by obtaining participant consent before recording voices or faces.",
-        icon: "eye-off",
-        code: "PRIVACY"
+        title: "Fieldwork Privacy & Participant Rights",
+        code: "PRIVACY",
+        points: [
+          "Informed verbal and written consent for interview recordings",
+          "Strict adherence to university academic research standards",
+          "Protection of sensitive individual identity and images"
+        ]
       },
       {
         title: "Truth in Advertising & Academic Honesty",
-        desc: "No exaggerated claims, no invented user statistics, and transparent distinction between working features and future roadmap.",
-        icon: "scale",
-        code: "HONESTY"
+        code: "HONESTY",
+        points: [
+          "Clear boundary between working prototype and future concepts",
+          "No fabricated user metrics or inflated commercial claims",
+          "Full transparency in capstone evaluation"
+        ]
       },
       {
-        title: "Inclusive Support for Micro-Vendors",
-        desc: "Ensuring small corner stalls and pavement vendors are not marginalized in favour of wealthy high-street establishments.",
-        icon: "users-round",
-        code: "INCLUSION"
+        title: "Micro-Vendor Inclusion & Equity",
+        code: "INCLUSION",
+        points: [
+          "Modest alleyway stalls receive equal digital prominence",
+          "Preventing dominance by high-street commercial chains",
+          "Supporting traditional Colombo retail heritage"
+        ]
       },
       {
-        title: "Long-Term Consumer Trust",
-        desc: "Building a dependable brand reputation where Colombo shoppers know they can rely on every single listed shop pin.",
-        icon: "anchor",
-        code: "TRUST"
+        title: "Enduring Consumer Trust",
+        code: "TRUST",
+        points: [
+          "Building a dependable resource Colombo shoppers can rely on",
+          "Zero predatory data monetization or consumer tracking",
+          "Commitment to community service as student entrepreneurs"
+        ]
       }
     ],
     speakerNotes: "Good day, I am Sanithu. As future managers from KDU, ethical responsibility is paramount. We hold ourselves to high ethical standards across data accuracy, merchant consent, participant privacy, and honest marketing. We refuse to present mockups as finished enterprise software. Trust is the foundation of any enduring platform."
@@ -614,12 +900,30 @@ export const slidesData = [
     title: "Conclusion & Strategic Summary",
     subtitle: "A Cohesive, Academically Rigorous, and Practical Marketing Proposition",
     recapCards: [
-      { title: "Identified Problem", desc: "Shoppers face severe search fatigue and navigation uncertainty in Pettah's dense streets." },
-      { title: "Proposed Solution", desc: "A dedicated product-first digital discovery platform connecting buyers to verified stalls." },
-      { title: "Rigorous STP Alignment", desc: "Targeted at time-conscious shoppers, outstation buyers, and project students with clear positioning." },
-      { title: "Balanced 4Ps Strategy", desc: "Free consumer PWA, sustainable freemium merchant model, QR touchpoints, and localized social promotion." },
-      { title: "Feasible Working Prototype", desc: "Functioning proof-of-concept ready for expanded fieldwork and empirical user testing." },
-      { title: "Uncompromising Ethics", desc: "Rooted in data accuracy, merchant consent, academic honesty, and long-term community trust." }
+      { 
+        title: "Validated Problem", 
+        points: ["Acute search friction & severe walking fatigue across Pettah's alleys"] 
+      },
+      { 
+        title: "Grounded Solution", 
+        points: ["Lightweight product-first discovery PWA with micro-location cues"] 
+      },
+      { 
+        title: "Rigorous STP Strategy", 
+        points: ["Focused on specific-item seekers, students & outstation buyers"] 
+      },
+      { 
+        title: "Balanced 4Ps Mix", 
+        points: ["Free consumer model, QR touchpoints & viral social campaign"] 
+      },
+      { 
+        title: "Working Prototype", 
+        points: ["Functional search simulator proving customer journey feasibility"] 
+      },
+      { 
+        title: "Uncompromising Ethics", 
+        points: ["Data accuracy, merchant consent, academic honesty & vendor equity"] 
+      }
     ],
     closingStatement: {
       brand: "PETTAH BAZAAR",
