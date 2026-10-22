@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { 
   ChevronLeft, ChevronRight, Play, Pause, RotateCcw, 
-  Maximize, Minimize, FileText, Award, Grid, Sparkles, Clock, User, Layers 
+  Maximize, Minimize, Grid, Sparkles, Clock, User 
 } from 'lucide-react';
 import SlideRenderer from './components/SlideRenderer';
 import PresenterNotesDrawer from './components/PresenterNotesDrawer';
@@ -284,37 +284,6 @@ export default function App() {
                 <RotateCcw className="w-3 h-3" />
               </button>
             </div>
-
-            {/* 7Ps Mix Quick Jump Button */}
-            <button 
-              className={`hud-icon-btn ${currentSlideIndex >= 11 && currentSlideIndex <= 14 ? 'active' : ''}`}
-              onClick={() => jumpToSlideHandler(11)}
-              title="Marketing Mix 7Ps Presentation Suite (Slides 12–15)"
-              style={currentSlideIndex >= 11 && currentSlideIndex <= 14 ? { borderColor: '#14B8A6', background: 'rgba(20, 184, 166, 0.15)' } : {}}
-            >
-              <Layers className="w-3.5 h-3.5 mr-1 text-teal-400" />
-              <span className="hud-btn-lbl text-teal-300 font-semibold">7Ps Mix</span>
-            </button>
-
-            {/* Notes Button */}
-            <button 
-              className={`hud-icon-btn ${showNotes ? 'active' : ''}`}
-              onClick={() => setShowNotes(!showNotes)}
-              title="Presenter Notes (Shortcut: N)"
-            >
-              <FileText className="w-3.5 h-3.5 mr-1" />
-              <span className="hud-btn-lbl">Notes</span>
-            </button>
-
-            {/* Syllabus / Assessment Matrix Button */}
-            <button 
-              className="hud-icon-btn"
-              onClick={() => setShowRubric(true)}
-              title="Academic Syllabus & Assessment Matrix (Shortcut: R)"
-            >
-              <Award className="w-3.5 h-3.5 mr-1 text-gold-accent" />
-              <span className="hud-btn-lbl">Syllabus</span>
-            </button>
 
             {/* Deck Grid Button */}
             <button 
