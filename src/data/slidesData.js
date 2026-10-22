@@ -6,7 +6,7 @@ export const teamMembers = [
   { id: 5, name: "Vishadani", role: "Presenter (Slide 9)", focus: "Market Segmentation Framework" },
   { id: 6, name: "Savinu", role: "Presenter (Slide 10)", focus: "Targeting & Positioning Strategy" },
   { id: 7, name: "Vihanga", role: "Presenter (Slide 11)", focus: "Competitor Analysis Matrix" },
-  { id: 8, name: "Devindi", role: "Presenter (Slides 12–16)", focus: "Marketing Mix (4Ps) & Video 2" },
+  { id: 8, name: "Devindi", role: "Presenter (Slides 12–16)", focus: "Marketing Mix (7Ps Framework) & Video 2" },
   { id: 9, name: "Nethmi", role: "Presenter (Slide 17)", focus: "Interactive Prototype Demonstration" },
   { id: 10, name: "Sanithu", role: "Presenter (Slide 18)", focus: "Ethics & Responsible Marketing" }
 ];
@@ -17,7 +17,7 @@ export const rubricCriteria = [
   { id: 3, title: "Application of Marketing Concepts", marks: 10, slides: [8], desc: "Systematic mapping of Needs, Wants, Demand, Customer Value, Satisfaction, and Market Orientation." },
   { id: 4, title: "Segmentation, Targeting & Positioning (STP)", marks: 20, slides: [9, 10], desc: "High-weight criteria: 4 segmentation variables, primary/secondary targets, and formal positioning statement." },
   { id: 5, title: "Competitor Analysis", marks: 10, slides: [11], desc: "Evidence-based matrix comparing Google Maps, Search, Social Media, and Pettah Bazaar fairly." },
-  { id: 6, title: "Marketing Mix (4Ps / 7Ps)", marks: 20, slides: [12, 13, 14, 15, 16], desc: "High-weight criteria: In-depth Product, Price, Place, and Promotion with QR poster mockup and user feedback." },
+  { id: 6, title: "Marketing Mix (7Ps Framework)", marks: 20, slides: [12, 13, 14, 15, 16], desc: "Comprehensive 7Ps analysis: Product, Price, Place, Promotion, People, Process, and Physical Evidence applied to Pettah Bazaar." },
   { id: 7, title: "Product Sample / Prototype", marks: 10, slides: [17], desc: "Interactive working search simulation demonstrating core customer journey with transparent feature labelling." },
   { id: 8, title: "Presentation, Teamwork & Professionalism", marks: 5, slides: [1, 2, 18, 19, 20], desc: "Cohesive aesthetic, balanced 10-member roles, strict 20-min timing adherence, and APA references." }
 ];
@@ -546,232 +546,308 @@ export const slidesData = [
   {
     id: 12,
     slideNumber: "12",
-    section: "Marketing Mix — Product",
+    mixSlideNumber: "Slide 1 of 4",
+    section: "Marketing Mix (7Ps) — Product",
     presenter: "Devindi (Member 8)",
     allocatedTime: "1.0 min",
-    rubricRef: "Marketing Mix 4Ps (20 Marks)",
-    title: "Product Strategy (4Ps: Product)",
-    subtitle: "Defining Core Customer Benefits and Clear Development Milestones",
-    coreBenefit: "Instant clarity on where to purchase specific products in Pettah, eliminating unnecessary walking and confusion.",
-    comparison: {
-      currentPrototype: [
-        { 
-          feature: "Product-First Search Bar", 
-          status: "Functional", 
-          points: ["Keyword matching across indexed products", "Real-time query autocomplete"] 
-        },
-        { 
-          feature: "Categorized Directory", 
-          status: "Functional", 
-          points: ["6 curated bazaar sectors", "Textiles, Electronics, Spices, Tools"] 
-        },
-        { 
-          feature: "Structured Shop Profile", 
-          status: "Functional", 
-          points: ["Stall ID, street name, nearest landmark", "Direct phone and 1-tap WhatsApp chat"] 
-        },
-        { 
-          feature: "Interactive Micro-Map", 
-          status: "Functional", 
-          points: ["Interactive markers across Main St & Cross Streets", "Visual landmark reference points"] 
-        }
-      ],
-      futureRoadmap: [
-        { 
-          feature: "Live Inventory Indicator", 
-          status: "Proposed", 
-          points: ["Daily WhatsApp stock check-in with vendors", "Real-time item availability badges"] 
-        },
-        { 
-          feature: "Indoor Arcade Navigation", 
-          status: "Proposed", 
-          points: ["Floor-level indoor mapping for complexes", "Ideal for People's Park & market arcades"] 
-        },
-        { 
-          feature: "Sinhala & Tamil Voice Search", 
-          status: "Proposed", 
-          points: ["Voice recognition in local languages", "Zero typing friction for local shoppers"] 
-        },
-        { 
-          feature: "Verified Merchant Badges", 
-          status: "Proposed", 
-          points: ["Physical on-site verification sticker", "Builds enduring consumer trust"] 
-        }
-      ]
+    rubricRef: "Marketing Mix 7Ps (20 Marks)",
+    title: "Product Strategy (7Ps: 1. Product)",
+    subtitle: "What PETTAH BAZAAR Offers: Core Digital Features & Clear Development Roadmap",
+    tagline: "Find the Shop. Save Your Time.",
+    brandName: "PETTAH BAZAAR",
+    conceptSummary: "A proposed digital platform helping Colombo shoppers discover shops in Pettah based on the products they need, accompanied by accurate street-location guidance.",
+    customerBenefit: "Shoppers find relevant shops much more conveniently, saving valuable time and eliminating exhausting, aimless walking through crowded Pettah streets.",
+    features: {
+      prototype: {
+        title: "Available in Our Prototype (Operational Now)",
+        statusBadge: "Available in Prototype",
+        badgeColor: "teal",
+        items: [
+          {
+            title: "Product-Based Shop Search",
+            desc: "Shoppers type specific product keywords (e.g., 'Cotton Saree', 'Microcontroller', 'Pure Cinnamon') to find shops stocking that item."
+          },
+          {
+            title: "Shop Names & Location Information",
+            desc: "Accurate street names, stall IDs, and recognizable physical landmarks (e.g., '2nd Cross Street, near Red Mosque')."
+          },
+          {
+            title: "Relevant Product Categories",
+            desc: "Structured catalog grouping stalls into Textiles & Sarees, Electronics & Tech, Pure Spices, Tools & Hardware, and Fancy Goods."
+          },
+          {
+            title: "Easy-to-Use Search Experience",
+            desc: "Clean, responsive mobile-friendly web layout engineered for rapid query results under 3 minutes even on crowded 3G/4G networks."
+          }
+        ]
+      },
+      proposed: {
+        title: "Proposed Future Features (Strategic Roadmap)",
+        statusBadge: "Proposed Feature",
+        badgeColor: "orange",
+        items: [
+          {
+            title: "Verified Shop Details",
+            desc: "On-site physical verification badge confirming stall authenticity, active trade status, and stall ownership."
+          },
+          {
+            title: "Direct Contact Information",
+            desc: "Verified shop phone contacts and a 1-tap direct WhatsApp button for instant pre-trip stock inquiries."
+          },
+          {
+            title: "Opening Hours & Special Schedules",
+            desc: "Live daily trading hours, Friday prayer closure alerts, and weekend/Poya holiday schedule updates."
+          },
+          {
+            title: "Turn-by-Turn Foot Directions",
+            desc: "Pedestrian alley navigation and multi-floor indoor arcade guidance for complexes like People's Park."
+          }
+        ]
+      }
     },
-    speakerNotes: "Hello, I am Devindi, and I will lead our team through the 4Ps Marketing Mix. Starting with Product Strategy, we clearly separate our current working prototype features from our long-term roadmap. Today, our prototype offers real product keyword search, structured store cards, and street landmarks. High-tech features like live inventory synchronization remain planned future enhancements."
+    prototypeImage: "/assets/pettah_real_prototype_screen.png",
+    marketImage: "/assets/pettah_real_cross_street_alley.jpg",
+    speakerNotes: "Respected lecturer and colleagues, I am Devindi, presenting the Marketing Mix 7Ps for PETTAH BAZAAR. On Slide 1, we focus on Product Strategy. PETTAH BAZAAR is a proposed digital platform that solves retail search friction by connecting shoppers directly to shops based on the products they need. The primary customer value is convenience: shoppers save time instead of wandering through Colombo 11. Importantly, as university researchers, we clearly distinguish what is already operational in our working prototype—such as product-based search, shop names, street locations, and categorized browsing—from our proposed future features, such as verified shop badges, direct WhatsApp contact, live opening hours, and indoor foot navigation."
   },
   {
     id: 13,
     slideNumber: "13",
-    section: "Marketing Mix — Price",
+    mixSlideNumber: "Slide 2 of 4",
+    section: "Marketing Mix (7Ps) — Price & Place",
     presenter: "Devindi (Member 8)",
     allocatedTime: "1.0 min",
-    rubricRef: "Marketing Mix 4Ps (20 Marks)",
-    title: "Pricing Strategy (4Ps: Price)",
-    subtitle: "Balancing Shopper Adoption with Sustainable Platform Maintenance",
-    models: [
-      {
-        tier: "Tier 1: Free Shopper Access",
-        tag: "Freemium Core",
-        price: "0 LKR",
-        frequency: "Always Free",
-        points: [
-          "100% free search access for all shoppers",
-          "Zero paywalls, subscriptions, or mandatory logins",
-          "Maximizes user adoption, search volume, and network effects"
-        ],
-        rationale: "Charging consumers would create fatal adoption barriers in Sri Lanka."
-      },
-      {
-        tier: "Tier 2: Basic Merchant Inclusion",
-        tag: "Zero-Cost Onboarding",
-        price: "0 LKR",
-        frequency: "Free Forever",
-        points: [
-          "Free directory listing for verified Pettah shop owners",
-          "Includes shop name, exact street location, and 3 core products",
-          "Ensures humble alley stalls have equal visibility"
-        ],
-        rationale: "Guarantees comprehensive database coverage across dense alleys."
-      },
-      {
-        tier: "Tier 3: Featured Store Placement",
-        tag: "Proposed Revenue Model",
-        price: "750 LKR",
-        frequency: "/ Month",
-        points: [
-          "Optional sponsored banner placement at top of sector search",
-          "High visibility during peak festival seasons (Avurudu, Eid, Christmas)",
-          "Non-intrusive promotional monetization"
-        ],
-        rationale: "Provides sustainable revenue once user traffic achieves scale."
-      },
-      {
-        tier: "Tier 4: Verified Merchant Profile",
-        tag: "Future Subscription",
-        price: "1,500 LKR",
-        frequency: "/ Month",
-        points: [
-          "Direct WhatsApp product catalog synchronization",
-          "Official Verified Stall badge on search cards",
-          "Priority customer support and listing analytics"
-        ],
-        rationale: "Offsets server hosting, database maintenance, and field operations."
-      }
+    rubricRef: "Marketing Mix 7Ps (20 Marks)",
+    title: "Price & Place Strategy (7Ps: 2. Price & 3. Place)",
+    subtitle: "Zero-Barrier Access for Adoption and Ubiquitous Digital Distribution",
+    tagline: "Find the Shop. Save Your Time.",
+    priceStrategy: {
+      elementName: "Price Strategy",
+      pNumber: "2. Price",
+      icon: "dollar-sign",
+      customerBenefit: "Shoppers enjoy 100% free search with zero fees or paywalls; small family shops gain accessible digital visibility without expensive advertising overheads.",
+      points: [
+        {
+          title: "Free Customer Access at Launch",
+          desc: "100% free for all shoppers to search products, browse categories, and view shop location information with no subscription or mandatory paywall.",
+          badge: "Launch Strategy"
+        },
+        {
+          title: "Affordable for Small Pettah Businesses",
+          desc: "Basic directory listing is free for local shopkeepers, ensuring small micro-vendors in deep alleys have equal digital visibility without financial burden.",
+          badge: "Vendor Inclusivity"
+        },
+        {
+          title: "Explore Paid Listings (Future Revenue)",
+          desc: "Exploring optional paid shop listings or top-of-category promotional placements as potential future revenue sources once user traffic grows.",
+          badge: "Proposed Revenue"
+        },
+        {
+          title: "Clearly Labeled Paid Promotions",
+          desc: "Any future promotional or sponsored listings will be transparently labeled (e.g., 'Sponsored Stall') to preserve platform honesty and consumer trust.",
+          badge: "Ethical Standard"
+        }
+      ]
+    },
+    placeStrategy: {
+      elementName: "Place Strategy",
+      pNumber: "3. Place",
+      icon: "map-pin",
+      customerBenefit: "Shoppers can access shop information on-the-go from their mobile phone right inside crowded Pettah streets or plan ahead comfortably from home.",
+      points: [
+        {
+          title: "Mobile-Friendly Digital Platform",
+          desc: "Delivered as a lightweight, responsive web app (PWA) accessible on any mobile browser without forcing a heavy 50MB app store download.",
+          badge: "Channel"
+        },
+        {
+          title: "Initial Focus: Pettah, Colombo",
+          desc: "Focusing initially on Colombo 11 (Keyzer Street, Main Street, and 1st to 5th Cross Streets) where commercial density and pedestrian confusion are highest.",
+          badge: "Geographic Scope"
+        },
+        {
+          title: "Accessible Wherever Internet is Available",
+          desc: "Information is accessible 24/7 anywhere customers have an internet connection, enabling both pre-trip planning from home/office and live on-street guidance.",
+          badge: "Accessibility"
+        },
+        {
+          title: "Proposed Future Expansion",
+          desc: "Considering gradual future expansion to neighboring commercial areas (such as Colombo Fort wholesale and Panchikawatte auto parts) and wider retail categories.",
+          badge: "Proposed Growth"
+        }
+      ]
+    },
+    keyStreets: [
+      { name: "1st Cross Street", specialty: "Electronics & Tech" },
+      { name: "2nd Cross Street", specialty: "Textiles & Sarees" },
+      { name: "Bankshall Street", specialty: "Pure Ceylon Spices" },
+      { name: "Keyzer Street", specialty: "Hardware & Tools" }
     ],
-    academicDisclaimer: "Academic Note: All pricing tiers are theoretical strategic models developed for capstone evaluation.",
-    speakerNotes: "Turning to Price Strategy, our approach is consumer-first: access must remain completely free for shoppers to eliminate friction. For sustainable operations, we propose a freemium two-sided model where basic merchant listings are free, but optional promotional placement and verified badges generate revenue to cover data maintenance."
+    marketImage: "/assets/pettah_real_lotus_tower_traffic.jpg",
+    speakerNotes: "Moving to Slide 2, we present our Price and Place strategies. For Price, our strategy focuses on zero-barrier customer adoption: the platform is 100% free for shoppers at launch. To protect small traditional shopkeepers, basic listing is cost-free, while paid promotional listings are strictly an exploratory future revenue stream that will always be clearly labeled. For Place, PETTAH BAZAAR is delivered as a mobile-friendly web platform accessible on any device with internet access. We focus initially on Pettah, Colombo, where retail density is highest, with proposed plans to expand to neighboring commercial districts such as Fort in the future."
   },
   {
     id: 14,
     slideNumber: "14",
-    section: "Marketing Mix — Place",
+    mixSlideNumber: "Slide 3 of 4",
+    section: "Marketing Mix (7Ps) — Promotion & People",
     presenter: "Devindi (Member 8)",
     allocatedTime: "1.0 min",
-    rubricRef: "Marketing Mix 4Ps (20 Marks)",
-    title: "Place Strategy (4Ps: Place)",
-    subtitle: "Seamless Omnichannel Accessibility Before and During the Pettah Trip",
-    channels: [
-      {
-        channel: "Progressive Web App (PWA)",
-        status: "Active Prototype",
-        icon: "globe",
-        points: [
-          "Instant access via any mobile or desktop web browser",
-          "Zero app-store download friction (No 50MB storage penalty)",
-          "Fast loading (< 1.5s) optimized for mobile networks"
-        ]
-      },
-      {
-        channel: "Physical QR Touchpoints",
-        status: "Field Strategy",
-        icon: "qr-code",
-        points: [
-          "High-contrast QR stickers at Pettah Bus Stand & Fort Railway Station",
-          "Storefront stickers placed at partner shop counters",
-          "Instant scan-and-launch point of physical need"
-        ]
-      },
-      {
-        channel: "Pre-Trip Desktop Planning",
-        status: "Active Prototype",
-        icon: "laptop",
-        points: [
-          "Shoppers research stall locations from home or office",
-          "Create saved shopping lists prior to travelling to Colombo 11",
-          "Reduces physical exposure during hot midday peak hours"
-        ]
-      },
-      {
-        channel: "Native Mobile App",
-        status: "Future Phase",
-        icon: "smartphone",
-        points: [
-          "Native iOS & Android apps planned after validating PWA demand",
-          "Will integrate offline caching and Bluetooth beacon indoor navigation",
-          "Rollout deferred to prevent premature development expenses"
-        ]
-      }
-    ],
-    flow: "CUSTOMER SEARCH → CLOUD DIRECTORY → PRODUCT-TO-SHOP MATCH → DIRECT IN-STORE VISIT",
-    speakerNotes: "In our Place Strategy, accessibility is paramount. Pettah's mobile network conditions can be congested. Therefore, we chose a responsive web platform accessible without downloading an app. Shoppers can scan a QR code at Pettah Bus Stand or research from their desk before stepping out."
+    rubricRef: "Marketing Mix 7Ps (20 Marks)",
+    title: "Promotion & People Strategy (7Ps: 4. Promotion & 5. People)",
+    subtitle: "Community-Led Promotional Outreach and the Essential Human Pillar",
+    tagline: "Find the Shop. Save Your Time.",
+    promotionStrategy: {
+      elementName: "Promotion Strategy",
+      pNumber: "4. Promotion",
+      icon: "megaphone",
+      customerBenefit: "Shoppers discover quick video guides and scannable QR touchpoints at transit stops that show them how to navigate Pettah stress-free.",
+      campaignTheme: "“Find the Shop. Save Your Time.”",
+      points: [
+        {
+          title: "Social Media Marketing",
+          desc: "Targeted organic campaigns across Facebook, Instagram, and TikTok reaching Colombo students, home crafters, and young professionals.",
+          channel: "Meta & TikTok"
+        },
+        {
+          title: "Short Demonstration Videos",
+          desc: "Engaging 30–60 second video clips demonstrating how to quickly locate specific hard-to-find shops in Pettah without getting lost.",
+          channel: "Reels / TikTok"
+        },
+        {
+          title: "QR Codes & Physical Flyers",
+          desc: "High-contrast QR posters placed at Pettah Central Bus Stand and Fort Railway Station entrances, strictly subject to official permissions.",
+          channel: "Transit Hubs"
+        },
+        {
+          title: "Collaborations with Participating Shops",
+          desc: "Partnering with verified shopkeepers to place small 'Find Us on Pettah Bazaar' stickers at shop entrances to encourage shopper word-of-mouth.",
+          channel: "Storefronts"
+        },
+        {
+          title: "Encouraging Customer Feedback",
+          desc: "Simple rating prompts and correction links encouraging shoppers to share reviews and feedback to continuously refine platform listings.",
+          channel: "Community Loop"
+        }
+      ]
+    },
+    peopleStrategy: {
+      elementName: "People Strategy",
+      pNumber: "5. People",
+      icon: "users",
+      customerBenefit: "Shoppers receive reliable, verified shop listings created through respectful human collaboration between our team and local shopkeepers.",
+      stakeholders: [
+        {
+          role: "Shoppers / Product Seekers",
+          desc: "Customers searching for goods; their real search terms help our team identify missing products and popular shop categories.",
+          badge: "End Users"
+        },
+        {
+          role: "Pettah Shop Owners & Employees",
+          desc: "Local traders whose daily product availability, stall locations, and cooperation form the core information foundation.",
+          badge: "Merchant Partners"
+        },
+        {
+          role: "Student Data Collection Team",
+          desc: "Our team responsible for conducting on-the-ground field visits, mapping stalls, photographing storefronts, and updating records.",
+          badge: "Field Operations"
+        },
+        {
+          role: "Customer Support & Feedback Team",
+          desc: "Managing user inquiries, addressing reported listing inaccuracies, and maintaining positive ongoing relations with shopkeepers.",
+          badge: "Support Desk"
+        }
+      ],
+      importanceStatement: "Why Human Cooperation is Crucial: In an informal bazaar economy, shop details cannot be scraped from the web. Accurate information, helpful service, and genuine cooperation with shop owners are essential to maintain user trust and platform reliability."
+    },
+    marketImage: "/assets/pettah_real_street_crowd.jpg",
+    appMockup: "/assets/pettah_real_app_mockup_hand.png",
+    speakerNotes: "On Slide 3, we address Promotion and People. For Promotion, our campaign theme is 'Find the Shop. Save Your Time.' We use short TikTok and Instagram videos showing real shoppers navigating Pettah, paired with physical QR posters at Fort station and bus stands, subject to permission, and collaborative shop window stickers. For People, our platform involves four key groups: customers, Pettah shop owners, our data collection team, and customer support. Because Pettah's informal shops lack websites, active cooperation with shop owners and dedicated field verification are vital to delivering accurate information."
   },
   {
     id: 15,
     slideNumber: "15",
-    section: "Marketing Mix — Promotion",
+    mixSlideNumber: "Slide 4 of 4",
+    section: "Marketing Mix (7Ps) — Process & Physical Evidence",
     presenter: "Devindi (Member 8)",
     allocatedTime: "1.0 min",
-    rubricRef: "Marketing Mix 4Ps (20 Marks)",
-    title: "Promotion Strategy (4Ps: Promotion)",
-    subtitle: "Campaign: “Find the Shop. Save Your Time.”",
-    promotions: [
-      {
-        tool: "Social Media Short Videos",
-        platform: "TikTok & Instagram Reels",
-        tag: "Viral Awareness",
-        points: [
-          "Relatable 'Lost in Pettah vs Using Pettah Bazaar' short skits",
-          "Demonstrates rapid product discovery under 60 seconds",
-          "Targets Gen-Z students and young Colombo professionals"
-        ]
-      },
-      {
-        tool: "Community Facebook Groups",
-        platform: "Colombo Shopping & DIY",
-        tag: "Organic Traffic",
-        points: [
-          "Curated guides (e.g. 'Where to buy electronic parts in Pettah')",
-          "Direct inbound links driving organic shopper adoption",
-          "Engages active Colombo hobbyist and shopper communities"
-        ]
-      },
-      {
-        tool: "Physical On-Site Posters",
-        platform: "Pettah Storefronts & Kiosks",
-        tag: "Point-of-Need",
-        points: [
-          "High-contrast posters with prominent scannable QR codes",
-          "Trilingual brand tagline in Sinhala, Tamil, and English",
-          "Placed at high-footfall intersections and transit terminals"
-        ]
-      },
-      {
-        tool: "Direct Merchant Outreach",
-        platform: "Face-to-Face Field Visits",
-        tag: "Vendor Trust",
-        points: [
-          "Student team field visits introducing the directory to vendors",
-          "Assisting shopkeepers to verify stall locations and WhatsApp numbers",
-          "Builds enduring grassroots merchant trust"
-        ]
-      }
-    ],
-    posterImage: "/assets/pettah_real_app_mockup_hand.png",
-    prototypeScreen: "/assets/pettah_real_prototype_screen.png",
-    deployedUrl: "https://pettah-bazaar.vercel.app",
-    speakerNotes: "Our Promotion Strategy centers around our core tagline: 'Find the Shop. Save Your Time.' As shown on the slide, we designed a high-contrast promotional poster mockup featuring our QR code. Our promotional mix also includes TikTok skits, community group partnerships, and face-to-face merchant onboarding by our student team."
+    rubricRef: "Marketing Mix 7Ps (20 Marks)",
+    title: "Process & Physical Evidence (7Ps: 6. Process & 7. Physical Evidence)",
+    subtitle: "A Frictionless 5-Step Customer Flow and Tangible Proof That Validates Quality",
+    tagline: "Find the Shop. Save Your Time.",
+    processStrategy: {
+      elementName: "Process Strategy",
+      pNumber: "6. Process",
+      icon: "git-fork",
+      customerBenefit: "Shoppers follow a transparent, predictable 5-step journey that replaces confusing street navigation with direct, purposeful shopping.",
+      steps: [
+        {
+          step: "01",
+          name: "Customer Searches Product",
+          desc: "The shopper types a product keyword (e.g., 'Silk Fabric', 'Arduino', 'Cinnamon') or taps a category on the platform.",
+          sub: "Search Query Input"
+        },
+        {
+          step: "02",
+          name: "Platform Displays Shops",
+          desc: "The system instantly filters and displays relevant shops stocking that product, including street names and stall IDs.",
+          sub: "Instant Matching"
+        },
+        {
+          step: "03",
+          name: "Customer Checks Location",
+          desc: "The customer reviews detailed location cues, cross-street numbers, and recognizable local landmarks (e.g., 'Near Red Mosque').",
+          sub: "Landmark & Stall Verification"
+        },
+        {
+          step: "04",
+          name: "Customer Visits Shop",
+          desc: "The customer walks directly to the selected shop to inspect the physical product, negotiate, and complete the purchase in person.",
+          sub: "Direct In-Store Visit"
+        },
+        {
+          step: "05",
+          name: "Customer Provides Feedback",
+          desc: "The shopper submits quick feedback or reports any updated stall details, keeping the community directory accurate.",
+          sub: "Continuous Improvement"
+        }
+      ]
+    },
+    physicalEvidenceStrategy: {
+      elementName: "Physical Evidence Strategy",
+      pNumber: "7. Physical Evidence",
+      icon: "shield-check",
+      customerBenefit: "Professional visual branding, readable stall cards, and live prototype screenshots give shoppers and shopkeepers confidence in a legitimate digital service.",
+      elements: [
+        {
+          title: "Professional Logo & Brand Colors",
+          desc: "Consistent navy blue, teal, white, and warm orange palette expressing trust, cultural identity, and digital agility.",
+          tag: "Brand Identity"
+        },
+        {
+          title: "Clear & Easy-to-Use Interface",
+          desc: "Clean, high-contrast mobile screen design with intuitive category pills, clear search bars, and zero clutter.",
+          tag: "Digital UI / UX"
+        },
+        {
+          title: "Readable Shop Listings & Landmarks",
+          desc: "Standardized store cards presenting stall numbers, street names, landmark directions, and verified category tags.",
+          tag: "Structured Data"
+        },
+        {
+          title: "QR Codes Linking to Platform",
+          desc: "High-contrast printed posters and storefront counter stickers enabling direct 1-scan mobile access (proposed strategy).",
+          tag: "Physical Touchpoint"
+        },
+        {
+          title: "Screenshots of Actual Prototype",
+          desc: "Live verified screen captures and working prototype demonstration validating operational feasibility for capstone grading.",
+          tag: "Proof of Concept"
+        }
+      ]
+    },
+    prototypeImage: "/assets/pettah_real_prototype_screen.png",
+    handMockup: "/assets/pettah_real_app_mockup_hand.png",
+    speakerNotes: "Finally, on Slide 4, we examine Process and Physical Evidence. Our Process Strategy is presented as a clear 5-step flow: the customer searches for a product, views matching shop information, checks the shop location and landmarks, visits the shop in person, and provides feedback to improve the directory. Because a digital service is intangible, Physical Evidence is essential to build trust. We achieve this through our professional logo and brand colors, a clear readable interface, standardized shop location cards, proposed physical QR codes, and verifiable screenshots of our working prototype. This completes our 7Ps Marketing Mix presentation."
   },
   {
     id: 16,
