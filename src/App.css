@@ -9908,4 +9908,445 @@
 .is-fullscreen .scorecard-val { font-size: 1.35rem; }
 .is-fullscreen .scorecard-lbl { font-size: 0.85rem; }
 
+/* -------------------------------------------------------------
+   NEXT-LEVEL EXECUTIVE COVER PAGE (PETTAH BAZAAR FLAME BRAND)
+------------------------------------------------------------- */
+.cover-exact-ref-container {
+  position: relative !important;
+  width: 100% !important;
+  height: 100% !important;
+  padding: 0 !important;
+  overflow: hidden !important;
+  display: flex !important;
+  background: #060608 !important;
+}
+
+/* Background photo & smooth cinematic dark vignette */
+.cover-ref-bg-wrap {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.cover-ref-bg-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 32%;
+  filter: brightness(0.78) contrast(1.12) saturate(1.1);
+}
+
+.cover-ref-bg-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    rgba(6, 6, 10, 0.96) 0%,
+    rgba(7, 7, 12, 0.92) 36%,
+    rgba(10, 10, 16, 0.70) 58%,
+    rgba(12, 12, 18, 0.35) 80%,
+    rgba(12, 12, 18, 0.20) 100%
+  );
+  pointer-events: none;
+}
+
+.cover-ref-ambient-glow {
+  position: absolute;
+  top: -10%;
+  left: 20%;
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 85, 0, 0.15) 0%, transparent 70%);
+  pointer-events: none;
+  filter: blur(80px);
+}
+
+/* 2-Column Grid Layout: Left Content & Right Phone Chassis */
+.cover-ref-content-grid {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  padding: 2.2rem 3.5rem 1.8rem 4rem;
+  box-sizing: border-box;
+  align-items: center;
+}
+
+/* Left Column */
+.cover-ref-left-col {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+  max-width: 660px;
+  z-index: 3;
+}
+
+/* Logo Badge + Scope Chip Row */
+.cover-nl-brand-badge-row {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  margin-bottom: 0.9rem;
+}
+
+.cover-nl-logo-box {
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #FF381E 0%, #FF7700 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 18px rgba(255, 56, 30, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  flex-shrink: 0;
+}
+
+.cover-nl-scope-pill {
+  display: flex;
+  align-items: center;
+  background: rgba(255, 85, 0, 0.12);
+  border: 1px solid rgba(255, 85, 0, 0.35);
+  padding: 0.32rem 0.85rem;
+  border-radius: 9999px;
+  font-size: 0.7rem;
+  font-weight: 800;
+  color: #FFA500;
+  letter-spacing: 0.08em;
+}
+
+/* Main Brand Title: PETTAH BAZAAR */
+.cover-nl-brand-title {
+  font-family: var(--font-heading, 'Inter', sans-serif);
+  font-size: clamp(2.8rem, 4.6vw, 4.2rem);
+  font-weight: 900;
+  line-height: 0.96;
+  letter-spacing: -0.025em;
+  margin: 0 0 0.85rem 0;
+}
+
+.cover-nl-brand-white {
+  color: #FFFFFF;
+  text-shadow: 0 0 25px rgba(255, 255, 255, 0.25);
+}
+
+.cover-nl-brand-flame {
+  background: linear-gradient(135deg, #FF381E 0%, #FF7700 50%, #FFA500 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 0 35px rgba(255, 85, 0, 0.55));
+}
+
+/* Main Tagline */
+.cover-nl-tagline {
+  font-family: var(--font-heading, 'Inter', sans-serif);
+  font-size: clamp(1.8rem, 2.7vw, 2.45rem);
+  font-weight: 800;
+  color: #FFB300;
+  margin: 0 0 0.55rem 0;
+  line-height: 1.15;
+  letter-spacing: -0.015em;
+  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.9);
+}
+
+/* Subtitle */
+.cover-nl-subtitle {
+  font-size: clamp(0.96rem, 1.25vw, 1.12rem);
+  color: #E2E8F0;
+  line-height: 1.4;
+  margin: 0 0 1.3rem 0;
+  font-weight: 500;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.9);
+}
+
+/* Academic Credential Card (Glassmorphic) */
+.cover-nl-academic-card {
+  background: rgba(18, 18, 26, 0.78);
+  backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 85, 0, 0.28);
+  border-left: 3px solid #FF5500;
+  border-radius: 12px;
+  padding: 0.85rem 1.15rem;
+  margin-bottom: 1.3rem;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
+}
+
+.academic-line-univ {
+  display: flex;
+  align-items: center;
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: #FFFFFF;
+  margin-bottom: 0.2rem;
+}
+
+.academic-line-faculty {
+  font-size: 0.78rem;
+  color: #94A3B8;
+  margin-bottom: 0.45rem;
+  padding-left: 1.4rem;
+}
+
+.academic-line-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  flex-wrap: wrap;
+  padding-left: 1.4rem;
+}
+
+.academic-pill {
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: #CBD5E1;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 0.15rem 0.55rem;
+  border-radius: 4px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.academic-pill.highlight {
+  color: #FFA500;
+  background: rgba(255, 85, 0, 0.14);
+  border-color: rgba(255, 85, 0, 0.35);
+  font-weight: 700;
+}
+
+.academic-dot {
+  color: #64748B;
+  font-size: 0.72rem;
+}
+
+/* Action Row */
+.cover-nl-actions-row {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.3rem;
+}
+
+.cover-nl-cta-flame {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #FF381E 0%, #FF7700 100%);
+  color: #FFFFFF;
+  font-family: var(--font-heading, 'Inter', sans-serif);
+  font-size: 0.92rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  padding: 0.75rem 1.85rem;
+  border-radius: 12px;
+  text-decoration: none;
+  cursor: pointer;
+  box-shadow: 0 8px 25px rgba(255, 56, 30, 0.45), 0 2px 8px rgba(0, 0, 0, 0.6);
+  transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+}
+
+.cover-nl-cta-flame:hover {
+  background: linear-gradient(135deg, #FF4528 0%, #FF8811 100%);
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 12px 32px rgba(255, 85, 0, 0.65);
+  color: #FFFFFF;
+}
+
+.cover-nl-live-badge {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(16, 185, 129, 0.12);
+  border: 1px solid rgba(16, 185, 129, 0.35);
+  color: #34D399;
+  font-size: 0.74rem;
+  font-weight: 700;
+  padding: 0.5rem 0.9rem;
+  border-radius: 9999px;
+}
+
+.live-pulse-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #10B981;
+  box-shadow: 0 0 10px #10B981;
+}
+
+/* Presenters Strip */
+.cover-nl-presenters-box {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  background: rgba(14, 14, 20, 0.65);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 0.6rem 0.95rem;
+  border-radius: 10px;
+  max-width: 540px;
+}
+
+.cover-nl-presenters-head {
+  display: flex;
+  align-items: center;
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  color: #94A3B8;
+  text-transform: uppercase;
+  margin-bottom: 0.15rem;
+}
+
+.cover-nl-names-line {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #E2E8F0;
+  letter-spacing: 0.01em;
+}
+
+/* -------------------------------------------------------------
+   RIGHT COLUMN: TITANIUM SMARTPHONE DEVICE FRAME (NO CUTOFF HAND)
+------------------------------------------------------------- */
+.cover-ref-right-col {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.cover-device-presentation-stage {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.cover-phone-chassis {
+  position: relative;
+  width: 280px;
+  height: 560px;
+  border-radius: 46px;
+  background: #0E0E12;
+  border: 8px solid #242430;
+  box-shadow: 
+    0 25px 70px rgba(0, 0, 0, 0.95), 
+    0 0 45px rgba(255, 85, 0, 0.25), 
+    inset 0 0 10px rgba(255, 255, 255, 0.1);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transform: translateY(6px);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
+}
+
+.cover-device-presentation-stage:hover .cover-phone-chassis {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 
+    0 35px 85px rgba(0, 0, 0, 0.98), 
+    0 0 60px rgba(255, 85, 0, 0.4);
+}
+
+/* Dynamic Island */
+.cover-phone-island {
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 82px;
+  height: 20px;
+  background: #000000;
+  border-radius: 12px;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+}
+
+.island-camera {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #161622;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.island-sensor {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #0E0E18;
+}
+
+/* Phone Screen App Screenshot */
+.cover-phone-screen-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+}
+
+/* Glass reflection glare */
+.cover-phone-glare {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, transparent 40%, transparent 100%);
+  pointer-events: none;
+  z-index: 10;
+}
+
+/* Floating Micro Badges */
+.cover-device-float-badge {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  background: rgba(14, 14, 20, 0.92);
+  backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 85, 0, 0.4);
+  border-radius: 9999px;
+  padding: 0.4rem 0.9rem;
+  font-size: 0.74rem;
+  font-weight: 700;
+  color: #FFFFFF;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.75), 0 0 15px rgba(255, 85, 0, 0.25);
+  z-index: 25;
+  pointer-events: none;
+  animation: floatSlow 4s ease-in-out infinite;
+}
+
+.cover-device-float-badge.top {
+  top: 1.5rem;
+  right: -1.2rem;
+  animation-delay: 0s;
+}
+
+.cover-device-float-badge.bottom {
+  bottom: 2.2rem;
+  left: -1.8rem;
+  animation-delay: 2s;
+  border-color: rgba(245, 158, 11, 0.5);
+}
+
+@keyframes floatSlow {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+
+
 

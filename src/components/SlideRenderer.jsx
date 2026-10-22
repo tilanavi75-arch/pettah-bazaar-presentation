@@ -128,51 +128,138 @@ export default function SlideRenderer({ slide, direction = 'next', spotlightMode
     );
   }
 
-  // Slide 1: Executive Cover Page & Brand Introduction
+  // Slide 1: Next-Level Executive Cover Page (PettahBazaar Flame Brand Theme)
   if (slide.id === 1) {
     return (
-      <div className={`slide-content cover-page-minimal ${animClass} ${spotlightClass}`}>
-        {/* LEFT COLUMN: Brand Name & Presenters */}
-        <div className="cover-left-column">
-          {/* Main Website Name - Extra Large */}
-          <div className="cover-brand-header">
-            <h1 className="cover-main-brand-title">
-              PETTAH <span className="brand-accent-text">BAZAAR</span>
-            </h1>
-            <p className="cover-main-tagline">
-              "Find the Shop. Save Your Time."
-            </p>
-          </div>
-
-          {/* Presenters / Team Member Names */}
-          <div className="cover-presenters-section">
-            <div className="cover-presenters-title">
-              <Users className="w-4 h-4 text-primary-flame mr-2" />
-              <span>PRESENTERS</span>
-            </div>
-            <div className="cover-names-grid">
-              {teamMembers.map((member, idx) => (
-                <div key={member.id} className="cover-name-badge">
-                  <span className="member-num">{idx + 1 < 10 ? `0${idx + 1}` : idx + 1}</span>
-                  <span className="member-name">{member.name}</span>
-                </div>
-              ))}
-            </div>
-          </div>
+      <div className={`slide-content cover-exact-ref-container ${animClass} ${spotlightClass}`}>
+        {/* Full-bleed Pettah Street Background with Ambient Glow */}
+        <div className="cover-ref-bg-wrap">
+          <img 
+            src="/assets/pettah_real_street_crowd.jpg" 
+            alt="Pettah Commercial Epicenter" 
+            className="cover-ref-bg-img"
+          />
+          <div className="cover-ref-bg-overlay" />
+          <div className="cover-ref-ambient-glow" />
         </div>
 
-        {/* RIGHT COLUMN: Large Hero Image (dakunu paththe) */}
-        <div className="cover-right-image-column">
-          <div className="cover-hero-image-wrapper">
-            <img
-              src={slide.heroImage}
-              alt="Pettah Commercial Epicenter"
-              className="cover-hero-image"
-            />
-            <div className="cover-image-overlay-glow" />
-            <div className="cover-image-caption">
-              <MapPin className="w-3.5 h-3.5 text-primary-flame mr-1.5 flex-shrink-0" />
-              <span>Pettah Commercial District • Colombo 11</span>
+        {/* Content Grid: Left Brand Column & Right Titanium Phone Chassis */}
+        <div className="cover-ref-content-grid">
+          {/* LEFT COLUMN: Brand, Tagline, Academic Meta, Button & Team */}
+          <div className="cover-ref-left-col">
+            {/* Logo Badge + Platform Scope Chip */}
+            <div className="cover-nl-brand-badge-row">
+              <div className="cover-nl-logo-box">
+                <ShoppingBag className="w-5 h-5 text-white" />
+              </div>
+              <div className="cover-nl-scope-pill">
+                <Flame className="w-3.5 h-3.5 text-primary-flame animate-pulse mr-1" />
+                <span>COLOMBO 11 DIGITAL SHOP-DISCOVERY PLATFORM</span>
+              </div>
+            </div>
+
+            {/* Brand Title: PETTAH (White) BAZAAR (Flame Gradient) */}
+            <div className="cover-nl-brand-title">
+              <span className="cover-nl-brand-white">PETTAH</span>{" "}
+              <span className="cover-nl-brand-flame">BAZAAR</span>
+            </div>
+
+            {/* Main Tagline */}
+            <h2 className="cover-nl-tagline">
+              "Find the Shop. Save Your Time."
+            </h2>
+
+            {/* Subtitle Description */}
+            <p className="cover-nl-subtitle">
+              Proposed digital shop-discovery platform for Pettah, Colombo.
+            </p>
+
+            {/* Academic Credential Card (Glassmorphic & Credentialed) */}
+            <div className="cover-nl-academic-card">
+              <div className="academic-line-univ">
+                <Award className="w-4 h-4 text-primary-flame mr-1.5 flex-shrink-0" />
+                <span>General Sir John Kotelawala Defence University (KDU)</span>
+              </div>
+              <div className="academic-line-faculty">
+                Faculty of Management, Social Sciences and Humanities
+              </div>
+              <div className="academic-line-meta">
+                <span className="academic-pill">BSc (Hons) in Management</span>
+                <span className="academic-dot">•</span>
+                <span className="academic-pill">BSM 12012 — Principles of Marketing</span>
+                <span className="academic-dot">•</span>
+                <span className="academic-pill highlight">Intake 43</span>
+              </div>
+            </div>
+
+            {/* Action Row: OPEN LIVE PROTOTYPE & Live Status Pill */}
+            <div className="cover-nl-actions-row">
+              <a
+                href="https://pettah-bazaar.vercel.app"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="cover-nl-cta-flame"
+                title="Launch Live Prototype Web App (pettah-bazaar.vercel.app)"
+              >
+                <Globe className="w-4 h-4 mr-2" />
+                <span>OPEN LIVE PROTOTYPE</span>
+                <ExternalLink className="w-3.5 h-3.5 ml-2 opacity-80" />
+              </a>
+
+              <div className="cover-nl-live-badge">
+                <span className="live-pulse-dot" />
+                <span>Live Prototype Tested</span>
+              </div>
+            </div>
+
+            {/* Presenters Strip (10 Team Members) */}
+            <div className="cover-nl-presenters-box">
+              <div className="cover-nl-presenters-head">
+                <Users className="w-3.5 h-3.5 text-primary-flame mr-1.5" />
+                <span>PRESENTERS • INTAKE 43</span>
+              </div>
+              <div className="cover-nl-names-line">
+                Chenaya • Amandi • Tilan • Buddhini • Vishadani
+              </div>
+              <div className="cover-nl-names-line">
+                Savinu • Vihanga • Devindi • Nethmi • Sanithu
+              </div>
+            </div>
+          </div>
+
+          {/* RIGHT COLUMN: Modern Titanium Smartphone Mockup Frame (Clean, No Cutoff Hand) */}
+          <div className="cover-ref-right-col">
+            <div className="cover-device-presentation-stage">
+              {/* Floating Top Pill */}
+              <div className="cover-device-float-badge top">
+                <MapPin className="w-3 h-3 text-primary-flame mr-1" />
+                <span>Pettah Market • Colombo 11</span>
+              </div>
+
+              {/* Realistic Titanium Phone Chassis */}
+              <div className="cover-phone-chassis">
+                {/* Dynamic Island Pill */}
+                <div className="cover-phone-island">
+                  <div className="island-camera" />
+                  <div className="island-sensor" />
+                </div>
+
+                {/* Actual Clean App Screen (Zero Awkward Hand) */}
+                <img 
+                  src="/assets/pettah_real_prototype_screen.png" 
+                  alt="Pettah Bazaar Live Prototype User Interface"
+                  className="cover-phone-screen-img" 
+                />
+
+                {/* Gloss reflection overlay */}
+                <div className="cover-phone-glare" />
+              </div>
+
+              {/* Floating Bottom Pill */}
+              <div className="cover-device-float-badge bottom">
+                <Zap className="w-3 h-3 text-gold-400 mr-1" />
+                <span>&lt; 3 Min Search-to-Stall</span>
+              </div>
             </div>
           </div>
         </div>
