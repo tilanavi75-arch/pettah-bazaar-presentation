@@ -705,9 +705,14 @@ export const slidesData = [
     presenter: "Devindi (Member 8)",
     allocatedTime: "1.0 min",
     rubricRef: "Marketing Mix (7Ps) — Promotion & People",
+    isVideoSlide: true,
     title: "Promotion & People Strategy (7Ps: 4. Promotion & 5. People)",
     subtitle: "Community-Led Promotional Outreach and the Essential Human Pillar",
-    tagline: "Find the Shop. Save Your Time.",
+    driveUrl: "https://drive.google.com/file/d/1i19JZbDFOGDYMiw_WC79lsUUbUqp-lRN/preview",
+    driveShareUrl: "https://drive.google.com/file/d/1i19JZbDFOGDYMiw_WC79lsUUbUqp-lRN/view?usp=sharing",
+    videoHeading: "PETTAH BAZAAR PROMOTION CAMPAIGN VIDEO",
+    videoLabel: "PROMOTION STRATEGY • 30-SEC DEMO REEL",
+    videoTitle: "Official Pettah Bazaar Promotional Video (Google Drive Stream)",
     promotionStrategy: {
       elementName: "Promotion Strategy",
       pNumber: "4. Promotion",
@@ -773,7 +778,7 @@ export const slidesData = [
     },
     marketImage: "/assets/pettah_real_street_crowd.jpg",
     appMockup: "/assets/pettah_real_app_mockup_hand.png",
-    speakerNotes: "On Slide 3, we address Promotion and People. For Promotion, our campaign theme is 'Find the Shop. Save Your Time.' We use short TikTok and Instagram videos showing real shoppers navigating Pettah, paired with physical QR posters at Fort station and bus stands, subject to permission, and collaborative shop window stickers. For People, our platform involves four key groups: customers, Pettah shop owners, our data collection team, and customer support. Because Pettah's informal shops lack websites, active cooperation with shop owners and dedicated field verification are vital to delivering accurate information."
+    speakerNotes: "On Slide 14, we address Promotion and People. For Promotion, our campaign theme is 'Find the Shop. Save Your Time.' We use short TikTok and Instagram demonstration videos showing real shoppers navigating Pettah under 60 seconds — as demonstrated in our loaded promotional video clip — paired with physical QR posters at Fort station and bus stands, subject to permission, and collaborative shop window stickers. For People, our platform involves four key groups: customers, Pettah shop owners, our data collection team, and customer support. Because Pettah's informal shops lack websites, active cooperation with shop owners and dedicated field verification are vital to delivering accurate information. [Play promotional video in Card 1 or switch to Full Cinema View]."
   },
   {
     id: 15,

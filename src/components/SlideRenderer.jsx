@@ -7,7 +7,7 @@ import {
   Globe, QrCode, Store, Scale, Lock, TrendingUp, Navigation2, Info,
   ShoppingBag, Flame, Star, Award, Check, Play, EyeOff, Radio, Activity,
   DollarSign, LayoutGrid, ChevronLeft, ChevronRight, MessageSquare, Trophy, BarChart2,
-  Megaphone, Workflow, CheckCircle
+  Megaphone, Workflow, CheckCircle, Film, Maximize2, Video
 } from 'lucide-react';
 import confetti from 'canvas-confetti';
 
@@ -91,6 +91,7 @@ export default function SlideRenderer({ slide, direction = 'next', spotlightMode
   const [subCard12, setSubCard12] = useState(0); // Slide 12: 0: Prototype, 1: Proposed Roadmap
   const [subCard13, setSubCard13] = useState(0); // Slide 13: 0: Price Strategy, 1: Place Strategy
   const [subCard14, setSubCard14] = useState(0); // Slide 14: 0: Promotion Strategy, 1: People Strategy
+  const [slide14ViewMode, setSlide14ViewMode] = useState('video'); // 'video' (default) or 'strategy'
   const [subCard15, setSubCard15] = useState(0); // Slide 15: 0: Process Strategy, 1: Physical Evidence
   const [activeProcessStep, setActiveProcessStep] = useState(0); // 0-4 for Process Flow
   const [subCard18, setSubCard18] = useState(0); // Slide 18: 0: Pillars 1-3, 1: Pillars 4-6 & Trust
@@ -111,8 +112,8 @@ export default function SlideRenderer({ slide, direction = 'next', spotlightMode
     });
   };
 
-  // If it's a dedicated video slide (Slide 4 or Slide 16)
-  if (slide.isVideoSlide) {
+  // Dedicated Video Slides (Slide 4, Slide 14 by default, Slide 16)
+  if (slide.isVideoSlide && (slide.id !== 14 || slide14ViewMode === 'video')) {
     return (
       <div className={`slide-content video-slide-container ${animClass} ${spotlightClass}`}>
         <VideoSlidePlaceholder 
@@ -120,9 +121,20 @@ export default function SlideRenderer({ slide, direction = 'next', spotlightMode
           heading={slide.videoHeading}
           label={slide.videoLabel}
           presenter={slide.presenter}
-          videoSrc={slide.videoSrc}
+          videoSrc={slide.id === 14 ? null : slide.videoSrc}
           driveUrl={slide.driveUrl}
           videoTitle={slide.videoTitle}
+          extraHeaderContent={slide.id === 14 ? (
+            <button
+              onClick={() => setSlide14ViewMode('strategy')}
+              className="video-tool-btn"
+              style={{ background: 'rgba(20, 184, 166, 0.2)', borderColor: 'rgba(20, 184, 166, 0.45)', color: '#2DD4BF', fontWeight: 600 }}
+              title="View 7Ps Promotion & People Strategy theory cards"
+            >
+              <Megaphone className="w-3.5 h-3.5 mr-1" />
+              <span>7Ps Strategy Cards</span>
+            </button>
+          ) : null}
         />
       </div>
     );
@@ -2097,7 +2109,7 @@ export default function SlideRenderer({ slide, direction = 'next', spotlightMode
     );
   }
 
-  // Slide 14: 4. Promotion & 5. People Strategy (Marketing Mix 7Ps — Part 3: Slidable Cards)
+  // Slide 14: 4. Promotion & 5. People Strategy (Marketing Mix 7Ps — Part 3: Slidable Cards with Promotion Video)
   if (slide.id === 14) {
     return (
       <div className={`slide-content seven-ps-slide ${animClass} ${spotlightClass}`}>
@@ -2109,6 +2121,14 @@ export default function SlideRenderer({ slide, direction = 'next', spotlightMode
             <p className="slide-subheading">{slide.subtitle}</p>
           </div>
           <div className="flex items-center gap-2">
+            <button
+              onClick={() => setSubCard14(subCard14 === 2 ? 0 : 2)}
+              className="quick-video-badge-btn"
+              title={subCard14 === 2 ? "Back to 7Ps Strategy Cards" : "Watch Full Video in Cinema Mode"}
+            >
+              <Play className="w-3 h-3 fill-current mr-1 text-orange-400" />
+              <span>{subCard14 === 2 ? "Show 7Ps Strategy" : "▶ Watch Promotion Video"}</span>
+            </button>
             <span className="seven-ps-tagline-chip">“{slide.tagline}”</span>
             <div className="presenter-tag-box">Presenter: {slide.presenter}</div>
           </div>
@@ -2131,21 +2151,28 @@ export default function SlideRenderer({ slide, direction = 'next', spotlightMode
               <Users className="w-3.5 h-3.5 mr-1 text-teal-300" />
               <span>Card 2: 5. People Strategy (Human Collaboration & Trust)</span>
             </button>
+            <button 
+              className={`subtab-pill-btn special-video-subtab-pill ${subCard14 === 2 ? 'active' : ''}`}
+              onClick={() => setSubCard14(2)}
+            >
+              <Film className="w-3.5 h-3.5 mr-1 text-orange-400 animate-pulse" />
+              <span className="text-orange-300 font-semibold">Card 3: ▶ Watch Full Promotion Video (Cinema)</span>
+            </button>
           </div>
 
           <div className="subtabs-nav-arrows">
             <button 
               className="subtab-arrow-btn"
-              onClick={() => setSubCard14(prev => prev > 0 ? prev - 1 : 1)}
+              onClick={() => setSubCard14(prev => prev > 0 ? prev - 1 : 2)}
               title="Previous Card"
             >
               <ChevronLeft className="w-4 h-4" />
               <span>Prev Card</span>
             </button>
-            <span className="subtab-indicator-counter">{subCard14 + 1} / 2</span>
+            <span className="subtab-indicator-counter">{subCard14 + 1} / 3</span>
             <button 
               className="subtab-arrow-btn primary"
-              onClick={() => setSubCard14(prev => prev < 1 ? prev + 1 : 0)}
+              onClick={() => setSubCard14(prev => prev < 2 ? prev + 1 : 0)}
               title="Next Card"
             >
               <span>Next Card</span>
@@ -2188,38 +2215,67 @@ export default function SlideRenderer({ slide, direction = 'next', spotlightMode
                 </div>
               </div>
 
-              {/* Right: Short Video Reel Simulation Card + Mobile Prototype Hand Mockup */}
+              {/* Right: Promotion Campaign Video Player */}
               <div className="detail-col-media">
-                <div className="viral-reel-card">
-                  <div className="reel-header">
-                    <Flame className="w-4 h-4 text-orange-400 mr-1.5 animate-pulse" />
-                    <span className="text-xs font-semibold text-white">Social Video Campaign (TikTok / Reels)</span>
-                    <span className="live-pill text-[10px]">Active Concept</span>
+                <div className="promotion-video-card">
+                  <div className="promotion-video-header">
+                    <div className="flex items-center gap-1.5">
+                      <Film className="w-3.5 h-3.5 text-orange-400 animate-pulse" />
+                      <span className="text-xs font-bold text-white uppercase tracking-wider">
+                        Social Campaign Video
+                      </span>
+                    </div>
+                    <div className="flex items-center gap-1.5">
+                      <span className="live-pill text-[10px] bg-emerald-500/20 text-emerald-300 border-emerald-500/40">
+                        ● HD Video Ready
+                      </span>
+                      <button 
+                        type="button"
+                        className="cinema-pill-btn"
+                        onClick={() => setSubCard14(2)}
+                        title="Expand to Full Cinema Presentation View"
+                      >
+                        <Maximize2 className="w-3 h-3 mr-1 text-teal-300" />
+                        <span>Cinema View</span>
+                      </button>
+                    </div>
                   </div>
-                  <div className="reel-body">
-                    <p className="text-xs text-slate-200 italic mb-2">
+
+                  {/* Video Player Box - Google Drive Direct Stream */}
+                  <div className="promotion-video-player-box">
+                    <iframe 
+                      src={slide.driveUrl || "https://drive.google.com/file/d/1i19JZbDFOGDYMiw_WC79lsUUbUqp-lRN/preview"}
+                      className="promotion-embedded-video"
+                      style={{ border: 'none', width: '100%', height: '100%' }}
+                      allow="autoplay; encrypted-media; fullscreen"
+                      allowFullScreen
+                      title="Pettah Bazaar Promotion Video"
+                    />
+                  </div>
+
+                  {/* Video Caption & Metadata */}
+                  <div className="promotion-video-footer">
+                    <div className="flex items-center justify-between text-[11px]">
+                      <span className="font-mono text-teal-300 flex items-center gap-1">
+                        <Flame className="w-3 h-3 text-orange-400" />
+                        TikTok / Reels • 30s Demonstration
+                      </span>
+                      {slide.driveShareUrl && (
+                        <a 
+                          href={slide.driveShareUrl} 
+                          target="_blank" 
+                          rel="noopener noreferrer"
+                          className="drive-direct-link"
+                          title="Open video in Google Drive"
+                        >
+                          <ExternalLink className="w-3 h-3 mr-1" />
+                          <span>Drive</span>
+                        </a>
+                      )}
+                    </div>
+                    <p className="text-[11px] text-slate-300 italic mt-1 leading-snug">
                       "POV: Finding wholesale electronics in Pettah under 60 seconds with Pettah Bazaar ⚡ #ColomboHacks #PettahBazaar"
                     </p>
-                    <div className="reel-metrics">
-                      <span>❤️ 4.8K Likes</span>
-                      <span>💬 382 Comments</span>
-                      <span>↗️ 1.2K Shares</span>
-                      <span>👀 48.5K Views</span>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="promotion-mockup-frame mt-2 flex-1 min-h-0">
-                  <div className="mockup-hand-inner">
-                    <img 
-                      src={slide.appMockup} 
-                      alt="Pettah Bazaar Mobile Mockup" 
-                      className="mockup-hand-img"
-                    />
-                    <div className="mockup-overlay-badge">
-                      <Smartphone className="w-3.5 h-3.5 text-teal-300 mr-1 flex-shrink-0" />
-                      <span>On-The-Go Discovery in Crowded Alleys</span>
-                    </div>
                   </div>
                 </div>
               </div>
@@ -2270,6 +2326,20 @@ export default function SlideRenderer({ slide, direction = 'next', spotlightMode
                 </div>
               </div>
             </div>
+          </div>
+        )}
+
+        {/* Card 3: Full Cinema Promotion Video Player */}
+        {subCard14 === 2 && (
+          <div className="seven-ps-active-card-container animate-fade-in video-cinema-slide-wrap">
+            <VideoSlidePlaceholder 
+              slideNumber="14"
+              heading={slide.videoHeading || "PETTAH BAZAAR PROMOTION CAMPAIGN VIDEO"}
+              label={slide.videoLabel || "7Ps PROMOTION STRATEGY • 30-SEC DEMO REEL"}
+              presenter={slide.presenter}
+              driveUrl={slide.driveUrl || "https://drive.google.com/file/d/1i19JZbDFOGDYMiw_WC79lsUUbUqp-lRN/preview"}
+              videoTitle={slide.videoTitle || "Official Pettah Bazaar Promotional Video"}
+            />
           </div>
         )}
       </div>

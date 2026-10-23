@@ -21,17 +21,24 @@ export default function VideoSlidePlaceholder({
   presenter, 
   videoSrc,
   driveUrl,
-  videoTitle
+  videoTitle,
+  extraHeaderContent
 }) {
   const [customVideoUrl, setCustomVideoUrl] = useState('');
   const [showInput, setShowInput] = useState(false);
-  const [activeVideoSrc, setActiveVideoSrc] = useState(videoSrc || driveUrl || null);
-  const [useDriveEmbed, setUseDriveEmbed] = useState(false);
+  const [activeVideoSrc, setActiveVideoSrc] = useState(driveUrl || videoSrc || null);
+  const [useDriveEmbed, setUseDriveEmbed] = useState(Boolean(driveUrl));
 
   useEffect(() => {
-    setActiveVideoSrc(videoSrc || driveUrl || null);
-    if (!videoSrc && driveUrl) {
+    if (driveUrl) {
+      setActiveVideoSrc(driveUrl);
       setUseDriveEmbed(true);
+    } else if (videoSrc) {
+      setActiveVideoSrc(videoSrc);
+      setUseDriveEmbed(false);
+    } else {
+      setActiveVideoSrc(null);
+      setUseDriveEmbed(false);
     }
   }, [videoSrc, driveUrl]);
 
@@ -107,6 +114,7 @@ export default function VideoSlidePlaceholder({
         </div>
 
         <div className="video-controls-tools">
+          {extraHeaderContent}
           {activeVideoSrc ? (
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
               <span className="video-badge" style={{ margin: 0, background: 'rgba(16, 185, 129, 0.15)', color: '#34d399', border: '1px solid rgba(16, 185, 129, 0.3)' }}>
