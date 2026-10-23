@@ -90,14 +90,14 @@ export default function SlideRenderer({ slide, direction = 'next', spotlightMode
   const [subCard11, setSubCard11] = useState(0); // Slide 11: 0: Competitor Matrix Table, 1: Fit Scores & Strengths
   const [subCard12, setSubCard12] = useState(0); // Slide 12: 0: Prototype, 1: Proposed Roadmap
   const [subCard13, setSubCard13] = useState(0); // Slide 13: 0: Price Strategy, 1: Place Strategy
-  const [subCard14, setSubCard14] = useState(0); // Slide 14: 0: Promotion Strategy, 1: People Strategy
-  const [slide14ViewMode, setSlide14ViewMode] = useState('video'); // 'video' (default) or 'strategy'
+  const [subCard14, setSubCard14] = useState(0); // Slide 14: 0: Promotion Strategy, 1: People Strategy, 2: Full Cinema Video
   const [subCard15, setSubCard15] = useState(0); // Slide 15: 0: Process Strategy, 1: Physical Evidence
   const [activeProcessStep, setActiveProcessStep] = useState(0); // 0-4 for Process Flow
   const [subCard18, setSubCard18] = useState(0); // Slide 18: 0: Pillars 1-3, 1: Pillars 4-6 & Trust
   const [activeEthic, setActiveEthic] = useState(null); // For Slide 18 ethics cards
   const [subCard19, setSubCard19] = useState(0); // Slide 19: 0: Executive Scorecard, 1: Strategic Recap & Brand Mission
   const [subCard20, setSubCard20] = useState(0); // Slide 20: 0: Q&A Closing, 1: 10 Presenters Roster, 2: Academic References
+  const [videoPortraitSize, setVideoPortraitSize] = useState('phone'); // 'phone' (9:16) | 'wide' (3:4)
 
   const animClass = direction === 'prev' ? 'slide-anim-prev' : 'slide-anim-next';
   const spotlightClass = spotlightMode ? 'spotlight-on' : '';
@@ -112,8 +112,8 @@ export default function SlideRenderer({ slide, direction = 'next', spotlightMode
     });
   };
 
-  // Dedicated Video Slides (Slide 4, Slide 14 by default, Slide 16)
-  if (slide.isVideoSlide && (slide.id !== 14 || slide14ViewMode === 'video')) {
+  // Dedicated Video Slides (Slide 4 and Slide 16)
+  if (slide.isVideoSlide) {
     return (
       <div className={`slide-content video-slide-container ${animClass} ${spotlightClass}`}>
         <VideoSlidePlaceholder 
@@ -121,20 +121,9 @@ export default function SlideRenderer({ slide, direction = 'next', spotlightMode
           heading={slide.videoHeading}
           label={slide.videoLabel}
           presenter={slide.presenter}
-          videoSrc={slide.id === 14 ? null : slide.videoSrc}
+          videoSrc={slide.videoSrc}
           driveUrl={slide.driveUrl}
           videoTitle={slide.videoTitle}
-          extraHeaderContent={slide.id === 14 ? (
-            <button
-              onClick={() => setSlide14ViewMode('strategy')}
-              className="video-tool-btn"
-              style={{ background: 'rgba(20, 184, 166, 0.2)', borderColor: 'rgba(20, 184, 166, 0.45)', color: '#2DD4BF', fontWeight: 600 }}
-              title="View 7Ps Promotion & People Strategy theory cards"
-            >
-              <Megaphone className="w-3.5 h-3.5 mr-1" />
-              <span>7Ps Strategy Cards</span>
-            </button>
-          ) : null}
         />
       </div>
     );
@@ -2817,18 +2806,188 @@ export default function SlideRenderer({ slide, direction = 'next', spotlightMode
     );
   }
 
-  // Slide 20: Thank You & Any Questions (Grand Finale)
+  // Slide 20: Thank You & Conclusion Video (Grand Finale)
   if (slide.id === 20) {
     return (
-      <div className={`slide-content slide-thank-you-pure ${animClass} ${spotlightClass}`}>
-        <div className="thank-you-pure-wrapper">
-          <h1 className="thank-you-pure-title">
-            THANK <span className="brand-accent-text">YOU!</span>
-          </h1>
-          <div className="any-questions-pure-box">
-            <h2 className="any-questions-pure-text">ANY QUESTIONS?</h2>
+      <div className={`slide-content seven-ps-slide ${animClass} ${spotlightClass}`}>
+        {/* Compact Header Bar */}
+        <div className="slide-header-bar compact-7ps">
+          <div>
+            <span className="section-tag mix">CONCLUSION & GRAND FINALE • SLIDE 20 OF 20</span>
+            <h2 className="slide-heading">{slide.title || "Thank You! • Q&A Session"}</h2>
+            <p className="slide-subheading">{slide.subtitle || "Floor Open for Panel Discussion & Academic Q&A"}</p>
+          </div>
+          <div className="flex items-center gap-2">
+            <button
+              onClick={triggerCelebration}
+              className="celebrate-btn"
+              title="Celebrate Presentation Completion"
+            >
+              <Sparkles className="w-3.5 h-3.5 mr-1" />
+              <span>Celebrate 🎉</span>
+            </button>
+            {slide.driveShareUrl && (
+              <a 
+                href={slide.driveShareUrl} 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="drive-direct-link"
+                title="Open Video in Google Drive in new tab"
+              >
+                <ExternalLink className="w-3 h-3 mr-1" />
+                <span>Drive</span>
+              </a>
+            )}
+            <div className="presenter-tag-box">{slide.presenter || "All Team Members (Intake 43)"}</div>
           </div>
         </div>
+
+        {/* Slidable Card Sub-Tabs Switcher */}
+        <div className="seven-ps-subtabs-row">
+          <div className="subtabs-pills">
+            <button 
+              className={`subtab-pill-btn special-video-subtab-pill ${subCard20 === 0 ? 'active' : ''}`}
+              onClick={() => setSubCard20(0)}
+            >
+              <Film className="w-3.5 h-3.5 mr-1 text-orange-400 animate-pulse" />
+              <span className="text-orange-300 font-semibold">Card 1: ▶ Group Finale Video</span>
+            </button>
+            <button 
+              className={`subtab-pill-btn ${subCard20 === 1 ? 'active' : ''}`}
+              onClick={() => setSubCard20(1)}
+            >
+              <Sparkles className="w-3.5 h-3.5 mr-1 text-teal-300" />
+              <span>Card 2: ✨ Grand Finale ("THANK YOU!")</span>
+            </button>
+            <button 
+              className={`subtab-pill-btn ${subCard20 === 2 ? 'active' : ''}`}
+              onClick={() => setSubCard20(2)}
+            >
+              <BookOpen className="w-3.5 h-3.5 mr-1 text-teal-300" />
+              <span>Card 3: 📚 Academic References & Rubric</span>
+            </button>
+          </div>
+
+          <div className="subtabs-nav-arrows">
+            <button 
+              className="subtab-arrow-btn"
+              onClick={() => setSubCard20(prev => prev > 0 ? prev - 1 : 2)}
+              title="Previous Card"
+            >
+              <ChevronLeft className="w-4 h-4" />
+              <span>Prev Card</span>
+            </button>
+            <span className="subtab-indicator-counter">{subCard20 + 1} / 3</span>
+            <button 
+              className="subtab-arrow-btn primary"
+              onClick={() => setSubCard20(prev => prev < 2 ? prev + 1 : 0)}
+              title="Next Card"
+            >
+              <span>Next Card</span>
+              <ChevronRight className="w-4 h-4" />
+            </button>
+          </div>
+        </div>
+
+        {/* Card 1: Official Presentation & Conclusion Video (Full Player) */}
+        {subCard20 === 0 && (
+          <div className="seven-ps-active-card-container animate-fade-in video-cinema-slide-wrap" style={{ height: 'calc(100% - 75px)' }}>
+            <VideoSlidePlaceholder 
+              slideNumber="20"
+              heading={slide.videoHeading || "PETTAH BAZAAR TEAM SHOWCASE & CONCLUSION"}
+              label={slide.videoLabel || "SLIDE 20 • CONCLUSION VIDEO"}
+              presenter={slide.presenter || "All Team Members (Intake 43)"}
+              driveUrl={slide.driveUrl || "https://drive.google.com/file/d/1bXRspg6fwJkPDSGwrC9fYFqxHhkFkhOL/preview"}
+              videoTitle={slide.videoTitle || "Team Showcase & Final Presentation Video (Google Drive Stream)"}
+            />
+          </div>
+        )}
+
+        {/* Card 2: Pure Minimal Grand Finale with Subtle Team Photo Underneath */}
+        {subCard20 === 1 && (
+          <div className="slide-thank-you-pure animate-fade-in" style={{ height: 'calc(100% - 75px)' }}>
+            {/* Soft Translucent Team Photo Backdrop Underneath */}
+            <div className="thank-you-subtle-photo-layer">
+              <img 
+                src="/assets/kdu_team_photo.jpg" 
+                alt="KDU Intake 43 Presentation Team" 
+                className="thank-you-subtle-photo-img" 
+              />
+              <div className="thank-you-subtle-gradient-mask"></div>
+            </div>
+
+            <div className="thank-you-pure-wrapper">
+              <div className="thank-you-badge-tag mb-1">
+                <span className="text-[11px] font-mono font-bold uppercase tracking-wider text-teal-400 bg-teal-500/15 px-3 py-1 rounded-full border border-teal-500/35">
+                  🎓 KDU BSc (Hons) in Management • Intake 43
+                </span>
+              </div>
+              <h1 className="thank-you-pure-title">
+                THANK <span className="brand-accent-text">YOU!</span>
+              </h1>
+              <div className="any-questions-pure-box" onClick={triggerCelebration} style={{ cursor: 'pointer' }} title="Click for celebration!">
+                <h2 className="any-questions-pure-text">ANY QUESTIONS?</h2>
+              </div>
+              <p className="text-xs text-slate-300/80 font-medium tracking-wide mt-1">
+                Presented by 10 Undergraduate Students • General Sir John Kotelawala Defence University
+              </p>
+              <button 
+                className="celebrate-btn mt-2"
+                onClick={triggerCelebration}
+              >
+                <Sparkles className="w-4 h-4 mr-1.5" />
+                <span>Celebrate Completion 🎉</span>
+              </button>
+            </div>
+          </div>
+        )}
+
+        {/* Card 3: Academic References & Rubric Mapping */}
+        {subCard20 === 2 && (
+          <div className="references-rubric-split animate-fade-in" style={{ height: 'calc(100% - 75px)', overflowY: 'auto', padding: '0.75rem 0.5rem' }}>
+            <div>
+              <h3 className="col-subheading">
+                <BookOpen className="w-4 h-4 mr-2 text-teal-400" />
+                Academic Literature (APA 7th Ed.)
+              </h3>
+              <div className="references-list">
+                {(slide.references || []).map((ref, idx) => (
+                  <div key={idx} className="reference-item">
+                    <p className="ref-citation">{ref.citation}</p>
+                    <p className="ref-note">{ref.note}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div>
+              <h3 className="col-subheading">
+                <CheckCircle className="w-4 h-4 mr-2 text-teal-400" />
+                Syllabus Rubric Mapping
+              </h3>
+              <div className="rubric-summary-table-wrap">
+                <table className="rubric-summary-table">
+                  <thead>
+                    <tr>
+                      <th>Criterion</th>
+                      <th>Status</th>
+                      <th>Evidence</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {(slide.rubricHighlights || []).map((rh, idx) => (
+                      <tr key={idx}>
+                        <td className="font-semibold text-white">{rh.criterion}</td>
+                        <td><span className="status-pill text-teal-300">{rh.status}</span></td>
+                        <td className="text-slate-300 text-xs">{rh.evidence}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        )}
       </div>
     );
   }

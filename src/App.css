@@ -5973,11 +5973,13 @@
 }
 
 .thank-you-pure-wrapper {
+  position: relative;
+  z-index: 2;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 2.2rem;
+  gap: 1.6rem;
   max-width: 960px;
   animation: heroPulseGlow 3s ease-in-out infinite alternate;
 }
@@ -11010,4 +11012,173 @@
   height: 100%;
   border-radius: var(--radius-sm);
 }
+
+/* =============================================================
+   SLIDE 20: GOOGLE DRIVE PORTRAIT VIDEO STREAM & FINALE
+============================================================= */
+.slide20-video-layout {
+  display: flex;
+  align-items: stretch;
+  justify-content: flex-start;
+  gap: 1.5rem;
+  flex: 1;
+  min-height: 0;
+  height: calc(100% - 10px);
+}
+
+.slide20-video-card {
+  height: 100%;
+  width: auto;
+  background: #000000;
+  border: 2px solid rgba(255, 85, 0, 0.55);
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.8), 0 0 25px rgba(255, 85, 0, 0.25);
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Portrait Phone 9:16 Ratio */
+.slide20-video-card.portrait-phone {
+  aspect-ratio: 9 / 16;
+  max-width: 320px;
+  min-width: 250px;
+}
+
+/* Portrait Expanded 3:4 Ratio */
+.slide20-video-card.portrait-wide {
+  aspect-ratio: 3 / 4;
+  max-width: 420px;
+  min-width: 320px;
+}
+
+.slide20-video-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.4rem 0.65rem;
+  background: rgba(15, 23, 42, 0.95);
+  border-bottom: 1px solid rgba(255, 85, 0, 0.3);
+  flex-shrink: 0;
+}
+
+.slide20-video-box {
+  flex: 1;
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  position: relative;
+  background: #000000;
+  overflow: hidden;
+}
+
+.slide20-video-iframe {
+  width: 100%;
+  height: 100%;
+  display: block;
+  border: none;
+}
+
+.slide20-video-footer {
+  padding: 0.35rem 0.65rem;
+  background: rgba(10, 15, 29, 0.95);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  flex-shrink: 0;
+}
+
+.slide20-sidebar-panel {
+  flex: 1;
+  min-width: 0;
+  background: linear-gradient(135deg, rgba(15, 23, 42, 0.95) 0%, rgba(10, 16, 28, 0.98) 100%);
+  border: 1px solid rgba(255, 165, 0, 0.35);
+  border-radius: var(--radius-sm);
+  padding: 1.25rem 1.75rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+  height: 100%;
+  overflow-y: auto;
+}
+
+.thank-you-mini-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+.thank-you-mini-title {
+  font-family: var(--font-heading, 'Outfit', sans-serif);
+  font-size: 2.5rem;
+  font-weight: 900;
+  color: #FFFFFF;
+  line-height: 1;
+  margin: 0;
+  text-shadow: 0 0 35px rgba(255, 85, 0, 0.45);
+}
+
+.any-questions-mini-box {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.45rem 1.4rem;
+  background: rgba(15, 23, 42, 0.75);
+  border: 1.5px solid rgba(255, 165, 0, 0.45);
+  border-radius: 9999px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5);
+}
+
+.any-questions-mini-text {
+  font-family: var(--font-heading, 'Outfit', sans-serif);
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: #FFFFFF;
+  letter-spacing: 0.05em;
+}
+
+/* =============================================================
+   SLIDE 20: SUBTLE TEAM PHOTO BACKDROP UNDER THANK YOU
+============================================================= */
+.thank-you-subtle-photo-layer {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  border-radius: var(--radius-sm);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.thank-you-subtle-photo-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 60%;
+  opacity: 0.42;
+  filter: contrast(1.12) brightness(0.92) saturate(1.05);
+  transform: scale(1.01);
+  transition: opacity 0.5s ease;
+}
+
+.thank-you-subtle-gradient-mask {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 50%, rgba(9, 13, 24, 0.28) 0%, rgba(9, 13, 24, 0.65) 55%, rgba(6, 8, 16, 0.92) 100%);
+}
+
+.thank-you-badge-tag {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+
 
